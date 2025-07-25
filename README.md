@@ -1,3 +1,16 @@
+# Install instructions
+
+---
+
+1. to install this datapack just click "code" then download the folder. (thats the closest to a download button i think)
+2. you must place the folder into .minecraft/saves/<world>/datapacks (make sure its unzipped)
+3. get into your world and type "/reload" this will start the datapack
+4. you will get an error talking about "no map beacons". this is where you must type "/function ctnv:debug" you will be given a "debug book"
+5. place a map beacons so that the game knows where the game will be played, and the lobby beacon (dont forget to rename the map beacons).
+6. type /reload again
+
+---
+
 # Corrupt Tag: New Virus
 
 **Game By Gabriel Bravo & Diego Carranza**
@@ -44,3 +57,4 @@ There are 2 roles in Corrupt Tag: New Virus:
 Join the **Discord** → **https://discord.gg/ZtkjaKjMkb**
 
 To also get Corrupt Tag! And Updating Information
+
