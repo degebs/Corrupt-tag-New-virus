@@ -91,4 +91,7 @@
       -buffed the medic. (medical hoe does more knockback)
 
 1.1.3
-      -fixed a glitch where players could die and respawn at the loby midgame
+      -fixed a glitch where players could die and respawn at the lobby midgame
+
+1.0.4
+      -fixed a glitch where players would NOT respawn back in the lobby after the game is done

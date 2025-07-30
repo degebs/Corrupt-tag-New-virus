@@ -8,14 +8,21 @@ kill @e[tag=corruption_part]
 scoreboard players set endgame state 0
 # text celebrating the survivor
 
-execute if score tick time matches 3 if score victory_timer victory matches 19 as @a[team=!dead] run tellraw @a [{"selector":"@s"}," hunted down everyone at ",{"score":{"objective":"corruption","name":"@s"}},"% corruption"]
-execute if score tick time matches 3 if score victory_timer victory matches 17 as @a[team=!dead] run tellraw @a ["you are ",{"text":"beautiful","bold":true}]
+execute if score tick time matches 3 if score victory_timer victory matches 19 run tellraw @a ["everyone is corrupted at ",{"score":{"objective":"corruption_combined","name":"infected"}},"% corruption"]
+execute if score tick time matches 3 if score victory_timer victory matches 17 run tellraw @a ["you are ",{"text":"beautiful","bold":true}]
+#==============================================================================================================
+# there is a glitch where players dont respan in the main  lobby when the game ends
+execute as @e[tag=lobby] at @s run setworldspawn ~ ~ ~
+execute as @e[tag=lobby] at @s run spawnpoint @a ~ ~ ~
 
 # teleport
 execute if score tick time matches 3 if score victory_timer victory matches 0 run tp @a @e[tag=lobby,limit=1] 
 
 # and now for the final command... reload the entire simulation, completing the gameplay loop
 execute if score tick time matches 3 if score victory_timer victory matches 0 as @a run reload
+# disable corrupted stuns during victory
+scoreboard players set @a corruption_stun 0
+
 
 # fireworks 
 
