@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:chorus_fruit",
+      "count": 1
+    },
+    "title": "The cowards way out",
+    "description": "eat a chorus fruit, and teleport to the nearest runner",
+    "background": "minecraft:block/crying_obsidian",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "ctnv:corrupt_tag/frosty",
+  "criteria": {
+    "root": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:chorus_fruit"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ]
+}
