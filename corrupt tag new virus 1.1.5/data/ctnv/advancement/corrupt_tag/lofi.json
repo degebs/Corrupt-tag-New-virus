@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:music_disc_cat",
+      "count": 1
+    },
+    "title": "lofi chill beats to corrupt to",
+    "description": "crouch for 3 minutes strait",
+    "background": "minecraft:block/crying_obsidian",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "ctnv:corrupt_tag/weasel",
+  "criteria": {
+    "root": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ]
+}

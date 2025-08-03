@@ -1,0 +1,46 @@
+{
+    "display": {
+        "icon": {
+            "id": "minecraft:goat_horn",
+            "count": 1
+        },
+        "title": "you make me want to shout",
+        "description": "die as every corrupted class the game",
+        "background": "minecraft:block/crying_obsidian",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "ctnv:corrupt_tag/root",
+    "criteria": {
+        "corrupted_die": {
+            "trigger": "minecraft:impossible"
+        },
+        "predator_die": {
+            "trigger": "minecraft:impossible"
+        },
+        "apparition_die": {
+            "trigger": "minecraft:impossible"
+        },
+        "hunter_die": {
+            "trigger": "minecraft:impossible"
+        },
+        "knight_die": {
+            "trigger": "minecraft:impossible"
+        },
+        "darkstar_die": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "corrupted_die",
+            "predator_die",
+            "apparition_die", 
+            "hunter_die",
+            "knight_die",
+            "darkstar_die"
+        ]
+    ]
+}

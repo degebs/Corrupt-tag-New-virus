@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "id": "minecraft:leather",
+            "count": 1
+        },
+        "title": "Leather Terror",
+        "description": "as the predator kill everyone in hide and reap",
+        "background": "minecraft:block/crying_obsidian",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "ctnv:corrupt_tag/1v1",
+    "criteria": {
+        "root": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "root"
+        ]
+    ]
+}

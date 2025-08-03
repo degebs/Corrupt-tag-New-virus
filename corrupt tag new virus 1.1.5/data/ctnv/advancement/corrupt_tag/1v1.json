@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "id": "minecraft:diamond_sword",
+            "count": 1
+        },
+        "title": "Don't wait for Heroes",
+        "description": "enter a 1v1 standoff with the corrupted",
+        "background": "minecraft:block/crying_obsidian",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "ctnv:corrupt_tag/root",
+    "criteria": {
+        "root": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "root"
+        ]
+    ]
+}

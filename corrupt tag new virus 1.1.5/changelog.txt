@@ -1,0 +1,102 @@
+1.0.0: -finally finished the game. its playable now
+
+1.0.1 -changed the class selection to functuon with the the players inventory insted of a book
+      - the party leader can no longer drop the settings book
+      - fixed a spectator glitch that breifly flashed your hotbar and previous inventory
+      - added visual clarity when setting up with the settings book
+
+1.0.2
+      - added "target tubby detection"
+            - includes 10 horrible punishments
+            - its togleable in the settings book
+      - fixed an issue where a corruption stun of 0 would break the game
+      - added a sound que to the corruption stun
+      
+1.0.3
+      - fixed the settings book again
+      - added particle effects to the beginging animation
+      - added fireworks for the winner
+      - separated the game modes and the settings book
+      - added the foundation for multiple game modes
+
+1.0.4
+      - continued working on game modes
+      - added a new gamemode "hide and reap"
+
+1.0.5
+      -added a chorus fruit to hide and reap
+      - added a new gamemode "Cranked It"
+      - added a new gamemode "infection"
+
+1.0.6
+      -fixed the chorus fruit in (hide and reap) AND (infection) gamemodes
+      -fixed a bug where non operator players could not choose settings
+      -added new way to become party leader no matter who it is
+      - BUFFED the hunters t3 ablility (it moves now)
+      - added a ui element to the main menu for the game mode
+      - added new setting to hide and reap called "enable_runner_classes"
+      - added the spine for the "call of corrupted" game mode
+
+1.0.7
+      -added descriptions to the game mode book
+      -added a new game mode "call of corrupted"
+      -buffed the fishermans fishing net (range)
+      -altered the class selection logic so that players dont accidentaly delete the loby beacon
+
+1.0.8
+      -downed runners can no longer be invisible in call of corrupted
+      -fixed a bug where the archer would have no arrows at all
+      -fixed mobs droping items that they should not be able to in call of corrupted
+      -altered the nautral spawning of loot zombies in call of corrupted
+      -fixed a bug where the spanwing of loot zombies did not happen. but only on other peoples servers( at least i think )
+      -fixed the chorus fruit in (hide and reap) AND (infection) gamemodes. this time is should REALLY work
+      -fixed the healing rose in call of corrupted
+      -added the ability for all dead players to see exactly how much corruption percentage everyone has
+      -BUFFED the hunter corrupted class. he is faster now at 90% corruption
+      -lowered the revive time in call of corrupted (buff)
+      -players now spawn at the loby beacon
+      -fixed creepers REALLY killing players in call of corrupted
+
+1.0.9
+      -altered the corrupted classes to be more esally distinguishable (better armor)
+      -added new game mode "class swappers" its just corrupt tag but you class swaps every time you get tagged
+      -fixed a glitch where multiple players could be corrupted in game modes where thats not suppost to happen
+      - updated to minecraft 1.21.7 (previously 1.21.5)
+      - added new setting. the locator bar
+      - made the text for selecting maps smaller. (the names of some maps are too big)
+      - made the ui a bit better to read
+      - changed the apparitions enderperals to now home in on runners (so that he cannot escape the map)
+      - fixed a bug where players could drop there cooldown timer.
+
+1.1.0
+      -added clarity do the class swappers game mode. (so that players dont forget what game mode there playing)
+      -changed specator behavior to no longer be able to move too far away from the living (no escape)
+
+1.1.1
+      -fixed a bug in hide and reap where the runners would not have there class, even if they were enabled
+      -buffed predators 90% corruption ability
+      -fixed a spelling mistake
+      -fixed a bug where in call of corruped. where the corrupted would leave and the game would not end
+      - changed a core feature in call of corrupted  
+            - the atherial corrupted will no longer be teleported away from runners (confined spaces)
+      -fixed nautral mob spawning in call of corrupted
+
+1.1.2
+      -added a way to spend money on call of corrupted
+            - deploayable wall (pay to remove it)
+      -buffed the predator( his items provide 5 seconds of glowing)
+      -buffed the dark star( his blindness powerup does more blindness)
+      -added an easer egg
+      -nerfed the assassin to be slow while invisable
+      -buffed the medic. (medical hoe does more knockback)
+
+1.1.3
+      -fixed a glitch where players could die and respawn at the lobby midgame
+
+1.0.4
+      -fixed a glitch where players would NOT respawn back in the lobby after the game is done
+
+1.0.5
+      -added calling cards (advancements)
+      - fixed a memory leak involving a bunch of armorstands
+      -buffed the fisherman to have jump boost during endgame

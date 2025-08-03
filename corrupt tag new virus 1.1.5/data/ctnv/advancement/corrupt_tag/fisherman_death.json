@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "id": "minecraft:warped_fungus_on_a_stick",
+            "count": 1
+        },
+        "title": "bad fishing spot",
+        "description": "kill someone playing as the fisherman",
+        "background": "minecraft:block/crying_obsidian",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "ctnv:corrupt_tag/fisherman",
+    "criteria": {
+        "root": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "root"
+        ]
+    ]
+}

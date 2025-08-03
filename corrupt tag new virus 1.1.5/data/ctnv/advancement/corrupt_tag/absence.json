@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "id": "minecraft:glow_lichen",
+            "count": 1
+        },
+        "title": "Absence of presence",
+        "description": "Stay invisible for 4 minutes with 0 Corruption",
+        "background": "minecraft:block/crying_obsidian",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "ctnv:corrupt_tag/lofi",
+    "criteria": {
+        "root": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "root"
+        ]
+    ]
+}
