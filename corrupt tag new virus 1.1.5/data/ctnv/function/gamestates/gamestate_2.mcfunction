@@ -229,3 +229,13 @@ kill @e[tag=TOTEM_zombie_elite]
 kill @e[tag=TOTEM_zombie]
 kill @e[tag=heal_totem]
 kill @e[tag=wall]
+kill @e[tag=fish_attack]
+kill @e[tag=splash]
+
+#=================================================================================================
+# display the maps name to all
+execute as @e[type=turtle,limit=1,sort=nearest] at @r run title @a title [{"color":"gold","selector":"@s"}]
+
+
+
+execute if score countdown time matches 3 if score tick time matches 19 run tellraw @a [{text:"==============================================","color":"green"}]

@@ -56,7 +56,7 @@ scoreboard objectives remove knight_corruption_blocker
 scoreboard objectives remove dark_star_darkness
 scoreboard objectives remove dark_star_speed_boost
 scoreboard objectives remove dark_star_supernova
-execute unless entity @e[tag=life_detecter] run summon armor_stand ~ 0 ~ {Pose:{LeftLeg:[0f,0f,277f],RightLeg:[0f,0f,65f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,CustomName:[{text:life_detector}],Invulnerable:1b,NoAI:1b,NoGravity:1b,Silent:1b,Tags:["life_detector"]}
+execute unless entity @e[tag=life_detecter] run summon armor_stand ~ 0 ~ {Pose:{LeftLeg:[0f,0f,277f],RightLeg:[0f,0f,65f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,CustomName:[{text:life_detector}],Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:["life_detector"]}
 kill @e[type=item]
 function ctnv:one_time_function/party_leader/party_leader
 scoreboard objectives remove ST____time_of_day 
@@ -170,4 +170,4 @@ scoreboard objectives remove playtime
 
 # this command is here because of a weird thing that happens when we were testing this on imsqekers world. some of the scoreboards came from older versions of corrupt tag
 # this is here so that any broken scoreboards can be removed
-tellraw @a [{"text":"All variables were destroyed, the game is completely broken now... hooray for you","color":"dark_red"}]
+tellraw @a [{"text":"All scoreboards were destroyed, the game is completely broken now... hooray for you","color":"dark_red"}]

@@ -88,4 +88,6 @@ execute as @e[tag=heal_totem] at @s run particle happy_villager ^2 ^1 ^ 0 0 0 0 
 execute if score medic_totem_rotation medic_heal matches ..0 run kill @e[tag=heal_totem]
 # heal all within its range UNLESS the runners in the range are already at max health
 execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at @s run scoreboard players add @a[distance=..2,team=runners] health 1
+# do it again. making him heal 2 hearts
+execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at @s run scoreboard players add @a[distance=..2,team=runners] health 1
 

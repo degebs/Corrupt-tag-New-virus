@@ -79,3 +79,29 @@ execute if score @s fishing_net_trap matches 0 unless entity @s[nbt={Inventory:[
 #================================================================================================================================================
 # permanent jump boost in endgame
 execute if score endgame state matches 1 run effect give @s jump_boost 1 1 true
+
+
+#================================================================================================================================================
+# the fishing rod kinda sucks ass.
+# lets make it better
+
+# 1. find out if the fishin rod is in the ground
+execute as @e[type=fishing_bobber] at @s unless block ~ ~-1 ~ air run scoreboard players add @s fish_assist 1
+
+# 2. if the fishing rod is in the ground for 100 ticks start doing stuff. like particles
+execute as @e[type=fishing_bobber] at @s if score @s fish_assist matches 100.. run particle bubble ~ ~ ~ 1 0 1 0.1 2 force @a[team=runners]
+execute as @e[type=fishing_bobber] at @s if score @s fish_assist matches 3 run particle sonic_boom ~ ~ ~ 0 0 0 0.1 1 force @a[team=runners]
+
+
+# when the fishing rod is in the ground for long enough he can charge up a fish attack!
+execute as @e[type=fishing_bobber] at @s if score @s fish_assist matches 100.. run particle bubble ~ ~ ~ 1 0 1 0.1 2 force @a[team=runners]
+
+
+execute as @e[type=fishing_bobber] at @s if score @s fish_assist matches 101 run summon minecraft:item_display ~ ~ ~ {Tags:["fish_attack"],Passengers: [{id: "minecraft:item_display", Tags:["fish_attack"], item: {count: 1, id: "minecraft:salmon"}, transformation: {left_rotation: [0.0f, 0.0f, 0.92387956f, 0.38268337f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [3.2500005f, 3.2500005f, 11.578122f], translation: [0.0f, -2.1875f, 0.0f]}}, {id: "minecraft:text_display", Tags:["fish_attack"], text:'{"text":"FISH ATTACK","color":"aqua","bold":true}', line_width: 200, background: 0, see_through: 0b, shadow: 1b, text_opacity: 0b, billboard: "center", transformation: {left_rotation: [1.0f, 0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f], translation: [0.0f, -1.5f, 1.5f]}}], item: {count: 1, id: "minecraft:oak_button"}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.375f, 0.375f, 0.375f], translation: [0.0f, 0.0f, 0.0f]}}
+#audio cue for the fish attack being ready
+execute as @e[type=fishing_bobber] at @s if score @s fish_assist matches 101 run playsound entity.dolphin.play master @a[team=runners] ~ ~ ~ 1 1 0.7
+execute as @e[type=fishing_bobber] at @s if score @s fish_assist matches 101 run particle effect ~ ~ ~ 0 3 0 0.1 100 force @a[team=runners]
+
+# if the fishing bobber dies the fish attack lunges up!
+scoreboard players add @e[tag=fish_attack] fish_assist 0
+execute as @e[tag=fish_attack] at @s unless entity @e[type=fishing_bobber,limit=1,sort=nearest,distance=..2] run function ctnv:one_time_function/fish_attack_keyframe

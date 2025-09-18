@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.1.5","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.1.6","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule doMobLoot false
@@ -165,7 +165,7 @@ scoreboard objectives add dark_star_supernova dummy
 
 #set up the entity that detects if someone tried to kill @e (this is important for keeping track of map beacons)
 # this does not work for some reason
-execute unless entity @e[tag=life_detecter] run summon armor_stand ~ 0 ~ {Pose:{LeftLeg:[0f,0f,277f],RightLeg:[0f,0f,65f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,CustomName:[{text:life_detector}],Invulnerable:1b,NoAI:1b,NoGravity:1b,Silent:1b,Tags:["life_detector"]}
+execute unless entity @e[tag=life_detecter] run summon armor_stand ~ 0 ~ {Pose:{LeftLeg:[0f,0f,277f],RightLeg:[0f,0f,65f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,CustomName:[{text:life_detector}],Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:["life_detector"]}
 # dont do this if the life detecter already exists
 
 
@@ -426,3 +426,6 @@ scoreboard objectives add shout dummy
 
 # yes i am aware that there are multiple scoreboard with the same objective type. this is here because each one is treated differently
 # they are cleared under different conditions
+
+#-------------------------------fishing rod ability------------------------------
+scoreboard objectives add fish_assist dummy

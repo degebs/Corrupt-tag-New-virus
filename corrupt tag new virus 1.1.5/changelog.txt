@@ -41,7 +41,7 @@
       -added descriptions to the game mode book
       -added a new game mode "call of corrupted"
       -buffed the fishermans fishing net (range)
-      -altered the class selection logic so that players dont accidentaly delete the loby beacon
+      -altered the class selection logic so that players dont accidentaly delete the lobby beacon
 
 1.0.8
       -downed runners can no longer be invisible in call of corrupted
@@ -54,7 +54,7 @@
       -added the ability for all dead players to see exactly how much corruption percentage everyone has
       -BUFFED the hunter corrupted class. he is faster now at 90% corruption
       -lowered the revive time in call of corrupted (buff)
-      -players now spawn at the loby beacon
+      -players now spawn at the lobby beacon
       -fixed creepers REALLY killing players in call of corrupted
 
 1.0.9
@@ -93,10 +93,18 @@
 1.1.3
       -fixed a glitch where players could die and respawn at the lobby midgame
 
-1.0.4
+1.1.4
       -fixed a glitch where players would NOT respawn back in the lobby after the game is done
 
-1.0.5
+1.1.5
       -added calling cards (advancements)
       - fixed a memory leak involving a bunch of armorstands
       -buffed the fisherman to have jump boost during endgame
+
+1.1.6
+      -buffed the fisherman. his fishing rod now has a fish attack
+      -the name of the map is now shown during the pregame
+      -buffed medic. he now heals 2 hearts
+      -nerfed bulk. his shield has low durability and needs time to recharge
+      -fixed several spelling mistakes
+      -updated to minecraft 1.21.8

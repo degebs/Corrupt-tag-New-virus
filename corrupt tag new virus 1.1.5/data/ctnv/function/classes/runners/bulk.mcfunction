@@ -117,9 +117,9 @@ execute as @a[team=runners,scores={class=3}] at @s if score seconds time matches
 # make sure it cannot be moved
 execute if entity @s[nbt={Inventory:[{id:"minecraft:shield"}]}] run clear @s minecraft:shield
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:-106b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:shield"}}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:35b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:shield"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:-106b}]}] run item replace entity @s weapon.offhand with shield[custom_name=[{"text":"bulky shield","italic":false}],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:35b}]}] if score 360 time matches 290 run item replace entity @s weapon.offhand with shield[custom_name=[{"text":"bulky shield","italic":false}],rarity=uncommon,damage=335]
 
 
 # clears any corrupted items.
