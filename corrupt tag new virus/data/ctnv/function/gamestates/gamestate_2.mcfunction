@@ -28,7 +28,7 @@ execute if score countdown time matches 1 if score setting ST____game_mode match
 
 #==============================================================================================================
 # there is a glitch where players die in real life and then respawn in the lobby midgame. this cannot happen
-execute as @e[type=turtle,scores={map_selection=1}] at @s run setworldspawn ~ ~ ~
+#execute as @e[type=turtle,scores={map_selection=1}] at @s run setworldspawn ~ ~ ~
 execute as @e[type=turtle,scores={map_selection=1}] at @s run spawnpoint @a ~ ~ ~
 
 

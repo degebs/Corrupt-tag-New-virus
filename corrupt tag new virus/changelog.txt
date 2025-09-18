@@ -108,3 +108,4 @@
       -nerfed bulk. his shield has low durability and needs time to recharge
       -fixed several spelling mistakes
       -updated to minecraft 1.21.8
+      -fixed a bug where you would not go back to the lobby after a game
