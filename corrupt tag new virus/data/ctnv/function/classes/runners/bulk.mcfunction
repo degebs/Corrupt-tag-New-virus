@@ -110,6 +110,19 @@ execute as @a[team=runners,scores={class=3}] if score tick time matches 10 if sc
 # particles to indicate healing
 execute as @a[team=runners,scores={class=3}] at @s if score seconds time matches 10 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run particle minecraft:happy_villager ~ ~1 ~ 0.2 1 0.2 1 5 force @a
 
+#==============================================================================================================================================================
+# make his shield breakable
+# if you are within 3 blocks of the corrupted, for 10 seconds, your shield will break
+
+# for some reason this command does not work... exept when i run the command manually in game...
+# fuck
+execute at @s if entity @a[team=corrupted,distance=..3] run scoreboard players add @s shield_breaker 1
+
+# 10 seconds is 200 ticks
+execute at @s if entity @a[team=corrupted,distance=..3] if score @s shield_breaker matches 200.. run clear @s shield
+execute at @s if entity @a[team=corrupted,distance=..3] if score @s shield_breaker matches 200.. run particle crit ~ ~1 ~ 0 0 0 0.2 15 force @a
+execute at @s if entity @a[team=corrupted,distance=..3] if score @s shield_breaker matches 200.. run playsound item.shield.break player @s ~ ~ ~ 1 1 0.6
+execute at @s if entity @a[team=corrupted,distance=..3] if score @s shield_breaker matches 200.. run scoreboard players reset @s shield_breaker 
 
 #==============================================================================================================================================================
 #give the bulk his shield
@@ -119,6 +132,7 @@ execute if entity @s[nbt={Inventory:[{id:"minecraft:shield"}]}] run clear @s min
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:35b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:shield"}}]
 
+# for some reason this shield is completly unbreakable. so i need to maunually add damage to it
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:35b}]}] if score 360 time matches 290 run item replace entity @s weapon.offhand with shield[custom_name=[{"text":"bulky shield","italic":false}],rarity=uncommon,damage=335]
 
 
@@ -128,3 +142,4 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:shield",Slot:35b}]}] if 
 clear @s glowstone_dust
 clear @s sugar
 clear @s chorus_fruit
+

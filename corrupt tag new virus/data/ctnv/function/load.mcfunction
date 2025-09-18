@@ -429,3 +429,7 @@ scoreboard objectives add shout dummy
 
 #-------------------------------fishing rod ability------------------------------
 scoreboard objectives add fish_assist dummy
+
+
+#-------------------------------bulk shield camping fix------------------------------
+scoreboard objectives add shield_breaker dummy
