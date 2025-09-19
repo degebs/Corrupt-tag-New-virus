@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.1.6","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.1.7","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule doMobLoot false
@@ -433,3 +433,13 @@ scoreboard objectives add fish_assist dummy
 
 #-------------------------------bulk shield camping fix------------------------------
 scoreboard objectives add shield_breaker dummy
+
+
+#-------------------------------secret corrupted domain expantion------------------------------
+scoreboard objectives add corrupted_supercharge dummy
+scoreboard objectives add corrupted_supercharge_detection minecraft.custom:sneak_time
+scoreboard objectives add corrupted_supercharge_secondary_validation dummy
+
+scoreboard objectives add corrupted_domain_enable dummy
+scoreboard players set enable corrupted_domain_enable 0
+scoreboard players set the_eye_of_pain corrupted_domain_enable 0

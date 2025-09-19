@@ -175,7 +175,10 @@ execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..
 execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run playsound minecraft:entity.firework_rocket.blast block @a ~ ~ ~ 1 1 0.5
 execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run particle flash ~ ~ ~ 0 0 0 0 1 force @a
 
+# it will first clear all effects from the corrupted, meaing if they were chasing the stunman using a boost the corrupted will no longer have it
+execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect clear @e[distance=..4,team=corrupted]
 
+# then give the debuff
 execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect give @e[distance=..4,team=corrupted] slowness 1 5
 execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect give @e[distance=..4,team=corrupted] darkness 2 5
 

@@ -35,4 +35,4 @@ execute if score seconds time matches 50 run bossbar set minecraft:game_time col
 # aquired by witnessing a ragequit during the endgame
 
 #1 compare the "players_waiting" variable to the "online" variable
-execute unless score players_waiting players_online = Online players_online run advancement grant @a only ctnv:corrupt_tag/forget_you
+execute unless score Online players_online = players_waiting players_online run advancement grant @a only ctnv:corrupt_tag/forget_you

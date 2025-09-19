@@ -11,5 +11,5 @@ effect give @e[type=armadillo,tag=lobby,sort=nearest,limit=1] minecraft:invisibi
 particle happy_villager ~ ~1 ~ 0.1 1 0.1 3 400
 particle firework ~ ~1 ~ 0.1 1 0.1 1 400
 playsound block.beacon.activate block @a ~ ~ ~ 1 1
-tellraw @a ["",{"text":"loby beacon created!","color":"dark_green"}]
+tellraw @a ["",{"text":"lobby beacon created!","color":"dark_green"}]
 forceload add ~ ~

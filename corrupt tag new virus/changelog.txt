@@ -109,3 +109,6 @@
       -fixed several spelling mistakes
       -updated to minecraft 1.21.8
       -fixed a bug where you would not go back to the lobby after a game
+1.1.7
+      -fixed the stunman not being able to place traps
+      -buffed the stunmans mines (they now remove speed/jump boost effects from the corrupted BEFORE stunning)

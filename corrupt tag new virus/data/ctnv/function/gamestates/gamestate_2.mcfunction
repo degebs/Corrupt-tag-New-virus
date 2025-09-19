@@ -212,6 +212,7 @@ scoreboard players reset @a crouch_time
 kill @e[type=shulker]
  scoreboard players set revive_tutorial call_of_corrupted 0
  # there is a glitch where a totem can persist between reloads. thats a bad thing
+ # also there are a lot of other things that need to be cleared before gameplay starts just in case anything persists
 kill @e[tag=TOTEM_creeper]
 kill @e[tag=TOTEM_mini_creeper]
 kill @e[tag=TOTEM_phantom]
@@ -231,6 +232,8 @@ kill @e[tag=heal_totem]
 kill @e[tag=wall]
 kill @e[tag=fish_attack]
 kill @e[tag=splash]
+kill @e[tag=eye_of_pain]
+kill @e[type=item_display,nbt={item:{id:"minecraft:player_head"}}]
 
 #=================================================================================================
 # display the maps name to all
@@ -238,4 +241,4 @@ execute as @e[type=turtle,limit=1,sort=nearest] at @r run title @a title [{"colo
 
 
 
-execute if score countdown time matches 3 if score tick time matches 19 run tellraw @a [{text:"==============================================","color":"green"}]
+execute if score countdown time matches 2 if score tick time matches 19 run tellraw @a [{text:"==============================================","color":"green"}]

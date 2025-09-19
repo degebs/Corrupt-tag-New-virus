@@ -490,3 +490,13 @@ scoreboard players reset count life_detector_count
 execute as @e[tag=life_detector] run scoreboard players add count life_detector_count 1
 execute if score count life_detector_count matches 2.. run kill @e[tag=life_detector,limit=1,sort=nearest]
 # this fixes the life detecor memory leak
+
+
+#======================================================================================================================
+# set up corrupted domain expantion. if it is not enabled here. then it wont work during the game
+execute unless score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion_setup
+# rng
+scoreboard players add rng corrupted_domain_enable 1
+execute if score rng corrupted_domain_enable matches 9.. run scoreboard players set rng corrupted_domain_enable 1
+
+

@@ -451,3 +451,7 @@ execute as @e[tag=wall,type=magma_cube] at @s unless block ~ ~ ~ minecraft:air r
 #nvm i fixed it
 execute as @e[type=minecraft:magma_cube] if entity @s[nbt={HurtTime:1s}] run function ctnv:alternate_gamemode_functions/call_of_corrupted/wall_price_check
 
+
+#=================================================================================================
+# secret corrupted supercharge "domain expansion"
+execute if score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion

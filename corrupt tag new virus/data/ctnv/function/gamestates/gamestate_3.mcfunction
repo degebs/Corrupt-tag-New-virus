@@ -444,3 +444,6 @@ execute if score count only_one_corrupted matches 2.. unless score gamers player
 
 
 
+#=================================================================================================
+# secret corrupted supercharge "domain expansion"
+execute if score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion

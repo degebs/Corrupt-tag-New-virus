@@ -37,7 +37,7 @@ execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @p[distance=..2,te
 # stunman trap
 
 # When the player drops the trap, start a cooldown (20s = 400 ticks), and remove the item
-execute unless entity @s[nbt={Inventory:[{Slot:3b,id:"minecraft:tripwire_hook"}]}] if score @s stunman_trap matches 0 unless block ~ ~-1 ~ minecraft:air run scoreboard players set @s stunman_trap 400
+execute unless entity @s[nbt={Inventory:[{Slot:3b,id:"minecraft:tripwire_hook"}]}] if score @s stunman_trap matches 0 run scoreboard players set @s stunman_trap 400
 
 # give the hunter a trap item, make sure he cannot drop it
 # Give the hunter a trap item in hotbar slot 3 if they don't already have it and are at least 15% corrupt

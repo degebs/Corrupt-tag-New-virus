@@ -476,3 +476,7 @@ execute if score count runners_alive matches 0 run function ctnv:alternate_gamem
 scoreboard objectives setdisplay below_name
 
 
+
+#=================================================================================================
+# secret corrupted supercharge "domain expansion"
+execute if score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion

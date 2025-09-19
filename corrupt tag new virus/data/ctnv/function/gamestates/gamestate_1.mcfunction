@@ -180,8 +180,9 @@ execute if score countdown time matches 1.. run function ctnv:one_time_function/
 
 
 
-
-
+#======================================================================================================================
+# set up corrupted domain expantion. if it is not enabled here. then it wont work during the game
+execute unless score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion_setup
 
 
 

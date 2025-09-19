@@ -572,3 +572,7 @@ execute if score duration cranked_it_buff_delay matches 1.. at @a[team=!dead] ru
 
 # disable the trigger when its all done
 execute if score time cranked_it_buff_delay matches 1.. run scoreboard players set trigger cranked_it_buff_delay 0
+
+#=================================================================================================
+# secret corrupted supercharge "domain expansion"
+execute if score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion
