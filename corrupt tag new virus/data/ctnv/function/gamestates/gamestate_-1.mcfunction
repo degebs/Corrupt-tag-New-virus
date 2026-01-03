@@ -40,7 +40,7 @@ execute as @e[scores={spawning_circle=1}] run effect give @s minecraft:glowing 1
 execute as @e[type=turtle] run attribute @s scale base set 1
 
 # game rule
-gamerule sendCommandFeedback true
+gamerule send_command_feedback true
 
 
 #=================================================================================================

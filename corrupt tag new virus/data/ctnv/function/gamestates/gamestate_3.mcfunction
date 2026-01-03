@@ -399,7 +399,7 @@ scoreboard players set @a[team=dead] evil_class -1
 #give particles to the "corrupted_part"
 execute at @e[tag=corruption_part] if entity @a[team=corrupted,distance=5..] run particle dragon_breath ~ ~ ~ 0 0 0 0.01 10 force @a
 execute at @e[tag=corruption_part] if entity @a[team=corrupted,distance=5..] run particle raid_omen ~ ~ ~ 2 0.5 2 0.01 1 force @a
-execute at @e[tag=corruption_part] as @e[tag=corruption_part] if entity @a[team=corrupted,distance=5..] run particle flash ~ ~ ~ 0 0.5 0 0.01 2 force @a
+execute at @e[tag=corruption_part] as @e[tag=corruption_part] if entity @a[team=corrupted,distance=5..] run particle end_rod ~ ~ ~ 0 0.5 0 0.01 2 force @a
 #slowly move it to the corrupted player
 # this command might be the most preformance intenceive part of the whole game
 # Only move the corruption_part if a corrupted player exists and is farther than 1 block away

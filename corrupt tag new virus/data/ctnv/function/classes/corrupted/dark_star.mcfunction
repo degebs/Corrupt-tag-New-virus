@@ -389,10 +389,10 @@ execute if score @s dark_star_supernova matches 170..185 at @s if score tick tim
 
 # extra particels
 execute if score @s dark_star_supernova matches 170..380 at @s run particle campfire_signal_smoke ~ ~ ~ 10 5 10 4 200 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle flash ^ ^ ^5 25 0 25 1 15 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle flash ^ ^ ^-5 25 0 25 1 15 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle flash ^5 ^ ^ 25 0 25 1 15 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle flash ^-5 ^ ^ 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^5 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-5 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^5 ^ ^ 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 25 0 25 1 15 force @a
 
 # you only get one chance to nuke everyone
 # if you miss you get your corruption set to 99

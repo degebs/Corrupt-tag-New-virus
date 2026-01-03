@@ -5,7 +5,7 @@
 
 
 #----------this chunk summons all the entitiys-----------------------
-summon armor_stand ~ ~ ~ {Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:4128768,CustomName:[{text:map}],Invulnerable:1b,NoAI:1b,NoGravity:1b,Silent:1b,Tags:["map"]}
+summon armor_stand ~ ~ ~ {Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:4128768,CustomName:[{text:map}],Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:["map"]}
 particle dragon_breath ~ ~1 ~ 0.1 1 0.1 0.1 400
 particle firework ~ ~1 ~ 0.1 1 0.1 1 400
 playsound block.beacon.power_select block @a ~ ~ ~ 1 1

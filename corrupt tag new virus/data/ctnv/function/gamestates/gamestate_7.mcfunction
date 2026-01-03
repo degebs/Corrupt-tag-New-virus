@@ -162,7 +162,7 @@ execute if score enable spawn matches 1 run scoreboard players remove time spawn
 execute if score time spawn matches 39 at @e[type=bat] run summon armor_stand ~ ~ ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
 # wait for the armorstand to drop
 execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle end_rod ~ ~1 ~ 0 0 0 1 1 force @a
 
 # spawn the mob
 # this will require its own function

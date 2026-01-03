@@ -112,3 +112,5 @@
 1.1.7
       -fixed the stunman not being able to place traps
       -buffed the stunmans mines (they now remove speed/jump boost effects from the corrupted BEFORE stunning)
+1.1.8
+      -updated to minecraft 1.21.11

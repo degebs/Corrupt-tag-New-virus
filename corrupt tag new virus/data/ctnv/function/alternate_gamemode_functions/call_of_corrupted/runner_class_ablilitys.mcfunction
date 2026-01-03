@@ -109,7 +109,7 @@ execute at @s if score @s ITEM____stunman_trap matches 1 run scoreboard players 
 
 execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @e[distance=..2,limit=1,team=corrupted] run effect give @e[distance=..2,limit=1,team=corrupted] slowness 2 2
 execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @e[distance=..2,limit=1,team=corrupted] run effect give @e[distance=..2,limit=1,team=corrupted] blindness 2 5
-execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @e[distance=..2,limit=1,team=corrupted] run particle flash ~ ~ ~ 0 0 0 1 1 force @a
+execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @e[distance=..2,limit=1,team=corrupted] run particle explosion ~ ~ ~ 0 0 0 1 1 force @a
 execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @e[distance=..2,limit=1,team=corrupted] run particle wax_off ~ ~ ~ 0 0 0 40 75 force @a
 
 execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @e[distance=..2,team=corrupted] run data modify entity @s inGround set value 1b

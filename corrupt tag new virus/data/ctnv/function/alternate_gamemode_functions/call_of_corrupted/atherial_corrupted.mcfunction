@@ -91,7 +91,7 @@ scoreboard players set death_stun corruption_stun 6
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_rat matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_rat"]}
 
 execute at @e[tag=TOTEM_rat] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_rat] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_rat] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_rat] if score @a[team=corrupted,limit=1] WAVE_rat matches 5 run summon silverfish ~ ~ ~ {Health:1,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:max_health,base:1f}]}
 execute at @e[tag=TOTEM_rat] if score @a[team=corrupted,limit=1] WAVE_rat matches 5 run summon silverfish ~ ~ ~ {Health:1,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:max_health,base:1f}]}
@@ -113,7 +113,7 @@ execute as @e[tag=TOTEM_rat] if score @a[team=corrupted,limit=1] WAVE_rat matche
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_zombie matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_zombie"]}
 
 execute at @e[tag=TOTEM_zombie] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_zombie] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_zombie] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_zombie] if score @a[team=corrupted,limit=1] WAVE_zombie matches 5 run summon zombie ~ ~ ~ {Health:2,Team:corrupted,equipment:{head:{id:netherite_helmet},chest:{id:netherite_chestplate},legs:{id:netherite_leggings},feet:{id:netherite_boots}},attributes:[{id:follow_range,base:350f},{id:step_height,base:3.5f},{id:attack_damage,base:0.5f},{id:max_health,base:3f}]}
 execute at @e[tag=TOTEM_zombie] if score @a[team=corrupted,limit=1] WAVE_zombie matches 5 run summon zombie ~ ~ ~ {Health:2,Team:corrupted,equipment:{head:{id:netherite_helmet},chest:{id:netherite_chestplate},legs:{id:netherite_leggings},feet:{id:netherite_boots}},attributes:[{id:follow_range,base:350f},{id:step_height,base:3.5f},{id:attack_damage,base:0.5f},{id:max_health,base:3f}]}
@@ -126,7 +126,7 @@ execute as @e[tag=TOTEM_zombie] if score @a[team=corrupted,limit=1] WAVE_zombie 
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_skeleton matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_skeleton"]}
 
 execute at @e[tag=TOTEM_skeleton] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_skeleton] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_skeleton] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_skeleton] if score @a[team=corrupted,limit=1] WAVE_skeleton matches 5 run summon skeleton ~ ~ ~ {Health:2,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet},chest:{id:netherite_chestplate},legs:{id:netherite_leggings},feet:{id:netherite_boots}},attributes:[{id:follow_range,base:350f},{id:step_height,base:3.5f},{id:attack_damage,base:0f},{id:max_health,base:3f}]}
 execute at @e[tag=TOTEM_skeleton] if score @a[team=corrupted,limit=1] WAVE_skeleton matches 5 run summon skeleton ~ ~ ~ {Health:2,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet},chest:{id:netherite_chestplate},legs:{id:netherite_leggings},feet:{id:netherite_boots}},attributes:[{id:follow_range,base:350f},{id:step_height,base:3.5f},{id:attack_damage,base:0f},{id:max_health,base:3f}]}
@@ -138,7 +138,7 @@ execute as @e[tag=TOTEM_skeleton] if score @a[team=corrupted,limit=1] WAVE_skele
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_zombie_elite matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_zombie_elite"]}
 
 execute at @e[tag=TOTEM_zombie_elite] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_zombie_elite] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_zombie_elite] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_zombie_elite] if score @a[team=corrupted,limit=1] WAVE_zombie_elite matches 5 run summon zombie ~ ~ ~ {Health:3,Team:corrupted,equipment:{mainhand:{id:blaze_rod},head:{id:netherite_helmet,components:{trim:{pattern:bolt,material:amethyst}}},chest:{id:netherite_chestplate,components:{trim:{pattern:bolt,material:amethyst}}},legs:{id:netherite_leggings,components:{trim:{pattern:bolt,material:amethyst}}},feet:{id:netherite_boots,components:{trim:{pattern:bolt,material:amethyst}}}},attributes:[{id:follow_range,base:300f},{id:max_health,base:3f}]}
 execute at @e[tag=TOTEM_zombie_elite] if score @a[team=corrupted,limit=1] WAVE_zombie_elite matches 5 run summon zombie ~ ~ ~ {Health:3,Team:corrupted,equipment:{mainhand:{id:blaze_rod},head:{id:netherite_helmet,components:{trim:{pattern:bolt,material:amethyst}}},chest:{id:netherite_chestplate,components:{trim:{pattern:bolt,material:amethyst}}},legs:{id:netherite_leggings,components:{trim:{pattern:bolt,material:amethyst}}},feet:{id:netherite_boots,components:{trim:{pattern:bolt,material:amethyst}}}},attributes:[{id:follow_range,base:300f},{id:max_health,base:3f}]}
@@ -149,7 +149,7 @@ execute as @e[tag=TOTEM_zombie_elite] if score @a[team=corrupted,limit=1] WAVE_z
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_skeleton_elite matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_skeleton_elite"]}
 
 execute at @e[tag=TOTEM_skeleton_elite] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_skeleton_elite] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_skeleton_elite] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_skeleton_elite] if score @a[team=corrupted,limit=1] WAVE_skeleton_elite matches 5 run summon skeleton ~ ~ ~ {Health:3,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet,components:{trim:{pattern:bolt,material:amethyst}}},chest:{id:netherite_chestplate,components:{trim:{pattern:bolt,material:amethyst}}},legs:{id:netherite_leggings,components:{trim:{pattern:bolt,material:amethyst}}},feet:{id:netherite_boots,components:{trim:{pattern:bolt,material:amethyst}}}},attributes:[{id:follow_range,base:300f},{id:max_health,base:3f}]}
 execute at @e[tag=TOTEM_skeleton_elite] if score @a[team=corrupted,limit=1] WAVE_skeleton_elite matches 5 run summon skeleton ~ ~ ~ {Health:3,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet,components:{trim:{pattern:bolt,material:amethyst}}},chest:{id:netherite_chestplate,components:{trim:{pattern:bolt,material:amethyst}}},legs:{id:netherite_leggings,components:{trim:{pattern:bolt,material:amethyst}}},feet:{id:netherite_boots,components:{trim:{pattern:bolt,material:amethyst}}}},attributes:[{id:follow_range,base:300f},{id:max_health,base:3f}]}
@@ -161,7 +161,7 @@ execute as @e[tag=TOTEM_skeleton_elite] if score @a[team=corrupted,limit=1] WAVE
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_phantom matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_phantom"]}
 
 execute at @e[tag=TOTEM_phantom] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_phantom] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_phantom] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_phantom] if score @a[team=corrupted,limit=1] WAVE_phantom matches 5 run summon phantom ~ ~ ~ {Health:2,PersistenceRequired:1b,Team:corrupted,active_effects:[{id:fire_resistance,duration:9999,amplifier:1,show_particles:0b}],attributes:[{id:max_health,base:2f}]}
 # kill totem
@@ -171,7 +171,7 @@ execute as @e[tag=TOTEM_phantom] if score @a[team=corrupted,limit=1] WAVE_phanto
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_phantom_elite matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_phantom_elite"]}
 
 execute at @e[tag=TOTEM_phantom_elite] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_phantom_elite] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_phantom_elite] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_phantom_elite] if score @a[team=corrupted,limit=1] WAVE_phantom_elite matches 5 run summon phantom ~ ~ ~ {Health:2,Team:corrupted,active_effects:[{id:fire_resistance,duration:9999,amplifier:1,show_particles:0b}],attributes:[{id:follow_range,base:300f},{id:max_health,base:2f}],Passengers:[{id:skeleton,Health:2,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet}},attributes:[{id:follow_range,base:300f},{id:max_health,base:2f}]}]}
 # kill totem
@@ -181,7 +181,7 @@ execute as @e[tag=TOTEM_phantom_elite] if score @a[team=corrupted,limit=1] WAVE_
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_phantom_laser matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_phantom_laser"]}
 
 execute at @e[tag=TOTEM_phantom_laser] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_phantom_laser] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_phantom_laser] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_phantom_laser] if score @a[team=corrupted,limit=1] WAVE_phantom_laser matches 5 run summon phantom ~ ~ ~ {Health:2,Team:corrupted,active_effects:[{id:fire_resistance,duration:9999,amplifier:1,show_particles:0b}],attributes:[{id:follow_range,base:300f},{id:max_health,base:2f}],Passengers:[{id:guardian,Health:2,PersistenceRequired:1b,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:max_health,base:2f}]}]}
 # kill totem
@@ -191,7 +191,7 @@ execute as @e[tag=TOTEM_phantom_laser] if score @a[team=corrupted,limit=1] WAVE_
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_stray matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_stray"]}
 
 execute at @e[tag=TOTEM_stray] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_stray] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_stray] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_stray] if score @a[team=corrupted,limit=1] WAVE_stray matches 5 run summon stray ~ ~ ~ {Health:2,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet}},attributes:[{id:follow_range,base:300f},{id:max_health,base:2f}]}
 execute at @e[tag=TOTEM_stray] if score @a[team=corrupted,limit=1] WAVE_stray matches 5 run summon stray ~ ~ ~ {Health:2,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet}},attributes:[{id:follow_range,base:300f},{id:max_health,base:2f}]}
@@ -205,7 +205,7 @@ execute as @e[tag=TOTEM_stray] if score @a[team=corrupted,limit=1] WAVE_stray ma
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_stray_elite matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_stray_elite"]}
 
 execute at @e[tag=TOTEM_stray_elite] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_stray_elite] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_stray_elite] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_stray_elite] if score @a[team=corrupted,limit=1] WAVE_stray_elite matches 5 run execute at @e[tag=TOTEM_stray_elite] if score @a[team=corrupted,limit=1] WAVE_stray_elite matches 5 run summon stray ~ ~ ~ {Health:3,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet,components:{trim:{pattern:vex,material:amethyst}}},chest:{id:netherite_chestplate,components:{trim:{pattern:bolt,material:amethyst}}},legs:{id:netherite_leggings,components:{trim:{pattern:bolt,material:amethyst}}},feet:{id:netherite_boots,components:{trim:{pattern:bolt,material:amethyst}}}},attributes:[{id:follow_range,base:300f},{id:max_health,base:3f}]}
 execute at @e[tag=TOTEM_stray_elite] if score @a[team=corrupted,limit=1] WAVE_stray_elite matches 5 run execute at @e[tag=TOTEM_stray_elite] if score @a[team=corrupted,limit=1] WAVE_stray_elite matches 5 run summon stray ~ ~ ~ {Health:3,Team:corrupted,equipment:{mainhand:{id:bow},head:{id:netherite_helmet,components:{trim:{pattern:vex,material:amethyst}}},chest:{id:netherite_chestplate,components:{trim:{pattern:bolt,material:amethyst}}},legs:{id:netherite_leggings,components:{trim:{pattern:bolt,material:amethyst}}},feet:{id:netherite_boots,components:{trim:{pattern:bolt,material:amethyst}}}},attributes:[{id:follow_range,base:300f},{id:max_health,base:3f}]}
@@ -218,7 +218,7 @@ execute as @e[tag=TOTEM_stray_elite] if score @a[team=corrupted,limit=1] WAVE_st
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_creeper matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_creeper"]}
 
 execute at @e[tag=TOTEM_creeper] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_creeper] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_creeper] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_creeper] if score @a[team=corrupted,limit=1] WAVE_creeper matches 5 run summon creeper ~ ~ ~ {Health:5,PersistenceRequired:1b,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:max_health,base:5f},{id:attack_damage,base:0.5f}]}
 execute at @e[tag=TOTEM_creeper] if score @a[team=corrupted,limit=1] WAVE_creeper matches 5 run summon creeper ~ ~ ~ {Health:5,PersistenceRequired:1b,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:max_health,base:5f},{id:attack_damage,base:0.5f}]}
@@ -230,7 +230,7 @@ execute as @e[tag=TOTEM_creeper] if score @a[team=corrupted,limit=1] WAVE_creepe
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_mini_creeper matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_mini_creeper"]}
 
 execute at @e[tag=TOTEM_mini_creeper] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_mini_creeper] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_mini_creeper] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_mini_creeper] if score @a[team=corrupted,limit=1] WAVE_mini_creeper matches 5 run summon creeper ~ ~ ~ {Health:1,PersistenceRequired:1b,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:scale,base:0.4f},{id:max_health,base:5f},{id:attack_damage,base:0.5f}]}
 execute at @e[tag=TOTEM_mini_creeper] if score @a[team=corrupted,limit=1] WAVE_mini_creeper matches 5 run summon creeper ~ ~ ~ {Health:1,PersistenceRequired:1b,Team:corrupted,attributes:[{id:follow_range,base:300f},{id:scale,base:0.4f},{id:max_health,base:5f},{id:attack_damage,base:0.5f}]}
@@ -244,7 +244,7 @@ execute as @e[tag=TOTEM_mini_creeper] if score @a[team=corrupted,limit=1] WAVE_m
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_pillager matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_pillager"]}
 
 execute at @e[tag=TOTEM_pillager] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_pillager] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_pillager] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_pillager] if score @a[team=corrupted,limit=1] WAVE_pillager matches 5 run summon pillager ~ ~ ~ {Health:5,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:crossbow}},attributes:[{id:follow_range,base:300f},{id:max_health,base:5f}]}
 execute at @e[tag=TOTEM_pillager] if score @a[team=corrupted,limit=1] WAVE_pillager matches 5 run summon pillager ~ ~ ~ {Health:5,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:crossbow}},attributes:[{id:follow_range,base:300f},{id:max_health,base:5f}]}
@@ -257,7 +257,7 @@ execute as @e[tag=TOTEM_pillager] if score @a[team=corrupted,limit=1] WAVE_pilla
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_vindicator matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_vindicator"]}
 
 execute at @e[tag=TOTEM_vindicator] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_vindicator] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_vindicator] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_vindicator] if score @a[team=corrupted,limit=1] WAVE_vindicator matches 5 run summon vindicator ~ ~ ~ {Health:6,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:iron_axe}},attributes:[{id:follow_range,base:300f},{id:max_health,base:5f}]}
 execute at @e[tag=TOTEM_vindicator] if score @a[team=corrupted,limit=1] WAVE_vindicator matches 5 run summon vindicator ~ ~ ~ {Health:6,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:iron_axe}},attributes:[{id:follow_range,base:300f},{id:max_health,base:5f}]}
@@ -269,7 +269,7 @@ execute as @e[tag=TOTEM_vindicator] if score @a[team=corrupted,limit=1] WAVE_vin
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_pilager_raid matches 99 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_pilager_raid"]}
 
 execute at @e[tag=TOTEM_pilager_raid] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_pilager_raid] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_pilager_raid] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute at @e[tag=TOTEM_pilager_raid] if score @a[team=corrupted,limit=1] WAVE_pilager_raid matches 5 run execute at @e[tag=TOTEM_pilager_raid] if score @a[team=corrupted,limit=1] WAVE_pilager_raid matches 5 run summon vindicator ~ ~ ~ {Health:5,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:iron_axe}},attributes:[{id:follow_range,base:300f},{id:max_health,base:5f}]}
 execute at @e[tag=TOTEM_pilager_raid] if score @a[team=corrupted,limit=1] WAVE_pilager_raid matches 5 run execute at @e[tag=TOTEM_pilager_raid] if score @a[team=corrupted,limit=1] WAVE_pilager_raid matches 5 run summon vindicator ~ ~ ~ {Health:5,PersistenceRequired:1b,Team:corrupted,equipment:{mainhand:{id:iron_axe}},attributes:[{id:follow_range,base:300f},{id:max_health,base:5f}]}
@@ -295,7 +295,7 @@ execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,s
 # have an outline for the wall when the corrupted is holding the item
 execute as @a[team=corrupted] at @s if data entity @s {SelectedItem:{id:"minecraft:wandering_trader_spawn_egg"}} run function ctnv:alternate_gamemode_functions/call_of_corrupted/wall_visualiser
 execute at @e[tag=TOTEM_summon_wall] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute at @e[tag=TOTEM_summon_wall] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute at @e[tag=TOTEM_summon_wall] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 
 execute as @a[team=corrupted] at @s if score @s WAVE_summon_wall matches 5 run function ctnv:alternate_gamemode_functions/call_of_corrupted/wall_summoner
 
@@ -434,7 +434,7 @@ execute if score corrupt_manifestation call_of_corrupted matches 300 run tellraw
 execute if score corrupt_manifestation call_of_corrupted matches 200 run tellraw @a [{"text":"The corrupted champion will manifest in 10 seconds","color":"light_purple"}]
 execute if score corrupt_manifestation call_of_corrupted matches ..200 run effect give @a[team=corrupted] slowness 1 255 true
 execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle flash ~ ~1 ~ 0 0 0 1 1 force @a
+execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
 execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle portal ~ ~1 ~ 5 5 5 1 10 force @a
 execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle dust{color:[1,0,0.1],scale:2} ~ ~ ~ 0 5 0 100 50 force @a
 

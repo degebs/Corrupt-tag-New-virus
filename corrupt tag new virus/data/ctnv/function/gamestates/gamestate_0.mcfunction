@@ -334,8 +334,8 @@ execute unless score setting ST____locator_bar = @a[team=party_lead,limit=1] ST_
 execute unless score setting ST____locator_bar = @a[team=party_lead,limit=1] ST____locator_bar if score setting ST____locator_bar matches 1 run tellraw @a ["locator bar: ",{"text":"disabled","color":"dark_red"}]
 scoreboard players operation setting ST____locator_bar = @a[team=party_lead,limit=1] ST____locator_bar
 # do the bar
-execute if score setting ST____locator_bar matches 0 run gamerule locatorBar false
-execute if score setting ST____locator_bar matches 1 run gamerule locatorBar true
+execute if score setting ST____locator_bar matches 0 run gamerule locator_bar false
+execute if score setting ST____locator_bar matches 1 run gamerule locator_bar true
 
 #ST____COC_difuculty
 execute unless score setting ST____COC_difuculty = @a[team=party_lead,limit=1] ST____COC_difuculty if score @a[team=party_lead,limit=1] ST____COC_difuculty matches 0 run tellraw @a ["difficulty: ",{"text":"easy","color":"green"}]
@@ -495,6 +495,7 @@ execute if score count life_detector_count matches 2.. run kill @e[tag=life_dete
 #======================================================================================================================
 # set up corrupted domain expantion. if it is not enabled here. then it wont work during the game
 execute unless score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion_setup
+scoreboard players set number_of_deititys corrupted_supercharge 0
 # rng
 scoreboard players add rng corrupted_domain_enable 1
 execute if score rng corrupted_domain_enable matches 9.. run scoreboard players set rng corrupted_domain_enable 1

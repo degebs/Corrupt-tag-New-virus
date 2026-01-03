@@ -16,29 +16,29 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.1.7","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.1.8","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
-gamerule doMobLoot false
-gamerule doMobSpawning false
-gamerule doDaylightCycle false
+gamerule minecraft:block_drops false
+gamerule minecraft:spawn_mobs false
+gamerule minecraft:advance_time false
 time set day
-gamerule drowningDamage false
-gamerule commandBlockOutput false
-gamerule fireDamage false
-gamerule showDeathMessages false
-gamerule mobGriefing false
-gamerule fallDamage false
-gamerule doWeatherCycle false
-gamerule spawnRadius 0
-gamerule doImmediateRespawn true
+gamerule minecraft:drowning_damage false
+gamerule minecraft:command_block_output false
+gamerule minecraft:fire_damage false
+gamerule minecraft:show_death_messages false
+gamerule minecraft:mob_griefing false
+gamerule minecraft:fall_damage false
+gamerule minecraft:advance_weather false
+gamerule minecraft:respawn_radius 0
+gamerule minecraft:immediate_respawn true
 weather clear
-gamerule showDeathMessages false
-gamerule freezeDamage false
-gamerule sendCommandFeedback false
+gamerule minecraft:show_death_messages false
+gamerule minecraft:freeze_damage false
+gamerule minecraft:send_command_feedback false
 difficulty easy
 clear @a
-gamerule locatorBar false
+gamerule minecraft:locator_bar false
 
 
 # --------------------------------------------------------------------------------------------
@@ -443,3 +443,12 @@ scoreboard objectives add corrupted_supercharge_secondary_validation dummy
 scoreboard objectives add corrupted_domain_enable dummy
 scoreboard players set enable corrupted_domain_enable 0
 scoreboard players set the_eye_of_pain corrupted_domain_enable 0
+
+scoreboard players reset hive_mind corrupted_supercharge 
+scoreboard players reset the_maker corrupted_supercharge 
+scoreboard players reset armageddion corrupted_supercharge 
+scoreboard players reset blocker_blob corrupted_supercharge 
+scoreboard players reset rain_of_spiders corrupted_supercharge 
+scoreboard players reset souls_of_the_damned corrupted_supercharge 
+scoreboard players reset orbital_strike corrupted_supercharge 
+scoreboard players reset dimentional_merge corrupted_supercharge 
