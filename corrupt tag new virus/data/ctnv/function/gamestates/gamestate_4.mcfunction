@@ -23,6 +23,7 @@ execute as @a[scores={class=-3},team=dead] at @s run advancement grant @a[team=c
 execute as @a[scores={class=-4},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/assassin_death
 execute as @a[scores={class=-5},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/stunman_death
 execute as @a[scores={class=-6},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/fisherman_death
+execute as @a[scores={class=-7},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/miner_death
 
 
 #================================================================================================
@@ -70,6 +71,7 @@ execute as @a[scores={class=3},team=runners] if score setting ST____enable_runne
 execute as @a[scores={class=4},team=runners] if score setting ST____enable_runner_classes matches 1 run function ctnv:classes/runners/assassin
 execute as @a[scores={class=5},team=runners] if score setting ST____enable_runner_classes matches 1 run function ctnv:classes/runners/stunman
 execute as @a[scores={class=6},team=runners] if score setting ST____enable_runner_classes matches 1 run function ctnv:classes/runners/fisherman
+execute as @a[scores={class=7},team=runners] if score setting ST____enable_runner_classes matches 1 run function ctnv:classes/runners/miner
 
 execute as @a[scores={evil_class=1},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/corrupted
 execute as @a[scores={evil_class=2},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/predator
@@ -77,6 +79,7 @@ execute as @a[scores={evil_class=3},team=corrupted] if score @s corruption_stun 
 execute as @a[scores={evil_class=4},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/hunter
 execute as @a[scores={evil_class=5},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/knight
 execute as @a[scores={evil_class=6},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/dark_star
+execute as @a[scores={evil_class=7},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/manhunter
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5
@@ -110,12 +113,14 @@ execute as @a[team=runners] run clear @s golden_helmet
 execute as @a[scores={class=3},team=corrupted] run scoreboard players set @s bulk 10
 
 execute as @a[scores={class=1},team=corrupted] run scoreboard players set @s medic_heal 10
+execute as @a[scores={class=7},team=corrupted] run scoreboard players set @s medic_heal 10
 
 execute as @a[scores={class=4},team=corrupted] run scoreboard players set @s assassin_charge 10
 
 scoreboard players set @a[scores={class=5},team=corrupted] trident_throw 0
 scoreboard players set @a[scores={class=5},team=corrupted] stunman_trap 30
 scoreboard players set @a[scores={class=6},team=corrupted] fishing_net_trap 30
+scoreboard players set @a[scores={class=7},team=corrupted] miner_lantern 250
 
 # corrupted
 execute as @a[scores={evil_class=1},team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t1_cooldown 10

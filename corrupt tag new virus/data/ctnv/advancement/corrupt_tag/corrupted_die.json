@@ -5,7 +5,7 @@
             "count": 1
         },
         "title": "too much power!",
-        "description": "your corrupted became too much for you as the Corrupted",
+        "description": "You died as the Corruptor",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",
         "show_toast": true,

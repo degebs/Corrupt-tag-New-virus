@@ -4,8 +4,8 @@
             "id": "minecraft:phantom_membrane",
             "count": 1
         },
-        "title": "VIOLENT exorcism",
-        "description": "your corrupted became too much for you as the Apparition",
+        "title": "Blown by the Wind",
+        "description": "You died as the Apparition",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",
         "show_toast": true,

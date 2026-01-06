@@ -27,6 +27,7 @@ execute as @a[scores={evil_class=3},team=corrupted] run function ctnv:classes/co
 execute as @a[scores={evil_class=4},team=corrupted] run function ctnv:classes/corrupted/hunter
 execute as @a[scores={evil_class=5},team=corrupted] run function ctnv:classes/corrupted/knight
 execute as @a[scores={evil_class=6},team=corrupted] run function ctnv:classes/corrupted/dark_star
+execute as @a[scores={evil_class=7},team=corrupted] run function ctnv:classes/corrupted/manhunter
 
 
 

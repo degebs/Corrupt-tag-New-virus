@@ -114,3 +114,12 @@
       -buffed the stunmans mines (they now remove speed/jump boost effects from the corrupted BEFORE stunning)
 1.1.8
       -updated to minecraft 1.21.11
+      -fixed a glitch where players would NOT respawn back in the lobby after the game is done AGAIN
+1.1.9
+      -added new class. the miner
+      -added new corrupted class. the manhunter
+      - fixed spelling mistakes 
+      - changed the name of the "hunder" to "artificer" (this argument has been going on since 1.0.1)
+      - chanded the apparitions t3 ability to be the same as the corruptor (his enderperal was DOODOOFART quality)
+      - fixed fisherman not being able to drop his fishing net
+      - fixed the title not showing the correct map before the game starts

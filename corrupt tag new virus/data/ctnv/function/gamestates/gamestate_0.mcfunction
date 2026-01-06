@@ -194,9 +194,9 @@ attribute @r knockback_resistance base set 0
 
 # do a little rng
 scoreboard players add rng class 1
-execute if score rng class matches 7.. run scoreboard players set rng class 1
+execute if score rng class matches 8.. run scoreboard players set rng class 1
 execute if score rng class matches 3.. run scoreboard players add rng evil_class 1
-execute if score rng evil_class matches 7.. run scoreboard players set rng evil_class 1
+execute if score rng evil_class matches 8.. run scoreboard players set rng evil_class 1
 # the rng cant go beond 7 because there are only 6 classes
 
 
@@ -500,4 +500,7 @@ scoreboard players set number_of_deititys corrupted_supercharge 0
 scoreboard players add rng corrupted_domain_enable 1
 execute if score rng corrupted_domain_enable matches 9.. run scoreboard players set rng corrupted_domain_enable 1
 
-
+#======================================================================================================================
+# this is for miner
+execute as @a run attribute @s scale base set 1
+execute as @a run attribute @s gravity base reset 

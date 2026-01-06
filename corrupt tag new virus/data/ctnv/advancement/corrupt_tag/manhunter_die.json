@@ -1,11 +1,11 @@
 {
     "display": {
         "icon": {
-            "id": "minecraft:netherite_chestplate",
+            "id": "minecraft:purple_glazed_terracotta",
             "count": 1
         },
-        "title": "Cracks in the armor leaking",
-        "description": "You died as the Knight",
+        "title": "man",
+        "description": "you died as the Manhunter",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",
         "show_toast": true,

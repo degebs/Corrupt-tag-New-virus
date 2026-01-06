@@ -28,7 +28,7 @@ effect give @s speed 6 0 true
 # fisherman trap (stolen from stunman)
 
 # When the player drops the trap, start a cooldown (20s = 400 ticks), and remove the item
-execute unless entity @s[nbt={Inventory:[{Slot:3b,id:"minecraft:cobweb"}]}] if score @s fishing_net_trap matches 0 unless block ~ ~-1 ~ minecraft:air run scoreboard players set @s fishing_net_trap 400
+execute at @s unless entity @s[nbt={Inventory:[{id:"minecraft:cobweb"}]}] if score @s fishing_net_trap matches 0 unless block ~ ~-1 ~ minecraft:air run scoreboard players set @s fishing_net_trap 400
 
 # give the hunter a trap item, make sure he cannot drop it
 # Give the hunter a trap item in hotbar slot 3 if they don't already have it and are at least 15% corrupt
@@ -73,8 +73,9 @@ execute if score @s[scores={fishing_net_trap=20}] fishing_net_trap matches 20 ru
 # Remove gray dye when cooldown is done
 execute if score @s fishing_net_trap matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]]
 
-# When cooldown is over, give the trap back if missing
-execute if score @s fishing_net_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:cobweb",Slot:3b}]}] run item replace entity @s hotbar.3 with cobweb[custom_name=[{"text":"fishing net","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+#When cooldown is over, give the trap back if missing
+execute if score @s fishing_net_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:cobweb"}]}] run item replace entity @s hotbar.3 with cobweb[custom_name=[{"text":"fishing net","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+
 
 #================================================================================================================================================
 # permanent jump boost in endgame

@@ -1,18 +1,18 @@
 {
     "display": {
         "icon": {
-            "id": "minecraft:netherite_chestplate",
+            "id": "minecraft:copper_pickaxe",
             "count": 1
         },
-        "title": "Cracks in the armor leaking",
-        "description": "You died as the Knight",
+        "title": "ROCK AND STONE!",
+        "description": "win the game as the miner",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",
         "show_toast": true,
         "announce_to_chat": true,
         "hidden": true
     },
-    "parent": "ctnv:corrupt_tag/corrupted",
+    "parent": "ctnv:corrupt_tag/valhalla",
     "criteria": {
         "root": {
             "trigger": "minecraft:impossible"
@@ -22,8 +22,5 @@
         [
             "root"
         ]
-    ],
-    "rewards": {
-        "function": "ctnv:one_time_function/calling_cards/increment_shout"
-    }
+    ]
 }

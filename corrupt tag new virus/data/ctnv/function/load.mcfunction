@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.1.8","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.1.9","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -39,6 +39,8 @@ gamerule minecraft:send_command_feedback false
 difficulty easy
 clear @a
 gamerule minecraft:locator_bar false
+gamerule allow_entering_nether_using_portals false
+
 
 
 # --------------------------------------------------------------------------------------------
@@ -114,6 +116,8 @@ scoreboard objectives add bulk_totem dummy
 # the medic healing rose
 scoreboard objectives add medic_heal dummy
 scoreboard players set medic_totem_rotation medic_heal 0
+# and also the miners golden nugget
+scoreboard players set miner_totem_rotation medic_heal 0
 #the archer arrow count
 scoreboard objectives add acher_arrow_count dummy
 scoreboard objectives add bow_shot minecraft.used:bow
@@ -125,7 +129,8 @@ scoreboard objectives add trident_throw minecraft.used:trident
 scoreboard objectives add stunman_trap dummy
 #fisherman trap
 scoreboard objectives add fishing_net_trap dummy
-
+# miner lantern
+scoreboard objectives add miner_lantern dummy
 
 # classic corrupted cooldowns
 scoreboard objectives add classic_corrupted_t1_cooldown dummy
@@ -138,12 +143,15 @@ scoreboard objectives add predator_t1_speed_range dummy
 scoreboard objectives add predator_corrupted_t2_cooldown dummy
 scoreboard objectives add predator_corrupted_t3_cooldown dummy
 # apparition corrupted cooldowns
+scoreboard objectives add apparition_corrupted_t3_cooldown dummy
 #scoreboard objectives add light_level blocklight
 scoreboard objectives add apparition_light_level dummy
 scoreboard objectives add apparition_corrupted_t2_cooldown dummy
 scoreboard objectives add apparition_enderperal used:ender_pearl
-
-
+# manhunter
+scoreboard objectives add manhunter_cooldown dummy
+scoreboard objectives add manhunter_horn_blow_detect minecraft.used:minecraft.goat_horn
+scoreboard objectives add manhunter_horn_blow_delay dummy
 #scoreboard objectives add apparition_corrupted_t3_cooldown dummy
 
 # hunter cooldowns

@@ -23,6 +23,8 @@ execute if entity @s[scores={class=5}] if score enable runner_class_victory_call
 
 execute if entity @s[scores={class=6}] if score enable runner_class_victory_calling_card matches 1 run advancement grant @s only ctnv:corrupt_tag/fisherman
 
+execute if entity @s[scores={class=7}] if score enable runner_class_victory_calling_card matches 1 run advancement grant @s only ctnv:corrupt_tag/miner
+
 #===============================================================================================================
 # calculate who has run the most distance
 scoreboard players reset max_distance running_distance

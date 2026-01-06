@@ -1,18 +1,18 @@
 {
     "display": {
         "icon": {
-            "id": "minecraft:netherite_chestplate",
+            "id": "minecraft:coal_ore",
             "count": 1
         },
-        "title": "Cracks in the armor leaking",
-        "description": "You died as the Knight",
+        "title": "The Final Decent",
+        "description": "kill someone playing as the miner",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",
         "show_toast": true,
         "announce_to_chat": true,
         "hidden": true
     },
-    "parent": "ctnv:corrupt_tag/corrupted",
+    "parent": "ctnv:corrupt_tag/miner",
     "criteria": {
         "root": {
             "trigger": "minecraft:impossible"
@@ -22,8 +22,5 @@
         [
             "root"
         ]
-    ],
-    "rewards": {
-        "function": "ctnv:one_time_function/calling_cards/increment_shout"
-    }
+    ]
 }

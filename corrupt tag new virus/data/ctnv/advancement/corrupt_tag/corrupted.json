@@ -4,7 +4,7 @@
             "id": "minecraft:wither_skeleton_skull",
             "count": 1
         },
-        "title": "corrupted",
+        "title": "Should I stay or should I go?",
         "description": "you died during the endgame",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",

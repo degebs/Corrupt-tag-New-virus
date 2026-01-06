@@ -75,4 +75,5 @@ execute if entity @a[scores={evil_class=3},team=corrupted] run advancement grant
 execute if entity @a[scores={evil_class=4},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/hunter_die
 execute if entity @a[scores={evil_class=5},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/knight_die
 execute if entity @a[scores={evil_class=6},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/darkstar_die
+execute if entity @a[scores={evil_class=7},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/manhunter_die
 

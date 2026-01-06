@@ -128,6 +128,8 @@ scoreboard players set @a[scores={bulk_totem=1..}] bulk_totem 0
 execute as @a[scores={class=3}] run scoreboard players set @s bulk 10
 
 execute as @a[scores={class=1}] run scoreboard players set @s medic_heal 10
+execute as @a[scores={class=7}] run scoreboard players set @s medic_heal 10
+execute as @a[scores={class=7}] run scoreboard players set @s miner_lantern 10
 
 scoreboard players set @a[scores={class=2}] acher_arrow_count 5
 
@@ -138,6 +140,7 @@ scoreboard players set @a[scores={class=6}] fishing_net_trap 3
 
 scoreboard players set @a[scores={class=4}] assassin_charge 10
 execute if score @s assassin_hide matches 1.. run scoreboard players reset @s assassin_hide
+
 # corrupted cooldowns
 execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t1_cooldown 10
 execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t2_cooldown 10
@@ -149,6 +152,9 @@ execute as @a[scores={evil_class=2}] run scoreboard players set @s predator_corr
 
 execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_light_level 0
 execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t2_cooldown 10
+execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 10
+
+
 #execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 0
 
 execute as @a[scores={evil_class=4}] run scoreboard players set @s hunter_corrupted_t1_cooldown 10
@@ -163,6 +169,9 @@ execute as @a[scores={evil_class=5}] run scoreboard players set @s knight_speed_
 execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_darkness 5
 execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_speed_boost 5
 execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_supernova 5
+
+execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_cooldown 0
+execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_horn_blow_detect 0
 
 
 #=================================================================================================
@@ -237,7 +246,7 @@ kill @e[type=item_display,nbt={item:{id:"minecraft:player_head"}}]
 
 #=================================================================================================
 # display the maps name to all
-execute as @e[type=turtle,limit=1,sort=nearest] at @r run title @a title [{"color":"gold","selector":"@s"}]
+execute as @e[type=turtle,limit=1,scores={map_selection=1}] at @p run title @a title [{"color":"gold","selector":"@s"}]
 
 
 

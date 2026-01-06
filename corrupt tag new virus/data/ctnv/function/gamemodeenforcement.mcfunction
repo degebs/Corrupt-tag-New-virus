@@ -16,4 +16,4 @@ execute as @a[team=dead] if score @s corruption_stun matches 0 run attribute @s 
 execute as @a[team=dead] if score @s corruption_stun matches 0 run attribute @s minecraft:entity_interaction_range base reset
 execute as @a[team=dead] if score @s corruption_stun matches 0 run attribute @s jump_strength base reset
 
-effect give @a resistance infinite 1 true
+effect give @a resistance infinite 3 true
