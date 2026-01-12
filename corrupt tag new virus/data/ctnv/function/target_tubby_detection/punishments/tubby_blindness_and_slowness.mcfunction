@@ -6,7 +6,7 @@ execute as @a if score @s target_tubby_punishment_duration matches -1 run scoreb
 execute as @a[scores={target_tubby_punishment_duration=1..}] run scoreboard players reset @s target_tubby_watchlist
 
 #============================================================================================================================
-execute as @a if score @s target_tubby_punishment_duration matches 199 run tellraw @a [{"selector":"@a[team=corrupted]","color":"red"}," ",{"text":"IS A TARGET TUBBY!  ","color":"gold"},{"text":"Alright buddy, get off corrupt tag. Your done","color":"white"}]
+execute as @a if score @s target_tubby_punishment_duration matches 199 run tellraw @a [{"selector":"@a[team=corrupted]","color":"red"}," ",{"text":"IS A TARGET TUBBY!  ","color":"gold"},{"text":"Alright buddy, get off corrupt tag. Your'e done","color":"white"}]
 execute as @a if score @s target_tubby_punishment_duration matches 199 run attribute @s movement_speed base set 0.04
 execute as @a if score @s target_tubby_punishment_duration matches 10 run attribute @s movement_speed base reset
 # we use attributes to that anyone with resisances like the knight cannot defeeat it

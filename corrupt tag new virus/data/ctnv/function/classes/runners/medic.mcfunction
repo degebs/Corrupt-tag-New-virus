@@ -45,7 +45,7 @@ execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run playsoun
 # give the medic_heal the Jump poppy. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] run clear @a poppy
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:poppy"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] if score @s medic_heal matches 0 run item replace entity @s hotbar.1 with poppy[custom_name=[{"text":"healing rose","italic":false,"color":"dark_green"}],lore=[[{"text":"qrop to heal","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] if score @s medic_heal matches 0 run item replace entity @s hotbar.1 with poppy[custom_name=[{"text":"healing rose","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to heal","italic":false}]],rarity=uncommon]
 
 # do a cooldown timer with drey dye
 execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 15

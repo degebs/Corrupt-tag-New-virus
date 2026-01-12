@@ -35,7 +35,7 @@ execute if score @s[scores={bulk=200..}] bulk matches 200.. at @s[scores={bulk=2
 # give the bulk the Jump candle. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] run clear @a cyan_candle
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:cyan_candle"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] if score @s bulk matches 0 run item replace entity @s hotbar.1 with cyan_candle[custom_name=[{"text":"jump candle","italic":false,"color":"dark_green"}],lore=[[{"text":"qrop to jump","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] if score @s bulk matches 0 run item replace entity @s hotbar.1 with cyan_candle[custom_name=[{"text":"jump candle","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
 
 # do a cooldown timer with drey dye
 execute if score @s[scores={bulk=299}] bulk matches 299 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 15

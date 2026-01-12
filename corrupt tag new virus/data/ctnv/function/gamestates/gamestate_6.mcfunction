@@ -150,6 +150,9 @@ attribute @r[team=runners] knockback_resistance base reset
 # a note about classes. im calling them AS the person who is playing the class. that means that i can just use @S to 
 # select the induvidual player of a specific class
 #================================================================================================
+# fix a bug with the miner class where his attributes dont reset properly
+execute as @a[team=corrupted] run attribute @s gravity base reset
+execute as @a[team=corrupted] run attribute @s scale base reset
 
 
 #==================================================================================================

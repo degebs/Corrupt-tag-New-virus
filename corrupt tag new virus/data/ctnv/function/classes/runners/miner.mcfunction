@@ -50,7 +50,7 @@ execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run playsoun
 # give the medic_heal the Jump gold_nugget. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:gold_nugget",Slot:1b}]}] run clear @a gold_nugget
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:gold_nugget",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:gold_nugget"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:gold_nugget",Slot:1b}]}] if score @s medic_heal matches 0 run item replace entity @s hotbar.1 with gold_nugget[custom_name=[{"text":"Shiny nugget","italic":false,"color":"yellow"}],lore=[[{"text":"qrop to get a speed boost","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:gold_nugget",Slot:1b}]}] if score @s medic_heal matches 0 run item replace entity @s hotbar.1 with gold_nugget[custom_name=[{"text":"Shiny nugget","italic":false,"color":"yellow"}],lore=[[{"text":"drop to get a speed boost","italic":false}]],rarity=uncommon]
 
 # do a cooldown timer with drey dye
 execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 16
@@ -126,7 +126,7 @@ execute if score @s[scores={miner_lantern=470..}] miner_lantern matches 470.. at
 # give the miner_lantern the Jump candle. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:1b}]}] run clear @a copper_lantern
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:4b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:copper_lantern"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:4b}]}] if score @s miner_lantern matches 0 run item replace entity @s hotbar.4 with copper_lantern[custom_name=[{"text":"Tunneling lantern","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to burrow","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:4b}]}] if score @s miner_lantern matches 0 run item replace entity @s hotbar.4 with copper_pickaxe[custom_name=[{"text":"'Amie' the pickaxe","italic":false}],lore=[[{"text":"dont ask why its spelled \"Amie\" and not \"Amy\" imsqeker is kinda stupid.","italic":false}],[{"text":"apparently this is a reference to a song named \"Amie\" by the pure Prairie League","italic":false}]],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 # do a cooldown timer with black dye (30 seconds)

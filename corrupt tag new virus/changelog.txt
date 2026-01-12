@@ -123,3 +123,10 @@
       - chanded the apparitions t3 ability to be the same as the corruptor (his enderperal was DOODOOFART quality)
       - fixed fisherman not being able to drop his fishing net
       - fixed the title not showing the correct map before the game starts
+1.2.0
+      -fiexed more spelling mistakes
+      -BUFFED the corruptor. his 90% corruption ability is now at 75%
+      -fixed a bug where the miner would be stuck in his "tunneling" state while corrupted
+      -fixed extreme TPS lag during the pregame by literally just making 1 second = 15 ticks instead of 20 (1 second = 0.75 seconds)
+      -Buffed the artificer. his 90% corruption ability is not at 80 
+      -added new acheivement "Chin Music for the Unsuspecting Hero"

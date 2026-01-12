@@ -38,7 +38,7 @@ execute as @a[scores={observer=9600}] run advancement grant @s only ctnv:corrupt
 
 #1 if a player is on 1 heart AND is close to the corupted the countdown starts
 # however it cannot finish until the player is far away from the corrupted
-execute as @a[scores={health=1}] at @s if entity @e[team=corrupted,distance=..10] run scoreboard players add @s escape_artist 1
+execute as @a[scores={health=1}] at @s if entity @e[team=corrupted,distance=..12] run scoreboard players add @s escape_artist 1
 # being corrupted resets the counter
 execute as @a[team=corrupted] run scoreboard players reset @s escape_artist
 # if they become 11 blocks away and have a high enough score, they get the calling card

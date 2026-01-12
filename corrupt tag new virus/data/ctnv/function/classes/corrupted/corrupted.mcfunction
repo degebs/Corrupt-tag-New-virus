@@ -161,14 +161,14 @@ execute if score @s[scores={classic_corrupted_t2_cooldown=20}] classic_corrupted
 execute if score @s classic_corrupted_t2_cooldown matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]]
 
 #==========================================================================================================================================================
-#                           90% corruption!
+#                           75% corruption!
 #==========================================================================================================================================================
-execute if score @s corruption matches 90 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 90% ","color":"red"},{"text":"corrupt!","color":"light_purple"}]
-execute if score @s corruption matches 90 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
+execute if score @s corruption matches 75 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 75% ","color":"red"},{"text":"corrupt!","color":"light_purple"}]
+execute if score @s corruption matches 75 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 
 
 # the better permanent jump boost
-execute if score @s corruption matches 90.. run effect give @s jump_boost 2 2 true
+execute if score @s corruption matches 75.. run effect give @s jump_boost 2 2 true
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # tier 3 item
@@ -180,19 +180,19 @@ execute if score @s corruption_fruit_eat matches 1.. run scoreboard players set 
 scoreboard players set @s corruption_fruit_eat 0
 
 # make sure that if the item is dropped put it back in the inventory. the trigger for this abbility will be eating. and NOT dropping
-execute if score @s corruption matches 90.. if score @s classic_corrupted_t3_cooldown matches 1.. run scoreboard players remove @s classic_corrupted_t3_cooldown 1
+execute if score @s corruption matches 75.. if score @s classic_corrupted_t3_cooldown matches 1.. run scoreboard players remove @s classic_corrupted_t3_cooldown 1
 # allow teleportation when dropped
-execute if score @s corruption matches 90.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run effect give @s resistance 3 4 true
-execute if score @s corruption matches 90.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run effect give @s glowing 3 1 true
-execute if score @s corruption matches 90.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run tp @s @r[team=runners]
-execute if score @s corruption matches 90.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run tp @e[tag=corruption_part] @s
+execute if score @s corruption matches 75.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run effect give @s resistance 3 4 true
+execute if score @s corruption matches 75.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run effect give @s glowing 3 1 true
+execute if score @s corruption matches 75.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run tp @s @r[team=runners]
+execute if score @s corruption matches 75.. if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run tp @e[tag=corruption_part] @s
 # sound effect
 execute if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run playsound entity.enderman.teleport player @s ~ ~ ~ 1 1 1
 
 # check to see if the teleport fruit has been dropped.
-execute if score @s corruption matches 90.. unless entity @s[nbt={Inventory:[{id:"minecraft:chorus_fruit",Slot:6b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:chorus_fruit"}}]
-execute if score @s corruption matches 90.. unless entity @s[nbt={Inventory:[{id:"minecraft:chorus_fruit",Slot:6b}]}] if score @s classic_corrupted_t3_cooldown matches 0 run clear @s chorus_fruit
-execute if score @s corruption matches 90.. unless entity @s[nbt={Inventory:[{id:"minecraft:chorus_fruit",Slot:6b}]}] if score @s classic_corrupted_t3_cooldown matches 0 run item replace entity @s hotbar.6 with chorus_fruit[custom_name=[{"text":"teleport fruit","italic":false,"color":"light_purple"}],lore=[[{"text":"eat to teleport","italic":false}]]]
+execute if score @s corruption matches 75.. unless entity @s[nbt={Inventory:[{id:"minecraft:chorus_fruit",Slot:6b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:chorus_fruit"}}]
+execute if score @s corruption matches 75.. unless entity @s[nbt={Inventory:[{id:"minecraft:chorus_fruit",Slot:6b}]}] if score @s classic_corrupted_t3_cooldown matches 0 run clear @s chorus_fruit
+execute if score @s corruption matches 75.. unless entity @s[nbt={Inventory:[{id:"minecraft:chorus_fruit",Slot:6b}]}] if score @s classic_corrupted_t3_cooldown matches 0 run item replace entity @s hotbar.6 with chorus_fruit[custom_name=[{"text":"teleport fruit","italic":false,"color":"light_purple"}],lore=[[{"text":"eat to teleport","italic":false}]]]
 
 execute if score @s[scores={classic_corrupted_t3_cooldown=599}] classic_corrupted_t3_cooldown matches 599 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"teleport cooldown","italic":false}]] 30
 execute if score @s[scores={classic_corrupted_t3_cooldown=580}] classic_corrupted_t3_cooldown matches 580 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"teleport cooldown","italic":false}]] 29

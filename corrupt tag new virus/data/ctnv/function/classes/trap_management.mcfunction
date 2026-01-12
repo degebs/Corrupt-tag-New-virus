@@ -149,7 +149,7 @@ execute as @e[type=item_display,tag=corrupted_t2_trap] at @s if entity @p[distan
 execute as @a if score @s health matches ..-1 run scoreboard players set @s health 0 
 
 #============================================================================================================
-# tier 3 hunter trap.
+# tier 3 artificer trap.
 #constantly teleport the guardian to the trap 
 effect give @e[type=guardian] invisibility infinite 1 true
 # give the guardian some particles. the corrupted one can see the guardian, thats bad
@@ -163,7 +163,10 @@ execute as @a[scores={corruption=100..},team=corrupted] run kill @e[tag=corrupte
 # this code may not work if there are multiple guardian traps.
 effect give @e[type=phantom] fire_resistance infinite 1 true
 #constant noise
-execute at @e[type=guardian,tag=corrupted_t3_trap] run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 2 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 5 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 8 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 11 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
 
 #============================================================================================================
 # stunman trap

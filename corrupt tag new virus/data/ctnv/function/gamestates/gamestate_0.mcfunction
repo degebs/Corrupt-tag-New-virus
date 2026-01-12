@@ -474,6 +474,7 @@ execute if score count reload_spam matches 38 run scoreboard players add count r
 
 execute if score count reload_spam matches 40..60 run tellraw @a ["\n",{"text":"STOP","color":"red"},"\n\n",{"text":"ALRIGHT LET'S SEE HOW YOU LIKE IT! WHEN I SPAM THE RELOAD COMMAND","color":"green"},"\n\n",{"text":"/function ctnv:leader","color":"white","click_event":{"action":"run_command","command":"/function ctnv:leader"},"hover_event":{"action":"show_text","value":"run the command /function ctnv:leader"}},"\n "]
 execute if score count reload_spam matches 40 run scoreboard players add count reload_spam 1
+execute if score count reload_spam matches 100 run advancement grant @a only ctnv:corrupt_tag/piss_me_off
 
 execute if score count reload_spam matches 41..100 run reload 
 

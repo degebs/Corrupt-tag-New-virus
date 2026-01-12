@@ -29,7 +29,7 @@ execute if entity @s[scores={class=7}] if score enable runner_class_victory_call
 # calculate who has run the most distance
 scoreboard players reset max_distance running_distance
 scoreboard players operation max_distance running_distance = @a[scores={running_distance=1..}] running_distance
-execute as @a if score @s running_distance = max_distance running_distance run advancement grant @s only ctnv:corrupt_tag/sane_bolt
+execute as @a if score @s running_distance = max_distance running_distance if score tick time matches 10 run advancement grant @s only ctnv:corrupt_tag/sane_bolt
 
 # acheivement for the player who has run the most distance
 
@@ -40,4 +40,10 @@ execute as @a if score @s running_distance = max_distance running_distance run a
 
 scoreboard players reset max_ammount damage_dealt_to_corrupted
 scoreboard players operation max_ammount damage_dealt_to_corrupted = @a[scores={damage_dealt_to_corrupted=1..}] damage_dealt_to_corrupted
-execute as @a if score @s damage_dealt_to_corrupted = max_ammount damage_dealt_to_corrupted run advancement grant @s only ctnv:corrupt_tag/valhalla
+execute as @a if score @s damage_dealt_to_corrupted = max_ammount damage_dealt_to_corrupted if score tick time matches 5 run advancement grant @s only ctnv:corrupt_tag/valhalla
+
+
+#================================================================================================================
+# calculate the "Chin Music for the Unsuspecting Hero" card
+# given to a player who wins with 90% or higher
+execute as @a[team=runners,scores={corruption=90..}] if score enable runner_class_victory_calling_card matches 1 if score tick time matches 1 run advancement grant @s only ctnv:corrupt_tag/chin_music
