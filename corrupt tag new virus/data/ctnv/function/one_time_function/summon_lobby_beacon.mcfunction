@@ -13,3 +13,4 @@ particle firework ~ ~1 ~ 0.1 1 0.1 1 400
 playsound block.beacon.activate block @a ~ ~ ~ 1 1
 tellraw @a ["",{"text":"lobby beacon created!","color":"dark_green"}]
 forceload add ~ ~
+# the foreload command no longer works in 1.21.11 god dammit!

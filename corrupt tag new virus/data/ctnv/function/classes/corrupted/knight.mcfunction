@@ -113,7 +113,7 @@ execute if score @s corruption matches 50.. unless entity @s[nbt={Inventory:[{id
 
 execute if score @s corruption matches 50.. if score @s knight_reveal_players matches 1.. run scoreboard players remove @s knight_reveal_players 1
 # give the corrupted his vission of all runners
-execute if score @s corruption matches 50.. if score @s[scores={knight_reveal_players=599,evil_class=5}] knight_reveal_players matches 599 run effect give @a[team=runners] glowing 15 1
+execute if score @s corruption matches 50.. if score @s[scores={knight_reveal_players=599,evil_class=5}] knight_reveal_players matches 599 run effect give @a[team=runners] glowing 5 1
 
 # sound effect
 execute if score @s[scores={knight_reveal_players=599}] knight_reveal_players matches 599 run playsound block.beacon.activate player @s[scores={evil_class=5}] ~ ~ ~ 1 1 0.5
