@@ -126,7 +126,7 @@ execute if score @s[scores={miner_lantern=470..}] miner_lantern matches 470.. at
 # give the miner_lantern the Jump candle. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:1b}]}] run clear @a copper_lantern
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:4b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:copper_lantern"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:4b}]}] if score @s miner_lantern matches 0 run item replace entity @s hotbar.4 with copper_pickaxe[custom_name=[{"text":"'Amie' the pickaxe","italic":false}],lore=[[{"text":"dont ask why its spelled \"Amie\" and not \"Amy\" imsqeker is kinda stupid.","italic":false}],[{"text":"apparently this is a reference to a song named \"Amie\" by the pure Prairie League","italic":false}]],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_lantern",Slot:4b}]}] if score @s miner_lantern matches 0 run item replace entity @s hotbar.4 with copper_lantern[custom_name=[{"text":"Lantern","italic":false}],rarity=uncommon]
 
 
 # do a cooldown timer with black dye (30 seconds)

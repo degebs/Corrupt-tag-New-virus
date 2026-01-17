@@ -132,3 +132,4 @@
       -added new acheivement "Chin Music for the Unsuspecting Hero"
 1.2.1
       -fixed the fireworks not launching during the victory lap
+      -fixed the miner constantly dropping his lantern
