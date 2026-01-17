@@ -130,3 +130,5 @@
       -fixed extreme TPS lag during the pregame by literally just making 1 second = 15 ticks instead of 20 (1 second = 0.75 seconds)
       -Buffed the artificer. his 90% corruption ability is not at 80 
       -added new acheivement "Chin Music for the Unsuspecting Hero"
+1.2.1
+      -fixed the fireworks not launching during the victory lap

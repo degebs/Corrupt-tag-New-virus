@@ -26,9 +26,9 @@ scoreboard players set @a corruption_stun 0
 
 # fireworks 
 
-#execute as @a[team=!dead] at @s run execute if score 360 time matches 165 run summon firework_rocket ~ ~1 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,count:1,components:{fireworks:{flight_duration:1,explosions:[{shape:"large_ball",has_twinkle:0b,has_trail:0b,colors:[I;11743532,4312372],fade_colors:[I;2437522,15435844]}]}}}}
-#execute as @a[team=!dead] at @s run execute if score 360 time matches 15 run summon firework_rocket ~ ~1 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,count:1,components:{fireworks:{flight_duration:1,explosions:[{shape:"star",has_twinkle:1b,has_trail:1b,colors:[I;11743532,4312372],fade_colors:[I;14602026,15435844,15790320]}]}}}}
-#execute as @a[team=!dead] at @s run execute if score 360 time matches 305 run summon firework_rocket ~ ~1 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,count:1,components:{fireworks:{flight_duration:1,explosions:[{shape:"creeper",has_twinkle:1b,has_trail:1b,colors:[I;3887386],fade_colors:[I;4312372]}]}}}}
+execute as @a[team=!dead] at @s run execute if score 360 time matches 165 run summon firework_rocket ~ ~1 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,count:1,components:{fireworks:{flight_duration:1,explosions:[{shape:"large_ball",has_twinkle:0b,has_trail:0b,colors:[11743532,4312372],fade_colors:[2437522,15435844]}]}}}}
+execute as @a[team=!dead] at @s run execute if score 360 time matches 15 run summon firework_rocket ~ ~1 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,count:1,components:{fireworks:{flight_duration:1,explosions:[{shape:"star",has_twinkle:1b,has_trail:1b,colors:[11743532,4312372],fade_colors:[14602026,15435844,15790320]}]}}}}
+execute as @a[team=!dead] at @s run execute if score 360 time matches 305 run summon firework_rocket ~ ~1 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,count:1,components:{fireworks:{flight_duration:1,explosions:[{shape:"creeper",has_twinkle:1b,has_trail:1b,colors:[3887386],fade_colors:[4312372]}]}}}}
 
 # this code works fine. but the code editor is throwing an error for some reason.
 # i just cant get over the fact that these huge red errors are showing up. ruining everything.
