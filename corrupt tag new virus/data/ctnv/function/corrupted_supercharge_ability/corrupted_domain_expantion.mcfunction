@@ -60,3 +60,23 @@ execute if score deitity_id corrupted_supercharge matches 1.. run function ctnv:
 
 #=================================================================================
 # here every diety is given there own function to work. however. they may be paused at any time if the corrupted player enters corruption stun
+
+#1. summon reddit hive mind (a large idol that constantly summons zombies. it can be killed by runners)
+#2. summon "the maker" (a cameo to me, the dev... most op one yet)
+#3. summon "corrupt armageddion" (an evil cloud that will make it rain tridents and lightning)
+#4. summon corruption blocker blob (a blob that surrounds the corrupted and prevents his corruption percentage from increasing)
+#5. summon "rain of spiders" (it rains spiders)
+#6. summon "the souls of the damned" (a large idol that constantly summons very large vexes)
+#7. summon "the orbital strike" (a random runner is selected to be struck from the sky)
+#8. summon "the bringer of the dimentional merge" (teleports everyone to a different map)
+
+# reddit hive mind
+execute if score pause corrupted_domain_enable matches 0 as @e[tag=diety,tag=redit_hive_mind] run function ctnv:corrupted_supercharge_ability/panthion/hive_mind
+execute if score pause corrupted_domain_enable matches 1 run kill @e[tag=redditor]
+
+
+
+
+# "corrupt armageddion"
+execute if score pause corrupted_domain_enable matches 0 as @e[tag=diety,tag=evil_cloud] run function ctnv:corrupted_supercharge_ability/panthion/corrupt_armageddion
+execute if score pause corrupted_domain_enable matches 1 run kill @e[tag=evil_projectile]

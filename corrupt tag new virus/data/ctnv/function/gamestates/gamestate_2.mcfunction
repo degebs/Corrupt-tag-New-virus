@@ -243,6 +243,8 @@ kill @e[tag=fish_attack]
 kill @e[tag=splash]
 kill @e[tag=eye_of_pain]
 kill @e[type=item_display,nbt={item:{id:"minecraft:player_head"}}]
+kill @e[tag=diety]
+kill @e[tag=redditor]
 
 #=================================================================================================
 # display the maps name to all

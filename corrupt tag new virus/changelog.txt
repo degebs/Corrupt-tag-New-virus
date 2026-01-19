@@ -133,3 +133,5 @@
 1.2.1
       -fixed the fireworks not launching during the victory lap
       -fixed the miner constantly dropping his lantern
+1.2.2
+      -attempted to fix the issue with the loby beacon not forceloading the chunks

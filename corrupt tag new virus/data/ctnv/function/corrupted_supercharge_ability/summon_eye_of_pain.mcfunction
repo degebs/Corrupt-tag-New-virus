@@ -26,6 +26,7 @@ playsound block.sculk_shrieker.shriek hostile @s ~ ~ ~ 1 2 1
 playsound ambient.cave hostile @s ~ ~ ~ 1 1 1 
 playsound entity.lightning_bolt.impact hostile @s ~ ~ ~ 1 1 1 
 playsound item.totem.use hostile @s ~ ~ ~ 1 0.2 1 
+playsound item.spear.lunge_3 hostile @s ~ ~ ~ 1 0.2 1 
 
 
 # a bit of logic for later

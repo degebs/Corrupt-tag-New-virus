@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.2.1","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.2.2","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -460,3 +460,8 @@ scoreboard players reset rain_of_spiders corrupted_supercharge
 scoreboard players reset souls_of_the_damned corrupted_supercharge 
 scoreboard players reset orbital_strike corrupted_supercharge 
 scoreboard players reset dimentional_merge corrupted_supercharge 
+
+scoreboard players set hive_mind_kill corrupted_supercharge 0
+
+scoreboard objectives add armageddion_logic dummy
+scoreboard players set time armageddion_logic 0

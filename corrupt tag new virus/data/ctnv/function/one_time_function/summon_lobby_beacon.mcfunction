@@ -12,5 +12,10 @@ particle happy_villager ~ ~1 ~ 0.1 1 0.1 3 400
 particle firework ~ ~1 ~ 0.1 1 0.1 1 400
 playsound block.beacon.activate block @a ~ ~ ~ 1 1
 tellraw @a ["",{"text":"lobby beacon created!","color":"dark_green"}]
-forceload add ~ ~
+forceload add ~-1 ~-1 ~1 ~1
 # the foreload command no longer works in 1.21.11 god dammit!
+
+execute at @s run tp @e[tag=life_detecter] ~ ~10 ~
+
+#tellraw @a ["",{"text":"due to the latest minecraft update, the command \"forceload\" no longer works in 1.21.11","color":"red"}]
+#tellraw @a ["",{"text":"you must manually type the command \"/forceload add ~ ~\" or you will experience undefined behavior.","color":"red"}]
