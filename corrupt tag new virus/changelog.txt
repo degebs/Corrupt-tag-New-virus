@@ -135,3 +135,6 @@
       -fixed the miner constantly dropping his lantern
 1.2.2
       -attempted to fix the issue with the loby beacon not forceloading the chunks
+1.2.3
+      -added the secret ritual
+      -buffed the artificer again (his t3 drone just walks now) and it is terrifying

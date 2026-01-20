@@ -80,3 +80,21 @@ execute if score pause corrupted_domain_enable matches 1 run kill @e[tag=reddito
 # "corrupt armageddion"
 execute if score pause corrupted_domain_enable matches 0 as @e[tag=diety,tag=evil_cloud] run function ctnv:corrupted_supercharge_ability/panthion/corrupt_armageddion
 execute if score pause corrupted_domain_enable matches 1 run kill @e[tag=evil_projectile]
+
+
+# blob that prevents corruption increase
+execute if score pause corrupted_domain_enable matches 0 as @e[tag=diety,tag=blob] run function ctnv:corrupted_supercharge_ability/panthion/blob_blocker
+
+
+# rain of spiders
+
+execute if score pause corrupted_domain_enable matches 0 as @e[tag=rain_of_spiders] run function ctnv:corrupted_supercharge_ability/panthion/rain_of_spiders
+execute if score pause corrupted_domain_enable matches 1 run kill @e[type=cave_spider]
+
+# souls of the damned
+execute if score pause corrupted_domain_enable matches 0 as @e[tag=souls_of_the_damned] run function ctnv:corrupted_supercharge_ability/panthion/souls_of_the_damned
+execute if score pause corrupted_domain_enable matches 1 run kill @e[type=vex]
+
+# orbital strike
+execute if score pause corrupted_domain_enable matches 0 as @e[tag=orbital_strike] run function ctnv:corrupted_supercharge_ability/panthion/orbital_strike
+execute if score pause corrupted_domain_enable matches 1 run kill @e[tag=orbital_strike]

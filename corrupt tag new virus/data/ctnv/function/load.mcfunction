@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.2.2","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.2.3","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -40,6 +40,7 @@ difficulty easy
 clear @a
 gamerule minecraft:locator_bar false
 gamerule allow_entering_nether_using_portals false
+gamerule fire_spread_radius_around_player 0
 
 
 
@@ -462,6 +463,18 @@ scoreboard players reset orbital_strike corrupted_supercharge
 scoreboard players reset dimentional_merge corrupted_supercharge 
 
 scoreboard players set hive_mind_kill corrupted_supercharge 0
+scoreboard players set blob_kill corrupted_supercharge 0
 
 scoreboard objectives add armageddion_logic dummy
 scoreboard players set time armageddion_logic 0
+
+scoreboard objectives add rain_of_spiders_logic dummy
+scoreboard players set time rain_of_spiders_logic 0
+
+scoreboard objectives add souls_of_the_damned_logic dummy
+scoreboard players set kills souls_of_the_damned_logic 0
+scoreboard players set count souls_of_the_damned_logic 0
+scoreboard players set max_count souls_of_the_damned_logic 0
+
+scoreboard objectives add orbital_strike_logic dummy
+scoreboard players set time orbital_strike_logic 0

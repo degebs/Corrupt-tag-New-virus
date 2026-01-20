@@ -16,24 +16,24 @@ execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.0,-0.35],Tags:["diet
 execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.0,-0.35],Tags:["diety"]}
 
 # Upper hemisphere - ring 1 (steep upward)
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.5,0.4,0.0],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.5,0.4,0.0],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.4,0.5],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.4,-0.5],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.4,0.35],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.4,0.35],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.4,-0.35],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.4,-0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.5,0.4,0.0],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.5,0.4,0.0],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.4,0.5],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.4,-0.5],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.4,0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.4,0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.4,-0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.4,-0.35],Tags:["diety"]}
 
 # Upper hemisphere - ring 2 (medium upward)
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.5,0.25,0.0],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.5,0.25,0.0],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.25,0.5],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.25,-0.5],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.25,0.35],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.25,0.35],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.25,-0.35],Tags:["diety"]}
-execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.25,-0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.5,0.25,0.0],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.5,0.25,0.0],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.25,0.5],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.0,0.25,-0.5],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.25,0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.25,0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.35,0.25,-0.35],Tags:["diety"]}
+#execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[-0.35,0.25,-0.35],Tags:["diety"]}
 
 # Upper hemisphere - ring 3 (gentle upward)
 execute as @s at @s run summon arrow ~ ~1 ~ {Motion:[0.5,0.15,0.0],Tags:["diety"]}

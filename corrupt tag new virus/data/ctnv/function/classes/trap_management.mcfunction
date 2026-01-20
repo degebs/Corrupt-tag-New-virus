@@ -160,13 +160,17 @@ execute at @e[type=guardian] run particle flame ~ ~0.3 ~ 0.1 0.3 0.1 0 3 normal 
 # if anyone is above 100% corruption kill the trap t3 and t2, this is to prevent a softlock
 execute as @a[scores={corruption=100..},team=corrupted] run kill @e[tag=corrupted_t3_trap]
 execute as @a[scores={corruption=100..},team=corrupted] run kill @e[tag=corrupted_t2_trap]
+# if someone is in corruption stun kill the t3 trap
+execute as @a[team=corrupted,scores={corruption_stun=1..}] at @e[tag=corrupted_t3_trap] run particle explosion_emitter ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
+execute as @a[team=corrupted,scores={corruption_stun=1..}] at @e[tag=corrupted_t3_trap] run playsound minecraft:entity.generic.explode block @a ~ ~ ~ 1 1 0.5
+execute as @a[team=corrupted,scores={corruption_stun=1..}] run kill @e[tag=corrupted_t3_trap]
 # this code may not work if there are multiple guardian traps.
 effect give @e[type=phantom] fire_resistance infinite 1 true
 #constant noise
-execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 2 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
-execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 5 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
-execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 8 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
-execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 11 run playsound entity.phantom.flap hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 2 run playsound block.note_block.hat hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 5 run playsound block.note_block.hat hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 8 run playsound block.note_block.hat hostile @a ~ ~ ~ 1 2 0.1
+execute at @e[type=guardian,tag=corrupted_t3_trap] if score tick time matches 11 run playsound block.note_block.hat hostile @a ~ ~ ~ 1 2 0.1
 
 #============================================================================================================
 # stunman trap
