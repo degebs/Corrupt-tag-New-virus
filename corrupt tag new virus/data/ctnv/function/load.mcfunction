@@ -485,3 +485,5 @@ scoreboard players set max_count souls_of_the_damned_logic 0
 
 scoreboard objectives add orbital_strike_logic dummy
 scoreboard players set time orbital_strike_logic 0
+
+
