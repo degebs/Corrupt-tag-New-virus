@@ -487,11 +487,12 @@ execute if score count reload_spam matches 102 run scoreboard players add count 
 
 #======================================================================================================================
 #ensure that there is ONLY 1 life detector
-scoreboard players reset count life_detector_count 
-execute as @e[tag=life_detector] run scoreboard players add count life_detector_count 1
-execute if score count life_detector_count matches 2.. run kill @e[tag=life_detector,limit=1,sort=nearest]
+#scoreboard players reset count life_detector_count 
+#execute as @e[tag=life_detector] run scoreboard players add count life_detector_count 1
+#execute if score count life_detector_count matches 2.. run kill @e[tag=life_detector,limit=1,sort=nearest]
 # this fixes the life detecor memory leak
 
+# so this memory leak fix maight have not been necessary after all
 
 #======================================================================================================================
 # set up corrupted domain expantion. if it is not enabled here. then it wont work during the game

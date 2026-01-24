@@ -46,13 +46,13 @@ scoreboard players operation Online playerlist = Online players_online
 #
 # it is absolutly IMPARATIVE that the map beacon counter remains accurate
 #the proper destruction of a map beacon requires every element in it to be killed BEFORE we update the counter
-#here the life detecter armor stand detects if someone tried to kill all 
+#here the life detector armor stand detects if someone tried to kill all 
 #  
 execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"CRITICAL ERROR: ALL BEACONS WERE DESTROYED","color":"dark_red"}]
 execute unless entity @e[tag=life_detector] run scoreboard players set avalable_map_index debug 1
 execute unless entity @e[tag=life_detector] run forceload remove all
 execute unless entity @e[tag=life_detector] run scoreboard players set map_beacon_count debug 0
-# if the life detecter dies we can assume at least one beacon was destroyed improperly.. to fix this we will destroy all beacons just in case
+# if the life detector dies we can assume at least one beacon was destroyed improperly.. to fix this we will destroy all beacons just in case
 execute unless entity @e[tag=life_detector] run kill @e[type=armor_stand]
 execute unless entity @e[tag=life_detector] run kill @e[type=turtle]
 execute unless entity @e[tag=life_detector] run reload

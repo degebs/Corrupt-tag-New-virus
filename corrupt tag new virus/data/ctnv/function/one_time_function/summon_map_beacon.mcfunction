@@ -12,7 +12,7 @@ playsound block.beacon.power_select block @a ~ ~ ~ 1 1
 particle enchant ~ ~ ~ 0 0 0 1 25
 
 summon turtle ~ ~ ~ {CustomName:[{text:"map name"}],Invulnerable:1b,NoAI:1b,NoGravity:1b,PersistenceRequired:1b,Silent:1b,Tags:["map"]}
-forceload add ~ ~ ~ ~
+execute at @p run forceload add ~-1 ~-1 ~1 ~1
 
 
 

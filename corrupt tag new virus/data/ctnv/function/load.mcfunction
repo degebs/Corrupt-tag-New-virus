@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.2.3","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.2.4","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -172,10 +172,17 @@ scoreboard objectives add dark_star_speed_boost dummy
 scoreboard objectives add dark_star_supernova dummy
 
 
+execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"the life detector is missing. fixing!","color":"yellow"}]
+execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"if you see this message, uhh. you shouldnt","color":"yellow"}]
+
 #set up the entity that detects if someone tried to kill @e (this is important for keeping track of map beacons)
 # this does not work for some reason
-execute unless entity @e[tag=life_detecter] run summon armor_stand ~ 0 ~ {Pose:{LeftLeg:[0f,0f,277f],RightLeg:[0f,0f,65f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,CustomName:[{text:life_detector}],Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:["life_detector"]}
-# dont do this if the life detecter already exists
+execute unless entity @e[tag=life_detector] at @r run summon armor_stand ~ ~5 ~ {Pose:{LeftLeg:[0f,0f,277f],RightLeg:[0f,0f,65f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,CustomName:[{text:life_detector}],Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:["life_detector"]}
+# dont do this if the life detector already exists
+
+# for some reason people are experiencing a glitch where all becons DIE and the game breaks
+# i cannot replicate this so i am throwing shit at the wall and praying that it goes away
+effect give @e[tag=life_detector] glowing infinite 1
 
 
 scoreboard objectives add life_detector_count dummy

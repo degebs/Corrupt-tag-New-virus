@@ -138,3 +138,5 @@
 1.2.3
       -added the secret ritual
       -buffed the artificer again (his t3 drone just walks now) and it is terrifying
+1.2.4
+      -attempted to fix a bug where on some server configurations all the map beacons would die
