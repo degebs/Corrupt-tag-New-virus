@@ -34,5 +34,5 @@ tellraw @a ["",{"text":"there are ","color":"gold"},{"color":"gold","score":{"ob
 
 # nvm it fixed itslef for some reason. i dont know how but it did, but im not changinging the code i used to try to fix it.
 
-execute as @e[tag=life_detector] run tp @e[tag=life_detector] ~ ~1 ~
+#execute as @e[tag=life_detector] run tp @e[tag=life_detector] ~ ~1 ~
 

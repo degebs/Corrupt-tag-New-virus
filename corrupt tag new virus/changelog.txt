@@ -142,3 +142,5 @@
       -attempted to fix a bug where on some server configurations all the map beacons would die
 1.2.5
       - fixed a terrible code bugfix
+1.2.5.1
+      - fixed a critical bug in the map selector that may have been the cause of all this bullshit for the past 4 updates

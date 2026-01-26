@@ -173,18 +173,21 @@ scoreboard players set @a corruption 0
 
 # disable the corruption counter shown beloow name
 scoreboard objectives setdisplay below_name
-#===========================================================================================================================================
-# there is a bug where the count of map beacons gets desynced between the live count and the debug count
-# no idea why this happens but this is a fix for it
-# the map beacons are still alive but unaccounted for so we just sync the debug count to the live count
+#======================================================================================================================
+# there is a bug where the "avalable_map_inex" scoreboard objective gets set to 0 when the game starts
+# when this happens the turltes are still avive but unaccounted for. this causes major issues with map selection
+
+# if the map index does not match the number of turtles that exist, then we have a desync issue
+# say a message in chat to inform the user of this issue
+
 
 # set up the live_map_beacon_count scoreboard to match the number of turtles that exist
 scoreboard players set live_map_beacon_count debug 0
-execute as @e[type=turtle,tag=map] run scoreboard players add live_map_beacon_count debug 1
+execute as @e[type=turtle,tag=map] if score live_map_beacon_count debug matches 0.. run scoreboard players add live_map_beacon_count debug 1
 
-execute unless score live_map_beacon_count debug = count debug run tellraw @a ["",{"text":"WARNING: MAP BEACON COUNT MISMATCH DETECTED. FIXING...","color":"yellow"}]
+# if the live count does not match the map beacon count, we have a serious issue
+# execute unless score live_map_beacon_count debug = count debug run tellraw @a ["",{"text":"WARNING: MAP BEACON COUNT MISMATCH DETECTED. FIXING...","color":"red"}]
 execute unless score live_map_beacon_count debug = count debug run scoreboard players operation count debug = live_map_beacon_count debug
-
 #===========================================================================================================================================
 # this command is suppost to take everyones health and set it to the max (its 0 by  default) and thats bad
 scoreboard players operation @a health = @a[limit=1,sort=random,scores={ST____max_health=1..}] ST____max_health

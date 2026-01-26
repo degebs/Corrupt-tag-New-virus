@@ -96,6 +96,7 @@ scoreboard players reset @e spawning_circle
 scoreboard objectives remove spawn_circle_count
 scoreboard players reset @e spawn_circle_count
 kill @e[tag=spawn_point]
+kill @e[type=armadillo]
 scoreboard players set index spawn_circle_count 0
 scoreboard objectives remove player_ID
 scoreboard players reset @a player_ID

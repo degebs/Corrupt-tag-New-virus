@@ -17,8 +17,8 @@ give @a[team=party_lead] arrow[custom_name=[{"text":"down","italic":false,"color
 give @a[team=party_lead] spectral_arrow[custom_name=[{"text":"up","italic":false,"color":"dark_green"}],rarity=uncommon,enchantment_glint_override=true]
 
 # detect if the selector overflows or underflows.
-execute if score @a[team=party_lead,limit=1] map_selection > map_beacon_count debug run scoreboard players set @a[team=party_lead] map_selection 1
-execute if score @a[team=party_lead,limit=1] map_selection matches ..0 run scoreboard players operation @a[team=party_lead] map_selection = map_beacon_count debug
+execute if score @a[team=party_lead,limit=1] map_selection > 0_index_count debug run scoreboard players set @a[team=party_lead] map_selection 0
+execute if score @a[team=party_lead,limit=1] map_selection matches ..-1 run scoreboard players operation @a[team=party_lead] map_selection = 0_index_count debug
 
 
 # actually select the map

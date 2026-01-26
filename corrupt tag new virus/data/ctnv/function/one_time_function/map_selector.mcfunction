@@ -27,6 +27,12 @@ execute if entity @e[type=item,nbt={Item:{id:"minecraft:end_crystal"}}] run scor
 # and give them only what they need.
 
 # there was code here, now its gone. 
+#=========================================================================================================
+# here we must clone every map beacon index to the new one called "1_base_index_map_list" this is because when the index is 
+# displayed in the chat it must start from 1 not 0. this is purely a quality of life change.
+execute as @e[type=turtle] run scoreboard players operation @s 1_base_index_map_list = @s ordered_map_list
+execute as @e[type=turtle] run scoreboard players add @s 1_base_index_map_list 1
+
 
 #=========================================================================================================
 # here is where we check for any map beacons that exist
@@ -38,7 +44,10 @@ execute if score map_beacon_count debug matches 1.. run tellraw @a[team=party_le
 #a workaround it to give the party leader a knolege book with the names of all the maps
 # when the player drops a spefific knolege book, select it.
 
-execute as @e[type=minecraft:turtle] run tellraw @a[team=party_lead] {"color":"aqua","entity":"@s","hover_event":{"action":"show_text","value":[{"text":"use the up and down arrows to select a map "}]},"nbt":"CustomName"}
+execute as @e[type=minecraft:turtle] run tellraw @a[team=party_lead] [{"score":{"name":"@s","objective":"1_base_index_map_list"},"color":"white"},{"text":" ","color":"white"},{"color":"aqua","entity":"@s","nbt":"CustomName"}]
+
+
+
 # the only thing left to do is that when the player clicks the map it selects the scoreboard value as define in gamestate_0.
 # spefically time dependent map selection and deselection code. 
 

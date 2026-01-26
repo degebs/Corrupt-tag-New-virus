@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.2.5","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.2.5.1","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -241,6 +241,7 @@ scoreboard objectives remove map_list
 
 scoreboard objectives add map_list dummy
 scoreboard objectives add ordered_map_list dummy
+scoreboard objectives add 1_base_index_map_list dummy
 #clear the map list imidiatly, it will be dynamicly generated later.
 execute if score avalable_map_index debug matches 0 run scoreboard players add avalable_map_index debug 1
 # it is critical that the avalable map index NEVER GOES DOWN!
