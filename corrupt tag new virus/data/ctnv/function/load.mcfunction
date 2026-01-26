@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.2.5.1","color":"dark_purple","bold":true},"\n "]
+tellraw @a [{"text":"1.2.5.2","color":"dark_purple","bold":true},"\n "]
 
 #set up all gamerules
 gamerule minecraft:block_drops false

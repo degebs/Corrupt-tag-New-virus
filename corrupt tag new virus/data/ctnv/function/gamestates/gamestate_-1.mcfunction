@@ -63,9 +63,3 @@ execute as @e[type=turtle,tag=map] if score live_map_beacon_count debug matches 
 # execute unless score live_map_beacon_count debug = count debug run tellraw @a ["",{"text":"WARNING: MAP BEACON COUNT MISMATCH DETECTED. FIXING...","color":"red"}]
 execute unless score live_map_beacon_count debug = count debug run scoreboard players operation count debug = live_map_beacon_count debug
 
-#======================================================================================================================
-# there is a glitch where the index in the selection arrows is 1 greater than the actual number of turtles that exist
-scoreboard players set 0_index_count debug 0
-execute as @e[type=turtle,tag=map] if score 0_index_count debug matches 0.. run scoreboard players add 0_index_count debug 1
-# subtract 1 from the count
-scoreboard players remove 0_index_count debug 1

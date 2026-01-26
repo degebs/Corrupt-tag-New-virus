@@ -365,9 +365,10 @@ execute if score setting ST____game_mode matches 2 run team modify runners namet
 
 scoreboard players operation setting ST____runner_name_tags = @a[team=party_lead,limit=1] ST____runner_name_tags
 # if the game mode is NOT call of corrupted or hide and reap, then we gotta reset the corruption stun
-execute if score setting ST____game_mode matches 0 run scoreboard players set @a[team=party_lead] ST____initial_corruption_stun 3
-execute if score setting ST____game_mode matches 2 run scoreboard players set @a[team=party_lead] ST____initial_corruption_stun 3
-execute if score setting ST____game_mode matches 3 run scoreboard players set @a[team=party_lead] ST____initial_corruption_stun 3
+#execute if score setting ST____game_mode matches 0 run scoreboard players set @a[team=party_lead] ST____initial_corruption_stun 3
+#execute if score setting ST____game_mode matches 2 run scoreboard players set @a[team=party_lead] ST____initial_corruption_stun 3
+#execute if score setting ST____game_mode matches 3 run scoreboard players set @a[team=party_lead] ST____initial_corruption_stun 3
+# i dont even know why this ever worked in the first place
 #==============================================================================================================
 # lobby beacon invis
 effect give @e[type=armadillo] invisibility infinite 1 true
@@ -501,9 +502,10 @@ execute if score count reload_spam matches 102 run scoreboard players add count 
 
 #======================================================================================================================
 #ensure that there is ONLY 1 life detector
-#scoreboard players reset count life_detector_count 
-#execute as @e[tag=life_detector] run scoreboard players add count life_detector_count 1
-#execute if score count life_detector_count matches 2.. run kill @e[tag=life_detector,limit=1,sort=nearest]
+scoreboard players reset count life_detector_count 
+execute as @e[tag=life_detector] run scoreboard players add count life_detector_count 1
+#execute if score count life_detector_count matches 2.. run tellraw @a ["\n",{"text":"multiple life detectors. fixing...","color":"yellow"},"\n "]
+execute if score count life_detector_count matches 2.. run kill @e[tag=life_detector,limit=1,sort=nearest]
 # this fixes the life detecor memory leak
 
 # so this memory leak fix maight have not been necessary after all

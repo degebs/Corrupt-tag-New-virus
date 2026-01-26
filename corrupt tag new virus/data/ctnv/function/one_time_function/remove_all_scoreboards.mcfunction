@@ -84,8 +84,8 @@ scoreboard players set setting ST____enable_runner_classes 1
 scoreboard players set @e[type=:turtle] map_list 0
 scoreboard objectives remove map_list
 scoreboard objectives remove map_list
-#scoreboard objectives remove ordered_map_list
-# not this one
+scoreboard objectives remove ordered_map_list
+
 execute if score avalable_map_index debug matches 0 run scoreboard players add avalable_map_index debug 1
 scoreboard players set deleted_index debug 0
 scoreboard players add @e[type=turtle] map_list 0
@@ -97,6 +97,7 @@ scoreboard objectives remove spawn_circle_count
 scoreboard players reset @e spawn_circle_count
 kill @e[tag=spawn_point]
 kill @e[type=armadillo]
+kill @e[type=armor_stand]
 scoreboard players set index spawn_circle_count 0
 scoreboard objectives remove player_ID
 scoreboard players reset @a player_ID
