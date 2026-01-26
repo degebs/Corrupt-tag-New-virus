@@ -145,3 +145,4 @@
 1.2.5.(1-9)
       - fixed a critical bug in the map selector that may have been the cause of all this bullshit for the past 4 updates
       - fix more bug glitches
+      - this subformat is here becasue the bug fixes were rapid

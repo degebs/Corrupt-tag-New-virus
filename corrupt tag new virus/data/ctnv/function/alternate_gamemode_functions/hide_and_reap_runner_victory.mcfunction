@@ -39,3 +39,8 @@ execute if score tick time matches 5 if score victory_timer victory matches 18 a
 #===============================================================================================================
 # calling card
 execute as @a if score @s runners_alive matches 1 run advancement grant @a[team=runners] only ctnv:corrupt_tag/survior
+
+
+#==============================================================================================================
+# fix the bug where a game would start immidietly after the previous one ended
+scoreboard players set drop_detect_function_Delay time 5

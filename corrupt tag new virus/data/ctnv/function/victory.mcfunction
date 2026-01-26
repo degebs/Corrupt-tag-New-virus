@@ -36,3 +36,7 @@ execute as @a[team=!dead] at @s run execute if score 360 time matches 305 run su
 # the calling card manager
 # trigger for 1 tick
 execute if score tick time matches 5 if score victory_timer victory matches 17 as @a[team=!dead] run function ctnv:one_time_function/calling_cards/calling_card_manager
+
+#==============================================================================================================
+# fix the bug where a game would start immidietly after the previous one ended
+scoreboard players set drop_detect_function_Delay time 5

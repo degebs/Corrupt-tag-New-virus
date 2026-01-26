@@ -40,3 +40,7 @@ execute if score tick time matches 5 if score victory_timer victory matches 18 a
 
 # acheavment
 advancement grant @a only ctnv:corrupt_tag/thing
+
+#==============================================================================================================
+# fix the bug where a game would start immidietly after the previous one ended
+scoreboard players set drop_detect_function_Delay time 5
