@@ -53,16 +53,12 @@ scoreboard players reset count reload_spam
 
 # if the map index does not match the number of turtles that exist, then we have a desync issue
 # say a message in chat to inform the user of this issue
-execute if score avalable_map_index debug matches 0.. if entity @e[type=turtle,tag=map] run tellraw @a ["",{"text":"WARNING: MAP BEACON DESYNC DETECTED. FIXING...","color":"yellow"}]
 
-# so i will manually resync the "avalable_map_index" scoreboard to match the number of turtles that exist
-scoreboard players set avalable_map_index debug 0
-execute as @e[type=turtle,tag=map] run scoreboard players add avalable_map_index debug 1
 
 # set up the live_map_beacon_count scoreboard to match the number of turtles that exist
 scoreboard players set live_map_beacon_count debug 0
 execute as @e[type=turtle,tag=map] run scoreboard players add live_map_beacon_count debug 1
 
 # if the live count does not match the map beacon count, we have a serious issue
-execute unless score live_map_beacon_count debug = count debug run tellraw @a ["",{"text":"WARNING: MAP BEACON COUNT MISMATCH DETECTED. FIXING...","color":"red"}]
+# execute unless score live_map_beacon_count debug = count debug run tellraw @a ["",{"text":"WARNING: MAP BEACON COUNT MISMATCH DETECTED. FIXING...","color":"red"}]
 execute unless score live_map_beacon_count debug = count debug run scoreboard players operation count debug = live_map_beacon_count debug

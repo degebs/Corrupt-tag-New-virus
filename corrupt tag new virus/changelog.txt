@@ -140,3 +140,5 @@
       -buffed the artificer again (his t3 drone just walks now) and it is terrifying
 1.2.4
       -attempted to fix a bug where on some server configurations all the map beacons would die
+1.2.5
+      - fixed a terrible code bugfix
