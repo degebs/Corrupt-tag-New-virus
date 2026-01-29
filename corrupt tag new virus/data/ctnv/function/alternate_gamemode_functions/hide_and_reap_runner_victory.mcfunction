@@ -43,4 +43,4 @@ execute as @a if score @s runners_alive matches 1 run advancement grant @a[team=
 
 #==============================================================================================================
 # fix the bug where a game would start immidietly after the previous one ended
-scoreboard players set drop_detect_function_Delay time 5
+scoreboard players set drop_detect_function_Delay time 20

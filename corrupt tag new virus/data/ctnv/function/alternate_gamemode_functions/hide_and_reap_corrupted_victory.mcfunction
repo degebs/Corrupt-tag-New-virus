@@ -37,4 +37,4 @@ execute if score tick time matches 5 if score victory_timer victory matches 18 a
 
 #==============================================================================================================
 # fix the bug where a game would start immidietly after the previous one ended
-scoreboard players set drop_detect_function_Delay time 5
+scoreboard players set drop_detect_function_Delay time 20
