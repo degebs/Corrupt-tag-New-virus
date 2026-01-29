@@ -15,8 +15,8 @@
 # and if you EVER try to understand minecraft command code without comments you will go insane
 # anyway its time for the code to start running.
 
-tellraw @a ["",{"text":"wellcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true},"\n "]
-tellraw @a [{"text":"1.2.5.8","color":"dark_purple","bold":true},"\n "]
+tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.2.5.9","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -56,7 +56,7 @@ scoreboard players set endgame state 0
 
 #--------universal timer variable--------------
 scoreboard objectives add time dummy
-scoreboard players set drop_detect_function_Delay time 5
+scoreboard players set drop_detect_function_Delay time 20
 scoreboard players set tick time 0
 scoreboard players set 360 time 0
 # this variable is used so that sertan togles can work properly
