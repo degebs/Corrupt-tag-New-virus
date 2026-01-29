@@ -454,7 +454,6 @@ execute if score limit trap_stats matches 0 run kill @e[tag=fishing_net_trap]
 # then trigger it
 execute if score gamers players_online matches 1 run function ctnv:victory
 
-
 #=================================================================================================
 # there is still a glitch where multiple corrupted can exist
 # here we fix it
@@ -474,7 +473,7 @@ scoreboard players reset count only_one_corrupted
 execute as @a[team=corrupted] run scoreboard players add count only_one_corrupted 1
 # then we run the function if there is more than 1 corrupted
 # this one will be different. if there is 0 corrupted players the game ends
-execute if score count only_one_corrupted matches 0.. run function ctnv:victory
+#execute if score count only_one_corrupted matches 0.. run function ctnv:victory
 
 #=================================================================================================
 # secret corrupted supercharge "domain expansion"
