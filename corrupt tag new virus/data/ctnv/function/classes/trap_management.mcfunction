@@ -114,9 +114,12 @@ execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=
 
 
 #============================================================================================================
-# tier 1 hunter trap 
+# tier 1 artificer trap 
 
 # this trap is a simple trap that will stun the player for 3 seconds
+
+
+
 
 execute as @e[type=item_display,tag=corrupted_t1_trap] at @s if entity @p[distance=..1.5,limit=1,team=runners] run particle explosion ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
 execute as @e[type=item_display,tag=corrupted_t1_trap] at @s if entity @p[distance=..1.5,limit=1,team=runners] run playsound minecraft:entity.generic.explode block @a ~ ~ ~ 1 1 0.5
@@ -125,8 +128,9 @@ execute as @e[type=item_display,tag=corrupted_t1_trap] at @s if entity @p[distan
 execute as @e[type=item_display,tag=corrupted_t1_trap] at @s if entity @p[distance=..1.5,limit=1,team=runners] run kill @s
 
 
+
 #============================================================================================================
-# tier 2 hunder trap
+# tier 2 artificer trap
 
 # same as tier 1 trap exept it expodes bigger, stuns for longer, and does 1 heart of damage
 

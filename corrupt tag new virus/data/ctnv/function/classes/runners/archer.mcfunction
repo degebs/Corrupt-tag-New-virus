@@ -15,7 +15,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run cle
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:bow"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run item replace entity @s hotbar.0 with bow[custom_name=[{"text":"trusty bow","italic":false}],enchantments={punch:2}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run item replace entity @s hotbar.0 with bow[custom_name=[{"text":"Odysseus","italic":false}],enchantments={punch:2}]
 
 # slight permanent speed buff
 effect give @s speed 6 0 true

@@ -130,6 +130,23 @@ execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Invent
 execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:16b}]}] run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Miner","color":"dark_aqua"}," ",{"text":"class","color":"white"}]
 execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:16b}]}] run playsound block.note_block.guitar block @a ~ ~ ~ 1 1.4 1 
 execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:16b}]}] run item replace entity @s inventory.7 with copper_pickaxe[custom_name=[{"text":"Miner","italic":false,"color":"blue"}],lore=[[{"text":"--- item ---","italic":false,"color":"dark_aqua"}],[{"text":"- Gold Nugget","italic":false,"color":"white"}],[{"text":"gives everyone around him a speed boost","italic":false,"color":"white"}],[{"text":"--- weapon ---","italic":false,"color":"dark_aqua"}],[{"text":"- Copper Pickaxe","italic":false,"color":"white"}],[{"text":"--- movement ---","italic":false,"color":"dark_aqua"}],[{"text":"-Lantern","italic":false,"color":"yellow"}],[{"text":"makes you tunnel underground ","italic":false,"color":"yellow"}]]]
+# merchant+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# prevent accidental instant selection
+execute as @a if score countdown time matches 29 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run item replace entity @s inventory.8 with sunflower[custom_name=[{"text":"Merchant","italic":false,"color":"blue"}],lore=[[{"text":"--- item ---","italic":false,"color":"dark_aqua"}],[{"text":"- Gold coin","italic":false,"color":"white"}],[{"text":"drop for a random buff or nerf. the stack ammount is your luck percent","italic":false,"color":"white"}],[{"text":"--- weapon ---","italic":false,"color":"dark_aqua"}],[{"text":"- crossbow","italic":false,"color":"white"}],[{"text":"--- movement ---","italic":false,"color":"dark_aqua"}],[{"text":"his gold coin can buff movement","italic":false,"color":"yellow"}],[{"text":"or nerf it ","italic":false,"color":"red"}]]]
+# set the cooldown
+execute as @a at @s if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] if score @s class_selection_cooldown matches 0 run scoreboard players set @s class_selection_cooldown 3
+
+# automatically close the player inventory on click
+execute as @a at @s if score countdown time matches 0..28 if score @s class_selection_cooldown matches 3 run fill ~ ~1 ~ ~ ~1 ~ nether_portal replace air
+execute as @a at @s if score countdown time matches 0..28 if score @s class_selection_cooldown matches 2 run fill ~2 ~2 ~2 ~-2 ~-2 ~-2 air replace nether_portal
+# select Merchant class
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run clear @s sunflower
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:sunflower"}}]
+# selection
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run scoreboard players set @s class 8
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Merchant","color":"dark_aqua"}," ",{"text":"class","color":"white"}]
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run playsound block.note_block.guitar block @a ~ ~ ~ 1 1.5 1 
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:17b}]}] run item replace entity @s inventory.8 with sunflower[custom_name=[{"text":"Merchant","italic":false,"color":"blue"}],lore=[[{"text":"--- item ---","italic":false,"color":"dark_aqua"}],[{"text":"- Gold coin","italic":false,"color":"white"}],[{"text":"drop for a random buff or nerf. the stack ammount is your luck percent","italic":false,"color":"white"}],[{"text":"--- weapon ---","italic":false,"color":"dark_aqua"}],[{"text":"- crossbow","italic":false,"color":"white"}],[{"text":"--- movement ---","italic":false,"color":"dark_aqua"}],[{"text":"his gold coin can buff movement","italic":false,"color":"yellow"}],[{"text":"or nerf it ","italic":false,"color":"red"}]]]
 
 
 

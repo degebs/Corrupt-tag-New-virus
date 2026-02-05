@@ -33,7 +33,7 @@ scoreboard players add @s hunter_corrupted_t3_trap 0
 #                            15% corruption!
 #==========================================================================================================================================================
 # message
-execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 15% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
+execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @a[team=corrupted] [{"text":"you are 15% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
 execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 # to prevent the imidiate use of the trap item, a command will set the cooldown to 15 before letting the player use it
 execute if score @s corruption matches ..15 run scoreboard players set @s hunter_corrupted_t1_trap 15
@@ -100,7 +100,7 @@ execute if score @s corruption matches 15.. unless entity @s[nbt={Inventory:[{Sl
 # give the hunter a trap item, make sure he cannot drop it
 # Give the hunter a trap item in hotbar slot 3 if they don't already have it and are at least 15% corrupt
 execute if score @s corruption matches 15.. unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] run kill @e[type=item,nbt={Item:{id:"minecraft:tripwire_hook"}}]
-execute if score @s corruption matches 15.. unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] if score @s hunter_corrupted_t1_trap matches 0 run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"corrupted trap","italic":false,"color":"dark_purple"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute if score @s corruption matches 15.. unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] if score @s hunter_corrupted_t1_trap matches 0 run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Corrupted stelth trap","italic":false,"color":"dark_purple"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
 
 
 # Decrease cooldown if active
@@ -114,7 +114,7 @@ execute if score @s[scores={hunter_corrupted_t1_trap=399}] hunter_corrupted_t1_t
 #execute if score @s[scores={hunter_corrupted_t1_trap=399}] hunter_corrupted_t1_trap matches 399 run kill @e[tag=corrupted_t1_trap]
 
 # summon the trap item display at the player's location
-execute at @s if score @s[scores={hunter_corrupted_t1_trap=399}] hunter_corrupted_t1_trap matches 399 run summon minecraft:item_display ~ ~0.1 ~ {Tags:["corrupted_t1_trap"],Passengers: [{fall_distance: 0.0d, id: "minecraft:item_display", Tags:["corrupted_t1_trap"], item: {count: 1, id: "minecraft:purpur_pillar", components: {"minecraft:custom_name": '{"text":"corrupted_t1_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.25f, 0.083333336f, 0.25f], translation: [0.0f, 0.125f, 0.0f]}}], fall_distance: 0.0d, item: {count: 1, id: "minecraft:budding_amethyst", components: {"minecraft:custom_name": '{"text":"corrupted_t1_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.4375f, 0.14583333f, 0.4375f], translation: [0.0f, 0.0f, 0.0f]}}
+execute at @s if score @s[scores={hunter_corrupted_t1_trap=399}] hunter_corrupted_t1_trap matches 399 run summon minecraft:item_display ~ ~0.1 ~ {Tags:["corrupted_t1_trap"],view_range:0.05f,Passengers: [{fall_distance: 0.0d, id: "minecraft:item_display", Tags:["corrupted_t1_trap"], view_range:0.05f, item: {count: 1, id: "minecraft:purpur_pillar", components: {"minecraft:custom_name": '{"text":"corrupted_t1_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.25f, 0.083333336f, 0.25f], translation: [0.0f, 0.125f, 0.0f]}}], fall_distance: 0.0d, item: {count: 1, id: "minecraft:budding_amethyst", components: {"minecraft:custom_name": '{"text":"corrupted_t1_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.4375f, 0.14583333f, 0.4375f], translation: [0.0f, 0.0f, 0.0f]}}
 #the trap itself will be handled using the trap management function
 
 
@@ -145,14 +145,14 @@ execute if score @s[scores={hunter_corrupted_t1_trap=20}] hunter_corrupted_t1_tr
 execute if score @s hunter_corrupted_t1_trap matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]]
 
 # When cooldown is over, give the trap back if missing
-execute if score @s corruption matches 15.. if score @s hunter_corrupted_t1_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"corrupted trap","italic":false,"color":"dark_purple"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute if score @s corruption matches 15.. if score @s hunter_corrupted_t1_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Corrupted stelth trap","italic":false,"color":"dark_purple"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
 
 
 #==========================================================================================================================================================
 #                            50% corruption!
 #==========================================================================================================================================================
 
-execute if score @s corruption matches 50 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 50% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
+execute if score @s corruption matches 50 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @a[team=corrupted] [{"text":"you are 50% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
 execute if score @s corruption matches 50 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 # to prevent the imidiate use of the trap item, a command will set the cooldown to 15 before letting the player use it
 execute if score @s corruption matches ..50 run scoreboard players set @s hunter_corrupted_t2_trap 15
@@ -223,7 +223,7 @@ execute if score @s corruption matches 50.. if score @s hunter_corrupted_t2_trap
 #                            80% corruption!
 #==========================================================================================================================================================
 
-execute if score @s corruption matches 80 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s[scores={evil_class=3}] [{"text":"you are 80% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
+execute if score @s corruption matches 80 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @a[team=corrupted,scores={evil_class=3}] [{"text":"you are 80% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
 execute if score @s corruption matches 80 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 # to prevent the imidiate use of the trap item, a command will set the cooldown to 15 before letting the player use it
 execute if score @s corruption matches ..80 run scoreboard players set @s hunter_corrupted_t3_trap 15

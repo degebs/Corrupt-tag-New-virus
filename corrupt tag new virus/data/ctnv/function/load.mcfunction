@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.2.5.9","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.2.6","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -133,6 +133,12 @@ scoreboard objectives add stunman_trap dummy
 scoreboard objectives add fishing_net_trap dummy
 # miner lantern
 scoreboard objectives add miner_lantern dummy
+# the merchants items
+scoreboard objectives add merchant_coin minecraft.dropped:sunflower
+scoreboard objectives add merchant_rng dummy
+scoreboard objectives add merchant_arrow_count dummy
+scoreboard objectives add cross_bow_shot minecraft.used:crossbow
+scoreboard objectives add merchant_luck dummy
 
 # classic corrupted cooldowns
 scoreboard objectives add classic_corrupted_t1_cooldown dummy

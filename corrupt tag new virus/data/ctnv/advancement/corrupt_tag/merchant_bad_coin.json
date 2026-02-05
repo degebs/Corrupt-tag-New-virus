@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "id": "minecraft:wither_rose",
+            "count": 1
+        },
+        "title": "The house always wins",
+        "description": "experience misfortune as the Merchant",
+        "background": "minecraft:block/crying_obsidian",
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "ctnv:corrupt_tag/merchant_win",
+    "criteria": {
+        "root": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "root"
+        ]
+    ]
+}

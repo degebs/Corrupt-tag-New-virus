@@ -20,7 +20,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:trident",Slot:0b}]}] if 
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:trident",Slot:0b}]}] if score @s trident_throw matches 0 run kill @e[type=item,nbt={Item:{id:"minecraft:trident"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:trident",Slot:0b}]}] if score @s trident_throw matches 0 run item replace entity @s hotbar.0 with trident[custom_name=[{"text":"electric trident","italic":false}],rarity=rare,enchantments={loyalty:1,unbreaking:255}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:trident",Slot:0b}]}] if score @s trident_throw matches 0 run item replace entity @s hotbar.0 with trident[custom_name=[{"text":"Stunner trident","italic":false}],rarity=rare,enchantments={loyalty:1,unbreaking:255}]
 
 execute if entity @s[nbt={Inventory:[{id:"minecraft:trident",Slot:0b}]}] run scoreboard players set @s trident_throw 0
 
@@ -42,7 +42,7 @@ execute unless entity @s[nbt={Inventory:[{Slot:3b,id:"minecraft:tripwire_hook"}]
 # give the hunter a trap item, make sure he cannot drop it
 # Give the hunter a trap item in hotbar slot 3 if they don't already have it and are at least 15% corrupt
 execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] run kill @e[type=item,nbt={Item:{id:"minecraft:tripwire_hook"}}]
-execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] if score @s stunman_trap matches 0 run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"trap","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] if score @s stunman_trap matches 0 run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
 
 # Decrease cooldown if active
 execute if score @s stunman_trap matches 1.. run scoreboard players remove @s stunman_trap 1
@@ -83,7 +83,7 @@ execute if score @s[scores={stunman_trap=20}] stunman_trap matches 20 run item r
 execute if score @s stunman_trap matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]]
 
 # When cooldown is over, give the trap back if missing
-execute if score @s stunman_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"trap","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute if score @s stunman_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
 #================================================================================================================================================
 # permanent jump boost in endgame
 execute if score endgame state matches 1 run effect give @s jump_boost 1 1 true

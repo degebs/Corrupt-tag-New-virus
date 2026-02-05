@@ -61,7 +61,7 @@ scoreboard players operation players_waiting players_online = Online players_onl
 # before its supost to function. there needs to be a delay so that this code does not automaticall function
 #i moved all the logic for drop detection to a seprate fumction so that a delay can be set
 execute unless score drop_detect_function_Delay time matches 0 run scoreboard players remove drop_detect_function_Delay time 1
-execute if score drop_detect_function_Delay time matches 0 run function ctnv:start_game_item_delay
+execute if score drop_detect_function_Delay time matches 0 if entity @r[team=party_lead] run function ctnv:start_game_item_delay
 
 
 

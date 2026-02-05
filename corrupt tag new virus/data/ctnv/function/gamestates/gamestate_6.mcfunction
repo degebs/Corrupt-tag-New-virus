@@ -19,6 +19,7 @@ execute as @a[scores={class=-4},team=dead] at @s run advancement grant @a[team=c
 execute as @a[scores={class=-5},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/stunman_death
 execute as @a[scores={class=-6},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/fisherman_death
 execute as @a[scores={class=-7},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/miner_death
+execute as @a[scores={class=-8},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/merchant_die
 
 #================================================================================================
 # create the bossbar that shows the ingame time
@@ -66,6 +67,7 @@ execute as @a[scores={class=4},team=runners] run function ctnv:classes/runners/a
 execute as @a[scores={class=5},team=runners] run function ctnv:classes/runners/stunman
 execute as @a[scores={class=6},team=runners] run function ctnv:classes/runners/fisherman
 execute as @a[scores={class=7},team=runners] run function ctnv:classes/runners/miner
+execute as @a[scores={class=8},team=runners] run function ctnv:classes/runners/merchant
 
 execute as @a[scores={evil_class=1},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/corrupted
 execute as @a[scores={evil_class=2},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/predator

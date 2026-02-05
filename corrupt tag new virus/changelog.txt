@@ -146,3 +146,12 @@
       - fixed a critical bug in the map selector that may have been the cause of all this bullshit for the past 4 updates
       - fix more bug glitches
       - this subformat is here becasue the bug fixes were rapid
+1.2.6
+      -buffed the dark star (his nuke is now more relyable)
+      -nerfed the medic (less knockback)
+      -buffed the artificer again (his t1 trap is invisable when you are 5 blocks away)
+      -nerfed the knight (his full stun immunity actually happens at 15% like it says on the description)
+      -fixed a bug where spectators would be set to adventure mode and there there would be a lot of flashing
+      -atempted to fix a bug where the game would start immidiatly after the game reloaded
+      -added new class "the merchant"
+      - changed the names of items for some reason (imsqeker wanted this)

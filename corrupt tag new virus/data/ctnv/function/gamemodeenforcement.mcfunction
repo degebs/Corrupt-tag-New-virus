@@ -1,7 +1,8 @@
 
 #the puropuse of this funtion is to keep all players in aventure mode UNLESS debug mode is toggled
 
-execute as @a[team=!dead] run gamemode adventure @a
+execute as @a[team=!dead] run gamemode adventure @s
+
 effect give @a saturation 3 1 true
 
 

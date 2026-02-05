@@ -249,7 +249,7 @@ execute if score @s[scores={dark_star_supernova=599}] dark_star_supernova matche
 
 #particles
 execute if score @s dark_star_supernova matches 25.. at @s run particle dust{color:[0.83,0.0,1.0],scale:1} ~ ~ ~ 2 2 2 10 95 force @a
-execute if score @s dark_star_supernova matches 300.. run effect give @s slowness 1 255
+execute if score @s dark_star_supernova matches 300.. run effect give @s slowness 1 225
 
 # a text box showing "detonation time" its really a 10 second countdown to show all players
 execute if score @s dark_star_supernova matches 300.. run title @a title [{"text": " "}]
@@ -380,7 +380,7 @@ execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run par
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-100 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^100 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^-100 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..185 at @s if score tick time matches 10 run scoreboard players remove @a[team=runners,distance=..70] health 1
+execute if score @s dark_star_supernova matches 170..185 at @s if score tick time matches 10 run scoreboard players remove @a[team=runners,distance=..150] health 1
 
 
 
@@ -395,8 +395,9 @@ execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run par
 execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 25 0 25 1 15 force @a
 
 # you only get one chance to nuke everyone
-# if you miss you get your corruption set to 99
-execute if score @s dark_star_supernova matches 170..190 run scoreboard players set @s corruption 99
+# if you miss you get your corruption set to 90
+execute if score @s dark_star_supernova matches 170..190 run scoreboard players set @s corruption 90
+# buff so that he may do it again
 
 # if the nuke does not hit anyone. set everones hearts to 1
 execute if score @s dark_star_supernova matches 171 run scoreboard players set @a[team=runners] health 1
@@ -409,3 +410,6 @@ execute if score @s dark_star_supernova matches 360..380 run scoreboard players 
 execute if score @s corruption matches 101.. if score @s dark_star_nuke matches 0 run advancement grant @s only ctnv:corrupt_tag/imaginary_fire
 # make sure its acutally being checked
 scoreboard players add @s dark_star_nuke 0
+
+# completly halt the corruption tick while the nuke is active
+execute if score @s dark_star_supernova matches 100.. run scoreboard players set corruption_tick corruption 0

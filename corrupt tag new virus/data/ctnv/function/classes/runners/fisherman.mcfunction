@@ -16,7 +16,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:fishing_rod",Slot:0b}]}]
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:fishing_rod",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:fishing_rod"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:fishing_rod",Slot:0b}]}] run item replace entity @s hotbar.0 with fishing_rod[custom_name=[{"text":"yee old fishing rod","italic":false}],enchantments={knockback:1,unbreaking:255}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:fishing_rod",Slot:0b}]}] run item replace entity @s hotbar.0 with fishing_rod[custom_name=[{"text":"Admiral Hasley","italic":false}],enchantments={knockback:1,unbreaking:255}]
 #==============================================================================================================================================================
 # permanent speed boost (identical to archer)
 effect give @s speed 6 0 true
@@ -33,7 +33,7 @@ execute at @s unless entity @s[nbt={Inventory:[{id:"minecraft:cobweb"}]}] if sco
 # give the hunter a trap item, make sure he cannot drop it
 # Give the hunter a trap item in hotbar slot 3 if they don't already have it and are at least 15% corrupt
 execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:cobweb"}] run kill @e[type=item,nbt={Item:{id:"minecraft:cobweb"}}]
-execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:cobweb"}] if score @s fishing_net_trap matches 0 run item replace entity @s hotbar.3 with cobweb[custom_name=[{"text":"fishing net","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:cobweb"}] if score @s fishing_net_trap matches 0 run item replace entity @s hotbar.3 with cobweb[custom_name=[{"text":"Snatcher","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a fishing net","italic":false}]]]
 
 # Decrease cooldown if active
 execute if score @s fishing_net_trap matches 1.. run scoreboard players remove @s fishing_net_trap 1

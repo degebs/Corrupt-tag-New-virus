@@ -23,16 +23,16 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b
 
 #============================================================================================================================================================
 # full stun immunity
-effect clear @s slowness
-effect clear @s blindness
+execute if score @s corruption matches 15.. run effect clear @s slowness
+execute if score @s corruption matches 15.. run effect clear @s blindness
 # full knockback imunity
-attribute @s knockback_resistance base set 2000
+execute if score @s corruption matches 15.. run attribute @s knockback_resistance base set 2000
 # if the knight gets hit do a bunch of particles
-execute at @s if score @s hit matches 1.. run particle sonic_boom ~ ~1 ~ 0.1 0.1 0.1 1 2 force @a
-execute at @s if score @s hit matches 1.. run playsound minecraft:entity.warden.sonic_charge block @a ~ ~ ~ 1 2 0.5 
-execute at @s if score @s hit matches 1.. run scoreboard players set @s hit 0
+execute if score @s corruption matches 15.. run execute at @s if score @s hit matches 1.. run particle sonic_boom ~ ~1 ~ 0.1 0.1 0.1 1 2 force @a
+execute if score @s corruption matches 15.. run execute at @s if score @s hit matches 1.. run playsound minecraft:entity.warden.sonic_charge block @a ~ ~ ~ 1 2 0.5 
+execute if score @s corruption matches 15.. run execute at @s if score @s hit matches 1.. run scoreboard players set @s hit 0
 
-
+# for the longest time this did not happen at 15% corruption. now it does. because he needs a nerf
 
 #==========================================================================================================================================================
 #                            15% corruption!

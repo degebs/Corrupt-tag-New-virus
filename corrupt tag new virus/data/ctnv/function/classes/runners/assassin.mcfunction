@@ -17,7 +17,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}]
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:stone_sword"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with stone_sword[custom_name=[{"text":"shifty daggar","italic":false}],enchantments={knockback:1}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with stone_sword[custom_name=[{"text":"sKaiken","italic":false}],enchantments={knockback:1}]
 
 #==============================================================================================================================================================
 # permanent speed boost in endgame
@@ -58,7 +58,7 @@ execute if score @s[scores={assassin_charge=20..}] assassin_charge matches 20.. 
 # check to see if the ink sac has been dropped.
 # give the assassin the Jump item. make sure they can't manipulate it
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:ink_sac",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:ink_sac"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:ink_sac",Slot:1b}]}] if score @s assassin_charge matches 0 run item replace entity @s hotbar.1 with ink_sac[custom_name=[{"text":"speed ink","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:ink_sac",Slot:1b}]}] if score @s assassin_charge matches 0 run item replace entity @s hotbar.1 with ink_sac[custom_name=[{"text":"Supido","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
 
 # cooldown visuals using gray dye
 execute if score @s assassin_charge matches 500 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 25

@@ -35,7 +35,7 @@ execute if score @s[scores={bulk=200..}] bulk matches 200.. at @s[scores={bulk=2
 # give the bulk the Jump candle. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] run clear @a cyan_candle
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:cyan_candle"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] if score @s bulk matches 0 run item replace entity @s hotbar.1 with cyan_candle[custom_name=[{"text":"jump candle","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:1b}]}] if score @s bulk matches 0 run item replace entity @s hotbar.1 with cyan_candle[custom_name=[{"text":"Häagen Dazs","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
 
 # do a cooldown timer with drey dye
 execute if score @s[scores={bulk=299}] bulk matches 299 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 15
@@ -66,7 +66,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] 
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:iron_sword"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with iron_sword[custom_name=[{"text":"bulky sword","italic":false}],rarity=uncommon,enchantments={knockback:2},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with iron_sword[custom_name=[{"text":"The Sultan of Swing","italic":false}],rarity=uncommon,enchantments={knockback:2},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 #==============================================================================================================================================================
@@ -77,7 +77,7 @@ execute if score @s bulk_totem matches 1.. run clear @s totem_of_undying
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 run kill @e[type=item,nbt={Item:{id:"minecraft:totem_of_undying"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 run item replace entity @s hotbar.2 with totem_of_undying
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 run item replace entity @s hotbar.2 with totem_of_undying[item_name="Freyr"]
 # if the player is at 0 health, trigger the totem.
 # triggering the totem means
 # 1. set the bulkts health back to its max

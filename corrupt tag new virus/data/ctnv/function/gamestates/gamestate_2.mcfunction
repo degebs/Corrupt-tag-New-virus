@@ -132,6 +132,9 @@ execute as @a[scores={class=7}] run scoreboard players set @s medic_heal 10
 execute as @a[scores={class=7}] run scoreboard players set @s miner_lantern 10
 
 scoreboard players set @a[scores={class=2}] acher_arrow_count 5
+scoreboard players set @a[scores={class=8}] merchant_arrow_count 3
+scoreboard players set @a[scores={class=8}] merchant_luck 4
+
 
 scoreboard players set @a[scores={class=5}] trident_throw 0
 scoreboard players set @a[scores={class=5}] stunman_trap 10
