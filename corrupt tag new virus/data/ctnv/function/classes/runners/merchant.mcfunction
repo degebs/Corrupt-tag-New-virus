@@ -39,6 +39,14 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if sc
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if score @s merchant_arrow_count matches 5 run item replace entity @s hotbar.1 with arrow 5
 
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if score @s merchant_arrow_count matches 6 run item replace entity @s hotbar.1 with arrow 6
+
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if score @s merchant_arrow_count matches 7 run item replace entity @s hotbar.1 with arrow 7
+
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if score @s merchant_arrow_count matches 8 run item replace entity @s hotbar.1 with arrow 8
+
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if score @s merchant_arrow_count matches 9.. run item replace entity @s hotbar.1 with arrow 9
+
 # check if the merchant launches his arrow
 execute if score @s cross_bow_shot matches 1 run clear @s arrow
 execute if score @s cross_bow_shot matches 1 run scoreboard players remove @s merchant_arrow_count 1
@@ -46,7 +54,7 @@ execute if score @s cross_bow_shot matches 1 run scoreboard players remove @s me
 # gain 10 luck for shooting an arrow
 execute if score @s cross_bow_shot matches 1 run scoreboard players add @s merchant_luck 15
 # gain 3 luck per second if within 2 blocks of the corrupted
-execute at @s if entity @a[distance=..2,team=corrupted] if score tick time matches 2 run scoreboard players add @s merchant_luck 3
+execute at @s if entity @a[distance=..2,team=corrupted] if score tick time matches 2 run scoreboard players add @s merchant_luck 4
 
 
 execute if score @s cross_bow_shot matches 1 run scoreboard players reset @s cross_bow_shot
@@ -73,7 +81,8 @@ execute if score 360 time matches 20 run scoreboard players add @s merchant_luck
 execute if score 360 time matches 20 run function ctnv:one_time_function/merchant_coin_giver
 
 
-
+# grant an acheavement if the luck is 100 or more
+execute if score @s merchant_luck matches 100.. if score 360 time matches 20 run advancement grant @s only ctnv:corrupt_tag/merchant_luck_100
 
 # sycle the rng
 execute if score tick time matches 5 run scoreboard players add @s merchant_rng 2

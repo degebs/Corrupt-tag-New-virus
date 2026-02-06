@@ -35,7 +35,7 @@ execute if score @s merchant_rng matches 60..65 run effect give @s speed 30 2 tr
 execute if score @s merchant_rng matches 60..65 if score @s corruption matches 25.. run scoreboard players remove @s corruption 24
 execute if score @s merchant_rng matches 60..65 run particle enchant ~ ~1 ~ 0.5 0.8 0.5 1 30 normal
 execute if score @s merchant_rng matches 60..65 run particle happy_villager ~ ~1 ~ 0.5 0.5 0.5 0 25 normal
-execute if score @s merchant_rng matches 60..65 run tellraw @s [{"text":"✨ ","color":"yellow"},{"text":"Extended Speed & Cleansing!","color":"gold","bold":true}]
+execute if score @s merchant_rng matches 60..65 run tellraw @s [{"text":"✨ ","color":"yellow"},{"text":"Extended Speed & Cleansing Corruption!","color":"gold","bold":true}]
 
 # more stuff
 execute if score @s merchant_rng matches 66..70 run particle portal ~ ~1 ~ 0.5 1 0.5 1 100 normal
@@ -45,9 +45,10 @@ execute if score @s merchant_rng matches 66..70 run tp @s @r[team=runners]
 execute if score @s merchant_rng matches 66..70 run particle portal ~ ~1 ~ 0.5 1 0.5 1 50 normal
 
 # arrow related stuff
-execute if score @s merchant_rng matches 71..80 run scoreboard players set @s merchant_arrow_count 5
+execute if score @s merchant_rng matches 71..80 run clear @s arrow
+execute if score @s merchant_rng matches 71..80 run scoreboard players add @s merchant_arrow_count 5
 execute if score @s merchant_rng matches 71..80 run particle flame ~ ~1 ~ 0.3 0.5 0.3 0.02 20 normal
-execute if score @s merchant_rng matches 71..80 run tellraw @s [{"text":"🏹 ","color":"red"},{"text":"5 Special Arrows Granted!","color":"yellow","bold":true}]
+execute if score @s merchant_rng matches 71..80 run tellraw @s [{"text":"🏹 ","color":"red"},{"text":"5 extra Arrows Granted!","color":"yellow","bold":true}]
 
 # crossbow related stuff
 execute if score @s merchant_rng matches 81..90 run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Boston the BUFFED crossbow","italic":false}],enchantments={punch:2,multishot:1,quick_charge:5}]
@@ -68,3 +69,10 @@ execute if score @s merchant_rng matches 91..99 run tellraw @s [{"text":"★★�
 
 # acheave the good coin advancement
 execute if score @s merchant_rng matches 0..99 run advancement grant @s only ctnv:corrupt_tag/merchant_good_coin
+
+
+# remove bad effects
+effect clear @s blindness
+effect clear @s glowing
+effect clear @s slowness
+effect clear @s darkness

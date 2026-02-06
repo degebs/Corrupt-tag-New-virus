@@ -155,3 +155,8 @@
       -atempted to fix a bug where the game would start immidiatly after the game reloaded
       -added new class "the merchant"
       - changed the names of items for some reason (imsqeker wanted this)
+1.2.7
+      -fixed a few issues with the merchants coin (some effects were not given)
+      -first balence attempt with the merchant (getting good luck removes bad effects)
+      -added a button to reload the game if it ever decided to start automatically
+      -added merchant related acheivements

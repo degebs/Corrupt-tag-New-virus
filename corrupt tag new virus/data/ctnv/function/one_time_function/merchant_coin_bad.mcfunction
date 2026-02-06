@@ -30,8 +30,8 @@ execute if score @s merchant_rng matches 30..50 run particle squid_ink ~ ~1.5 ~ 
 execute if score @s merchant_rng matches 30..50 run tellraw @s [{"text":"● ","color":"black"},{"text":"Blinded!","color":"dark_gray","bold":true}]
 
 execute if score @s merchant_rng matches 51..59 run effect give @s glowing 30 2 true
-execute if score @s merchant_rng matches 51..59 run particle flame ~ ~1 ~ 0.5 0.8 0.5 0.02 30 normal
-execute if score @s merchant_rng matches 51..59 run particle smoke ~ ~1 ~ 0.5 0.8 0.5 0.05 20 normal
+execute if score @s merchant_rng matches 51..59 run particle flame ~ ~1 ~ 1 0.8 1 0.02 300 normal
+execute if score @s merchant_rng matches 51..59 run particle smoke ~ ~1 ~ 1 0.8 1 0.05 200 normal
 execute if score @s merchant_rng matches 51..59 run tellraw @s [{"text":"👁 ","color":"yellow"},{"text":"You're now EXPOSED!","color":"gold","bold":true}]
 
 
@@ -45,19 +45,19 @@ execute if score @s merchant_rng matches 60..65 run tellraw @s [{"text":"☠ ","
 
 
 # more stuff
-execute if score @s merchant_rng matches 66..70 run particle reverse_portal ~ ~1 ~ 0.5 1 0.5 1 80 normal
-execute if score @s merchant_rng matches 66..70 run playsound entity.enderman.teleport master @a ~ ~ ~ 1 0.7
-execute if score @s merchant_rng matches 66..70 run tellraw @s [{"text":"⚡ ","color":"red"},{"text":"Banished to the corrupted!","color":"dark_red","bold":true}]
-execute if score @s merchant_rng matches 66..70 run tp @s @r[team=corrupted]
-execute if score @s merchant_rng matches 66..70 run particle large_smoke ~ ~1 ~ 0.5 1 0.5 0.1 50 normal
+execute if score @s merchant_rng matches 66..73 run particle portal ~ ~1 ~ 0.5 1 0.5 1 80 normal
+execute if score @s merchant_rng matches 66..73 run tp @s @r[team=corrupted]
+execute if score @s merchant_rng matches 66..73 run particle reverse_portal ~ ~1 ~ 0.5 1 0.5 1 80 normal
+execute if score @s merchant_rng matches 66..73 run playsound entity.enderman.teleport master @a ~ ~ ~ 1 0.7
+execute if score @s merchant_rng matches 66..73 run tellraw @s [{"text":"⚡ ","color":"red"},{"text":"Banished to the corrupted!","color":"dark_red","bold":true}]
+execute if score @s merchant_rng matches 66..73 run particle large_smoke ~ ~1 ~ 0.5 1 0.5 0.1 50 normal
 
 # arrow related stuff
-execute if score @s merchant_rng matches 71..80 run scoreboard players set @s merchant_arrow_count 0
-execute if score @s merchant_rng matches 71..80 run clear @s
-execute if score @s merchant_rng matches 71..80 run particle poof ~ ~1 ~ 0.5 0.5 0.5 0.05 50 normal
-execute if score @s merchant_rng matches 71..80 run playsound entity.item.break master @s ~ ~ ~ 1 0.8
-execute if score @s merchant_rng matches 71..80 run tellraw @s [{"text":"✖ ","color":"dark_red"},{"text":"All items STOLEN!","color":"red","bold":true}]
-
+execute if score @s merchant_rng matches 74..80 run scoreboard players set @s merchant_arrow_count 0
+execute if score @s merchant_rng matches 74..80 run clear @s
+execute if score @s merchant_rng matches 74..80 run particle poof ~ ~1 ~ 0.5 0.5 0.5 0.05 50 normal
+execute if score @s merchant_rng matches 74..80 run playsound entity.item.break master @s ~ ~ ~ 1 0.8
+execute if score @s merchant_rng matches 74..80 run tellraw @s [{"text":"✖ ","color":"dark_red"},{"text":"All items STOLEN!","color":"red","bold":true}]
 # crossbow related stuff
 execute if score @s merchant_rng matches 81..90 run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"weak crossbow","italic":false}]]
 execute if score @s merchant_rng matches 81..90 run scoreboard players set @s merchant_arrow_count 0

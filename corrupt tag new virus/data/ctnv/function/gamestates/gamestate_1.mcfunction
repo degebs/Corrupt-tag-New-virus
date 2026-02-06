@@ -30,8 +30,9 @@ execute if score @a[team=party_lead,limit=1] map_selection matches 0 run tellraw
 team remove party_lead
 execute if score countdown time matches 30 run clear @a
 #clear everyones inventory
-
-
+#=======================================================================
+# there may still be an issue where the game starts immidiatly after reloading
+execute if score countdown time matches 28 if score tick time matches 1 run tellraw @a [{"text":"Did you not mean to start? ","color":"yellow"},{"text":"click here","color":"gold","click_event":{"action":"run_command","command":"/reload"},"hover_event":{"action":"show_text","value":"/reload"}}]
 
 #=======================================================================
 # we need to check if any players leave during this state and if they do preform another panic
