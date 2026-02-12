@@ -62,7 +62,7 @@ execute if score @s corruption matches 50.. unless entity @s[nbt={Inventory:[{id
 
 execute if score @s corruption matches 50.. if score @s knight_speed_boost matches 1.. run scoreboard players remove @s knight_speed_boost 1
 # give the corrupted speed
-execute if score @s corruption matches 50.. if score @s[scores={knight_speed_boost=599}] knight_speed_boost matches 599 run effect give @s speed 7 3
+execute if score @s corruption matches 50.. if score @s[scores={knight_speed_boost=599}] knight_speed_boost matches 599 run effect give @s speed 1 6
 
 # sound effect
 execute if score @s[scores={knight_speed_boost=599}] knight_speed_boost matches 599 run playsound entity.generic.eat player @s ~ ~ ~ 1 0.3 0.5

@@ -59,7 +59,7 @@ execute if score @s merchant_rng matches 81..90 run tellraw @s [{"text":"⚔ ","
 
 # OP buffs
 execute if score @s merchant_rng matches 91..99 run effect give @s speed 50 3 true
-execute if score @s merchant_rng matches 91..99 run effect give @s jump_boost 50 2 true
+execute if score @s merchant_rng matches 91..99 run effect give @s jump_boost 50 1 true
 execute if score @s merchant_rng matches 91..99 run effect give @s invisibility 5 3 true
 execute if score @s merchant_rng matches 91..99 run particle dragon_breath ~ ~1 ~ 0.5 1 0.5 0.1 50 normal
 execute if score @s merchant_rng matches 91..99 run particle firework ~ ~1 ~ 0.5 0.5 0.5 0.2 30 normal

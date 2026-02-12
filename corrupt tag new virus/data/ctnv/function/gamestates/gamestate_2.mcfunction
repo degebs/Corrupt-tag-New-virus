@@ -114,7 +114,7 @@ title @a times 0 120 1
 #its particles are what disinguish it.
 execute if score tick time matches 1 if score countdown time matches 2 as @e[type=turtle,scores={map_selection=1},limit=1,sort=nearest] at @s run summon armor_stand ~ ~ ~ {Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["corruption_part"]}
 
-
+kill @e[type=experience_orb]
 #=================================================================================================
 #class specific stuff
 
@@ -125,7 +125,7 @@ scoreboard players set @a[scores={bulk_totem=1..}] bulk_totem 0
 # when it comes to cooldowns make sure that they dont immidialtly go off
 
 # uncorrupted cooldowns
-execute as @a[scores={class=3}] run scoreboard players set @s bulk 10
+execute as @a[scores={class=2}] run scoreboard players set @s bulk 10
 
 execute as @a[scores={class=1}] run scoreboard players set @s medic_heal 10
 execute as @a[scores={class=7}] run scoreboard players set @s medic_heal 10

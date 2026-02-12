@@ -160,3 +160,8 @@
       -first balence attempt with the merchant (getting good luck removes bad effects)
       -added a button to reload the game if it ever decided to start automatically
       -added merchant related acheivements
+1.2.8
+      -did a rebalance on the merchant (his coin should be more fair)
+      - got rid of the bulks jump candle and gave it to the archer (huge balance change)
+      - changed the knights speed boost to be a short dash (nerf)
+      

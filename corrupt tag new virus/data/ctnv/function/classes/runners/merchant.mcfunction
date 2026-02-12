@@ -52,7 +52,7 @@ execute if score @s cross_bow_shot matches 1 run clear @s arrow
 execute if score @s cross_bow_shot matches 1 run scoreboard players remove @s merchant_arrow_count 1
 
 # gain 10 luck for shooting an arrow
-execute if score @s cross_bow_shot matches 1 run scoreboard players add @s merchant_luck 15
+execute if score @s cross_bow_shot matches 1 run scoreboard players add @s merchant_luck 25
 # gain 3 luck per second if within 2 blocks of the corrupted
 execute at @s if entity @a[distance=..2,team=corrupted] if score tick time matches 2 run scoreboard players add @s merchant_luck 4
 
@@ -77,6 +77,9 @@ execute if score seconds time matches 50 if score tick time matches 3 unless sco
 
 # it also increases your luck score by 1 every time it hits 100
 execute if score 360 time matches 20 run scoreboard players add @s merchant_luck 1
+# tripple luck gain during endgame
+execute if score 360 time matches 20 if score endgame state matches 1 run scoreboard players add @s merchant_luck 3
+
 #every time the rng hits 100 give the player a coin
 execute if score 360 time matches 20 run function ctnv:one_time_function/merchant_coin_giver
 
@@ -87,6 +90,10 @@ execute if score @s merchant_luck matches 100.. if score 360 time matches 20 run
 # sycle the rng
 execute if score tick time matches 5 run scoreboard players add @s merchant_rng 2
 execute if score tick time matches 5 if score @s merchant_rng matches 100.. run scoreboard players set @s merchant_rng 0
+
+# when the merchans luck reaches 50 or more we cant be having it drop low tier rewards
+# intead we shall keep it from 50 to 100
+execute if score tick time matches 5 if score @s merchant_rng matches 0..49 if score @s merchant_luck matches 60.. run scoreboard players set @s merchant_rng 51
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -100,6 +107,9 @@ execute if score @s merchant_coin matches 1.. if score @s merchant_luck >= @s me
 
 # check if bad ending
 execute if score @s merchant_coin matches 1.. if score @s merchant_luck < @s merchant_rng at @s run function ctnv:one_time_function/merchant_coin_bad
+# make the rng less predictable
+execute if score @s merchant_coin matches 1.. run scoreboard players add @s merchant_rng 25
+
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # when the merchant drops his coin reset his luck to 0

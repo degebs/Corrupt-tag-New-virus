@@ -67,8 +67,8 @@ execute if score @s merchant_rng matches 81..90 run playsound block.anvil.land m
 execute if score @s merchant_rng matches 81..90 run tellraw @s [{"text":"⚔ ","color":"dark_red"},{"text":"Your crossbow has been NERFED!","color":"red","bold":true}]
 
 # CRIPPLING DEBUFFS
-execute if score @s merchant_rng matches 91..99 run effect give @s slowness 50 3 true
-execute if score @s merchant_rng matches 91..99 run effect give @s blindness 50 2 true
+execute if score @s merchant_rng matches 91..99 run effect give @s slowness 20 3 true
+execute if score @s merchant_rng matches 91..99 run effect give @s blindness 20 2 true
 execute if score @s merchant_rng matches 91..99 run particle soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.1 60 normal
 execute if score @s merchant_rng matches 91..99 run particle dust{color:[0.1,0.0,0.1],scale:2} ~ ~1 ~ 0.8 1 0.8 0 50 normal
 execute if score @s merchant_rng matches 91..99 run particle squid_ink ~ ~1.5 ~ 0.5 0.5 0.5 0.15 50 normal
