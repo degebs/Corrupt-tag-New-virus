@@ -6,8 +6,11 @@
 #╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝     ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝
                                                                
                                                     
-# the hunder has the most items out of any class.
+# the artificer has the most items out of any class.
 # his whole playstyle is all about traps
+# origionally hunter. his name change was HOTLY debated until it settled on "artificer"
+
+# imsqeker insited it be called "mechanic"
 
 # give him his armor
 item replace entity @s armor.chest with leather_chestplate[trim={pattern:vex,material:emerald},dyed_color=4210246,enchantments={binding_curse:1}]

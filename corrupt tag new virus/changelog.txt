@@ -164,4 +164,11 @@
       -did a rebalance on the merchant (his coin should be more fair)
       - got rid of the bulks jump candle and gave it to the archer (huge balance change)
       - changed the knights speed boost to be a short dash (nerf)
-      
+1.2.9
+      -buffed the knight (jump boost)
+      -fixed a bug where the archers jump candle would immidiatly trigger
+      - buffed the medic. better heals during endgame
+      - buffed archers arrow regeneration time
+      -fixed class swappers not includes merchant
+      -nerfed the merchants luck generation when shooting arrows
+      - quality of life changes to the other game modes

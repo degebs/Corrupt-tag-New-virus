@@ -5,7 +5,7 @@
 #██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
 #╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
                                                                                 
-# this corrupted class will use the new spear item they added in the lates version of minecraft
+# this corrupted class will use the new spear item they added in the latest version of minecraft
 
 
 # give him his armor

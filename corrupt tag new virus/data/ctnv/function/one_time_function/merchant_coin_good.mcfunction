@@ -26,7 +26,7 @@ execute if score @s merchant_rng matches 30..50 run effect give @s jump_boost 3 
 execute if score @s merchant_rng matches 30..50 run particle cloud ~ ~ ~ 0.3 0 0.3 0.05 15 normal
 execute if score @s merchant_rng matches 30..50 run tellraw @s [{"text":"⬆ ","color":"white"},{"text":"Jump Boost!","color":"green"}]
 
-execute if score @s merchant_rng matches 51..59 run effect give @s jump_boost 6 2 true
+execute if score @s merchant_rng matches 51..59 run effect give @s jump_boost 12 1 true
 execute if score @s merchant_rng matches 51..59 run particle cloud ~ ~ ~ 0.4 0 0.4 0.08 20 normal
 execute if score @s merchant_rng matches 51..59 run tellraw @s [{"text":"⬆ ","color":"white"},{"text":"Super Jump Boost!","color":"green","bold":true}]
 

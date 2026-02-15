@@ -4,6 +4,7 @@
 #██╔══██║██╔═══╝ ██╔═══╝ ██╔══██║██╔══██╗██║   ██║   ██║██║   ██║██║╚██╗██║
 #██║  ██║██║     ██║     ██║  ██║██║  ██║██║   ██║   ██║╚██████╔╝██║ ╚████║
 #╚═╝  ╚═╝╚═╝     ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+# the invisable one
 
 # give the apparition his armor until his 15% abbility
 execute as @s[team=corrupted] unless score @s corruption matches 15.. run item replace entity @s[scores={evil_class=3}] armor.chest with netherite_chestplate[rarity=uncommon,enchantments={binding_curse:1,},trim={pattern:bolt,material:redstone}]

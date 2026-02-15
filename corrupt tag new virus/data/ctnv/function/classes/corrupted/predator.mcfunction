@@ -85,7 +85,7 @@ execute if score @s corruption matches 50.. unless entity @s[nbt={Inventory:[{id
 
 execute if score @s corruption matches 50.. if score @s predator_corrupted_t2_cooldown matches 1.. run scoreboard players remove @s predator_corrupted_t2_cooldown 1
 # give the corrupted invisibility
-execute if score @s corruption matches 50.. if score @s[scores={predator_corrupted_t2_cooldown=599}] predator_corrupted_t2_cooldown matches 599 run effect give @s invisibility 10 3 true
+execute if score @s corruption matches 50.. if score @s[scores={predator_corrupted_t2_cooldown=599}] predator_corrupted_t2_cooldown matches 599 run effect give @s invisibility 15 3 true
 
 # sound effect
 execute if score @s[scores={predator_corrupted_t2_cooldown=599}] predator_corrupted_t2_cooldown matches 599 run playsound entity.vex.charge player @s ~ ~ ~ 1 0.3 0.5
@@ -159,7 +159,7 @@ execute if score @s corruption matches 90.. unless entity @s[nbt={Inventory:[{id
 execute if score @s corruption matches 90.. if score @s predator_corrupted_t3_cooldown matches 1.. run scoreboard players remove @s predator_corrupted_t3_cooldown 1
 
 # apply slowness to all runners when ability is used
-execute if score @s[scores={predator_corrupted_t3_cooldown=399}] predator_corrupted_t3_cooldown matches 399 run effect give @a[team=runners] slowness 6 10 true
+execute if score @s[scores={predator_corrupted_t3_cooldown=399}] predator_corrupted_t3_cooldown matches 399 run effect give @a[team=runners] slowness 12 10 true
 execute if score @s[scores={predator_corrupted_t3_cooldown=320..}] predator_corrupted_t3_cooldown matches 320.. at @a[team=runners] run particle raid_omen ~ ~1 ~ 0.05 0.5 0.05 0.2 20 force @a 
 
 

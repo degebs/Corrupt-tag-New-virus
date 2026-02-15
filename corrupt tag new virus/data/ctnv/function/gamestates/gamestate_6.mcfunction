@@ -106,7 +106,7 @@ execute as @a[team=runners] run clear @s golden_helmet
 # when it comes to cooldowns make sure that they dont immidialtly go off
 # if the corrupted one has a long cooldown dont reset it. if its short or 0 reset it
 # the corruption tier cooldowns are staggard to prevent a bug
-execute as @a[scores={class=3},team=corrupted] run scoreboard players set @s bulk 10
+execute as @a[scores={class=2},team=corrupted] run scoreboard players set @s bulk 10
 
 execute as @a[scores={class=1},team=corrupted] run scoreboard players set @s medic_heal 10
 execute as @a[scores={class=7},team=corrupted] run scoreboard players set @s medic_heal 10
@@ -490,3 +490,7 @@ scoreboard objectives setdisplay below_name
 #=================================================================================================
 # secret corrupted supercharge "domain expansion"
 execute if score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion
+
+#=================================================================================================
+# the glowing effect completly ruins the vibe of infection, so we will clear it randomly
+execute as @r[team=runners] if score 360 time matches 40.. run effect clear @s glowing

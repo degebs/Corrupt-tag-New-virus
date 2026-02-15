@@ -7,6 +7,10 @@
 # the knight is a wierd kind of guy. his kit is inconsistent.
 #im gonna have to change the book for this one
 
+# by far the most contraversial class. the entire group demmands that this class be NERFED to hell.
+# he has receved so many L's in recent history.
+#every other update has nerfed the knight in some way
+
 # armor setup
 item replace entity @s armor.chest with iron_chestplate[trim={pattern:silence,material:iron},enchantments={binding_curse:1}]
 item replace entity @s armor.head with golden_helmet[trim={pattern:silence,material:iron},enchantments={binding_curse:1}]
@@ -41,7 +45,7 @@ execute if score @s corruption matches 15.. run execute at @s if score @s hit ma
 execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 15% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
 execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"Your attack power doubles. ","color":"dark_purple"}]
-
+execute if score @s corruption matches 15 if score corruption_tick corruption matches 1 if score tick time matches 5 run effect give @s speed 15 0 true
 # do an extra damage
 execute if score @s corruption matches 15.. run execute as @a[team=runners] if score @s hit matches 1.. if score @s health matches 1.. run scoreboard players remove @s health 1
 execute if score @s corruption matches 15.. run execute as @a[team=runners] at @s if score @s hit matches 1.. if score @s health matches 1.. run particle explosion ~ ~ ~ 0.5 0.5 0.5 1 15 normal @a
@@ -165,8 +169,9 @@ execute if score @s corruption matches 90 if score corruption_tick corruption ma
 execute if score @s corruption matches 90 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 
 # jump boost and speed boost
-effect give @s jump_boost 1 0 true
-effect give @s speed 1 0 true 
+execute if score @s corruption matches 90 run effect give @s jump_boost 1 1 true
+execute if score @s corruption matches 90 run effect give @s speed 1 0 true 
+
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # the corruption treatment

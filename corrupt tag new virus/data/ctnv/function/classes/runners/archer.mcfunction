@@ -53,6 +53,9 @@ kill @e[type=arrow,nbt={inGround:1b}]
 execute if score seconds time matches 20 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run clear @s arrow
 execute if score seconds time matches 20 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run scoreboard players add @s acher_arrow_count 1
 
+execute if score seconds time matches 40 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run clear @s arrow
+execute if score seconds time matches 40 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run scoreboard players add @s acher_arrow_count 1
+
 execute if score seconds time matches 50 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run clear @s arrow
 execute if score seconds time matches 50 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run scoreboard players add @s acher_arrow_count 1
 
@@ -86,7 +89,7 @@ execute if score @s[scores={bulk=200..}] bulk matches 200.. at @s[scores={bulk=2
 # give the bulk the Jump candle. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:2b}]}] run clear @a cyan_candle
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:2b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:cyan_candle"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:2b}]}] if score @s bulk matches 0 run item replace entity @s hotbar.2 with cyan_candle[custom_name=[{"text":"Häagen Dazs","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:2b}]}] if score @s bulk matches 0 run item replace entity @s hotbar.2 with cyan_candle[custom_name=[{"text":"Jump candle","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to jump","italic":false}]],rarity=uncommon]
 
 # do a cooldown timer with drey dye
 execute if score @s[scores={bulk=299}] bulk matches 299 run item replace entity @s hotbar.2 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 15

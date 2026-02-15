@@ -73,7 +73,13 @@ execute as @a[team=runners] if score @s class matches 6 unless data entity @s {I
 execute as @a[team=runners] if score @s class matches 6 unless data entity @s {Inventory:[{id:"minecraft:cobweb"}]} run give @s cobweb[custom_name=[{"text":"fishing net","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]] 3
 execute as @a[team=runners] if score @s class matches 6 unless data entity @s {Inventory:[{id:"minecraft:heart_of_the_sea"}]} run give @s heart_of_the_sea[custom_name=[{"text":"speed buff","italic":false}],lore=[[{"text":"drop for a speed buff","italic":false}]],rarity=rare]
 
+# miner
+execute as @a[team=runners] if score @s class matches 7 unless data entity @s {Inventory:[{id:"minecraft:copper_pickaxe"}]} run give @s copper_pickaxe[custom_name=[{"text":"copper pickaxe","italic":false}],rarity=uncommon,enchantments={efficiency:2},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute as @a[team=runners] if score @s class matches 7 unless data entity @s {Inventory:[{id:"minecraft:gold_nugget"}]} run give @s gold_nugget[custom_name=[{"text":"gold nugget","italic":false,"color":"yellow"}],lore=[[{"text":"drop to gain temporary buffs","italic":false}]],rarity=uncommon] 3
 
+# merchant
+execute as @a[team=runners] if score @s class matches 8 unless data entity @s {Inventory:[{id:"minecraft:sunflower"}]} run give @s emerald[custom_name=[{"text":"coin of chance","italic":false,"color":"green"}],lore=[[{"text":"currency drop to gamble","italic":false}]],rarity=uncommon] 5
+execute as @a[team=runners] if score @s class matches 8 unless data entity @s {Inventory:[{id:"minecraft:crossbow"}]} run give @s crossbow[custom_name=[{"text":" crossbow","italic":false}],lore=[[{"text":"shoot with it!","italic":false}]],rarity=rare] 2
 
 #======================================================================================================================================================
 # calling card

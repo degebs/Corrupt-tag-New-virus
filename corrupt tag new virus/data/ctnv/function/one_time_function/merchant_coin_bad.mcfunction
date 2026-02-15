@@ -73,7 +73,8 @@ execute if score @s merchant_rng matches 91..99 run particle soul_fire_flame ~ ~
 execute if score @s merchant_rng matches 91..99 run particle dust{color:[0.1,0.0,0.1],scale:2} ~ ~1 ~ 0.8 1 0.8 0 50 normal
 execute if score @s merchant_rng matches 91..99 run particle squid_ink ~ ~1.5 ~ 0.5 0.5 0.5 0.15 50 normal
 execute if score @s merchant_rng matches 91..99 run playsound entity.wither.spawn master @a ~ ~ ~ 0.5 1.5
-execute if score @s merchant_rng matches 91..99 run tellraw @s [{"text":"★★★ ","color":"dark_red","bold":true},{"text":"CURSED!","color":"dark_purple","bold":true},{"text":" ★★★","color":"dark_red","bold":true}]
+execute if score @s merchant_rng matches 91..99 run tellraw @a [{"text":"★★★ ","color":"dark_purple","bold":true},{"selector":"@s"},{"text":" is ","color":"white"},{"text":"CURSED!","color":"dark_purple","bold":true},{"text":" ★★★","color":"dark_red","bold":true}]
+
 
 
 # acheave the bad coin advancement

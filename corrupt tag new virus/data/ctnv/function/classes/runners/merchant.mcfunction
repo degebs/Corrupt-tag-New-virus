@@ -51,8 +51,12 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:1b}]}] if sc
 execute if score @s cross_bow_shot matches 1 run clear @s arrow
 execute if score @s cross_bow_shot matches 1 run scoreboard players remove @s merchant_arrow_count 1
 
-# gain 10 luck for shooting an arrow
-execute if score @s cross_bow_shot matches 1 run scoreboard players add @s merchant_luck 25
+# gain 15 luck for shooting an arrow
+execute if score @s cross_bow_shot matches 1 run scoreboard players add @s merchant_luck 15
+# this code allows for somthing called "arrow cycling" with allows players to quickly build luck
+# by shooting arrows randomly
+# this is an intended feature witch means that it must be balanced
+
 # gain 3 luck per second if within 2 blocks of the corrupted
 execute at @s if entity @a[distance=..2,team=corrupted] if score tick time matches 2 run scoreboard players add @s merchant_luck 4
 
@@ -93,7 +97,7 @@ execute if score tick time matches 5 if score @s merchant_rng matches 100.. run 
 
 # when the merchans luck reaches 50 or more we cant be having it drop low tier rewards
 # intead we shall keep it from 50 to 100
-execute if score tick time matches 5 if score @s merchant_rng matches 0..49 if score @s merchant_luck matches 60.. run scoreboard players set @s merchant_rng 51
+execute if score tick time matches 5 if score @s merchant_rng matches 0..49 if score @s merchant_luck matches 60.. run scoreboard players set @s merchant_rng 55
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

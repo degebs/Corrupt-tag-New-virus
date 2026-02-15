@@ -91,3 +91,14 @@ execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at 
 # do it again. making him heal 2 hearts
 execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at @s run scoreboard players add @a[distance=..2,team=runners] health 1
 
+# do a BUFFED Heal during endgame
+execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at @s if score endgame state matches 1 run scoreboard players add @a[distance=..2,team=runners] health 1
+execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at @s if score endgame state matches 1 run scoreboard players add @a[distance=..2,team=runners] health 1
+execute if score @s medic_heal matches 298 run execute as @e[tag=heal_totem] at @s if score endgame state matches 1 run scoreboard players add @a[distance=..2,team=runners] health 1
+# 3 times
+
+execute as @e[tag=heal_totem] if score endgame state matches 1 at @s run particle enchant ^ ^1 ^2 0 0 0 01 20 force @a
+execute as @e[tag=heal_totem] if score endgame state matches 1 at @s run particle enchant ^ ^1 ^-2 0 0 0 01 20 force @a
+execute as @e[tag=heal_totem] if score endgame state matches 1 at @s run particle enchant ^-2 ^1 ^ 0 0 0 01 20 force @a
+execute as @e[tag=heal_totem] if score endgame state matches 1 at @s run particle enchant ^2 ^1 ^ 0 0 0 01 20 force @a
+# better particles
