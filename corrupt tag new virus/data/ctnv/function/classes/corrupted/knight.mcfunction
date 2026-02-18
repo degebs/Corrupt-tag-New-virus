@@ -56,6 +56,9 @@ execute if score @s corruption matches 15.. run execute as @a[team=runners] at @
 #                            50% corruption!
 #==========================================================================================================================================================
 
+execute if score @s corruption matches 50.. run effect give @s speed 1 0 true 
+
+
 execute if score @s corruption matches 50 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 50% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
 execute if score @s corruption matches 50 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 
@@ -169,8 +172,7 @@ execute if score @s corruption matches 90 if score corruption_tick corruption ma
 execute if score @s corruption matches 90 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 
 # jump boost and speed boost
-execute if score @s corruption matches 90 run effect give @s jump_boost 1 1 true
-execute if score @s corruption matches 90 run effect give @s speed 1 0 true 
+execute if score @s corruption matches 90.. run effect give @s jump_boost 1 1 true
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

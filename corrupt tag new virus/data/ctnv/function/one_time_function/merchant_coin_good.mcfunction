@@ -32,7 +32,7 @@ execute if score @s merchant_rng matches 51..59 run tellraw @s [{"text":"⬆ ","
 
 # more
 execute if score @s merchant_rng matches 60..65 run effect give @s speed 30 2 true
-execute if score @s merchant_rng matches 60..65 if score @s corruption matches 25.. run scoreboard players remove @s corruption 24
+execute if score @s merchant_rng matches 60..65 if score @s corruption matches 25.. run scoreboard players remove @s corruption 10
 execute if score @s merchant_rng matches 60..65 run particle enchant ~ ~1 ~ 0.5 0.8 0.5 1 30 normal
 execute if score @s merchant_rng matches 60..65 run particle happy_villager ~ ~1 ~ 0.5 0.5 0.5 0 25 normal
 execute if score @s merchant_rng matches 60..65 run tellraw @s [{"text":"✨ ","color":"yellow"},{"text":"Extended Speed & Cleansing Corruption!","color":"gold","bold":true}]
