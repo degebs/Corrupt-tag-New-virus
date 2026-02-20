@@ -44,8 +44,8 @@ execute at @s if score tick time matches 18 run particle dust{color:[0.83,0.0,1.
 execute at @s if score tick time matches 19 run particle dust{color:[0.83,0.0,1.0],scale:1} ^-0.64 ^1 ^1.88 0 0 0 0 35 normal @a
 
 # all players within the radius are blinded
-execute at @s run effect give @a[team=runners,distance=..2] darkness 4 1
-execute at @s run effect give @a[team=runners,distance=..2] glowing 2 1
+execute at @s run effect give @p[team=runners,distance=..2] darkness 4 1
+execute at @s run effect give @p[team=runners,distance=..2] glowing 2 1
 
 #==========================================================================================================================================================
 #                            15% corruption!
@@ -64,8 +64,8 @@ execute if score @s corruption matches 15.. unless entity @s[nbt={Inventory:[{id
 
 execute if score @s corruption matches 15.. if score @s dark_star_darkness matches 1.. run scoreboard players remove @s dark_star_darkness 1
 # give the corrupted his vission of all runners
-execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @a[team=runners] darkness 10 1
-execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @a[team=runners] blindness 2 1
+execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @p[team=runners] darkness 10 1
+execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @p[team=runners] blindness 2 1
 
 # sound effect
 execute if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run playsound block.bell.use player @s ~ ~ ~ 1 0.2 0.5
@@ -349,73 +349,73 @@ execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run par
 execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-5 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^5 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..380 at @s if score tick time matches 1 run scoreboard players remove @a[team=runners,distance=..5] health 1
+execute if score @s dark_star_supernova matches 200..380 at @s if score tick time matches 1 run scoreboard players remove @p[team=runners,distance=..5] health 1
 
 execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^10 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-10 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^10 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^-10 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..375 at @s if score tick time matches 2 run scoreboard players remove @a[team=runners,distance=..10] health 1
+execute if score @s dark_star_supernova matches 200..375 at @s if score tick time matches 2 run scoreboard players remove @p[team=runners,distance=..10] health 1
 
 execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^15 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-15 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^15 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^-15 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..345 at @s if score tick time matches 3 run scoreboard players remove @a[team=runners,distance=..15] health 1
+execute if score @s dark_star_supernova matches 200..345 at @s if score tick time matches 3 run scoreboard players remove @p[team=runners,distance=..15] health 1
 
 execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^20 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-20 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^-20 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^20 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..325 at @s if score tick time matches 4 run scoreboard players remove @a[team=runners,distance=..20] health 1
+execute if score @s dark_star_supernova matches 200..325 at @s if score tick time matches 4 run scoreboard players remove @p[team=runners,distance=..20] health 1
 
 execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^25 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-25 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^25 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^-25 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..305 at @s if score tick time matches 5 run scoreboard players remove @a[team=runners,distance=..25] health 1
+execute if score @s dark_star_supernova matches 200..305 at @s if score tick time matches 5 run scoreboard players remove @p[team=runners,distance=..25] health 1
 
 execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^30 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-30 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^30 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^-30 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..285 at @s if score tick time matches 6 run scoreboard players remove @a[team=runners,distance=..30] health 1
+execute if score @s dark_star_supernova matches 200..285 at @s if score tick time matches 6 run scoreboard players remove @p[team=runners,distance=..30] health 1
 
 execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^35 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-35 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^35 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^-35 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..265 at @s if score tick time matches 7 run scoreboard players remove @a[team=runners,distance=..35] health 1
+execute if score @s dark_star_supernova matches 200..265 at @s if score tick time matches 7 run scoreboard players remove @p[team=runners,distance=..35] health 1
 
 execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^40 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-40 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^40 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^-40 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..245 at @s if score tick time matches 8 run scoreboard players remove @a[team=runners,distance=..40] health 1
+execute if score @s dark_star_supernova matches 200..245 at @s if score tick time matches 8 run scoreboard players remove @p[team=runners,distance=..40] health 1
 
 execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^45 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-45 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^45 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^-45 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..220 at @s if score tick time matches 9 run scoreboard players remove @a[team=runners,distance=..55] health 1
+execute if score @s dark_star_supernova matches 200..220 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..55] health 1
 
 execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^50 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-50 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^50 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^-50 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 195..200 at @s if score tick time matches 9 run scoreboard players remove @a[team=runners,distance=..65] health 1
+execute if score @s dark_star_supernova matches 195..200 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..65] health 1
 
 execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^60 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-60 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^60 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^-60 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..195 at @s if score tick time matches 9 run scoreboard players remove @a[team=runners,distance=..75] health 1
+execute if score @s dark_star_supernova matches 170..195 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..75] health 1
 # one final middle finger to any potential survivor ( its a last second ring expantion)
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^100 5 15 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-100 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^100 ^ ^ 5 5 5 1 15 force @a
 execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^-100 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..185 at @s if score tick time matches 10 run scoreboard players remove @a[team=runners,distance=..150] health 1
+execute if score @s dark_star_supernova matches 170..185 at @s if score tick time matches 10 run scoreboard players remove @p[team=runners,distance=..150] health 1
 
 
 
@@ -435,7 +435,7 @@ execute if score @s dark_star_supernova matches 170..190 run scoreboard players 
 # buff so that he may do it again
 
 # if the nuke does not hit anyone. set everones hearts to 1
-execute if score @s dark_star_supernova matches 200 run scoreboard players set @a[team=runners] health 1
+execute if score @s dark_star_supernova matches 171 run scoreboard players set @p[team=runners] health 1
 
 
 # calling card
