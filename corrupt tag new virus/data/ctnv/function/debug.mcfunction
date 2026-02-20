@@ -18,7 +18,8 @@ execute if score toggle debug matches 1 run team leave @a
 
 execute if score toggle debug matches 1 run give @a written_book[written_book_content={pages:[[[{"text":"summon lobby beacon","color":"green","click_event":{"action":"run_command","command":"/function ctnv:one_time_function/summon_lobby_beacon"},"hover_event":{"action":"show_text","value":"sets the spawn point basically, there can only be 1 lobby beacon so there is no need to break the previous one"}},{"text":"\n\n"},{"text":"summon map beacon","color":"dark_green","click_event":{"action":"run_command","command":"/function ctnv:one_time_function/summon_map_beacon"},"hover_event":{"action":"show_text","value":"summons a map beacon. name it with a name tag. make sure the radius is open for players to spawn... take care of the turtle"}},{"text":"\n"},{"text":"destroy map beacon","color":"dark_red","click_event":{"action":"run_command","command":"/function ctnv:one_time_function/kill_map_beacon"},"hover_event":{"action":"show_text","value":"kills a map beacon if you are near... you monster "}},{"text":"\n "}]]],title:"debug book",author:degebs,generation:0}]
 
-
+# turn off the sidebar
+scoreboard objectives remove unified_tag_settings
 
 scoreboard players add toggle debug 1
 
@@ -39,3 +40,4 @@ scoreboard players add avalable_map_index debug 0
 execute if score count debug matches 20 run advancement grant @a only ctnv:corrupt_tag/debug
 scoreboard players add count debug 1
 execute if score count debug matches 30 run scoreboard players reset count debug
+

@@ -64,7 +64,8 @@ execute if score @s corruption matches 15.. unless entity @s[nbt={Inventory:[{id
 
 execute if score @s corruption matches 15.. if score @s dark_star_darkness matches 1.. run scoreboard players remove @s dark_star_darkness 1
 # give the corrupted his vission of all runners
-execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @a[team=runners] darkness 5 1
+execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @a[team=runners] darkness 10 1
+execute if score @s corruption matches 15.. if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run effect give @a[team=runners] blindness 2 1
 
 # sound effect
 execute if score @s[scores={dark_star_darkness=599}] dark_star_darkness matches 599 run playsound block.bell.use player @s ~ ~ ~ 1 0.2 0.5
@@ -110,15 +111,49 @@ execute if score @s[scores={dark_star_darkness=20}] dark_star_darkness matches 2
 execute if score @s dark_star_darkness matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"blind runners cooldown","italic":false}]]
 
 
+#==========================================================================================================================================================
+#                            20% corruption!
+#==========================================================================================================================================================
+# wind charge
+execute if score @s corruption matches 20 if score corruption_tick corruption matches 1 if score tick time matches 5 run tellraw @s [{"text":"you are 20% ","color":"red"},{"text":"corrupt","color":"light_purple"}]
+# sound effect
+execute if score @s corruption matches 20 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
+# give him the wind charge item, make sure he cant manipulate it (2nd slot)
 
+execute if score @s dark_star_wind_charge_cooldown matches ..0 if score @s corruption matches 20.. unless entity @s[nbt={Inventory:[{id:"minecraft:wind_charge",Slot:1b}]}] run clear @s wind_charge
 
+execute if score @s dark_star_wind_charge_cooldown matches ..0 if score @s corruption matches 20.. unless entity @s[nbt={Inventory:[{id:"minecraft:wind_charge",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:wind_charge"}}]
 
+execute if score @s dark_star_wind_charge_cooldown matches ..0 if score @s corruption matches 20.. unless entity @s[nbt={Inventory:[{id:"minecraft:wind_charge",Slot:1b}]}] run item replace entity @s hotbar.1 with wind_charge[custom_name=[{"text":"dark solar wind","italic":false}],rarity=epic,attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_total,id:"1748733861505"}],equippable={slot:head,equip_sound:"minecraft:block.beacon.ambient"}]
 
+# check if the "wind charge use" is greater than 0 set the cooldown to 300 (15 seconds) and remove the item
+execute if score @s dark_star_wind_charge_use matches 1.. if score @s corruption matches 20.. run scoreboard players set @s dark_star_wind_charge_cooldown 300
+execute if score @s dark_star_wind_charge_use matches 1.. run scoreboard players reset @s dark_star_wind_charge_use
+# if the cooldown is active, remove the item and give the player the cooldown item (gray dye)
+execute if score @s dark_star_wind_charge_cooldown matches 1.. run scoreboard players remove @s dark_star_wind_charge_cooldown 1
 
-
-
-
-
+# do a cooldown timer with gray dye
+execute if score @s[scores={dark_star_wind_charge_cooldown=299}] dark_star_wind_charge_cooldown matches 299 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 15
+execute if score @s[scores={dark_star_wind_charge_cooldown=280}] dark_star_wind_charge_cooldown matches 280 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 14
+execute if score @s[scores={dark_star_wind_charge_cooldown=260}] dark_star_wind_charge_cooldown matches 260 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 13
+execute if score @s[scores={dark_star_wind_charge_cooldown=240}] dark_star_wind_charge_cooldown matches 240 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 12
+execute if score @s[scores={dark_star_wind_charge_cooldown=220}] dark_star_wind_charge_cooldown matches 220 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 11
+execute if score @s[scores={dark_star_wind_charge_cooldown=200}] dark_star_wind_charge_cooldown matches 200 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 10
+execute if score @s[scores={dark_star_wind_charge_cooldown=180}] dark_star_wind_charge_cooldown matches 180 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 9
+execute if score @s[scores={dark_star_wind_charge_cooldown=160}] dark_star_wind_charge_cooldown matches 160 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 8
+execute if score @s[scores={dark_star_wind_charge_cooldown=140}] dark_star_wind_charge_cooldown matches 140 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 7
+execute if score @s[scores={dark_star_wind_charge_cooldown=120}] dark_star_wind_charge_cooldown matches 120 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 6
+execute if score @s[scores={dark_star_wind_charge_cooldown=100}] dark_star_wind_charge_cooldown matches 100 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 5
+execute if score @s[scores={dark_star_wind_charge_cooldown=80}] dark_star_wind_charge_cooldown matches 80 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 4
+execute if score @s[scores={dark_star_wind_charge_cooldown=60}] dark_star_wind_charge_cooldown matches 60 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 3
+execute if score @s[scores={dark_star_wind_charge_cooldown=40}] dark_star_wind_charge_cooldown matches 40 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 2
+execute if score @s[scores={dark_star_wind_charge_cooldown=20}] dark_star_wind_charge_cooldown matches 20 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]] 1
+# get rid of the gray dye when the cooldown is done
+execute if score @s dark_star_wind_charge_cooldown matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"wind charge cooldown","italic":false}]]
+# particles for the wind charge
+# thick smoke particles
+execute as @e[type=wind_charge] at @s run particle minecraft:dust{color:[0.83,0.0,1.0],scale:4} ~ ~ ~ 1 1 1 0.5 25 normal @a
+execute as @e[type=wind_charge] at @s run particle minecraft:campfire_signal_smoke ~ ~ ~ 0.5 0.5 0.5 0.002 25 normal @a
 
 #==========================================================================================================================================================
 #                            50% corruption!
@@ -400,7 +435,7 @@ execute if score @s dark_star_supernova matches 170..190 run scoreboard players 
 # buff so that he may do it again
 
 # if the nuke does not hit anyone. set everones hearts to 1
-execute if score @s dark_star_supernova matches 171 run scoreboard players set @a[team=runners] health 1
+execute if score @s dark_star_supernova matches 200 run scoreboard players set @a[team=runners] health 1
 
 
 # calling card

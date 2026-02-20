@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.3.2","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.3.3","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -152,6 +152,7 @@ scoreboard objectives add predator_corrupted_t2_cooldown dummy
 scoreboard objectives add predator_corrupted_t3_cooldown dummy
 # apparition corrupted cooldowns
 scoreboard objectives add apparition_corrupted_t3_cooldown dummy
+
 #scoreboard objectives add light_level blocklight
 scoreboard objectives add apparition_light_level dummy
 scoreboard objectives add apparition_corrupted_t2_cooldown dummy
@@ -177,7 +178,8 @@ scoreboard objectives add knight_corruption_blocker dummy
 scoreboard objectives add dark_star_darkness dummy
 scoreboard objectives add dark_star_speed_boost dummy
 scoreboard objectives add dark_star_supernova dummy
-
+scoreboard objectives add dark_star_wind_charge_use minecraft.used:wind_charge
+scoreboard objectives add dark_star_wind_charge_cooldown dummy
 
 execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"the life detector is missing. fixing!","color":"yellow"}]
 execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"if you see this message, uhh. you shouldnt","color":"yellow"}]
@@ -275,6 +277,18 @@ scoreboard objectives add spawn_circle_count dummy
 scoreboard players reset @e spawn_circle_count
 kill @e[tag=spawn_point]
 scoreboard players set index spawn_circle_count 0
+
+#---------------------a visual display of the settings during pregame-------------------------------------------
+# the setting for the corrupt tag gamemode all in one scoreboard objective,
+scoreboard objectives remove unified_tag_settings
+# gotta remove it first because if its already there then it will mess up the display of the settings
+scoreboard objectives add unified_tag_settings dummy {"text":" Settings","color":"dark_purple","bold":true}
+# here we display the setting for corrupt tag for all to see
+scoreboard objectives setdisplay sidebar unified_tag_settings
+
+
+
+
 
 #---------------------give every player a unique id-------------------------------------------
 scoreboard objectives add player_ID dummy

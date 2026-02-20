@@ -157,6 +157,9 @@ execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_li
 execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t2_cooldown 10
 execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 10
 
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_wind_charge_cooldown 0
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_wind_charge_use 0
+
 
 #execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 0
 

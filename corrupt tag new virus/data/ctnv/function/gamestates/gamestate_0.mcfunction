@@ -92,6 +92,7 @@ scoreboard players enable @a[team=party_lead] ST____runner_name_tags
 scoreboard players enable @a[team=party_lead] ST____COC_difuculty
 scoreboard players enable @a[team=party_lead] ST____enable_runner_classes
 scoreboard players enable @a[team=party_lead] ST____locator_bar
+scoreboard players enable @a[team=party_lead] ST____super_speed
 
 # oh by the way "ST____" is short for "settings"
 
@@ -245,6 +246,14 @@ execute unless score setting ST____corruption_rate = @a[team=party_lead,limit=1]
 scoreboard players operation setting ST____corruption_rate = @a[team=party_lead,limit=1] ST____corruption_rate
 
 #ST____game_mode
+# every time the game mode changes we need to clear the "unified_settings" scoreboard objective, then replace it
+
+execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode run scoreboard objectives remove unified_tag_settings
+# gotta remove it first because if its already there then it will mess up the display of the settings
+execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode run scoreboard objectives add unified_tag_settings dummy {"text":" Settings","color":"dark_purple","bold":true}
+# here we display the setting for corrupt tag for all to see
+execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode run scoreboard objectives setdisplay sidebar unified_tag_settings
+
 # every selection will have a unique sound effect
 execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode if score @a[team=party_lead,limit=1] ST____game_mode matches 0 run tellraw @a [{"text":"game mode: ","color":"green"},{"text":"Corrupt Tag","color":"dark_purple"}]
 execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode if score @a[team=party_lead,limit=1] ST____game_mode matches 1 run tellraw @a [{"text":"game mode: ","color":"green"},{"text":"Hide and Reap","color":"red"}]
@@ -279,6 +288,7 @@ execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST___
 execute unless score setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode if score @a[team=party_lead,limit=1] ST____game_mode matches 5 at @a run playsound minecraft:block.enchantment_table.use master @a ~ ~ ~ 1 0.3 1
 
 scoreboard players operation setting ST____game_mode = @a[team=party_lead,limit=1] ST____game_mode
+
 # ui in the menu
 # do in once per second for preformance reasons
 execute if score setting ST____game_mode matches 0 if score tick time matches 1 run title @a actionbar [{"text":"game mode:","color":"white"},{"text":" Corrupt tag","color":"dark_purple"}]
@@ -522,3 +532,18 @@ execute if score rng corrupted_domain_enable matches 9.. run scoreboard players 
 # this is for miner
 execute as @a run attribute @s scale base set 1
 execute as @a run attribute @s gravity base reset 
+
+#======================================================================================================================
+# this was a particular thing that was requested.
+# the ablility to see the current settings in the lobby on the scoreboard sidebar
+
+# 1. find out what game mode it is
+# 2. get all the separate scoreboard settings into 1 scoreboard objective (players may not have the multiscoreboard mod)
+# 3. display that scoreboard objective on the sidebar
+
+execute if score setting ST____game_mode matches 0 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode0
+execute if score setting ST____game_mode matches 1 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode1
+execute if score setting ST____game_mode matches 2 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode2
+execute if score setting ST____game_mode matches 3 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode3
+execute if score setting ST____game_mode matches 4 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode4
+execute if score setting ST____game_mode matches 5 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode5

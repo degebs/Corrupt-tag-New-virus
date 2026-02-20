@@ -200,8 +200,9 @@ execute if score countdown time matches 1.. run function ctnv:one_time_function/
 execute unless score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion_setup
 
 
-
-
+#======================================================================================================================
+#remove the sidebar of the settings
+scoreboard objectives remove unified_tag_settings
 
 
 

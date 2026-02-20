@@ -174,6 +174,11 @@
       - quality of life changes to the other game modes
 1.3.1
       - added a fucntion that can revive spectator players
-3.1.2
+1.1.2
       - fixed a bug with the knight. his speed and jump boost never happened
       - nerfed the merhchat (one of his good luck effects were redused (25 corruption reduction to 10))
+1.3.3
+      -buffed the dark star in so many ways. mainly a wind charge at 20%
+            - also his blind players lasts 15 secods now
+      -added a settings sidebar during the pregame so that anyone can know what the settings are
+      -buffed the archer. his jump candle now nas minimal slowness

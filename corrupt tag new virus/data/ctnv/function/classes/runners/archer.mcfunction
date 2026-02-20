@@ -76,7 +76,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:cyan_candle",Slot:2b}]}]
 execute if score @s bulk matches 1.. run scoreboard players remove @s bulk 1
 # give the bulk his jump boost
 execute if score @s[scores={bulk=299}] bulk matches 299 run effect give @s jump_boost 5 1
-execute if score @s[scores={bulk=299}] bulk matches 299 run effect give @s slowness 5 1
+execute if score @s[scores={bulk=299}] bulk matches 299 run effect give @s slowness 1 0
 # sound effect
 execute if score @s[scores={bulk=299}] bulk matches 299 run playsound entity.firework_rocket.launch player @s ~ ~ ~ 1 0.8 0.5
 execute if score @s[scores={bulk=299}] bulk matches 299 run playsound entity.firework_rocket.launch player @s ~ ~ ~ 1 1 0.5
