@@ -430,9 +430,7 @@ execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run par
 execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 25 0 25 1 15 force @a
 
 # you only get one chance to nuke everyone
-# if you miss you get your corruption set to 90
-execute if score @s dark_star_supernova matches 170..190 run scoreboard players set @s corruption 90
-# buff so that he may do it again
+
 
 # if the nuke does not hit anyone. set everones hearts to 1
 execute if score @s dark_star_supernova matches 171 run scoreboard players set @p[team=runners] health 1
