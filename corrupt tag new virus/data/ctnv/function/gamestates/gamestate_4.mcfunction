@@ -474,4 +474,4 @@ execute if score enable corrupted_domain_enable matches 1 run function ctnv:corr
 
 #=================================================================================================
 # the glowing effect completly ruins the vibe of hide and reap, so we will clear it randomly
-execute as @r[team=runners] if score 360 time matches 40.. run effect clear @s glowing
+execute as @r[team=runners] if score 360 time matches 40 run effect clear @s glowing
