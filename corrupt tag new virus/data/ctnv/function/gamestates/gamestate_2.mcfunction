@@ -219,6 +219,8 @@ scoreboard players set infected corruption_combined 0
 # call of corrupted
 scoreboard players set wave call_of_corrupted 0
 scoreboard players set class_selection_delay call_of_corrupted 5
+
+
 # if the game mode is call of corrupted set the arrow count to 99
 execute if score setting ST____game_mode matches 4 run scoreboard players set @a acher_arrow_count 99
 scoreboard players add @a ammo_type 0
@@ -256,6 +258,7 @@ kill @e[tag=redditor]
 # display the maps name to all
 execute as @e[type=turtle,limit=1,scores={map_selection=1}] at @p run title @a title [{"color":"gold","selector":"@s"}]
 
-
+# this is for hide and reap
+scoreboard players set hide_and_reap_time playtime 0
 
 execute if score countdown time matches 2 if score tick time matches 19 run tellraw @a [{text:"==============================================","color":"green"}]

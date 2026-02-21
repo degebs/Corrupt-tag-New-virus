@@ -222,6 +222,9 @@ scoreboard objectives add ST____super_speed trigger
 scoreboard objectives add ST____COC_difuculty trigger
 scoreboard objectives add ST____enable_runner_classes trigger
 scoreboard objectives add ST____locacor_bar trigger
+scoreboard objectives add ST____downed_on_kill trigger
+
+# this is for hide and reap
 # --------------------------------------------------------------------------------------------
 # for some of the settings the "setting" variable must be set to its default value manually.
 # this is just for visual effect.
@@ -236,6 +239,7 @@ scoreboard players set setting ST____super_speed 1
 scoreboard players set setting ST____COC_difuculty 0
 scoreboard players set setting ST____enable_runner_classes 1
 scoreboard players set setting ST____locacor_bar 1
+scoreboard players set setting ST____downed_on_kill 0
 
 # when the game starts for the first time, chanses are that the ammount of map beacons is forgotten, so we can check the life detecter
 # and set the map beacon count to the number of life detecters

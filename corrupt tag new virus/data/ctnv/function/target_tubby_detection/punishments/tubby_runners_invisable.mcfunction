@@ -12,4 +12,4 @@ execute as @a[scores={target_tubby_punishment_duration=190..}] at @s if score @s
 
 #=============================================================================================================================
 #end
-execute as @a[scores={target_tubby_punishment_duration=1..}] if score @s target_tubby_punishment_duration matches 3 run scoreboard players set trigger target_tubby_watchlist 0
+execute as @a[scores={target_tubby_punishment_duration=1..}] if score @s target_tubby_punishment_duration matches 3 run scoreboard players set trigger target_tubby_watchlist 0 

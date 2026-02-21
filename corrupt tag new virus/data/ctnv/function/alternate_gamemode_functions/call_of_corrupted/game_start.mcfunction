@@ -14,8 +14,9 @@ title @a title [{"text":"WAVE: ","color":"red"},{"score":{"objective":"call_of_c
 # points (for the hud to not break)
 scoreboard players add @a[team=!corrupted] points 0
 
-# make the corrupted extra dimentional
-scoreboard players set atherial_corrupted call_of_corrupted 1
+# make the corrupted into intermission mode
+scoreboard players set intermission call_of_corrupted 0
+scoreboard players set atherial_corrupted call_of_corrupted 2
 # explain what be etherial means
 tellraw @a[team=corrupted] [{"text":"you are now atherial... you cannot ineract with anything.\n you must summon waves of corrupted to kill the runners. \n Dont get close to the runners until you aquire a physical form","color":"light_purple"}]
 

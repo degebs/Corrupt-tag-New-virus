@@ -72,3 +72,13 @@ execute if score setting ST____enable_runner_classes matches 1 run scoreboard pl
 execute if score setting ST____enable_runner_classes matches 1 run scoreboard players reset runner_classes_OFF unified_tag_settings
 execute if score setting ST____enable_runner_classes matches 1 run scoreboard players display name runner_classes_ON unified_tag_settings {"text":"Runner Classes: ","color":"blue","bold":true,"extra":[{"text":"[ON]","color":"yellow"}]}
 execute if score setting ST____enable_runner_classes matches 1 run scoreboard players display numberformat runner_classes_ON unified_tag_settings blank
+
+# downed on kill
+execute if score setting ST____downed_on_kill matches 0 run scoreboard players set downed_on_kill_OFF unified_tag_settings 1
+execute if score setting ST____downed_on_kill matches 0 run scoreboard players reset downed_on_kill_ON unified_tag_settings
+execute if score setting ST____downed_on_kill matches 0 run scoreboard players display name downed_on_kill_OFF unified_tag_settings {"text":"Downed On Kill: ","color":"dark_red","bold":true,"extra":[{"text":"[OFF]","color":"yellow"}]}
+execute if score setting ST____downed_on_kill matches 0 run scoreboard players display numberformat downed_on_kill_OFF unified_tag_settings blank
+execute if score setting ST____downed_on_kill matches 1 run scoreboard players set downed_on_kill_ON unified_tag_settings 1
+execute if score setting ST____downed_on_kill matches 1 run scoreboard players reset downed_on_kill_OFF unified_tag_settings
+execute if score setting ST____downed_on_kill matches 1 run scoreboard players display name downed_on_kill_ON unified_tag_settings {"text":"Downed On Kill: ","color":"dark_red","bold":true,"extra":[{"text":"[ON]","color":"yellow"}]}
+execute if score setting ST____downed_on_kill matches 1 run scoreboard players display numberformat downed_on_kill_ON unified_tag_settings blank

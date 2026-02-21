@@ -53,6 +53,7 @@ title @a[team=runners] actionbar [{"text":"wave:","color":"red"},{"text":" ","co
 # the 2 states the corrupted can be in.
 execute if score atherial_corrupted call_of_corrupted matches 1 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/atherial_corrupted
 execute if score atherial_corrupted call_of_corrupted matches 0 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/physical_corrupted
+execute if score atherial_corrupted call_of_corrupted matches 2 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/intermission
 # atherial and physical
 # when atherial he cannot do anything exept summon waves
 # when physical hes just corrutped
@@ -159,7 +160,7 @@ execute if score enable spawn matches 1 run scoreboard players remove time spawn
 # 3. the stand dies
 
 # if the spawn time is less than 40 start summoing the armorstand
-execute if score time spawn matches 39 at @e[type=bat] run summon armor_stand ~ ~ ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
+execute if score time spawn matches 39 at @e[type=bat] run summon armor_stand ~ ~1 ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
 # wait for the armorstand to drop
 execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
 execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle end_rod ~ ~1 ~ 0 0 0 1 1 force @a
@@ -292,10 +293,8 @@ attribute @r[team=runners] knockback_resistance base reset
 
 #=================================================================================================
 # trap management
-# if any player is a class that can place traps run the trap management function
-execute as @a[scores={class=5}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
-execute as @a[scores={evil_class=4}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
-execute as @a[scores={class=6}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+
+function ctnv:classes/trap_management
 
 # as of right now the stunman, hunter, and fisherman are the only classes that can place traps
 # if traps are disabled kill all traps
@@ -407,28 +406,8 @@ execute as @a[team=runners] at @s if score @s crouch_time matches 1.. if entity 
 execute as @a[team=runners] at @s if score @s crouch_time matches 1.. unless entity @a[distance=..1.5,team=runners,scores={health=..0}] unless score @s health matches ..0 run scoreboard players set @s crouch_time 0
 #========================================================================================================================================================================================
 # loot managmement
-# since the mob loot gamerule is active mobs will start droping loot that they are NOT suppost to drop
-# so i gotta fix it
-kill @e[type=item,nbt={Item:{id:"minecraft:rotten_flesh"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:netherite_chestplate"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:netherite_helmet"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:netherite_leggings"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:netherite_boots"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:bone"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:gunpowder"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:phantom_membrane"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:iron_ingot"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:shulker_shell"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:tipped_arrow"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:prismarine_shard"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:prismarine_crystals"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:arrow"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:emerald"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:saddle"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:cod"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:potato"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:carrot"}}]
-kill @e[type=item,nbt={Item:{id:"minecraft:magma_cream"}}]
+# completly different
+
 #========================================================================================================================================================================================
 # breaking barriers
 # give the runners a way to spend there money
