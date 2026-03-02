@@ -75,8 +75,7 @@ function ctnv:one_time_function/max_health_assignment
 # count down
 execute if score atherial_corrupted call_of_corrupted matches 1 if score corrupt_manifestation call_of_corrupted matches 1.. run scoreboard players remove corrupt_manifestation call_of_corrupted 1
 
-# the corrupted cannot use points
-scoreboard players set @a[team=corrupted] points 0
+# the corrupted CAN use points
 #==========================================================================================================================================================================================
 # therial and physical corruption sawping
 
@@ -160,7 +159,8 @@ execute if score enable spawn matches 1 run scoreboard players remove time spawn
 # 3. the stand dies
 
 # if the spawn time is less than 40 start summoing the armorstand
-execute if score time spawn matches 39 at @e[type=bat] run summon armor_stand ~ ~1 ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
+# exept if it is intermission time
+execute if score time spawn matches 39 at @e[type=bat] unless score atherial_corrupted call_of_corrupted matches 2 run summon armor_stand ~ ~1 ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
 # wait for the armorstand to drop
 execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
 execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle end_rod ~ ~1 ~ 0 0 0 1 1 force @a
@@ -221,8 +221,10 @@ execute if score reset runners_alive matches -200 run reload
 execute as @a[team=runners] if score tick time matches 10 if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 unless score @s health matches ..0 run scoreboard players add @s health 1
 # particles to indicate healing
 execute as @a[team=runners] at @s if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run particle minecraft:happy_villager ~ ~1 ~ 0.2 1 0.2 1 5 force @a
+
+# health can be upgraded in this game mode so this code is useless
 # if the pleyers helth is greater then the max health. set it to the max health
-execute as @a[team=runners] if score @s health > @a[limit=1,scores={ST____max_health=1..}] ST____max_health unless score @s health matches ..0 run scoreboard players operation @s health = @a[limit=1,scores={ST____max_health=1..}] ST____max_health
+#execute as @a[team=runners] if score @s health > @a[limit=1,scores={ST____max_health=1..}] ST____max_health unless score @s health matches ..0 run scoreboard players operation @s health = @a[limit=1,scores={ST____max_health=1..}] ST____max_health
 
 #=======================================================================================================================================
 # update the bouncer list here
@@ -306,27 +308,7 @@ execute if score limit trap_stats matches 0 run kill @e[tag=fishing_net_trap]
 
 #=================================================================================================
 
-# this code was stolen from the archer class
-# ammo does not regenerate by the way
-# check if the runners use up there ammo
-execute as @a if score @s bow_shot matches 1.. run clear @s arrow
-execute as @a if score @s bow_shot matches 1.. run scoreboard players remove @s acher_arrow_count 1
-execute as @a if score @s bow_shot matches 1.. run scoreboard players reset @s bow_shot
 
-# kill stationary arrows
-kill @e[type=arrow,nbt={inGround:1b}]
-
-#All runners shall have arrows in there 9th slot
-
-# make sure that arrows cannot be duped or manipulated
-execute as @a[team=runners] unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:8b}]}] run clear @s arrow
-execute as @a[team=runners] if entity @e[type=item,nbt={Item:{id:"minecraft:arrow"}}] run kill @e[type=item,nbt={Item:{id:"minecraft:arrow"}}]
-
-# since there can be a max of 99 we need a function to handle the code
-#there shall be multiple ammo types
-#0 = default
-#1 = explosion
-execute as @a[team=runners] unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:8b}]}] if score @s ammo_type matches 0 run function ctnv:one_time_function/ammotype___0
 
 #=======================================================================================================================================
 # runner ablilitys
@@ -407,6 +389,25 @@ execute as @a[team=runners] at @s if score @s crouch_time matches 1.. unless ent
 #========================================================================================================================================================================================
 # loot managmement
 # completly different
+
+# this is a temporary solution
+# will have to fix it later
+execute as @a[scores={class=1},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/medic
+execute as @a[scores={class=2},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/archer
+execute as @a[scores={class=3},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/bulk
+execute as @a[scores={class=4},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/assassin
+execute as @a[scores={class=5},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/stunman
+execute as @a[scores={class=6},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/fisherman
+execute as @a[scores={class=7},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/miner
+execute as @a[scores={class=8},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/merchant
+# if the bulk gets corrupted, reduse the bulk_totem by 1
+# Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5
+execute as @a[scores={bulk_totem=1..,corruption_stun=1}] if score tick time matches 0 run scoreboard players remove @s bulk_totem 1
+#specific command for the bulk to make sure that he does not have his jump candle imidialty wasted
+execute as @a[scores={class=3},team=corrupted] run scoreboard players set @s bulk 25 
+# when it comes to items. they must all be clear from your inventory during a corruption stun
+execute as @a[scores={corruption_stun=1..}] run clear @s
+
 
 #========================================================================================================================================================================================
 # breaking barriers

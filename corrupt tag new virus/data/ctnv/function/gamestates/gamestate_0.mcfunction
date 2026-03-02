@@ -407,34 +407,34 @@ effect clear @a speed
 # there is a bug where the acrcher would not get his arrows if you played the call off corrupted game mode, then played another game mode.
 
 # 90%
-execute if score setting ST____initial_corruption_stun matches 90 if score corrupt_manifestation call_of_corrupted matches 1500.. run scoreboard players set corrupt_manifestation call_of_corrupted 1000
+execute if score setting ST____initial_corruption_stun matches 90 if score corrupt_manifestation call_of_corrupted matches 1000.. run scoreboard players set corrupt_manifestation call_of_corrupted 100
 
 # 80%
-execute if score setting ST____initial_corruption_stun matches 80 if score corrupt_manifestation call_of_corrupted matches 2500.. run scoreboard players set corrupt_manifestation call_of_corrupted 1000
+execute if score setting ST____initial_corruption_stun matches 80 if score corrupt_manifestation call_of_corrupted matches 1100.. run scoreboard players set corrupt_manifestation call_of_corrupted 100
 
 # 70%
-execute if score setting ST____initial_corruption_stun matches 70 if score corrupt_manifestation call_of_corrupted matches 3000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1500
+execute if score setting ST____initial_corruption_stun matches 70 if score corrupt_manifestation call_of_corrupted matches 1100.. run scoreboard players set corrupt_manifestation call_of_corrupted 1100
 
 # 60%
-execute if score setting ST____initial_corruption_stun matches 60 if score corrupt_manifestation call_of_corrupted matches 4000.. run scoreboard players set corrupt_manifestation call_of_corrupted 2000
+execute if score setting ST____initial_corruption_stun matches 60 if score corrupt_manifestation call_of_corrupted matches 4000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1200
 
 # 50%
-execute if score setting ST____initial_corruption_stun matches 50 if score corrupt_manifestation call_of_corrupted matches 5000.. run scoreboard players set corrupt_manifestation call_of_corrupted 2500
+execute if score setting ST____initial_corruption_stun matches 50 if score corrupt_manifestation call_of_corrupted matches 5000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1300
 
 # 40%
-execute if score setting ST____initial_corruption_stun matches 40 if score corrupt_manifestation call_of_corrupted matches 6000.. run scoreboard players set corrupt_manifestation call_of_corrupted 3000
+execute if score setting ST____initial_corruption_stun matches 40 if score corrupt_manifestation call_of_corrupted matches 6000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1400
 
 # 30%
-execute if score setting ST____initial_corruption_stun matches 30 if score corrupt_manifestation call_of_corrupted matches 8000.. run scoreboard players set corrupt_manifestation call_of_corrupted 3500
+execute if score setting ST____initial_corruption_stun matches 30 if score corrupt_manifestation call_of_corrupted matches 8000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1500
 
 # 20%
-execute if score setting ST____initial_corruption_stun matches 20 if score corrupt_manifestation call_of_corrupted matches 10000.. run scoreboard players set corrupt_manifestation call_of_corrupted 5000
+execute if score setting ST____initial_corruption_stun matches 20 if score corrupt_manifestation call_of_corrupted matches 10000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1600
 
 # 10%
-execute if score setting ST____initial_corruption_stun matches 10 if score corrupt_manifestation call_of_corrupted matches 15000.. run scoreboard players set corrupt_manifestation call_of_corrupted 5500
+execute if score setting ST____initial_corruption_stun matches 10 if score corrupt_manifestation call_of_corrupted matches 15000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1700
 
 # almost 0%
-execute if score corrupt_manifestation call_of_corrupted matches 16000.. run scoreboard players set corrupt_manifestation call_of_corrupted 1000
+execute if score corrupt_manifestation call_of_corrupted matches 1800.. run scoreboard players set corrupt_manifestation call_of_corrupted 1000
 
 
 #==============================================================================================================

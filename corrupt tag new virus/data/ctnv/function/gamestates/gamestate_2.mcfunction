@@ -219,6 +219,16 @@ scoreboard players set infected corruption_combined 0
 # call of corrupted
 scoreboard players set wave call_of_corrupted 0
 scoreboard players set class_selection_delay call_of_corrupted 5
+#===========================================================================================================================
+# unlocked corrupted classes
+# for call of corrupted rework
+scoreboard players set corruptor unlocked_corrupted_classes 0
+scoreboard players set predator unlocked_corrupted_classes 0
+scoreboard players set apparition unlocked_corrupted_classes 0
+scoreboard players set artificer unlocked_corrupted_classes 0
+scoreboard players set knight unlocked_corrupted_classes 0
+scoreboard players set dark_star unlocked_corrupted_classes 0
+scoreboard players set manhunter unlocked_corrupted_classes 0
 
 
 # if the game mode is call of corrupted set the arrow count to 99

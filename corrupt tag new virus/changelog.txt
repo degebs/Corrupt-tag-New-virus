@@ -169,7 +169,7 @@
       -fixed a bug where the archers jump candle would immidiatly trigger
       - buffed the medic. better heals during endgame
       - buffed archers arrow regeneration time
-      -fixed class swappers not includes merchant
+      -fixed class swappers not including the merchant
       -nerfed the merchants luck generation when shooting arrows
       - quality of life changes to the other game modes
 1.3.1
@@ -186,3 +186,8 @@
       -added a new setting to hide and reap called "downed on kill" where if enabled it will make the runner downed. 
       just like in call of corrupted
       -started a complete overhaul on call of corrupted
+1.3.5
+      - fixed class swappers
+1.3.6
+      -fixed a bug where the game would start immidiatly after a reset (LONG OVERDUE)
+      -continued to rework call of corrupted

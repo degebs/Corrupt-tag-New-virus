@@ -100,42 +100,42 @@ execute as @a[team=runners] run clear @s golden_helmet
 # when it comes to cooldowns make sure that they dont immidialtly go off
 # if the corrupted one has a long cooldown dont reset it. if its short or 0 reset it
 # the corruption tier cooldowns are staggard to prevent a bug
-execute as @a[scores={class=2},team=corrupted] run scoreboard players set @s bulk 10
+execute as @a[team=corrupted] run scoreboard players set @s bulk 10
 
-execute as @a[scores={class=1},team=corrupted] run scoreboard players set @s medic_heal 10
-execute as @a[scores={class=7},team=corrupted] run scoreboard players set @s medic_heal 10
+execute as @a[team=corrupted] run scoreboard players set @s medic_heal 10
+execute as @a[team=corrupted] run scoreboard players set @s medic_heal 10
 
-execute as @a[scores={class=4},team=corrupted] run scoreboard players set @s assassin_charge 10
+execute as @a[team=corrupted] run scoreboard players set @s assassin_charge 10
 
-scoreboard players set @a[scores={class=5},team=corrupted] trident_throw 0
-scoreboard players set @a[scores={class=5},team=corrupted] stunman_trap 30
-scoreboard players set @a[scores={class=6},team=corrupted] fishing_net_trap 30
-scoreboard players set @a[scores={class=7},team=corrupted] miner_lantern 250
+scoreboard players set @a[team=corrupted] trident_throw 0
+scoreboard players set @a[team=corrupted] stunman_trap 30
+scoreboard players set @a[team=corrupted] fishing_net_trap 30
+scoreboard players set @a[team=corrupted] miner_lantern 250
 
 # corrupted
-execute as @a[scores={evil_class=1},team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t1_cooldown 10
-execute as @a[scores={evil_class=1},team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t2_cooldown 9
-execute as @a[scores={evil_class=1},team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t3_cooldown 8
+execute as @a[team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t1_cooldown 10
+execute as @a[team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t2_cooldown 9
+execute as @a[team=runners] if score @s classic_corrupted_t1_cooldown matches ..10 run scoreboard players set @s classic_corrupted_t3_cooldown 8
 
-execute as @a[scores={evil_class=2},team=runners] if score @s predator_corrupted_t2_cooldown matches ..10 run scoreboard players set @s predator_corrupted_t2_cooldown 9
-execute as @a[scores={evil_class=2},team=runners] if score @s predator_corrupted_t3_cooldown matches ..10 run scoreboard players set @s predator_corrupted_t3_cooldown 8
+execute as @a[team=runners] if score @s predator_corrupted_t2_cooldown matches ..10 run scoreboard players set @s predator_corrupted_t2_cooldown 9
+execute as @a[team=runners] if score @s predator_corrupted_t3_cooldown matches ..10 run scoreboard players set @s predator_corrupted_t3_cooldown 8
 
-execute as @a[scores={evil_class=3},team=runners] if score @s apparition_light_level matches 1 run scoreboard players set @s apparition_light_level 0
-execute as @a[scores={evil_class=3},team=runners] if score @s apparition_corrupted_t2_cooldown matches ..10 run scoreboard players set @s apparition_corrupted_t2_cooldown 9
+execute as @a[team=runners] if score @s apparition_light_level matches 1 run scoreboard players set @s apparition_light_level 0
+execute as @a[team=runners] if score @s apparition_corrupted_t2_cooldown matches ..10 run scoreboard players set @s apparition_corrupted_t2_cooldown 9
 
-execute as @a[scores={evil_class=4},team=runners] if score @s hunter_corrupted_t2_trap matches ..10 run scoreboard players set @s hunter_corrupted_t2_trap 20
-execute as @a[scores={evil_class=4},team=runners] if score @s hunter_corrupted_t1_trap matches ..10 run scoreboard players set @s hunter_corrupted_t1_trap 20
-execute as @a[scores={evil_class=4},team=runners] if score @s hunter_corrupted_t3_trap matches ..10 run scoreboard players set @s hunter_corrupted_t3_trap 20
-execute as @a[scores={evil_class=4},team=runners] if score @s hunter_corrupted_t1_cooldown matches ..10 run scoreboard players set @s hunter_corrupted_t1_cooldown 10
+execute as @a[team=runners] if score @s hunter_corrupted_t2_trap matches ..10 run scoreboard players set @s hunter_corrupted_t2_trap 20
+execute as @a[team=runners] if score @s hunter_corrupted_t1_trap matches ..10 run scoreboard players set @s hunter_corrupted_t1_trap 20
+execute as @a[team=runners] if score @s hunter_corrupted_t3_trap matches ..10 run scoreboard players set @s hunter_corrupted_t3_trap 20
+execute as @a[team=runners] if score @s hunter_corrupted_t1_cooldown matches ..10 run scoreboard players set @s hunter_corrupted_t1_cooldown 10
 
-execute as @a[scores={evil_class=5},team=runners] if score @s knight_corruption_blocker matches ..10 run scoreboard players set @s knight_corruption_blocker 10
-execute as @a[scores={evil_class=5},team=runners] if score @s knight_reveal_players matches ..10 run scoreboard players set @s knight_reveal_players 10
-execute as @a[scores={evil_class=5},team=runners] if score @s knight_speed_boost matches ..10 run scoreboard players set @s knight_speed_boost 10
+execute as @a[team=runners] if score @s knight_corruption_blocker matches ..10 run scoreboard players set @s knight_corruption_blocker 10
+execute as @a[team=runners] if score @s knight_reveal_players matches ..10 run scoreboard players set @s knight_reveal_players 10
+execute as @a[team=runners] if score @s knight_speed_boost matches ..10 run scoreboard players set @s knight_speed_boost 10
 
-execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_darkness matches ..10 run scoreboard players set @s dark_star_darkness 10
-execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_speed_boost matches ..10 run scoreboard players set @s dark_star_speed_boost 10
-execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernova matches ..10 run scoreboard players set @s dark_star_supernova 10
-execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernova matches 170.. run scoreboard players set @s dark_star_supernova 169
+execute as @a[team=runners] if score @s dark_star_darkness matches ..10 run scoreboard players set @s dark_star_darkness 10
+execute as @a[team=runners] if score @s dark_star_speed_boost matches ..10 run scoreboard players set @s dark_star_speed_boost 10
+execute as @a[team=runners] if score @s dark_star_supernova matches ..10 run scoreboard players set @s dark_star_supernova 10
+execute as @a[team=runners] if score @s dark_star_supernova matches 170.. run scoreboard players set @s dark_star_supernova 169
 
 # extra corrupted classes will be added later
 
@@ -369,8 +369,10 @@ execute as @a[team=!dead] run scoreboard players add gamers players_online 1
 execute as @a[team=runners] if score tick time matches 10 if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run scoreboard players add @s health 1
 # particles to indicate healing
 execute as @a[team=runners] at @s if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run particle minecraft:happy_villager ~ ~1 ~ 0.2 1 0.2 1 5 force @a
+
+
 # if the pleyers helth is greater then the max health. set it to the max health
-execute as @a if score @s health > @a[limit=1,scores={ST____max_health=1..}] ST____max_health run scoreboard players operation @s health = @a[limit=1,scores={ST____max_health=1..}] ST____max_health
+ execute as @a if score @s health > @a[limit=1,scores={ST____max_health=1..}] ST____max_health run scoreboard players operation @s health = @a[limit=1,scores={ST____max_health=1..}] ST____max_health
 
 
 #=======================================================================================================================================

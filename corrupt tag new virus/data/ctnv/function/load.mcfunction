@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.3.3","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.3.5","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -98,7 +98,8 @@ team add corrupted
 #====THIS FUNCTION CANNOT BE RUN AGAIN AFTER IT IS RAN ONCE
 scoreboard objectives add playerlist dummy
 scoreboard objectives add players_online dummy
-
+# this will finally fix the bug where the game would start immidiatly after dropping the item
+scoreboard players set anti_autodrop players_online 0
 #--------------setting up title commands----------------
 title @a times 2 50 5
 
@@ -225,6 +226,9 @@ scoreboard objectives add ST____locacor_bar trigger
 scoreboard objectives add ST____downed_on_kill trigger
 
 # this is for hide and reap
+scoreboard objectives add COC_upgrades dummy
+scoreboard players set passive_spawing_teir COC_upgrades 1
+scoreboard players set extra_corrupted_health COC_upgrades 1
 # --------------------------------------------------------------------------------------------
 # for some of the settings the "setting" variable must be set to its default value manually.
 # this is just for visual effect.
@@ -384,6 +388,8 @@ scoreboard objectives add corrupted_max_health dummy
 scoreboard objectives add spawn dummy
 scoreboard objectives add crouch_time minecraft.custom:sneak_time
 scoreboard objectives add downed dummy
+scoreboard objectives add unlocked_corrupted_classes dummy
+scoreboard players set extra_corrupted_health call_of_corrupted 0
 # this "downed" scoreboard is here ONLY to fix a bug that i cannot seem to find
 
 # the items in call of corrupted are unique. as in they are one time use without recharge.

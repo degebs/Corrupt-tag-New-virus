@@ -62,6 +62,7 @@ execute at @s if entity @a[distance=..6,team=runners] run effect clear @s jump_b
 # 2. add the dificulty variable to it (0, 1 ,or 2)
 # 3. multiply by 2
 # 4. add the current wave count number to the max health
+# 5. add the extra health of the corrupted that can be bought in the intermission shop
 
 # make sure it does not blow up into infinity
 #scoreboard players set @a[team=corrupted] health 0
@@ -78,10 +79,32 @@ scoreboard players operation @a[team=corrupted] health *= multiplyer call_of_cor
 #step 4
 scoreboard players operation @a[team=corrupted] health += wave call_of_corrupted
 
+# step 5
+scoreboard players operation @a[team=corrupted] health += extra_corrupted_health call_of_corrupted
+
 # extra step.
 # afer the corrupted one dies. the death stun needs to be reset
 scoreboard players set death_stun corruption_stun 6
-
+#==========================================================================================================================
+# every time the corrupted dropts a mob egg it gives him points. this will have to be added for each spawning logic block
+# the soreboard that will be added to is just called "points" 
+execute as @a[team=corrupted] if score @s WAVE_rat matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_zombie matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_skeleton matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_zombie_elite matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_skeleton_elite matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_phantom matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_phantom_elite matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_phantom_laser matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_stray matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_stray_elite matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_creeper matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_mini_creeper matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_pillager matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_vindicator matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_pilager_raid matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 1.. run scoreboard players add @s points 1
+execute as @a[team=corrupted] if score @s WAVE_summon_wall matches 1.. run scoreboard players add @s points 1
 #==========================================================================================================================
 # the atherial corrupteds wave spawning abilitys
 
@@ -394,7 +417,7 @@ execute as @a[team=corrupted] if score @s WAVE_summon_wall matches 1.. run kill 
 # when to do it?
 # simple
 
-# 1. 30 second timer
+# 1. 10 second timer
 # 2. subtract dificulty variable (0,1,2)
 # 3. subrtract wave count
 # 4. divide by 2
@@ -403,7 +426,7 @@ execute as @a[team=corrupted] if score @s WAVE_summon_wall matches 1.. run kill 
 
 # 1
 execute if score wave_egg call_of_corrupted matches 0 run scoreboard players set wave_egg_trigger call_of_corrupted 1
-execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players set wave_egg call_of_corrupted 600
+execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players set wave_egg call_of_corrupted 200
 # 2
 execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players operation wave_egg call_of_corrupted -= wave call_of_corrupted
 # 3
@@ -439,27 +462,27 @@ execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[tea
 execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle dust{color:[1,0,0.1],scale:2} ~ ~ ~ 0 5 0 100 50 force @a
 
 execute if score corrupt_manifestation call_of_corrupted matches 200 at @a[team=corrupted] run title @s title [{"text":": 10 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 200 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.5
+execute if score corrupt_manifestation call_of_corrupted matches 200 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.5
 execute if score corrupt_manifestation call_of_corrupted matches 180 at @a[team=corrupted] run title @s title [{"text":": 9 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 180 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.45
+execute if score corrupt_manifestation call_of_corrupted matches 180 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.45
 execute if score corrupt_manifestation call_of_corrupted matches 160 at @a[team=corrupted] run title @s title [{"text":": 8 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 160 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.4
+execute if score corrupt_manifestation call_of_corrupted matches 160 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.4
 execute if score corrupt_manifestation call_of_corrupted matches 140 at @a[team=corrupted] run title @s title [{"text":": 7 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 140 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.35
+execute if score corrupt_manifestation call_of_corrupted matches 140 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.35
 execute if score corrupt_manifestation call_of_corrupted matches 120 at @a[team=corrupted] run title @s title [{"text":": 6 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 120 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.3
+execute if score corrupt_manifestation call_of_corrupted matches 120 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.3
 execute if score corrupt_manifestation call_of_corrupted matches 100 at @a[team=corrupted] run title @s title [{"text":": 5 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 100 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.25
+execute if score corrupt_manifestation call_of_corrupted matches 100 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.25
 execute if score corrupt_manifestation call_of_corrupted matches 80 at @a[team=corrupted] run title @s title [{"text":": 4 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 80 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.2
+execute if score corrupt_manifestation call_of_corrupted matches 80 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.2
 execute if score corrupt_manifestation call_of_corrupted matches 60 at @a[team=corrupted] run title @s title [{"text":": 3 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 60 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.15
+execute if score corrupt_manifestation call_of_corrupted matches 60 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.15
 execute if score corrupt_manifestation call_of_corrupted matches 40 at @a[team=corrupted] run title @s title [{"text":": 2 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 40 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.1
+execute if score corrupt_manifestation call_of_corrupted matches 40 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.1
 execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run title @s title [{"text":": 1 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1.05
+execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.05
 execute if score corrupt_manifestation call_of_corrupted matches 0 at @a[team=corrupted] run title @s title [{"text":": 0 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 0 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @s ~ ~ ~ 1 1
+execute if score corrupt_manifestation call_of_corrupted matches 0 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1
 # do an extra mob spawn so that the runners cannot jump the corrupted
 execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn
 execute if score corrupt_manifestation call_of_corrupted matches 19 at @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn
