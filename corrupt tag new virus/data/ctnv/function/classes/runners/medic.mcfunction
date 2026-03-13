@@ -110,3 +110,13 @@ execute as @e[tag=heal_totem] if score endgame state matches 1 at @s run particl
 #===============================================================================================================================================================
 # health detector for the medic
 # he can see other peoples health
+
+
+# 1. get the nearest runner and print there current health
+execute if score gamers players_online matches 3.. at @s run scoreboard players operation @s medic_health_detector = @p[team=runners,distance=1..] health
+execute if score gamers players_online matches ..2 run clear @s heart_of_the_sea
+execute if score gamers players_online matches ..2 run clear @s painting
+# 2. take the result and have it be an item in the medics inventory
+execute if score gamers players_online matches 3.. as @s run function ctnv:one_time_function/medic_health_check
+
+

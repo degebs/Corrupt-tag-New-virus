@@ -190,8 +190,8 @@ execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..
 execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect clear @e[distance=..4,team=corrupted]
 
 # then give the debuff
-execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect give @e[distance=..4,team=corrupted] slowness 1 5
-execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect give @e[distance=..4,team=corrupted] darkness 2 5
+execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect give @e[distance=..4,team=corrupted] slowness 3 5
+execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run effect give @e[distance=..4,team=corrupted] darkness 5 5
 
 execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..0.8,limit=1,team=corrupted] run kill @s
 

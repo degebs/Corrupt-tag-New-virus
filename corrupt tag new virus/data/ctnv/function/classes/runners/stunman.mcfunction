@@ -36,29 +36,39 @@ execute as @e[type=trident,nbt={inGround:0b}] at @s if entity @p[distance=..2,te
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # stunman trap
 
-# When the player drops the trap, start a cooldown (20s = 400 ticks), and remove the item
-execute unless entity @s[nbt={Inventory:[{Slot:3b,id:"minecraft:tripwire_hook"}]}] if score @s stunman_trap matches 0 run scoreboard players set @s stunman_trap 400
+# When the player drops the trap, start a cooldown (30s = 600 ticks), and remove the item
+execute unless entity @s[nbt={Inventory:[{Slot:3b,id:"minecraft:tripwire_hook"}]}] if score @s stunman_trap matches 0 run scoreboard players set @s stunman_trap 600
 
 # give the hunter a trap item, make sure he cannot drop it
 # Give the hunter a trap item in hotbar slot 3 if they don't already have it and are at least 15% corrupt
 execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] run kill @e[type=item,nbt={Item:{id:"minecraft:tripwire_hook"}}]
-execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] if score @s stunman_trap matches 0 run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute unless data entity @s Inventory[{Slot:3b,id:"minecraft:tripwire_hook"}] if score @s stunman_trap matches 0 run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]] ]
 
 # Decrease cooldown if active
 execute if score @s stunman_trap matches 1.. run scoreboard players remove @s stunman_trap 1
 
 # when the trap is dropped, play a sound
-execute if score @s[scores={stunman_trap=399}] stunman_trap matches 399 run playsound block.tripwire.click_on player @s ~ ~ ~ 1 0.8 0.5
+execute if score @s[scores={stunman_trap=599}] stunman_trap matches 599 run playsound block.tripwire.click_on player @s ~ ~ ~ 1 0.8 0.5
 
 # summon the block display that is the trap
 # dont kill existing traps. this is because there can be multiple stunmen
-#execute if score @s[scores={stunman_trap=399}] stunman_trap matches 399 run kill @e[tag=stunman_trap]
+#execute if score @s[scores={stunman_trap=599}] stunman_trap matches 599 run kill @e[tag=stunman_trap]
 
 # summon the trap item display at the player's location
-execute at @s if score @s[scores={stunman_trap=399}] stunman_trap matches 399 run summon minecraft:item_display ~ ~0.1 ~ {Tags:["stunman_trap"],Passengers: [{fall_distance: 0.0d, id: "minecraft:item_display", Tags:["stunman_trap"], item: {count: 1, id: "minecraft:sea_lantern", components: {"minecraft:custom_name": '{"text":"stunman_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.25f, 0.083333336f, 0.25f], translation: [0.0f, 0.125f, 0.0f]}}], fall_distance: 0.0d, item: {count: 1, id: "minecraft:dark_prismarine", components: {"minecraft:custom_name": '{"text":"stunman_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.4375f, 0.14583333f, 0.4375f], translation: [0.0f, 0.0f, 0.0f]}}
+execute at @s if score @s[scores={stunman_trap=599}] stunman_trap matches 599 run summon minecraft:item_display ~ ~0.1 ~ {Tags:["stunman_trap"],Passengers: [{fall_distance: 0.0d, id: "minecraft:item_display", Tags:["stunman_trap"], item: {count: 1, id: "minecraft:sea_lantern", components: {"minecraft:custom_name": '{"text":"stunman_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.25f, 0.083333336f, 0.25f], translation: [0.0f, 0.125f, 0.0f]}}], fall_distance: 0.0d, item: {count: 1, id: "minecraft:dark_prismarine", components: {"minecraft:custom_name": '{"text":"stunman_trap"}'}}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.4375f, 0.14583333f, 0.4375f], translation: [0.0f, 0.0f, 0.0f]}}
 
 # Replace trap item with gray dye to show cooldown
-execute if score @s[scores={stunman_trap=399}] stunman_trap matches 399 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 20
+execute if score @s[scores={stunman_trap=599}] stunman_trap matches 599 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 30
+execute if score @s[scores={stunman_trap=580}] stunman_trap matches 580 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 29
+execute if score @s[scores={stunman_trap=560}] stunman_trap matches 560 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 28
+execute if score @s[scores={stunman_trap=540}] stunman_trap matches 540 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 27
+execute if score @s[scores={stunman_trap=520}] stunman_trap matches 520 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 26
+execute if score @s[scores={stunman_trap=500}] stunman_trap matches 500 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 25
+execute if score @s[scores={stunman_trap=480}] stunman_trap matches 480 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 24
+execute if score @s[scores={stunman_trap=460}] stunman_trap matches 460 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 23
+execute if score @s[scores={stunman_trap=440}] stunman_trap matches 440 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 22
+execute if score @s[scores={stunman_trap=420}] stunman_trap matches 420 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 21
+execute if score @s[scores={stunman_trap=400}] stunman_trap matches 400 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 20
 execute if score @s[scores={stunman_trap=380}] stunman_trap matches 380 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 19
 execute if score @s[scores={stunman_trap=360}] stunman_trap matches 360 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 18
 execute if score @s[scores={stunman_trap=340}] stunman_trap matches 340 run item replace entity @s hotbar.3 with gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]] 17
@@ -83,7 +93,7 @@ execute if score @s[scores={stunman_trap=20}] stunman_trap matches 20 run item r
 execute if score @s stunman_trap matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"trap cooldown","italic":false}]]
 
 # When cooldown is over, give the trap back if missing
-execute if score @s stunman_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]]]
+execute if score @s stunman_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]] ]
 #================================================================================================================================================
 # permanent jump boost in endgame
 execute if score endgame state matches 1 run effect give @s jump_boost 1 1 true

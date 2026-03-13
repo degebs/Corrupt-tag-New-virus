@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.3.5","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.3.7","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -119,6 +119,7 @@ scoreboard objectives add bulk_totem dummy
 # the medic healing rose
 scoreboard objectives add medic_heal dummy
 scoreboard players set medic_totem_rotation medic_heal 0
+scoreboard objectives add medic_health_detector dummy
 # and also the miners golden nugget
 scoreboard players set miner_totem_rotation medic_heal 0
 #the archer arrow count

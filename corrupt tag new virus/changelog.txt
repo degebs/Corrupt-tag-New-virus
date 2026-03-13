@@ -191,3 +191,6 @@
 1.3.6
       -fixed a bug where the game would start immidiatly after a reset (LONG OVERDUE)
       -continued to rework call of corrupted
+1.3.7
+      -buffed the stunmans mines (they last 6 seconds insted of 3) but then made the cooldown 30 seconds
+      -added the ability for medic to see the health of the nearest runner
