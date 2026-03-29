@@ -3,7 +3,7 @@
 #██╔████╔██║█████╗  ██║  ██║██║██║     
 #██║╚██╔╝██║██╔══╝  ██║  ██║██║██║    
 #██║ ╚═╝ ██║███████╗██████╔╝██║╚██████╗
-#╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝ ╚═════╝ 
+#╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝ ╚═════╝
 
 # this class can heal himself and other IF they are not at max health
 # used to be very annoying in the origional, but can now be helpfull in the sequel
@@ -120,3 +120,45 @@ execute if score gamers players_online matches ..2 run clear @s painting
 execute if score gamers players_online matches 3.. as @s run function ctnv:one_time_function/medic_health_check
 
 
+
+#==============================================================================================================================================================
+
+#execute if score setting ST____max_health matches 1 run scoreboard players add @s bulk_totem 0
+# make sure it actually works
+
+# the totem of undying for corrupt tag
+# ONLY FOR 1 HEART
+#execute unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 if score setting ST____max_health matches 1 run clear @s totem_of_undying
+#execute if score setting ST____max_health matches 1 if score @s bulk_totem matches 1.. run clear @s totem_of_undying
+
+
+#execute if score setting ST____max_health matches 1 unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 run kill @e[type=item,nbt={Item:{id:"minecraft:totem_of_undying"}}]
+
+#execute if score setting ST____max_health matches 1 unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 run item replace entity @s hotbar.2 with totem_of_undying[item_name="Erlösung"]
+# if the player is at 0 health, trigger the totem.
+# triggering the totem means
+# 1. set the bulkts health back to its max
+# 2. do particles and sounds
+# 3. disable the totem 
+# 4. only do any of this if the totem is in the main hand
+
+
+# particles and sound effects
+#execute if score setting ST____max_health matches 1 if entity @s[nbt={SelectedItem:{id:"minecraft:totem_of_undying"}}] if score @s health matches 1 if score @s hit matches 1.. at @s run particle totem_of_undying ~ ~1 ~ 0.5 1 0.5 1 200 force @a
+#execute if score setting ST____max_health matches 1 if entity @s[nbt={SelectedItem:{id:"minecraft:totem_of_undying"}}] if score @s health matches 1 if score @s hit matches 1.. at @s run playsound item.totem.use player @a ~ ~ ~ 1 1
+
+# update the bulk_totem count to 2. whenever the player turns from corrupted to runner bulk subtract 1 from this (unless its already 0)
+# the bulk will have to be corrupted then uncorrupted twice to get the totem back
+#execute if score setting ST____max_health matches 1 if entity @s[nbt={SelectedItem:{id:"minecraft:totem_of_undying"}}] if score @s health matches 1 if score @s hit matches 1.. run scoreboard players set @s bulk_totem 2
+#execute if score setting ST____max_health matches 1 unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 1.. if score @s hit matches 1.. run clear @s totem_of_undying
+
+# reset the health
+#execute if score setting ST____max_health matches 1 if entity @s[nbt={SelectedItem:{id:"minecraft:totem_of_undying"}}] if score @s health matches 1 if score @s hit matches 1.. run scoreboard players set @s health 3
+# alex is going to hate this shit
+
+# ok so there was a genuine incendent where alex got super agngy and shit about this change 
+# talking about how "I will never play corrupt tag again"
+# this actually got to him emotianally. and he got offended. not like how liberals get offended everyday, but the real emotion "OFFENDED" that ruinded the whole vibe
+# he feels like his voice is being ignored completly, and in this case it should... but thats how the incenet happened
+# we cannot replace him
+# so that is why i am making a special condition that this block of code will not run if the player "t1kle_palinkle" is in on the server

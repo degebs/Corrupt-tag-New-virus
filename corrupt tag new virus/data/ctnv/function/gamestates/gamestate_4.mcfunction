@@ -435,6 +435,7 @@ execute as @a[team=dead] run attribute @s jump_strength base reset
 execute as @a[scores={class=5}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
 execute as @a[scores={evil_class=4}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
 execute as @a[scores={class=6}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+execute as @a[scores={evil_class=8}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
 
 # as of right now the stunman, hunter, and fisherman are the only classes that can place traps
 # if traps are disabled kill all traps

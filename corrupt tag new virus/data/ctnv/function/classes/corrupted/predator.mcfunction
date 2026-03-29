@@ -132,7 +132,7 @@ execute if score @s[scores={predator_corrupted_t2_cooldown=20}] predator_corrupt
 execute if score @s predator_corrupted_t2_cooldown matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"invisability cooldown","italic":false}]]
 # if the predator attacks and lands a hit clear the invisability
 execute if entity @a[team=runners,limit=1,scores={hit=1..}] run effect clear @s invisibility
-execute at @s if entity @a[team=runners,limit=1,scores={hit=1..}] run particle raid_omen ~ ~1 ~ 1 0 1 0.5 55 force @a
+execute at @s if entity @a[team=runners,limit=1,scores={hit=1..}] run particle raid_omen ~ ~1 ~ 2 0 2 0.5 105 force @a[team=runners]
 
 
 

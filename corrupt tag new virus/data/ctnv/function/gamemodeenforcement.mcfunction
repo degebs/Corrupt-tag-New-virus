@@ -18,3 +18,7 @@ execute as @a[team=dead] if score @s corruption_stun matches 0 run attribute @s 
 execute as @a[team=dead] if score @s corruption_stun matches 0 run attribute @s jump_strength base reset
 
 effect give @a resistance infinite 3 true
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# for the authoritys high gravity to work it needs to be global
+execute if entity @a[scores={evil_class=8}] run function ctnv:one_time_function/authority_global_gravity

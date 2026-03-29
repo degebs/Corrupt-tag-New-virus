@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.3.7","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.3.8","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -183,8 +183,24 @@ scoreboard objectives add dark_star_supernova dummy
 scoreboard objectives add dark_star_wind_charge_use minecraft.used:wind_charge
 scoreboard objectives add dark_star_wind_charge_cooldown dummy
 
-execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"the life detector is missing. fixing!","color":"yellow"}]
-execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"if you see this message, uhh. you shouldnt","color":"yellow"}]
+
+# Authority 
+scoreboard objectives add global_high_gravity dummy
+scoreboard players set bool global_high_gravity 0
+# gravity pull
+scoreboard objectives add gravity_pull_detect minecraft.dropped:sculk_shrieker
+scoreboard objectives add gravity_pull_timer dummy
+# revieal player modulator
+scoreboard objectives add Reveal_Players_Modulator dummy
+scoreboard objectives add Reveal_Players_Modulator_timer dummy
+scoreboard objectives add Reveal_Players_Modulator_components dummy
+# autority secuirty
+scoreboard objectives add security_spawn minecraft.dropped:respawn_anchor
+scoreboard objectives add security_spawn_cooldown dummy
+scoreboard objectives add security_count dummy
+
+#execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"the life detector is missing. fixing!","color":"yellow"}]
+#execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"if you see this message, uhh. you shouldnt","color":"yellow"}]
 
 #set up the entity that detects if someone tried to kill @e (this is important for keeping track of map beacons)
 # this does not work for some reason
@@ -193,7 +209,7 @@ execute unless entity @e[tag=life_detector] at @r run summon armor_stand ~ ~5 ~ 
 
 # for some reason people are experiencing a glitch where all becons DIE and the game breaks
 # i cannot replicate this so i am throwing shit at the wall and praying that it goes away
-effect give @e[tag=life_detector] glowing infinite 1
+#effect give @e[tag=life_detector] glowing infinite 1
 
 
 scoreboard objectives add life_detector_count dummy

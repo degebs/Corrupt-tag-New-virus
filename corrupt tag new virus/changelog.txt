@@ -194,3 +194,9 @@
 1.3.7
       -buffed the stunmans mines (they last 6 seconds insted of 3) but then made the cooldown 30 seconds
       -added the ability for medic to see the health of the nearest runner
+1.3.8
+      -added "dusk" option to (time of day) setting
+      -made it so that you can see the settings while picking classes
+      -replaced the life detector with a function that kills all map beacons and unforceloads everything (good for debugging)
+      -fixed a bug where the predator would be blinded if a player was downed
+      -added new class "the autority" (hes pretty rad)

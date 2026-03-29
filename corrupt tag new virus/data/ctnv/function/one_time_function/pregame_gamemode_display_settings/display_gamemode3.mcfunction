@@ -51,6 +51,12 @@ execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 1 run sco
 execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 1 run scoreboard players reset time_of_day_DAY unified_tag_settings
 execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 1 run scoreboard players display name time_of_day_NIGHT unified_tag_settings {"text":"Time Of Day: ","color":"yellow","bold":true,"extra":[{"text":"[NIGHT]","color":"yellow"}]}
 execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 1 run scoreboard players display numberformat time_of_day_NIGHT unified_tag_settings blank
+
+execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 2 run scoreboard players set time_of_day_NIGHT unified_tag_settings 1
+execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 2 run scoreboard players reset time_of_day_DAY unified_tag_settings
+execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 2 run scoreboard players display name time_of_day_NIGHT unified_tag_settings {"text":"Time Of Day: ","color":"yellow","bold":true,"extra":[{"text":"[DUSK]","color":"yellow"}]}
+execute if score @a[team=party_lead,limit=1] ST____time_of_day matches 2 run scoreboard players display numberformat time_of_day_NIGHT unified_tag_settings blank
+
 # FOR THIS one there is no "setting" score >:(
 
 # runner name tags

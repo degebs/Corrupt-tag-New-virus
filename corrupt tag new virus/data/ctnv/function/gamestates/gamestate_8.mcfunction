@@ -70,6 +70,7 @@ execute as @a[scores={evil_class=4},team=corrupted] if score @s corruption_stun 
 execute as @a[scores={evil_class=5},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/knight
 execute as @a[scores={evil_class=6},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/dark_star
 execute as @a[scores={evil_class=7},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/manhunter
+execute as @a[scores={evil_class=8},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/authority
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5

@@ -23,6 +23,8 @@ execute if score map_beacon_count debug matches 0 run reload
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run scoreboard players reset @e[type=turtle] map_selection
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run scoreboard players set @e[type=minecraft:turtle,sort=random,limit=1] map_selection 1
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run tellraw @a ["",{"text":"no map selected. choosing at random","color":"dark_purple"}]
+execute if score @a[team=party_lead,limit=1] map_selection matches 0 run title @a title {text:"No map selected.",color:"dark_purple"}
+execute if score @a[team=party_lead,limit=1] map_selection matches 0 run title @a subtitle {text:"Choosing at random",color:"dark_purple"}
 
 
 
@@ -200,11 +202,11 @@ execute if score countdown time matches 1.. run function ctnv:one_time_function/
 execute unless score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion_setup
 
 
-#======================================================================================================================
-#remove the sidebar of the settings
-scoreboard objectives remove unified_tag_settings
+# for the settings!
+scoreboard players set locked_in unified_tag_settings -5
+scoreboard players display numberformat locked_in unified_tag_settings blank
 
-
+scoreboard players display name locked_in unified_tag_settings {"text":"Settings are ","color":"white","bold":true,"extra":[{"text":"LOCKED IN!","color":"red"}]}
 
 
 

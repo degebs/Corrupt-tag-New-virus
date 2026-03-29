@@ -4,7 +4,7 @@ execute as @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] at @s run scoreboa
 
 execute as @e[type=item,nbt={Item:{id:"minecraft:lime_dye"}}] at @s run scoreboard players add anti_autodrop players_online 1
 execute as @e[type=item,nbt={Item:{id:"minecraft:lime_dye"}}] if score Online players_online matches 2.. at @s if score anti_autodrop players_online matches 1 run tellraw @a "Are you sure?"
-execute as @e[type=item,nbt={Item:{id:"minecraft:lime_dye"}}] if score Online players_online matches 2.. at @s if score anti_autodrop players_online matches 1 run item replace entity @a[team=party_lead] hotbar.0 with blue_dye[custom_name=[{"text":"drop twise to start game","italic":false}],enchantment_glint_override=true,rarity=epic]
+execute as @e[type=item,nbt={Item:{id:"minecraft:lime_dye"}}] if score Online players_online matches 2.. at @s if score anti_autodrop players_online matches 1 run item replace entity @a[team=party_lead] hotbar.0 with blue_dye[custom_name=[{"text":"drop twice to start game","italic":false}],enchantment_glint_override=true,rarity=epic]
 execute as @e[type=item,nbt={Item:{id:"minecraft:lime_dye"}}] if score Online players_online matches 2.. run scoreboard players set drop_detect_function_Delay time 5
 
 

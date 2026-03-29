@@ -179,6 +179,8 @@ execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_sup
 execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_cooldown 0
 execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_horn_blow_detect 0
 
+execute as @a[scores={evil_class=8}] run scoreboard players set @s gravity_pull_timer 0
+execute as @a[scores={evil_class=8}] run scoreboard players add @s Reveal_Players_Modulator_timer 0
 
 #=================================================================================================
 # particles and fanfare when the game starts and a corrupted has yet to be chosen
@@ -210,6 +212,9 @@ effect give @a slowness 1 255 true
 # hide and reap
 scoreboard players set trigger hide_and_reap_death_trigger 10
 scoreboard players set runner_win hide_and_reap_death_trigger 0
+#======================================================================================================================
+#remove the sidebar of the settings
+scoreboard objectives remove unified_tag_settings
 
 #=================================================================================================
 # infection

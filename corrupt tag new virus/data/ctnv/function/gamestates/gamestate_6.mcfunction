@@ -76,6 +76,7 @@ execute as @a[scores={evil_class=4},team=corrupted] if score @s corruption_stun 
 execute as @a[scores={evil_class=5},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/knight
 execute as @a[scores={evil_class=6},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/dark_star
 execute as @a[scores={evil_class=7},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/manhunter
+execute as @a[scores={evil_class=8},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/authority
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5
@@ -462,6 +463,7 @@ execute as @a[team=dead] run attribute @s jump_strength base reset
 execute as @a[scores={class=5}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
 execute as @a[scores={evil_class=4}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
 execute as @a[scores={class=6}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+execute as @a[scores={evil_class=8}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
 
 # as of right now the stunman, hunter, and fisherman are the only classes that can place traps
 # if traps are disabled kill all traps

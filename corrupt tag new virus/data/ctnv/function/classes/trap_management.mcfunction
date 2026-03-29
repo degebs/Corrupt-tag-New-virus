@@ -53,6 +53,23 @@ scoreboard players operation fishing_net_trap_count trap_stats = fishing_net_tra
 scoreboard players operation fishing_net_trap_count trap_stats /= divider trap_stats
 
 
+# autority Reveal Players Modulator
+scoreboard players set Reveal_Players_Modulator_components trap_stats 0
+execute as @e[tag=Reveal_Players_Modulator] run scoreboard players add Reveal_Players_Modulator_components trap_stats 1
+scoreboard players set divider trap_stats 3
+scoreboard players operation Reveal_Players_Modulator_count trap_stats = Reveal_Players_Modulator_components trap_stats
+scoreboard players operation Reveal_Players_Modulator_count trap_stats /= divider trap_stats
+
+# autority security
+scoreboard players set security_count trap_stats 0
+execute as @e[tag=security] run scoreboard players add security_count trap_stats 1
+# just 1 mob 
+scoreboard players set divider trap_stats 1
+scoreboard players operation security_count trap_stats = security_count trap_stats
+scoreboard players operation security_count trap_stats /= divider trap_stats
+
+
+
 
 # check if eack trap type is above the limit
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -106,8 +123,21 @@ execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=
 execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=fishing_net_trap,distance=..0.1]
 execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# authority Reveal Players Modulator
+execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=Reveal_Players_Modulator,limit=1,sort=random]
+execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
+execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=Reveal_Players_Modulator,distance=..0.1]
+execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
 
-
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# authoritys security
+execute if score security_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=security,limit=1,sort=random]
+execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
+execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=security,distance=..0.1]
+execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
 
 
 
@@ -200,3 +230,26 @@ execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..
 
 # this one simply slows all who cross it
 execute as @e[tag=fishing_net_trap,type=item_display] at @s if entity @p[distance=..2.5,limit=1] run effect give @e[distance=..2.7] slowness 1 2 true
+
+#============================================================================================================
+# authority Reveal Players Modulator
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p[distance=..2.5,limit=1,team=runners] run particle explosion ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p[distance=..2.5,limit=1,team=runners] run playsound minecraft:entity.generic.explode block @a ~ ~ ~ 1 1 0.5
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p[distance=..2.5,limit=1,team=runners] run playsound entity.glow_squid.death block @a ~ ~ ~ 1 0.7 0.5
+
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p[distance=..2.5,limit=1,team=runners] run effect give @a[distance=..4,team=runners] blindness 1 10
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p[distance=..2.5,limit=1,team=runners] run kill @s
+
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] run effect give @a[team=runners] glowing 1 1
+execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s run particle minecraft:firework ~ ~ ~ 0 0 0 0.05 1 normal @a
+execute as @e[type=item_display,tag=Reveal_Players_Modulator,limit=1] at @a[team=runners] run particle minecraft:firework ~ ~ ~ 0 0.9 0 0.05 1 force @a
+
+#============================================================================================================
+# authority's secuirty
+# if anyone is above 100% corruption kill the mobs t3, this is to prevent a softlock
+execute as @a[scores={corruption=100..},team=corrupted] run kill @e[tag=security]
+execute as @a[scores={corruption=100..},team=corrupted] run kill @e[tag=security]
+# if someone is in corruption stun kill the t3 mobs
+execute as @a[team=corrupted,scores={corruption_stun=1..}] at @e[tag=security] run particle explosion_emitter ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
+execute as @a[team=corrupted,scores={corruption_stun=1..}] at @e[tag=security] run playsound minecraft:entity.generic.explode block @a ~ ~ ~ 1 1 0.5
+execute as @a[team=corrupted,scores={corruption_stun=1..}] run kill @e[tag=security]
