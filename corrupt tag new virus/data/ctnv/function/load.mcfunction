@@ -191,7 +191,7 @@ scoreboard players set bool global_high_gravity 0
 scoreboard objectives add gravity_pull_detect minecraft.dropped:sculk_shrieker
 scoreboard objectives add gravity_pull_timer dummy
 # revieal player modulator
-scoreboard objectives add Reveal_Players_Modulator dummy
+scoreboard objectives add Reveal_Players_Modulator minecraft.dropped:vault
 scoreboard objectives add Reveal_Players_Modulator_timer dummy
 scoreboard objectives add Reveal_Players_Modulator_components dummy
 # autority secuirty
