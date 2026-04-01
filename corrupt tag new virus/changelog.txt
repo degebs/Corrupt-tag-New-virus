@@ -200,3 +200,5 @@
       -replaced the life detector with a function that kills all map beacons and unforceloads everything (good for debugging)
       -fixed a bug where the predator would be blinded if a player was downed
       -added new class "the autority" (hes pretty rad)
+1.3.9
+      -changed the location of the classes in the class selector (to add new classes in the future)
