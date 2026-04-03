@@ -202,3 +202,10 @@
       -added new class "the autority" (hes pretty rad)
 1.3.9
       -changed the location of the classes in the class selector (to add new classes in the future)
+1.4.0
+      -added the autority's death acheivement
+      -buffed autority t3 security (made them faster and he spawns more)
+      -buffed fisherman trap. (no longer affects runners)
+      -fixed miners dash lantern (no longer affects corrupted)
+      -fixed a bug where during victory the only survivor could get corrupted
+      -made it less less likely for the glitch of double corrupted to occur (hit on the same tick)

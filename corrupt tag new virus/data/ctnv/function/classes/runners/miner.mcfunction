@@ -93,7 +93,7 @@ execute as @e[tag=speed_totem] at @s run particle wax_on ^4 ^1 ^ 0 0.1 0 0 8 for
 
 execute if score miner_lantern_totem_rotation medic_heal matches ..0 run kill @e[tag=speed_totem]
 # DO THE SPEED BOOST
-execute if score @s medic_heal matches 298 run execute as @e[tag=speed_totem] at @s run effect give @a[distance=..4] speed 4 2
+execute if score @s medic_heal matches 298 run execute as @e[tag=speed_totem] at @s run effect give @a[distance=..4,team=runners] speed 4 2
 
 #=================================================================================================================================================
 

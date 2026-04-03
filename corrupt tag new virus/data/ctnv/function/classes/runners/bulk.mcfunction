@@ -25,6 +25,9 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] 
 
 #==============================================================================================================================================================
 # the totem of undying for corrupt tag
+
+
+# make sure it actually works
 scoreboard players add @s bulk_totem 0
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:totem_of_undying",Slot:2b}]}] if score @s bulk_totem matches 0 run clear @s totem_of_undying
 execute if score @s bulk_totem matches 1.. run clear @s totem_of_undying

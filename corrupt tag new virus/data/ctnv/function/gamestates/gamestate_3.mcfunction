@@ -204,7 +204,8 @@ execute as @a if score @s hit matches 1.. if score @s health matches 1.. run sco
 execute as @a[team=runners] if score @s health matches 0 run clear @a[team=corrupted]
 execute as @a[team=runners] if score @s health matches 0 run scoreboard players operation @a[team=corrupted] health = @a[scores={ST____max_health=1..}] ST____max_health
 
-
+# prevent double tap by giving everyone super resistance for a short time as the swap is happening.
+execute as @a[team=runners] if score @s health matches 0 run effect give @a resistance 5 255
 
 #now at this point everyone is a runner. however the corrupted one just killed someone.
 execute as @a if score @s health matches 1.. run team join runners @s

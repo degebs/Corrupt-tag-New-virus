@@ -40,3 +40,6 @@ execute if score tick time matches 5 if score victory_timer victory matches 17 a
 #==============================================================================================================
 # fix the bug where a game would start immidietly after the previous one ended
 scoreboard players set drop_detect_function_Delay time 20
+
+# invisable
+scoreboard players operation @a[team=!dead] health = setting ST____max_health

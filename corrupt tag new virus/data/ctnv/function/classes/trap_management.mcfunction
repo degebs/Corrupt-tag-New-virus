@@ -63,8 +63,8 @@ scoreboard players operation Reveal_Players_Modulator_count trap_stats /= divide
 # autority security
 scoreboard players set security_count trap_stats 0
 execute as @e[tag=security] run scoreboard players add security_count trap_stats 1
-# just 1 mob 
-scoreboard players set divider trap_stats 1
+# just 1 mob. but we need more of there. so 1 shall count as 1/4 th of a trap
+scoreboard players set divider trap_stats 4
 scoreboard players operation security_count trap_stats = security_count trap_stats
 scoreboard players operation security_count trap_stats /= divider trap_stats
 
@@ -229,7 +229,7 @@ execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..
 # fisherman trap
 
 # this one simply slows all who cross it
-execute as @e[tag=fishing_net_trap,type=item_display] at @s if entity @p[distance=..2.5,limit=1] run effect give @e[distance=..2.7] slowness 1 2 true
+execute as @e[tag=fishing_net_trap,type=item_display] at @s if entity @p[distance=..2.5,limit=1] run effect give @e[distance=..2.7,team=corrupted] slowness 1 2 true
 
 #============================================================================================================
 # authority Reveal Players Modulator
