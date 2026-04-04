@@ -144,6 +144,9 @@ scoreboard players set @a[scores={class=6}] fishing_net_trap 3
 scoreboard players set @a[scores={class=4}] assassin_charge 10
 execute if score @s assassin_hide matches 1.. run scoreboard players reset @s assassin_hide
 
+scoreboard players set @a[scores={class=9}] farm_cooldown 60
+scoreboard players set @a[scores={class=9}] animal_farm_attack_cooldown 60
+
 # corrupted cooldowns
 execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t1_cooldown 10
 execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t2_cooldown 10

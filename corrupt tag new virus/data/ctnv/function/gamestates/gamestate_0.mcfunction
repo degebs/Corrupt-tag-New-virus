@@ -204,6 +204,7 @@ kill @e[tag=fishing_net_trap]
 kill @e[tag=Reveal_Players_Modulator]
 kill @e[tag=nuke]
 kill @e[tag=security]
+kill @e[tag=farm]
 # reset the knights attributes
 attribute @r knockback_resistance base set 0
 #===========================================================================================================================================

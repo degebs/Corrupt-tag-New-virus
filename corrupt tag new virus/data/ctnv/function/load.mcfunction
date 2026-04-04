@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.0","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.1","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -141,6 +141,16 @@ scoreboard objectives add merchant_rng dummy
 scoreboard objectives add merchant_arrow_count dummy
 scoreboard objectives add cross_bow_shot minecraft.used:crossbow
 scoreboard objectives add merchant_luck dummy
+# the farmers farm
+scoreboard objectives add farm_drop_detect minecraft.dropped:hay_block
+scoreboard objectives add farm_lifetime dummy
+scoreboard objectives add farm_cooldown dummy
+# the farmers atack
+scoreboard objectives add animal_farm_attack_detect minecraft.dropped:pig_spawn_egg
+scoreboard objectives add animal_farm_attack_cooldown dummy
+
+
+
 
 # classic corrupted cooldowns
 scoreboard objectives add classic_corrupted_t1_cooldown dummy

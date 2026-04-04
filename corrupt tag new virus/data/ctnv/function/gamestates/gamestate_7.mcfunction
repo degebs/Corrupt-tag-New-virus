@@ -400,6 +400,8 @@ execute as @a[scores={class=5},team=runners] unless score atherial_corrupted cal
 execute as @a[scores={class=6},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/fisherman
 execute as @a[scores={class=7},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/miner
 execute as @a[scores={class=8},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/merchant
+execute as @a[scores={class=9},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/farmer
+
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5
 execute as @a[scores={bulk_totem=1..,corruption_stun=1}] if score tick time matches 0 run scoreboard players remove @s bulk_totem 1

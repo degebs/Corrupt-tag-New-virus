@@ -68,6 +68,12 @@ scoreboard players set divider trap_stats 4
 scoreboard players operation security_count trap_stats = security_count trap_stats
 scoreboard players operation security_count trap_stats /= divider trap_stats
 
+# farmers farm
+scoreboard players set farm_components trap_stats 0
+execute as @e[tag=farm] run scoreboard players add farm_components trap_stats 1
+scoreboard players set divider trap_stats 6
+scoreboard players operation farmers_farm_count trap_stats = farm_components trap_stats
+scoreboard players operation farmers_farm_count trap_stats /= divider trap_stats
 
 
 
@@ -138,6 +144,15 @@ execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_kil
 execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
 execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=security,distance=..0.1]
 execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# farmers farm
+execute if score farmers_farm_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] run tp @s @e[tag=farm,limit=1,sort=random]
+execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s if entity @a[distance=..3] run kill @s
+execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s run kill @e[tag=farm,distance=..0.1]
+execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] run kill @s
+
 
 
 
@@ -253,3 +268,27 @@ execute as @a[scores={corruption=100..},team=corrupted] run kill @e[tag=security
 execute as @a[team=corrupted,scores={corruption_stun=1..}] at @e[tag=security] run particle explosion_emitter ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
 execute as @a[team=corrupted,scores={corruption_stun=1..}] at @e[tag=security] run playsound minecraft:entity.generic.explode block @a ~ ~ ~ 1 1 0.5
 execute as @a[team=corrupted,scores={corruption_stun=1..}] run kill @e[tag=security]
+
+#============================================================================================================
+# farmers farm
+# the life time will tick down
+execute as @e[tag=farm] at @s if score @s farm_lifetime matches 1.. run scoreboard players remove @s farm_lifetime 1
+#particles
+execute as @e[tag=farm] at @s if score @s farm_lifetime matches 1 at @s run particle minecraft:smoke ~ ~ ~ 1 0.5 1 0.05 85 normal @a
+#sound
+execute as @e[tag=farm] at @s if score @s farm_lifetime matches 1 at @s run playsound minecraft:block.fungus.break block @a ~ ~ ~ 1 0.5 0.5
+
+
+# if the lifetime hits 0, the trap will be removed
+execute as @e[tag=farm] at @s if score @s farm_lifetime matches 0 run kill @s
+
+# faster regen particle
+execute at @e[tag=farm_heal_source] as @a[team=runners,distance=..2,limit=1] run particle minecraft:happy_villager ~ ~ ~ 0.5 1.5 0.5 1 1 normal @a
+# night vision
+execute at @e[tag=farm_heal_source] as @a[team=runners,distance=..2,limit=1] run effect give @s night_vision 2 0
+# healing 
+execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 150 run scoreboard players add @p[team=runners,distance=..2] health 1
+execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 150 run playsound minecraft:entity.player.levelup block @a[distance=..2] ~ ~ ~ 1 1 0.5
+
+execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 50 run scoreboard players add @p[team=runners,distance=..2] health 1
+execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 50 run playsound minecraft:entity.player.levelup block @a[distance=..2] ~ ~ ~ 1 1 0.5

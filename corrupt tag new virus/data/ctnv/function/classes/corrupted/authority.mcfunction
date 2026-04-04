@@ -1,9 +1,10 @@
-# █████╗ ██╗  ██╗████████╗██╗ ██╗ ██████╗ ██████╗ ██╗████████╗██╗  ██╗
-#██╔══██╗██║  ██║╚══██╔══╝██║ ██║██╔═══██╗██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
-#███████║██║  ██║  ██║  ███████║██║  ██║██████╔╝██║  ██║ ╚████╔╝ 
-#██╔══██║██║  ██║  ██║  ██╔══██║██║  ██║██╔══██╗██║  ██║  ╚██╔╝ 
-#██║ ██║╚██████╔╝  ██║  ██║ ██║╚██████╔╝██║ ██║██║  ██║ ██║  
-#╚═╝ ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚═════╝ ╚═╝ ╚═╝╚═╝  ╚═╝ ╚═╝  
+# █████╗ ██╗   ██╗████████╗██╗  ██╗ ██████╗ ██████╗ ██╗████████╗██╗   ██╗
+#██╔══██╗██║   ██║╚══██╔══╝██║  ██║██╔═══██╗██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
+#███████║██║   ██║   ██║   ███████║██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
+#██╔══██║██║   ██║   ██║   ██╔══██║██║   ██║██╔══██╗██║   ██║     ╚██╔╝  
+#██║  ██║╚██████╔╝   ██║   ██║  ██║╚██████╔╝██║  ██║██║   ██║      ██║   
+#╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
+                                                                        
 # big and mean
 # lot of experamental features
 
@@ -234,6 +235,8 @@ execute as @a[scores={security_spawn=1}] at @s run summon zombie ~ ~ ~ {Tags:["s
 execute as @a[scores={security_spawn=1}] at @s run summon zombie ~ ~ ~ {Tags:["security"],Team:corrupted,equipment:{mainhand:{id:copper_axe},head:{id:blue_stained_glass},chest:{id:copper_chestplate,components:{trim:{pattern:silence,material:lapis},enchantments:{binding_curse:1}}},legs:{id:copper_leggings,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}},feet:{id:copper_boots,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}}},attributes:[{id:follow_range,base:2048f},{id:spawn_reinforcements,base:1f},{id:step_height,base:3f},{id:movement_speed,base:0.5f}]}
 execute as @a[scores={security_spawn=1}] at @s run summon zombie ~ ~ ~ {Tags:["security"],Team:corrupted,equipment:{mainhand:{id:copper_axe},head:{id:blue_stained_glass},chest:{id:copper_chestplate,components:{trim:{pattern:silence,material:lapis},enchantments:{binding_curse:1}}},legs:{id:copper_leggings,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}},feet:{id:copper_boots,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}}},attributes:[{id:follow_range,base:2048f},{id:spawn_reinforcements,base:1f},{id:step_height,base:3f},{id:movement_speed,base:0.5f}]}
 execute as @a[scores={security_spawn=1}] at @s run summon zombie ~ ~ ~ {Tags:["security"],Team:corrupted,equipment:{mainhand:{id:copper_axe},head:{id:blue_stained_glass},chest:{id:copper_chestplate,components:{trim:{pattern:silence,material:lapis},enchantments:{binding_curse:1}}},legs:{id:copper_leggings,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}},feet:{id:copper_boots,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}}},attributes:[{id:follow_range,base:2048f},{id:spawn_reinforcements,base:1f},{id:step_height,base:3f},{id:movement_speed,base:0.5f}]}
+execute as @a[scores={security_spawn=1}] at @s run summon zombie ~ ~ ~ {Tags:["security"],Team:corrupted,equipment:{mainhand:{id:copper_axe},head:{id:blue_stained_glass},chest:{id:copper_chestplate,components:{trim:{pattern:silence,material:lapis},enchantments:{binding_curse:1}}},legs:{id:copper_leggings,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}},feet:{id:copper_boots,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}}},attributes:[{id:follow_range,base:2048f},{id:spawn_reinforcements,base:1f},{id:step_height,base:3f},{id:movement_speed,base:0.8f},{id:"scale",base:0.4f}]}
+execute as @a[scores={security_spawn=1}] at @s run summon zombie ~ ~ ~ {Tags:["security"],Team:corrupted,equipment:{mainhand:{id:copper_axe},head:{id:blue_stained_glass},chest:{id:copper_chestplate,components:{trim:{pattern:silence,material:lapis},enchantments:{binding_curse:1}}},legs:{id:copper_leggings,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}},feet:{id:copper_boots,components:{trim:{pattern:snout,material:lapis},enchantments:{binding_curse:1}}}},attributes:[{id:follow_range,base:2048f},{id:spawn_reinforcements,base:1f},{id:step_height,base:3f},{id:movement_speed,base:0.5f},{id:"scale",base:0.4f}]}
 
 
 execute as @a[scores={security_spawn=1}] run scoreboard players set @s security_spawn 0

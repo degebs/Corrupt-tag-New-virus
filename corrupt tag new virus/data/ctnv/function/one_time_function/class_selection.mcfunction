@@ -148,6 +148,24 @@ execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Invent
 execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:21b}]}] run playsound block.note_block.guitar block @a ~ ~ ~ 1 1.5 1 
 execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:sunflower",Slot:21b}]}] run item replace entity @s inventory.12 with sunflower[custom_name=[{"text":"Merchant","italic":false,"color":"blue"}],lore=[[{"text":"--- item ---","italic":false,"color":"dark_aqua"}],[{"text":"- Gold coin","italic":false,"color":"white"}],[{"text":"drop for a random buff or nerf. the stack ammount is your luck percent","italic":false,"color":"white"}],[{"text":"--- weapon ---","italic":false,"color":"dark_aqua"}],[{"text":"- crossbow","italic":false,"color":"white"}],[{"text":"--- movement ---","italic":false,"color":"dark_aqua"}],[{"text":"his gold coin can buff movement","italic":false,"color":"yellow"}],[{"text":"or nerf it ","italic":false,"color":"red"}]]]
 
+# farmer+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# prevent accidental instant selection
+execute as @a if score countdown time matches 29 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run item replace entity @s inventory.18 with iron_hoe[custom_name=[{"text":"F","italic":false,"color":"blue"},{"text":"a","italic":false,"color":"blue"},{"text":"r","italic":false,"color":"blue"},{"text":"m","italic":false,"color":"blue"},{"text":"er","italic":false,"color":"blue"}],lore=[[{"text":"--- item ---","italic":false,"color":"dark_aqua"}],[{"text":"- Wheat farm.","italic":false,"color":"white"}],[{"text":"a temporary safe place to heal","italic":false,"color":"blue"}],[{"text":"- animal farm attack","italic":false,"color":"white"}],[{"text":"launch a pig that can explode","italic":false,"color":"yellow"}],[{"text":"--- weapon ---","italic":false,"color":"dark_aqua"}],[{"text":"- Farming hoe","italic":false,"color":"white"}],[{"text":"--- movement ---","italic":false,"color":"dark_aqua"}],[{"text":"nothing... you are a farmer","italic":false,"color":"red"}]]]
+# set the cooldown
+execute as @a at @s if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] if score @s class_selection_cooldown matches 0 run scoreboard players set @s class_selection_cooldown 3
+
+# automatically close the player inventory on click
+execute as @a at @s if score countdown time matches 0..28 if score @s class_selection_cooldown matches 3 run fill ~ ~1 ~ ~ ~1 ~ nether_portal replace air
+execute as @a at @s if score countdown time matches 0..28 if score @s class_selection_cooldown matches 2 run fill ~2 ~2 ~2 ~-2 ~-2 ~-2 air replace nether_portal
+# select Merchant class
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run clear @s iron_hoe
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:iron_hoe"}}]
+# selection
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run scoreboard players set @s class 9
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Farmer","color":"dark_aqua"}," ",{"text":"class","color":"white"}]
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run playsound block.note_block.guitar block @a ~ ~ ~ 1 1.6 1 
+execute as @a if score countdown time matches 0..28 unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:27b}]}] run item replace entity @s inventory.18 with iron_hoe[custom_name=[{"text":"F","italic":false,"color":"blue"},{"text":"a","italic":false,"color":"blue"},{"text":"r","italic":false,"color":"blue"},{"text":"m","italic":false,"color":"blue"},{"text":"er","italic":false,"color":"blue"}],lore=[[{"text":"--- item ---","italic":false,"color":"dark_aqua"}],[{"text":"- Wheat farm.","italic":false,"color":"white"}],[{"text":"a temporary safe place to heal","italic":false,"color":"blue"}],[{"text":"- animal farm attack","italic":false,"color":"white"}],[{"text":"launch a pig that can explode","italic":false,"color":"yellow"}],[{"text":"--- weapon ---","italic":false,"color":"dark_aqua"}],[{"text":"- Farming hoe","italic":false,"color":"white"}],[{"text":"--- movement ---","italic":false,"color":"dark_aqua"}],[{"text":"nothing... you are a farmer","italic":false,"color":"red"}]]]
+
 
 
 

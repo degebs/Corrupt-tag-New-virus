@@ -209,3 +209,5 @@
       -fixed miners dash lantern (no longer affects corrupted)
       -fixed a bug where during victory the only survivor could get corrupted
       -made it less less likely for the glitch of double corrupted to occur (hit on the same tick)
+1.4.1
+      -added new class "the farmer"

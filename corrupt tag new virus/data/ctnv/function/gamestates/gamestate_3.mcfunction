@@ -61,6 +61,7 @@ execute as @a[scores={class=5},team=runners] run function ctnv:classes/runners/s
 execute as @a[scores={class=6},team=runners] run function ctnv:classes/runners/fisherman
 execute as @a[scores={class=7},team=runners] run function ctnv:classes/runners/miner
 execute as @a[scores={class=8},team=runners] run function ctnv:classes/runners/merchant
+execute as @a[scores={class=9},team=runners] run function ctnv:classes/runners/farmer
 
 
 execute as @a[scores={evil_class=1},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/corrupted
@@ -426,10 +427,15 @@ execute as @a[team=dead] run attribute @s jump_strength base reset
 #=================================================================================================
 # trap management
 # if any player is a class that can place traps run the trap management function
-execute as @a[scores={class=5}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
-execute as @a[scores={evil_class=4}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
-execute as @a[scores={class=6}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
-execute as @a[scores={evil_class=8}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+#execute as @a[scores={class=5}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+#execute as @a[scores={evil_class=4}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+#execute as @a[scores={class=6}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+#execute as @a[scores={evil_class=8}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+#execute as @a[scores={class=9}] unless score limit trap_stats matches 0 run function ctnv:classes/trap_management
+# originally this would run if multiple times in a single tick. but with the new farmer. whos timed life farms
+# depend of the trap management function. time would go down faster if more classes were present.
+# so i did what i did in class swappers
+function ctnv:classes/trap_management
 
 # as of right now the stunman, hunter, and fisherman are the only classes that can place traps
 # if traps are disabled kill all traps
