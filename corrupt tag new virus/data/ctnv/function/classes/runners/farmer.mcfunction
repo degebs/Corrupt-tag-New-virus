@@ -13,7 +13,7 @@
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run clear @s iron_hoe
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:iron_hoe"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run item replace entity @s hotbar.0 with minecraft:iron_hoe[custom_name=[{"text":"yee old hoe","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run item replace entity @s hotbar.0 with minecraft:iron_hoe[custom_name=[{"text":"O'Reilly","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 #==============================================================================================================================================================
 # give the farmer his farm
@@ -79,7 +79,7 @@ execute if score @s farm_cooldown matches 0 run clear @s minecraft:gray_dye[cust
 #1. give farm pig
 execute if score @s animal_farm_attack_cooldown matches 0 run item replace entity @s hotbar.4 with minecraft:pig_spawn_egg[custom_name=[{"text":"Animal farm Attack","italic":false,"color":"blue"}]]
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:pig_spawn_egg",Slot:4b}]}] if score @s animal_farm_attack_cooldown matches 0 run clear @s minecraft:pig_spawn_egg
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:pig_spawn_egg",Slot:4b}]}] if score @s animal_farm_attack_cooldown matches 0 run item replace entity @s hotbar.4 with minecraft:hay_block[custom_name=[{"text":"Animal farm Attack","italic":false,"color":"blue"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:pig_spawn_egg",Slot:4b}]}] if score @s animal_farm_attack_cooldown matches 0 run item replace entity @s hotbar.4 with minecraft:hay_block[custom_name=[{"text":"Deploy Ruben the pig","italic":false,"color":"blue"}]]
 
 #2. detect if dropped farm
 # do a 25 second cooldown for the summon the pig

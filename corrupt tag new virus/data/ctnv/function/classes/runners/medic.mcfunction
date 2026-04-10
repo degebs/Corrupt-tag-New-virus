@@ -14,14 +14,14 @@ execute as @e[type=item,nbt={Item:{id:"minecraft:gray_dye"}}] run kill @s
 scoreboard players add @s medic_heal 0
 
 #==============================================================================================================================================================
-#give the medic his knockback hoe
+#give the medic his knockback shovel
 
 # make sure it cannot be moved
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_hoe",Slot:0b}]}] run clear @s diamond_hoe
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run clear @s diamond_shovel
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_hoe",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:diamond_hoe"}}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:diamond_shovel"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_hoe",Slot:0b}]}] run item replace entity @s hotbar.0 with diamond_hoe[custom_name=[{"text":"Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 
