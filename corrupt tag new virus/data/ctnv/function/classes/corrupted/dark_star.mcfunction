@@ -220,59 +220,90 @@ execute if score @s corruption matches 90 if score corruption_tick corruption ma
 execute if score @s corruption matches 90 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 
 # its time to progeam the big daddy nuke!!
+execute if score @s corruption matches 90.. unless entity @s[nbt={Inventory:[{id:"minecraft:end_crystal",Slot:6b}]}] if score @s dark_star_supernova matches 0 run item replace entity @s hotbar.6 with end_crystal[custom_name=[{"text":"SUPERNOVA","italic":false,"color":"aqua"}],lore=[[{"text":"drop a literal nuke","italic":false}]],rarity=epic]
 
-# if the player drops the end crystal item, start a 600 tick timer. then decrese by 1 until it can be used again (30 seconds)
-execute if score @s corruption matches 91.. unless entity @s[nbt={Inventory:[{id:"minecraft:end_crystal",Slot:6b}]}] if score @s dark_star_supernova matches 0 run scoreboard players set @s dark_star_supernova 600
 
-execute if score @s corruption matches 91.. if score @s dark_star_supernova matches 1.. run scoreboard players remove @s dark_star_supernova 1
+# if the player drops the end crystal item, start a 600 tick timer. then decrese by 1 until it can be used again (60 seconds)
+execute if score @s dark_star_nuke_Detect matches 1 run scoreboard players set @s dark_star_supernova 1600
+# sound effect
+execute if score @s dark_star_nuke_Detect matches 1 run playsound minecraft:block.sculk_shrieker.shriek player @a ~ ~ ~ 1 0.4 0.5
+scoreboard players reset @s dark_star_nuke_Detect
+kill @e[type=item,nbt={Item:{id:"minecraft:end_crystal"}}]
+execute if score @s corruption matches 90.. if score @s dark_star_supernova matches 1.. run scoreboard players remove @s dark_star_supernova 1
 #for this effect we need to temporarly halt the corruption
-execute if score @s dark_star_supernova matches 200.. run scoreboard players set corruption_tick corruption 1
+execute if score @s dark_star_supernova matches 1000.. run scoreboard players set corruption_tick corruption 0
+execute if score @s dark_star_supernova matches 1000.. run clear @s end_crystal
 
 
 
-# check to see if the glowstone has been dropped.
-# give the corrupted the glowstone dust. make sure he cant manipulate it
-execute if score @s corruption matches 91.. unless entity @s[nbt={Inventory:[{id:"minecraft:end_crystal",Slot:6b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:end_crystal"}}]
-execute if score @s corruption matches 91.. unless entity @s[nbt={Inventory:[{id:"minecraft:end_crystal",Slot:6b}]}] if score @s dark_star_supernova matches 0 run item replace entity @s hotbar.6 with end_crystal[custom_name=[{"text":"SUPERNOVA","italic":false,"color":"aqua"}],lore=[[{"text":"drop a literal nuke","italic":false}]],rarity=epic]
+#execute if score @s corruption matches 91.. unless entity @s[nbt={Inventory:[{id:"minecraft:end_crystal",Slot:6b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:end_crystal"}}]
+
 
 # do a cooldown timer with drey dye
-execute if score @s[scores={dark_star_supernova=599}] dark_star_supernova matches 599 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 30
-execute if score @s[scores={dark_star_supernova=580}] dark_star_supernova matches 580 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 29
-execute if score @s[scores={dark_star_supernova=560}] dark_star_supernova matches 560 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 28
-execute if score @s[scores={dark_star_supernova=540}] dark_star_supernova matches 540 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 27
-execute if score @s[scores={dark_star_supernova=520}] dark_star_supernova matches 520 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 26
-execute if score @s[scores={dark_star_supernova=500}] dark_star_supernova matches 500 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 25
-execute if score @s[scores={dark_star_supernova=480}] dark_star_supernova matches 480 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 24
-execute if score @s[scores={dark_star_supernova=460}] dark_star_supernova matches 460 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 23
-execute if score @s[scores={dark_star_supernova=440}] dark_star_supernova matches 440 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 22
-execute if score @s[scores={dark_star_supernova=420}] dark_star_supernova matches 420 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 21
-execute if score @s[scores={dark_star_supernova=400}] dark_star_supernova matches 400 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 20
-execute if score @s[scores={dark_star_supernova=380}] dark_star_supernova matches 380 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 19
-execute if score @s[scores={dark_star_supernova=360}] dark_star_supernova matches 360 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 18
-execute if score @s[scores={dark_star_supernova=340}] dark_star_supernova matches 340 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 17
-execute if score @s[scores={dark_star_supernova=320}] dark_star_supernova matches 320 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 16
-execute if score @s[scores={dark_star_supernova=300}] dark_star_supernova matches 300 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 15
-execute if score @s[scores={dark_star_supernova=280}] dark_star_supernova matches 280 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 14
-execute if score @s[scores={dark_star_supernova=260}] dark_star_supernova matches 260 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 13
-execute if score @s[scores={dark_star_supernova=240}] dark_star_supernova matches 240 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 12
-execute if score @s[scores={dark_star_supernova=220}] dark_star_supernova matches 220 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 11
-execute if score @s[scores={dark_star_supernova=200}] dark_star_supernova matches 200 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 10
-execute if score @s[scores={dark_star_supernova=180}] dark_star_supernova matches 180 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 9
-execute if score @s[scores={dark_star_supernova=160}] dark_star_supernova matches 160 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 8
-execute if score @s[scores={dark_star_supernova=140}] dark_star_supernova matches 140 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 7
-execute if score @s[scores={dark_star_supernova=120}] dark_star_supernova matches 120 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 6
-execute if score @s[scores={dark_star_supernova=100}] dark_star_supernova matches 100 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 5
-execute if score @s[scores={dark_star_supernova=80}] dark_star_supernova matches 80 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 4
-execute if score @s[scores={dark_star_supernova=60}] dark_star_supernova matches 60 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 3
-execute if score @s[scores={dark_star_supernova=40}] dark_star_supernova matches 40 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 2
 execute if score @s[scores={dark_star_supernova=20}] dark_star_supernova matches 20 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 1
+execute if score @s[scores={dark_star_supernova=40}] dark_star_supernova matches 40 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 2
+execute if score @s[scores={dark_star_supernova=60}] dark_star_supernova matches 60 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 3
+execute if score @s[scores={dark_star_supernova=80}] dark_star_supernova matches 80 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 4
+execute if score @s[scores={dark_star_supernova=100}] dark_star_supernova matches 100 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 5
+execute if score @s[scores={dark_star_supernova=120}] dark_star_supernova matches 120 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 6
+execute if score @s[scores={dark_star_supernova=140}] dark_star_supernova matches 140 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 7
+execute if score @s[scores={dark_star_supernova=160}] dark_star_supernova matches 160 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 8
+execute if score @s[scores={dark_star_supernova=180}] dark_star_supernova matches 180 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 9
+execute if score @s[scores={dark_star_supernova=200}] dark_star_supernova matches 200 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 10
+execute if score @s[scores={dark_star_supernova=220}] dark_star_supernova matches 220 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 11
+execute if score @s[scores={dark_star_supernova=240}] dark_star_supernova matches 240 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 12
+execute if score @s[scores={dark_star_supernova=260}] dark_star_supernova matches 260 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 13
+execute if score @s[scores={dark_star_supernova=280}] dark_star_supernova matches 280 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 14
+execute if score @s[scores={dark_star_supernova=300}] dark_star_supernova matches 300 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 15
+execute if score @s[scores={dark_star_supernova=320}] dark_star_supernova matches 320 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 16
+execute if score @s[scores={dark_star_supernova=340}] dark_star_supernova matches 340 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 17
+execute if score @s[scores={dark_star_supernova=360}] dark_star_supernova matches 360 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 18
+execute if score @s[scores={dark_star_supernova=380}] dark_star_supernova matches 380 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 19
+execute if score @s[scores={dark_star_supernova=400}] dark_star_supernova matches 400 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 20
+execute if score @s[scores={dark_star_supernova=420}] dark_star_supernova matches 420 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 21
+execute if score @s[scores={dark_star_supernova=440}] dark_star_supernova matches 440 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 22
+execute if score @s[scores={dark_star_supernova=460}] dark_star_supernova matches 460 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 23
+execute if score @s[scores={dark_star_supernova=480}] dark_star_supernova matches 480 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 24
+execute if score @s[scores={dark_star_supernova=500}] dark_star_supernova matches 500 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 25
+execute if score @s[scores={dark_star_supernova=520}] dark_star_supernova matches 520 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 26
+execute if score @s[scores={dark_star_supernova=540}] dark_star_supernova matches 540 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 27
+execute if score @s[scores={dark_star_supernova=560}] dark_star_supernova matches 560 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 28
+execute if score @s[scores={dark_star_supernova=580}] dark_star_supernova matches 580 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 29
+execute if score @s[scores={dark_star_supernova=600}] dark_star_supernova matches 600 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 30
+execute if score @s[scores={dark_star_supernova=620}] dark_star_supernova matches 620 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 31
+execute if score @s[scores={dark_star_supernova=640}] dark_star_supernova matches 640 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 32
+execute if score @s[scores={dark_star_supernova=660}] dark_star_supernova matches 660 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 33
+execute if score @s[scores={dark_star_supernova=680}] dark_star_supernova matches 680 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 34
+execute if score @s[scores={dark_star_supernova=700}] dark_star_supernova matches 700 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 35
+execute if score @s[scores={dark_star_supernova=720}] dark_star_supernova matches 720 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 36
+execute if score @s[scores={dark_star_supernova=740}] dark_star_supernova matches 740 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 37
+execute if score @s[scores={dark_star_supernova=760}] dark_star_supernova matches 760 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 38
+execute if score @s[scores={dark_star_supernova=780}] dark_star_supernova matches 780 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 39
+execute if score @s[scores={dark_star_supernova=800}] dark_star_supernova matches 800 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 40
+execute if score @s[scores={dark_star_supernova=820}] dark_star_supernova matches 820 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 41
+execute if score @s[scores={dark_star_supernova=840}] dark_star_supernova matches 840 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 42
+execute if score @s[scores={dark_star_supernova=860}] dark_star_supernova matches 860 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 43
+execute if score @s[scores={dark_star_supernova=880}] dark_star_supernova matches 880 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 44
+execute if score @s[scores={dark_star_supernova=900}] dark_star_supernova matches 900 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 45
+execute if score @s[scores={dark_star_supernova=920}] dark_star_supernova matches 920 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 46
+execute if score @s[scores={dark_star_supernova=940}] dark_star_supernova matches 940 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 47
+execute if score @s[scores={dark_star_supernova=960}] dark_star_supernova matches 960 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 48
+execute if score @s[scores={dark_star_supernova=980}] dark_star_supernova matches 980 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 49
+execute if score @s[scores={dark_star_supernova=1000}] dark_star_supernova matches 1000 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 50
+execute if score @s[scores={dark_star_supernova=1020}] dark_star_supernova matches 1020 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 51
+execute if score @s[scores={dark_star_supernova=1040}] dark_star_supernova matches 1040 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 52
+execute if score @s[scores={dark_star_supernova=1060}] dark_star_supernova matches 1060 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 53
+execute if score @s[scores={dark_star_supernova=1080}] dark_star_supernova matches 1080 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 54
+execute if score @s[scores={dark_star_supernova=1100}] dark_star_supernova matches 1100 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 55
+execute if score @s[scores={dark_star_supernova=1120}] dark_star_supernova matches 1120 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 56
+execute if score @s[scores={dark_star_supernova=1140}] dark_star_supernova matches 1140 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 57
+execute if score @s[scores={dark_star_supernova=1160}] dark_star_supernova matches 1160 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 58
+execute if score @s[scores={dark_star_supernova=1180}] dark_star_supernova matches 1180 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 59
+execute if score @s[scores={dark_star_supernova=1200}] dark_star_supernova matches 1200 run item replace entity @s hotbar.6 with gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]] 60
+
 # get rid of the gray dye when the cooldown is done
 execute if score @s dark_star_supernova matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"supernova cooldown","italic":false}]]
 
-
-
-# sound effect
-execute if score @s[scores={dark_star_supernova=599}] dark_star_supernova matches 599 run playsound minecraft:block.sculk_shrieker.shriek player @s ~ ~ ~ 1 0.4 0.5
 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -283,166 +314,155 @@ execute if score @s[scores={dark_star_supernova=599}] dark_star_supernova matche
 #3. HUGE explosion that covers the entire map
 
 #particles
-execute if score @s dark_star_supernova matches 25.. at @s run particle dust{color:[0.83,0.0,1.0],scale:1} ~ ~ ~ 2 2 2 10 95 force @a
-execute if score @s dark_star_supernova matches 300.. run effect give @s slowness 1 225
+execute if score @s dark_star_supernova matches 1170.. at @s run particle dust{color:[0.83,0.0,1.0],scale:1} ~ ~ ~ 2 2 2 10 95 force @a
+execute if score @s dark_star_supernova matches 1170.. run effect give @s slowness 1 225
 
 # a text box showing "detonation time" its really a 10 second countdown to show all players
-execute if score @s dark_star_supernova matches 300.. run title @a title [{"text": " "}]
+execute if score @s dark_star_supernova matches 900.. run title @a title [{"text": " "}]
 # use the subtitle command to show the countdown
-execute if score @s dark_star_supernova matches 580 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"10"]
-execute if score @s dark_star_supernova matches 575 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 570 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 560 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"9"]
-execute if score @s dark_star_supernova matches 555 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 550 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 540 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"8"]
-execute if score @s dark_star_supernova matches 535 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 530 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 520 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"7"]
-execute if score @s dark_star_supernova matches 515 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 510 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 500 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"6"]
-execute if score @s dark_star_supernova matches 495 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 490 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 480 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"5"]
-execute if score @s dark_star_supernova matches 475 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 470 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 460 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"4"]
-execute if score @s dark_star_supernova matches 455 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 450 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 440 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"3"]
-execute if score @s dark_star_supernova matches 435 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 430 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 420 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"2"]
-execute if score @s dark_star_supernova matches 415 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 410 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 400 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"1"]
-execute if score @s dark_star_supernova matches 395 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
-execute if score @s dark_star_supernova matches 390 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1580 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"10"]
+execute if score @s dark_star_supernova matches 1575 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1570 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1560 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"9"]
+execute if score @s dark_star_supernova matches 1555 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1550 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1540 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"8"]
+execute if score @s dark_star_supernova matches 1535 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1530 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1520 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"7"]
+execute if score @s dark_star_supernova matches 1515 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1510 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1500 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"6"]
+execute if score @s dark_star_supernova matches 1495 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1490 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1480 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"5"]
+execute if score @s dark_star_supernova matches 1475 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1470 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1460 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"4"]
+execute if score @s dark_star_supernova matches 1455 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1450 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1440 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"3"]
+execute if score @s dark_star_supernova matches 1435 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1430 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1420 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"2"]
+execute if score @s dark_star_supernova matches 1415 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1410 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1400 run title @a subtitle [{"text":"DETONATION IN: ","color":"red"},"1"]
+execute if score @s dark_star_supernova matches 1395 run playsound block.note_block.bit player @a ~ ~ ~ 1 1.2 1
+execute if score @s dark_star_supernova matches 1390 run playsound block.note_block.bit player @a ~ ~ ~ 1 2 1
 
 # summon the armorstand that will atcually be the nuke
-execute if score @s dark_star_supernova matches 380 at @s run summon armor_stand ~ ~ ~ {Pose:{RightLeg:[175f,183f,35f]},Small:1b,DisabledSlots:1967646,Tags:["nuke"]}
+execute if score @s dark_star_supernova matches 1380 at @s run summon armor_stand ~ ~ ~ {Pose:{RightLeg:[175f,183f,35f]},Small:1b,DisabledSlots:1967646,Tags:["nuke"]}
 effect give @e[tag=nuke] invisibility 1 1 true
-execute if score @s dark_star_supernova matches ..25 run kill @e[tag=nuke]
+execute if score @s dark_star_supernova matches ..1171 run kill @e[tag=nuke]
 # sound
-execute if score @s dark_star_supernova matches 170..380 at @s run playsound entity.generic.explode master @a ~ ~ ~ 20 1 1
-execute if score @s dark_star_supernova matches 170..380 at @s run playsound entity.firework_rocket.blast master @a ~ ~ ~ 1 0.1 1
-execute if score @s dark_star_supernova matches 170..380 at @s run playsound entity.generic.explode master @a ~ ~ ~ 1 0.5 1
-execute if score @s dark_star_supernova matches 170..380 at @s run playsound entity.generic.explode master @a ~ ~ ~ 1 2 1
-execute if score @s dark_star_supernova matches 170..380 at @s run playsound ambient.basalt_deltas.mood master @a ~ ~ ~ 1 1 1
-execute if score @s dark_star_supernova matches 170..380 at @s run playsound ambient.basalt_deltas.mood master @a ~ ~ ~ 1 1 1
-
+execute if score @s dark_star_supernova matches 1170..1380 at @s run playsound entity.generic.explode master @a ~ ~ ~ 20 1 1
+execute if score @s dark_star_supernova matches 1170..1380 at @s run playsound entity.firework_rocket.blast master @a ~ ~ ~ 1 0.1 1
+execute if score @s dark_star_supernova matches 1170..1380 at @s run playsound entity.generic.explode master @a ~ ~ ~ 1 0.5 1
+execute if score @s dark_star_supernova matches 1170..1380 at @s run playsound entity.generic.explode master @a ~ ~ ~ 1 2 1
+execute if score @s dark_star_supernova matches 1170..1380 at @s run playsound ambient.basalt_deltas.mood master @a ~ ~ ~ 1 1 1
+execute if score @s dark_star_supernova matches 1170..1380 at @s run playsound ambient.basalt_deltas.mood master @a ~ ~ ~ 1 1 1
 
 # set the rotation of the nuke
-execute if score @s dark_star_supernova matches 25.. if score nuke_rotation dark_star_supernova matches ..0 run scoreboard players set nuke_rotation dark_star_supernova 360
-execute if score @s dark_star_supernova matches 25.. run scoreboard players remove nuke_rotation dark_star_supernova 14
+execute if score @s dark_star_supernova matches 1025.. if score nuke_rotation dark_star_supernova matches ..0 run scoreboard players set nuke_rotation dark_star_supernova 360
+execute if score @s dark_star_supernova matches 1025.. run scoreboard players remove nuke_rotation dark_star_supernova 14
 
 # rotate the totem for the fancy particles
 execute store result storage minecraft:nuke angle int 1 run scoreboard players get nuke_rotation dark_star_supernova
-
 execute as @e[type=armor_stand,tag=nuke] store result entity @s Rotation[0] float 1 run data get storage minecraft:nuke angle
 
 # particles
 # the explosion particles will slowly increase in radius until its done
 # also the damage radius will increase with it
-execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^5 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-5 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^5 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 360..380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..380 at @s if score tick time matches 1 run scoreboard players remove @p[team=runners,distance=..5] health 1
+execute if score @s dark_star_supernova matches 1360..1380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^5 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1360..1380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-5 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1360..1380 at @e[tag=nuke] run particle explosion_emitter ^5 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1360..1380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1380 at @s if score tick time matches 1 run scoreboard players remove @p[team=runners,distance=..5] health 1
 
-execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^10 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-10 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^10 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 340..375 at @e[tag=nuke] run particle explosion_emitter ^-10 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..375 at @s if score tick time matches 2 run scoreboard players remove @p[team=runners,distance=..10] health 1
+execute if score @s dark_star_supernova matches 1340..1375 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^10 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1340..1375 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-10 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1340..1375 at @e[tag=nuke] run particle explosion_emitter ^10 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1340..1375 at @e[tag=nuke] run particle explosion_emitter ^-10 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1375 at @s if score tick time matches 2 run scoreboard players remove @p[team=runners,distance=..10] health 1
 
-execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^15 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-15 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^15 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 320..345 at @e[tag=nuke] run particle explosion_emitter ^-15 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..345 at @s if score tick time matches 3 run scoreboard players remove @p[team=runners,distance=..15] health 1
+execute if score @s dark_star_supernova matches 1320..1345 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^15 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1320..1345 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-15 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1320..1345 at @e[tag=nuke] run particle explosion_emitter ^15 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1320..1345 at @e[tag=nuke] run particle explosion_emitter ^-15 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1345 at @s if score tick time matches 3 run scoreboard players remove @p[team=runners,distance=..15] health 1
 
-execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^20 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-20 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^-20 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 300..325 at @e[tag=nuke] run particle explosion_emitter ^20 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..325 at @s if score tick time matches 4 run scoreboard players remove @p[team=runners,distance=..20] health 1
+execute if score @s dark_star_supernova matches 1300..1325 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^20 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1300..1325 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-20 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1300..1325 at @e[tag=nuke] run particle explosion_emitter ^-20 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1300..1325 at @e[tag=nuke] run particle explosion_emitter ^20 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1325 at @s if score tick time matches 4 run scoreboard players remove @p[team=runners,distance=..20] health 1
 
-execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^25 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-25 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^25 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 280..305 at @e[tag=nuke] run particle explosion_emitter ^-25 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..305 at @s if score tick time matches 5 run scoreboard players remove @p[team=runners,distance=..25] health 1
+execute if score @s dark_star_supernova matches 1280..1305 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^25 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1280..1305 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-25 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1280..1305 at @e[tag=nuke] run particle explosion_emitter ^25 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1280..1305 at @e[tag=nuke] run particle explosion_emitter ^-25 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1305 at @s if score tick time matches 5 run scoreboard players remove @p[team=runners,distance=..25] health 1
 
-execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^30 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-30 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^30 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 260..285 at @e[tag=nuke] run particle explosion_emitter ^-30 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..285 at @s if score tick time matches 6 run scoreboard players remove @p[team=runners,distance=..30] health 1
+execute if score @s dark_star_supernova matches 1260..1285 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^30 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1260..1285 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-30 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1260..1285 at @e[tag=nuke] run particle explosion_emitter ^30 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1260..1285 at @e[tag=nuke] run particle explosion_emitter ^-30 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1285 at @s if score tick time matches 6 run scoreboard players remove @p[team=runners,distance=..30] health 1
 
-execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^35 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-35 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^35 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 240..265 at @e[tag=nuke] run particle explosion_emitter ^-35 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..265 at @s if score tick time matches 7 run scoreboard players remove @p[team=runners,distance=..35] health 1
+execute if score @s dark_star_supernova matches 1240..1265 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^35 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1240..1265 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-35 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1240..1265 at @e[tag=nuke] run particle explosion_emitter ^35 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1240..1265 at @e[tag=nuke] run particle explosion_emitter ^-35 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1265 at @s if score tick time matches 7 run scoreboard players remove @p[team=runners,distance=..35] health 1
 
-execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^40 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-40 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^40 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 220..245 at @e[tag=nuke] run particle explosion_emitter ^-40 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..245 at @s if score tick time matches 8 run scoreboard players remove @p[team=runners,distance=..40] health 1
+execute if score @s dark_star_supernova matches 1220..1245 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^40 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1220..1245 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-40 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1220..1245 at @e[tag=nuke] run particle explosion_emitter ^40 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1220..1245 at @e[tag=nuke] run particle explosion_emitter ^-40 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1245 at @s if score tick time matches 8 run scoreboard players remove @p[team=runners,distance=..40] health 1
 
-execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^45 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-45 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^45 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..220 at @e[tag=nuke] run particle explosion_emitter ^-45 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 200..220 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..55] health 1
+execute if score @s dark_star_supernova matches 1200..1220 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^45 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1220 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-45 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1220 at @e[tag=nuke] run particle explosion_emitter ^45 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1220 at @e[tag=nuke] run particle explosion_emitter ^-45 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1200..1220 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..55] health 1
 
-execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^50 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-50 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^50 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 195..200 at @e[tag=nuke] run particle explosion_emitter ^-50 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 195..200 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..65] health 1
+execute if score @s dark_star_supernova matches 1195..1200 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^50 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1195..1200 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-50 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1195..1200 at @e[tag=nuke] run particle explosion_emitter ^50 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1195..1200 at @e[tag=nuke] run particle explosion_emitter ^-50 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1195..1200 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..65] health 1
 
-execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^60 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-60 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^60 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..195 at @e[tag=nuke] run particle explosion_emitter ^-60 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..195 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..75] health 1
+execute if score @s dark_star_supernova matches 1170..1195 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^60 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1195 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-60 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1195 at @e[tag=nuke] run particle explosion_emitter ^60 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1195 at @e[tag=nuke] run particle explosion_emitter ^-60 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1195 at @s if score tick time matches 9 run scoreboard players remove @p[team=runners,distance=..75] health 1
 # one final middle finger to any potential survivor ( its a last second ring expantion)
-execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^100 5 15 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-100 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^100 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..185 at @e[tag=nuke] run particle explosion_emitter ^-100 ^ ^ 5 5 5 1 15 force @a
-execute if score @s dark_star_supernova matches 170..185 at @s if score tick time matches 10 run scoreboard players remove @p[team=runners,distance=..150] health 1
-
-
-
-
-
+execute if score @s dark_star_supernova matches 1170..1185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^100 5 15 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1185 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-100 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1185 at @e[tag=nuke] run particle explosion_emitter ^100 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1185 at @e[tag=nuke] run particle explosion_emitter ^-100 ^ ^ 5 5 5 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1185 at @s if score tick time matches 10 run scoreboard players remove @p[team=runners,distance=..150] health 1
 
 # extra particels
-execute if score @s dark_star_supernova matches 170..380 at @s run particle campfire_signal_smoke ~ ~ ~ 10 5 10 4 200 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^5 25 0 25 1 15 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-5 25 0 25 1 15 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^5 ^ ^ 25 0 25 1 15 force @a
-execute if score @s dark_star_supernova matches 170..380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1380 at @s run particle campfire_signal_smoke ~ ~ ~ 10 5 10 4 200 force @a
+execute if score @s dark_star_supernova matches 1170..1380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^5 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1380 at @e[tag=nuke] run particle explosion_emitter ^ ^ ^-5 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1380 at @e[tag=nuke] run particle explosion_emitter ^5 ^ ^ 25 0 25 1 15 force @a
+execute if score @s dark_star_supernova matches 1170..1380 at @e[tag=nuke] run particle explosion_emitter ^-5 ^ ^ 25 0 25 1 15 force @a
 
 # you only get one chance to nuke everyone
 
-
 # if the nuke does not hit anyone. set everones hearts to 1
-execute if score @s dark_star_supernova matches 171 run scoreboard players set @p[team=runners] health 1
-
+execute if score @s dark_star_supernova matches 1171 run scoreboard players set @p[team=runners] health 1
 
 # calling card
-execute if score @s dark_star_supernova matches 360..380 run advancement grant @s only ctnv:corrupt_tag/nuke
-execute if score @s dark_star_supernova matches 360..380 run scoreboard players set @s dark_star_nuke 1
+execute if score @s dark_star_supernova matches 1360..1380 run advancement grant @s only ctnv:corrupt_tag/nuke
+execute if score @s dark_star_supernova matches 1360..1380 run scoreboard players set @s dark_star_nuke 1
 # other calling card
 execute if score @s corruption matches 101.. if score @s dark_star_nuke matches 0 run advancement grant @s only ctnv:corrupt_tag/imaginary_fire
 # make sure its acutally being checked
 scoreboard players add @s dark_star_nuke 0
 
-# completly halt the corruption tick while the nuke is active
-execute if score @s dark_star_supernova matches 100.. run scoreboard players set corruption_tick corruption 0

@@ -214,3 +214,6 @@
 1.4.2
       -changed the medic to have a shovel instead of a hoe
       -fixed a few spelling mistakes
+1.4.3
+      -nerfed the dark stars t3 (cooldown is now 60s)
+      -fixed the map selection arrows not working

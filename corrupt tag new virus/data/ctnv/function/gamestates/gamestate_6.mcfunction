@@ -145,7 +145,7 @@ execute as @a[scores={evil_class=5},team=runners] if score @s knight_speed_boost
 execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_darkness matches ..10 run scoreboard players set @s dark_star_darkness 10
 execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_speed_boost matches ..10 run scoreboard players set @s dark_star_speed_boost 10
 execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernova matches ..10 run scoreboard players set @s dark_star_supernova 10
-execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernova matches 170.. run scoreboard players set @s dark_star_supernova 169
+execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernova matches 1171.. run scoreboard players set @s dark_star_supernova 1170
 
 # extra corrupted classes will be added later
 

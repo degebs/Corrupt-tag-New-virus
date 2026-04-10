@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.2","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.3","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -192,6 +192,7 @@ scoreboard objectives add dark_star_speed_boost dummy
 scoreboard objectives add dark_star_supernova dummy
 scoreboard objectives add dark_star_wind_charge_use minecraft.used:wind_charge
 scoreboard objectives add dark_star_wind_charge_cooldown dummy
+scoreboard objectives add dark_star_nuke_Detect minecraft.dropped:end_crystal
 
 
 # Authority 
