@@ -58,6 +58,7 @@ scoreboard objectives remove ST____COC_difuculty
 scoreboard objectives remove ST____enable_runner_classes
 scoreboard objectives remove ST____locator_bar
 scoreboard objectives remove ST____downed_on_kill
+scoreboard objectives remove ST____class_selection
 
 scoreboard objectives add ST____time_of_day trigger
 scoreboard objectives add ST____nautral_regen trigger
@@ -72,6 +73,7 @@ scoreboard objectives add ST____COC_difuculty trigger
 scoreboard objectives add ST____enable_runner_classes trigger
 scoreboard objectives add ST____locator_bar trigger
 scoreboard objectives add ST____downed_on_kill trigger
+scoreboard objectives add ST____class_selection trigger
 
 # this block of code is directly coppied from the load function to fix a glitch, its not the cleanest. but nothing is with this god forsaken programing language
 scoreboard players reset @a ST____corruption_rate
@@ -87,6 +89,7 @@ scoreboard players reset @a ST____COC_difuculty
 scoreboard players reset @a ST____enable_runner_classes
 scoreboard players reset @a ST____locator_bar
 scoreboard players reset @a ST____downed_on_kill
+scoreboard players reset @a ST____class_selection
 
 # this is done to keep the scoreboard clean and tidy.
 
@@ -98,5 +101,6 @@ scoreboard players set @a[team=party_lead] ST____max_traps 2
 scoreboard players set @a[team=party_lead] ST____super_speed 1
 scoreboard players set @a[team=party_lead] ST____enable_runner_classes 1
 scoreboard players set @a[team=party_lead] ST____downed_on_kill 0
+
 
 

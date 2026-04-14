@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.3","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.4","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -252,6 +252,7 @@ scoreboard objectives add ST____COC_difuculty trigger
 scoreboard objectives add ST____enable_runner_classes trigger
 scoreboard objectives add ST____locacor_bar trigger
 scoreboard objectives add ST____downed_on_kill trigger
+scoreboard objectives add ST____class_selection trigger
 
 # this is for hide and reap
 scoreboard objectives add COC_upgrades dummy
@@ -272,7 +273,7 @@ scoreboard players set setting ST____COC_difuculty 0
 scoreboard players set setting ST____enable_runner_classes 1
 scoreboard players set setting ST____locacor_bar 1
 scoreboard players set setting ST____downed_on_kill 0
-
+scoreboard players set setting ST____class_selection 0
 # when the game starts for the first time, chanses are that the ammount of map beacons is forgotten, so we can check the life detecter
 # and set the map beacon count to the number of life detecters
 #execute as @e[tag=life_detector] 
@@ -510,6 +511,10 @@ scoreboard objectives add fish_assist dummy
 #-------------------------------bulk shield camping fix------------------------------
 scoreboard objectives add shield_breaker dummy
 
+
+#-------------------------------new and improved class selection logic------------------------------
+scoreboard objectives add selected_runner_class dummy
+scoreboard objectives add selected_corrupted_class dummy
 
 #-------------------------------secret corrupted domain expantion------------------------------
 scoreboard objectives add corrupted_supercharge dummy

@@ -271,6 +271,7 @@ kill @e[tag=eye_of_pain]
 kill @e[type=item_display,nbt={item:{id:"minecraft:player_head"}}]
 kill @e[tag=diety]
 kill @e[tag=redditor]
+kill @e[type=item]
 
 #=================================================================================================
 # display the maps name to all

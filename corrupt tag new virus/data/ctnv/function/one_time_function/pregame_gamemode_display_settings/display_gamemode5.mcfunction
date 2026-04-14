@@ -86,3 +86,22 @@ execute if score setting ST____target_tubby_detection matches 3 run scoreboard p
 execute if score setting ST____target_tubby_detection matches 3 run scoreboard players reset target_tubby_detection_hyperactive unified_tag_settings
 execute if score setting ST____target_tubby_detection matches 3 run scoreboard players display name target_tubby_detection_extreme unified_tag_settings {"text":"Target Tubby Detection: ","color":"gold","bold":true,"extra":[{"text":"[EXTREME]","color":"yellow"}]}
 execute if score setting ST____target_tubby_detection matches 3 run scoreboard players display numberformat target_tubby_detection_extreme unified_tag_settings blank
+
+
+# for ST____class_selection
+# the options are "normal" "competitive" and "random"
+execute if score setting ST____class_selection matches 0 run scoreboard players set class_selection_normal unified_tag_settings 1
+execute if score setting ST____class_selection matches 0 run scoreboard players reset class_selection_competitive unified_tag_settings 
+execute if score setting ST____class_selection matches 0 run scoreboard players reset class_selection_random unified_tag_settings
+execute if score setting ST____class_selection matches 0 run scoreboard players display name class_selection_normal unified_tag_settings {"text":"Class Selection: ","color":"light_purple","bold":true,"extra":[{"text":"[NORMAL]","color":"yellow"}]}
+execute if score setting ST____class_selection matches 0 run scoreboard players display numberformat class_selection_normal unified_tag_settings blank
+execute if score setting ST____class_selection matches 1 run scoreboard players set class_selection_competitive unified_tag_settings 1
+execute if score setting ST____class_selection matches 1 run scoreboard players reset class_selection_normal unified_tag_settings 
+execute if score setting ST____class_selection matches 1 run scoreboard players reset class_selection_random unified_tag_settings
+execute if score setting ST____class_selection matches 1 run scoreboard players display name class_selection_competitive unified_tag_settings {"text":"Class Selection: ","color":"light_purple","bold":true,"extra":[{"text":"[COMPETITIVE]","color":"yellow"}]}
+execute if score setting ST____class_selection matches 1 run scoreboard players display numberformat class_selection_competitive unified_tag_settings blank
+execute if score setting ST____class_selection matches 2 run scoreboard players set class_selection_random unified_tag_settings 1
+execute if score setting ST____class_selection matches 2 run scoreboard players reset class_selection_normal unified_tag_settings 
+execute if score setting ST____class_selection matches 2 run scoreboard players reset class_selection_competitive unified_tag_settings
+execute if score setting ST____class_selection matches 2 run scoreboard players display name class_selection_random unified_tag_settings {"text":"Class Selection: ","color":"light_purple","bold":true,"extra":[{"text":"[RANDOM]","color":"yellow"}]}
+execute if score setting ST____class_selection matches 2 run scoreboard players display numberformat class_selection_random unified_tag_settings blank

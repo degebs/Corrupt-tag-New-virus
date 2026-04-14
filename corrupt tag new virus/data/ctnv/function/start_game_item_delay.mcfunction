@@ -33,7 +33,8 @@ execute as @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] if score Online pl
 execute as @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] if score Online players_online matches 2.. at @s if score anti_autodrop players_online matches 2.. run tellraw @a [{"text":"----------------------------------------------",color:"green"}]
 execute as @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] if score Online players_online matches 2.. at @s if score anti_autodrop players_online matches 2.. run tellraw @a [{"text":"game starts in ","color":"white"},{"text":"30 seconds","color":"dark_purple"}]
 
-
+# select the map!
+execute as @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] if score Online players_online matches 2.. at @s if score anti_autodrop players_online matches 2.. run execute as @e[type=turtle,scores={map_selection=1}] at @s run scoreboard players set @e[type=armor_stand,sort=nearest,limit=1] spawning_circle 1
 
 # Kill the dropped item
 execute if entity @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] if score Online players_online matches 2.. run clear @a minecraft:blue_dye

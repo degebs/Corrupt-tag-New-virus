@@ -217,3 +217,11 @@
 1.4.3
       -nerfed the dark stars t3 (cooldown is now 60s)
       -fixed the map selection arrows not working
+1.4.4
+      -completely changed how class selection works
+            there are now 3 class selection modes (new setting)
+            normal, competitive and random
+            this also fixed the HUGE LAG SPIKES that happen duriing class selection
+      -fixed the time of day setting (now shows up in all gamemode settings)
+      -fixed the class selection rng giving everyone the same class
+      -medic now gets a knockback 3 shovel during 1 heart senerios

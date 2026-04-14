@@ -34,7 +34,7 @@ execute if score countdown time matches 30 run clear @a
 #clear everyones inventory
 #=======================================================================
 # there may still be an issue where the game starts immidiatly after reloading
-execute if score countdown time matches 28 if score tick time matches 1 run tellraw @a [{"text":"Did you not mean to start? ","color":"yellow"},{"text":"click here","color":"gold","click_event":{"action":"run_command","command":"/reload"},"hover_event":{"action":"show_text","value":"/reload"}}]
+#execute if score countdown time matches 28 if score tick time matches 1 run tellraw @a [{"text":"Did you not mean to start? ","color":"yellow"},{"text":"click here","color":"gold","click_event":{"action":"run_command","command":"/reload"},"hover_event":{"action":"show_text","value":"/reload"}}]
 
 #=======================================================================
 # we need to check if any players leave during this state and if they do preform another panic
@@ -122,8 +122,17 @@ scoreboard players enable @a evil_class
 #----------------check if no class was chosen--------------------------
 
 
-execute as @a if score @s class matches 0 run scoreboard players operation @s class = rng class
-execute as @a if score @s evil_class matches 0 run scoreboard players operation @s evil_class = rng evil_class
+execute as @a[scores={class=0},limit=1] run scoreboard players operation @s class = rng class
+execute as @a[scores={evil_class=0},limit=1] run scoreboard players operation @s evil_class = rng evil_class
+#===========================================================================================================================================
+# rng for class selection
+
+# do a little rng
+scoreboard players add rng class 1
+execute if score rng class matches 9.. run scoreboard players set rng class 1
+execute if score rng class matches 3.. run scoreboard players add rng evil_class 1
+execute if score rng evil_class matches 9.. run scoreboard players set rng evil_class 1
+# the rng cant go beond 7 because there are only 6 classes
 
 #================================================================================================
 # team setup stuff
@@ -145,7 +154,9 @@ team modify corrupted nametagVisibility never
 #=================================================================================================
 #when a map is chosen the players will eventuall spawn on the map beacon, this is not very nice looking as all players are inside eachother.
 # to fix this all players must spawn in a circle around the spawn beacon.
-execute if score tick time matches 2 as @e[type=turtle,scores={map_selection=1}] at @s run scoreboard players set @e[type=armor_stand,sort=nearest,limit=1] spawning_circle 1
+#execute if score tick time matches 2 as @e[type=turtle,scores={map_selection=1}] at @s run scoreboard players set @e[type=armor_stand,sort=nearest,limit=1] spawning_circle 1
+# this code only needs to be executed once. this can be optimized!
+
 # now that the correct armorstand is selected we can discuss what this armorstand will actually do.
 # every map beacon comes with an armorstand that constantly rotates. what we can do is place secondary armorstands at a radius away from the map beacon
 # at diffrent points in armorstands rotation.
@@ -161,18 +172,20 @@ execute if score tick time matches 2 store result storage minecraft:temp angle i
 # Apply the stored value to the armor stand's yaw rotation
 execute if score tick time matches 2 as @e[type=armor_stand,tag=map] store result entity @s Rotation[0] float 1 run data get storage minecraft:temp angle
 # this has "if score tick time matches 2" so that the tick rate of the sever does not plummet
+# so dispite all my attempts to fix this. this shit laggs so unbelivably hard. no idea why this happens but i beleve it is this block of code here
+# ok so its not this code that is making it lag. what must it be then?? (i am testing this by removing chunks)
 #=================================================================================================
 # ---------------update the universal time function- keep it from going past 15
 # this is an exteme solution to the lag timer problem.
 # literally just make the ticks faster
 
 #scoreboard players add tick time 1
-execute if score tick time matches 15 run scoreboard players set tick time 0
+#execute if score tick time matches 15 run scoreboard players set tick time 0
 # never make me do this shit again!
 # i literally have to make 1 second equal to 0.75 of a second!!!
 # that is how we solve the lag issue. i hate it so much god damn
 # i litterly have to use time travel bullshit just to make this feel like its not going SUPREMELY SLOW
-
+# may no longer be needed as we are rewriting the class selection logic
 
 #=================================================================================================
 
@@ -193,8 +206,16 @@ execute as @a[scores={class_selection_cooldown=1..}] run scoreboard players remo
 
 # all the class selection logic has been moved to a new function so that it can be deactivated before everyones inevtory is cleared.
 # if we dont do this the act of clearing the inventory for the game will be seen as choosing classes and thats bad
-execute if score countdown time matches 1.. run function ctnv:one_time_function/class_selection
+#execute if score countdown time matches 1.. run function ctnv:one_time_function/class_selection
+# IT IS THIS FUNCTION THAT IS CAUSING THE LAG!
+# I KENEW IT!
+# this is a big problem because this is where all the class selection logic is. if this is causing lag then the game is pretty much unplayable. i need to find a way to optimize this.
 
+# today i am rewriting class selection
+execute if score setting ST____class_selection matches 0 run function ctnv:classes/class_selection/normal_class_selection
+execute if score setting ST____class_selection matches 1 run function ctnv:classes/class_selection/competitive_class_selection
+execute if score setting ST____class_selection matches 2.. run function ctnv:classes/class_selection/random_class_selection
+# this solves the lag!!! EXCELENT!
 
 
 #======================================================================================================================

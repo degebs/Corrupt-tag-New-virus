@@ -1,6 +1,6 @@
 #this function handles all class selection logic
 
-
+# THIS FUNCTION IS DEPRICATED!!!! IT SUCKS ASS AND IS SUPER LAGGY. i am replacing it
 
 # the cooldown and the neter portals are there so that players dont spam.
 

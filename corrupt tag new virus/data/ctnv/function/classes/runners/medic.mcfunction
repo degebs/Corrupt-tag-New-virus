@@ -21,8 +21,10 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:diamond_shovel"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+# in one heart senarios he gets a knockback 2 shovel, otherwise he gets a knockback 1 shovel
+execute if score setting ST____max_health matches 2.. unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
+execute if score setting ST____max_health matches 1 run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"ÜBER Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:3},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 #==============================================================================================================================================================
@@ -159,6 +161,7 @@ execute if score gamers players_online matches 3.. as @s run function ctnv:one_t
 # ok so there was a genuine incendent where alex got super agngy and shit about this change 
 # talking about how "I will never play corrupt tag again"
 # this actually got to him emotianally. and he got offended. not like how liberals get offended everyday, but the real emotion "OFFENDED" that ruinded the whole vibe
-# he feels like his voice is being ignored completly, and in this case it should... but thats how the incenet happened
+# he feels like his voice is being ignored completly, and in this case it should... but thats how the incendent happened
 # we cannot replace him
 # so that is why i am making a special condition that this block of code will not run if the player "t1kle_palinkle" is in on the server
+# on second thoght that may not be a good idea ether, there must be a completly different solution or compromise
