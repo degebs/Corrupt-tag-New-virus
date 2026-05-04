@@ -12,6 +12,9 @@ execute as @a at @s run function ctnv:classes/class_selection/classes/select_mer
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_farmer
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_assassin
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_miner
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_trickster
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_spaceman
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_pirate
 
 
 

@@ -5,8 +5,8 @@
 #██║ ╚═╝ ██║██║██║ ╚████║███████╗██║  ██║
 #╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
 #                                        
-# this class was going to be short
-# unfortulatly this was playtested but it sucked ass
+# this class is short
+# and he is the fastest of them all
 
 #kill any loose gray dye
 execute as @e[type=item,nbt={Item:{id:"minecraft:gray_dye"}}] run kill @s

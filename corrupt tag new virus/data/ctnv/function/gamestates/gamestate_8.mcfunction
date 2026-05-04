@@ -63,6 +63,9 @@ execute as @a[scores={class=6},team=runners] run function ctnv:classes/runners/f
 execute as @a[scores={class=7},team=runners] run function ctnv:classes/runners/miner
 execute as @a[scores={class=8},team=runners] run function ctnv:classes/runners/merchant
 execute as @a[scores={class=9},team=runners] run function ctnv:classes/runners/farmer
+execute as @a[scores={class=10},team=runners] run function ctnv:classes/runners/trickster
+execute as @a[scores={class=11},team=runners] run function ctnv:classes/runners/spaceman
+execute as @a[scores={class=12},team=runners] run function ctnv:classes/runners/pirate
 
 execute as @a[scores={evil_class=1},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/corrupted
 execute as @a[scores={evil_class=2},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/predator
@@ -142,7 +145,8 @@ execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernov
 # extra corrupted classes will be added later
 
 # the corrupted one cannot have the glowing effect
-execute as @a[team=corrupted] run effect clear @s glowing
+execute as @a[team=corrupted] if score @s corruption_stun matches 1.. run effect clear @s glowing
+
 # the knight will have knockback resistance. everone who is not the knight will not have that
 attribute @r[team=runners] knockback_resistance base reset
 # a note about classes. im calling them AS the person who is playing the class. that means that i can just use @S to 
@@ -201,7 +205,7 @@ execute as @a if score @s hit matches 1.. if score @s health matches 1.. run sco
 # 1. constaltly update rnd for class selection
 scoreboard players add rng class 1
 scoreboard players add rng evil_class 1
-execute if score rng class matches 8.. run scoreboard players set rng class 1
+execute if score rng class matches 13.. run scoreboard players set rng class 1
 execute if score rng evil_class matches 7.. run scoreboard players set rng evil_class 1
 #2. when a player becomes corrupted scramble there class 
 

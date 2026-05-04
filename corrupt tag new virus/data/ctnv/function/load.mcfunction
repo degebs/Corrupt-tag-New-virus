@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.4","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.5","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -41,8 +41,9 @@ clear @a
 gamerule minecraft:locator_bar false
 gamerule allow_entering_nether_using_portals false
 gamerule fire_spread_radius_around_player 0
+gamerule mob_drops false
 
-
+effect clear @a
 
 # --------------------------------------------------------------------------------------------
 # all variables must be established 
@@ -148,7 +149,24 @@ scoreboard objectives add farm_cooldown dummy
 # the farmers atack
 scoreboard objectives add animal_farm_attack_detect minecraft.dropped:pig_spawn_egg
 scoreboard objectives add animal_farm_attack_cooldown dummy
-
+# trickster variables
+scoreboard objectives add player_swap_detect minecraft.dropped:music_disc_lava_chicken
+scoreboard objectives add player_swap_cooldown dummy
+scoreboard objectives add decoy_cooldown dummy
+scoreboard objectives add decoy_detect minecraft.dropped:music_disc_cat
+scoreboard objectives add decoy_health dummy
+# the spaceman
+scoreboard objectives add spaceman_teleport_detect minecraft.dropped:music_disc_5
+scoreboard objectives add spaceman_teleport_cooldown dummy
+scoreboard objectives add spaceman_rewind_shard_detect minecraft.dropped:echo_shard
+scoreboard objectives add spaceman_rewind_shard_state dummy
+scoreboard objectives add spaceman_teleport_count dummy
+# the pirate
+scoreboard objectives add potion_drink_detect minecraft.used:minecraft.potion
+scoreboard objectives add RUM_cooldown dummy
+scoreboard objectives add RUM_count dummy
+scoreboard objectives add northless_compass_detect dropped:minecraft.recovery_compass
+scoreboard objectives add northless_compass_cooldown dummy
 
 
 

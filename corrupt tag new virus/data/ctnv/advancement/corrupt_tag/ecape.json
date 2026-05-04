@@ -5,7 +5,7 @@
             "count": 1
         },
         "title": "Fox on the run!",
-        "description": "Evade the Corrupted with only 1 heart after being within 10 blocks of them for 2 minutes",
+        "description": "Evade the Corrupted with only 1 heart after being within 10 blocks of them for 30 seconds",
         "background": "minecraft:block/crying_obsidian",
         "frame": "challenge",
         "show_toast": true,

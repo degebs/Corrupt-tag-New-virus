@@ -31,7 +31,7 @@ execute if score countdown time matches 1 if score setting ST____game_mode match
 #execute as @e[type=turtle,scores={map_selection=1}] at @s run setworldspawn ~ ~ ~
 execute as @e[type=turtle,scores={map_selection=1}] at @s run spawnpoint @a ~ ~ ~
 
-
+clear @a
 
 
 # resize the turtles so you cant hit them
@@ -272,7 +272,10 @@ kill @e[type=item_display,nbt={item:{id:"minecraft:player_head"}}]
 kill @e[tag=diety]
 kill @e[tag=redditor]
 kill @e[type=item]
-
+kill @e[type=skeleton]
+kill @e[tag=rewind_shard]
+kill @e[tag=rewind_shard_trail]
+kill @e[tag=resupply_totem]
 #=================================================================================================
 # display the maps name to all
 execute as @e[type=turtle,limit=1,scores={map_selection=1}] at @p run title @a title [{"color":"gold","selector":"@s"}]

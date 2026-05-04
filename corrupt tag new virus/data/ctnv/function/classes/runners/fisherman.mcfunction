@@ -5,7 +5,7 @@
 #██║     ██║███████║██║  ██║███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
 #╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
                                                                         
-# a brand new class for corrupt tag new virus. he gets the cool new stuff they added in minecraft like wind charges
+# a brand new class for corrupt tag new virus. he can fish really well.
 
 
 #==============================================================================================================================================================

@@ -225,3 +225,8 @@
       -fixed the time of day setting (now shows up in all gamemode settings)
       -fixed the class selection rng giving everyone the same class
       -medic now gets a knockback 3 shovel during 1 heart senerios
+1.4.5
+      -added new class "the Trickster"
+      -added new class "the spaceman"
+      -added new class "the pirate"
+      these are all runner classes that will complete the runner roster

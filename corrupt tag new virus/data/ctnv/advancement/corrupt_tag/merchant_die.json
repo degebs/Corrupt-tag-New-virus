@@ -12,7 +12,7 @@
         "announce_to_chat": true,
         "hidden": true
     },
-    "parent": "ctnv:corrupt_tag/valhalla",
+    "parent": "ctnv:corrupt_tag/merchant_bad_coin",
     "criteria": {
         "root": {
             "trigger": "minecraft:impossible"

@@ -289,7 +289,8 @@ execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernov
 # extra corrupted classes will be added later
 
 # the corrupted one cannot have the glowing effect
-execute as @a[team=corrupted] run effect clear @s glowing
+execute as @a[team=corrupted] if score @s corruption_stun matches 1.. run effect clear @s glowing
+
 # the knight will have knockback resistance. everone who is not the knight will not have that
 attribute @r[team=runners] knockback_resistance base reset
 
@@ -401,6 +402,9 @@ execute as @a[scores={class=6},team=runners] unless score atherial_corrupted cal
 execute as @a[scores={class=7},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/miner
 execute as @a[scores={class=8},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/merchant
 execute as @a[scores={class=9},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/farmer
+execute as @a[scores={class=10},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/trickster
+execute as @a[scores={class=11},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/spaceman
+execute as @a[scores={class=12},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/pirate
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5

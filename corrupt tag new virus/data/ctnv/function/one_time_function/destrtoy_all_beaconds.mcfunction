@@ -9,4 +9,3 @@ function ctnv:one_time_function/remove_all_scoreboards
 
 tellraw @a ["",{"text":"all beacons have been destroyed you will have to summon new ones","color":"red"}]
 
-reload

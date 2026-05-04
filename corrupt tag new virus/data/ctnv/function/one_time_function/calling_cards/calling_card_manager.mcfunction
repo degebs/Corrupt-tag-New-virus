@@ -29,6 +29,17 @@ execute if entity @s[scores={class=8}] if score enable runner_class_victory_call
 
 execute if entity @s[scores={class=9}] if score enable runner_class_victory_calling_card matches 1 run advancement grant @s only ctnv:corrupt_tag/farmerwin
 
+execute if entity @s[scores={class=10}] if score enable runner_class_victory_calling_card matches 1 run advancement grant @s only ctnv:corrupt_tag/tricksterwin
+
+execute if entity @s[scores={class=11}] if score enable runner_class_victory_calling_card matches 1 run advancement grant @s only ctnv:corrupt_tag/spacemanwin
+
+execute if entity @s[scores={class=12}] if score enable runner_class_victory_calling_card matches 1 run advancement grant @s only ctnv:corrupt_tag/piratewin
+
+#===============================================================================================================
+# this is for the 0% corruption victory card, given to the player who wins with 0% corruption
+execute as @s[team=runners,scores={corruption=0}] if score enable runner_class_victory_calling_card matches 1 if score tick time matches 1 run advancement grant @s only ctnv:corrupt_tag/menase
+
+
 #===============================================================================================================
 # calculate who has run the most distance
 scoreboard players reset max_distance running_distance
@@ -51,3 +62,12 @@ execute as @a if score @s damage_dealt_to_corrupted = max_ammount damage_dealt_t
 # calculate the "Chin Music for the Unsuspecting Hero" card
 # given to a player who wins with 90% or higher
 execute as @a[team=runners,scores={corruption=90..}] if score enable runner_class_victory_calling_card matches 1 if score tick time matches 1 run advancement grant @s only ctnv:corrupt_tag/chin_music
+
+#===============================================================================================================
+# this one is if you win as the spaceman without using the rewind shard ability
+execute if entity @s[scores={class=11}] if score enable runner_class_victory_calling_card matches 1 if score @s spaceman_teleport_count matches 0 run advancement grant @s only ctnv:corrupt_tag/spaceman_no_rewind
+
+
+#===============================================================================================================
+# this one is for winning without drinking any rum
+execute if entity @s[scores={class=12}] if score enable runner_class_victory_calling_card matches 1 if score @s RUM_count matches 0 run advancement grant @s only ctnv:corrupt_tag/pirate_sober

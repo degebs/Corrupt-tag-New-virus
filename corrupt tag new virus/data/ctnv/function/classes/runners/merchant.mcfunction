@@ -6,6 +6,7 @@
 #╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   
                                                                       
 # this class will work complely different to the other classes
+# i hope you love gambling
 
 scoreboard players add @s merchant_arrow_count 0
 #==============================================================================================================================================================

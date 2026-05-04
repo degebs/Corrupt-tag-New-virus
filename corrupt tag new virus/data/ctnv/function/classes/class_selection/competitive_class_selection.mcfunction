@@ -22,6 +22,10 @@ execute unless entity @a[scores={class=6},limit=1] run execute as @a at @s unles
 execute unless entity @a[scores={class=7},limit=1] run execute as @a at @s unless score @s selected_runner_class matches 1.. run function ctnv:classes/class_selection/classes/select_farmer
 execute unless entity @a[scores={class=8},limit=1] run execute as @a at @s unless score @s selected_runner_class matches 1.. run function ctnv:classes/class_selection/classes/select_assassin
 execute unless entity @a[scores={class=9},limit=1] run execute as @a at @s unless score @s selected_runner_class matches 1.. run function ctnv:classes/class_selection/classes/select_miner
+execute unless entity @a[scores={class=10},limit=1] run execute as @a at @s unless score @s selected_runner_class matches 1.. run function ctnv:classes/class_selection/classes/select_trickster
+execute unless entity @a[scores={class=11},limit=1] run execute as @a at @s unless score @s selected_runner_class matches 1.. run function ctnv:classes/class_selection/classes/select_spaceman
+execute unless entity @a[scores={class=12},limit=1] run execute as @a at @s unless score @s selected_runner_class matches 1.. run function ctnv:classes/class_selection/classes/select_pirate
+
 # clear them!
 execute as @a at @s if score @s selected_runner_class matches 1 run clear @a
 execute as @a at @s if score @s selected_runner_class matches 1 run scoreboard players add @s selected_runner_class 1

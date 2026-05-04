@@ -75,6 +75,21 @@ scoreboard players set divider trap_stats 6
 scoreboard players operation farmers_farm_count trap_stats = farm_components trap_stats
 scoreboard players operation farmers_farm_count trap_stats /= divider trap_stats
 
+# trickseter decoy
+scoreboard players set Decoy_components trap_stats 0
+execute as @e[tag=decoy] run scoreboard players add Decoy_components trap_stats 1
+# the decoy is just 1 part but that breaks the system so 2 it is
+scoreboard players set divider trap_stats 2
+scoreboard players operation Decoy_count trap_stats = Decoy_components trap_stats
+scoreboard players operation Decoy_count trap_stats /= divider trap_stats
+
+# spaceman rewind shard
+scoreboard players set rewind_shard_components trap_stats 0
+execute as @e[tag=rewind_shard] run scoreboard players add rewind_shard_components trap_stats 1
+scoreboard players set divider trap_stats 4
+scoreboard players operation rewind_shard_count trap_stats = rewind_shard_components trap_stats
+scoreboard players operation rewind_shard_count trap_stats /= divider trap_stats
+
 
 
 # check if eack trap type is above the limit
@@ -153,6 +168,21 @@ execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm
 execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s run kill @e[tag=farm,distance=..0.1]
 execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] run kill @s
 
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# trickster decoy
+execute if score Decoy_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] run tp @s @e[tag=decoy,limit=1,sort=random]
+execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] at @s if entity @a[distance=..3] run kill @s
+execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] at @s run kill @e[tag=decoy,distance=..0.1]
+execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] run kill @s
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# spaceman rewind shard
+execute if score rewind_shard_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] run tp @s @e[tag=rewind_shard,limit=1,sort=random]
+execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] at @s if entity @a[distance=..3] run kill @s
+execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] at @s run kill @e[tag=rewind_shard,distance=..0.1]
+execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] run kill @s
 
 
 
@@ -292,3 +322,50 @@ execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 150 
 
 execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 50 run scoreboard players add @p[team=runners,distance=..2] health 1
 execute as @e[tag=farm_heal_source] at @s if score @s farm_lifetime matches 50 run playsound minecraft:entity.player.levelup block @a[distance=..2] ~ ~ ~ 1 1 0.5
+
+#============================================================================================================
+# Store skeleton's health as integer (rounded down)
+execute as @e[type=skeleton,tag=decoy] store result score @s decoy_health run data get entity @s Health 1
+
+# Trigger explosion when health <= 1 and not already exploded
+execute as @e[type=skeleton,tag=decoy,scores={decoy_health=..1}] unless entity @s[tag=decoy_exploded] at @s run tag @s add decoy_exploding
+
+# Do explosion effects (only once)
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] at @s run particle minecraft:explosion_emitter ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] at @s run playsound minecraft:entity.generic.explode block @a ~ ~ ~ 1 1 0.5
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] at @s run effect give @a[distance=..4,team=corrupted] slowness 3 10
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] at @s run effect give @a[distance=..4,team=corrupted] darkness 3 10
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] at @s run effect give @a[distance=..4,team=corrupted] glowing 5 10
+
+# Summon wind charge
+# make sure that runners cannot use the explosion to boost themselves, this is done by checking if there are any runners within 5 blocks before summoning the wind charge. if there are, the explosion will still happen, but no wind charge will be summoned, preventing any boost abuse
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] at @s unless entity @a[team=runners,distance=..5] run summon wind_charge ~ ~ ~ {Tags:["decoy_explosion"],Motion:[0.0,-0.5,0.0],Team:"runners"}
+
+# Kill the skeleton and mark as exploded
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] run kill @s
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] run tag @s add decoy_exploded
+# Clean up tag
+execute as @e[type=skeleton,tag=decoy,tag=decoy_exploding] run tag @s remove decoy_exploding
+
+
+#============================================================================================================
+# the rewind shard
+# this part shall summon a trail from the spaceman to the shard itself
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 1 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 5 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 10 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 15 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
+
+
+# step 1: rotate the marker to face the shard
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,limit=1]
+# step 2: move it forward now that it's facing the right direction
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s run tp @s ^ ^ ^0.5
+# particle
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s run particle minecraft:electric_spark ~ ~ ~ 0 0 0 1 1 force @a
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s run particle minecraft:sculk_charge_pop ~ ~ ~ 0 0 0 0.01 1 normal @a
+# basic collison check so that the particles dont go through walls
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s unless block ~ ~ ~ air run tp @s ^0.5 ^1 ^-0.4
+
+# kill the marker when it reaches the shard (saves on lag)
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..0.5] run kill @s

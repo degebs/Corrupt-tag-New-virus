@@ -42,6 +42,6 @@ execute as @a[scores={health=1}] at @s if entity @e[team=corrupted,distance=..12
 # being corrupted resets the counter
 execute as @a[team=corrupted] run scoreboard players reset @s escape_artist
 # if they become 11 blocks away and have a high enough score, they get the calling card
-execute as @a[scores={escape_artist=2400..}] at @s if entity @e[team=corrupted,distance=11..] run advancement grant @s only ctnv:corrupt_tag/ecape
+execute as @a[scores={escape_artist=600..}] at @s if entity @e[team=corrupted,distance=11..] run advancement grant @s only ctnv:corrupt_tag/ecape
 
 

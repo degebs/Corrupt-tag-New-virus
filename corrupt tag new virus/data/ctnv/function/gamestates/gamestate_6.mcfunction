@@ -21,6 +21,10 @@ execute as @a[scores={class=-6},team=dead] at @s run advancement grant @a[team=c
 execute as @a[scores={class=-7},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/miner_death
 execute as @a[scores={class=-8},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/merchant_die
 execute as @a[scores={class=-9},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/farmerdie
+execute as @a[scores={class=-10},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/trickster_die
+execute as @a[scores={class=-11},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/spacemandie
+execute as @a[scores={class=-12},team=dead] at @s run advancement grant @a[team=corrupted] only ctnv:corrupt_tag/pirerate_die
+
 
 #================================================================================================
 # create the bossbar that shows the ingame time
@@ -70,7 +74,9 @@ execute as @a[scores={class=6},team=runners] run function ctnv:classes/runners/f
 execute as @a[scores={class=7},team=runners] run function ctnv:classes/runners/miner
 execute as @a[scores={class=8},team=runners] run function ctnv:classes/runners/merchant
 execute as @a[scores={class=9},team=runners] run function ctnv:classes/runners/farmer
-
+execute as @a[scores={class=10},team=runners] run function ctnv:classes/runners/trickster
+execute as @a[scores={class=11},team=runners] run function ctnv:classes/runners/spaceman
+execute as @a[scores={class=12},team=runners] run function ctnv:classes/runners/pirate
 
 execute as @a[scores={evil_class=1},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/corrupted
 execute as @a[scores={evil_class=2},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/predator
@@ -150,7 +156,8 @@ execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernov
 # extra corrupted classes will be added later
 
 # the corrupted one cannot have the glowing effect
-execute as @a[team=corrupted] run effect clear @s glowing
+execute as @a[team=corrupted] if score @s corruption_stun matches 1.. run effect clear @s glowing
+
 # the knight will have knockback resistance. everone who is not the knight will not have that
 attribute @r[team=runners] knockback_resistance base reset
 # a note about classes. im calling them AS the person who is playing the class. that means that i can just use @S to 
