@@ -33,6 +33,20 @@ execute if score endgame state matches 0 run bossbar set game_time name {"text":
 # the endgame condition is met when there are ONLY 2 "gamers" (gamers variable)
 
 kill @e[tag=spawn_point]
+#===========================================================================================================================================
+#everyone will have an overlay. it shall contain the name of the corrupted player, and there corruption percentage.
+execute as @a if score @s corruption matches 0..9 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ██████████","color":"white"}]
+execute as @a if score @s corruption matches 9..19 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" █","color":"dark_purple"},{"text":"█████████","color":"white"}]
+execute as @a if score @s corruption matches 20..29 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ██","color":"dark_purple"},{"text":"████████","color":"white"}]
+execute as @a if score @s corruption matches 30..39 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ███","color":"dark_purple"},{"text":"███████","color":"white"}]
+execute as @a if score @s corruption matches 40..49 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ████","color":"dark_purple"},{"text":"██████","color":"white"}]
+execute as @a if score @s corruption matches 50..59 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" █████","color":"dark_purple"},{"text":"█████","color":"white"}]
+execute as @a if score @s corruption matches 60..69 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓█████","color":"dark_purple"},{"text":"████","color":"white"}]
+execute as @a if score @s corruption matches 70..79 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓▓█████","color":"dark_purple"},{"text":"███","color":"white"}]
+execute as @a if score @s corruption matches 80..89 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓▓▓█████","color":"dark_purple"},{"text":"██","color":"white"}]
+execute as @a if score @s corruption matches 90..99 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓▓▓▓█████","color":"dark_purple"},{"text":"█","color":"white"}]
+execute as @a if score @s corruption matches 100.. run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▒▓▓▓▓█████","color":"dark_purple"}]
+
 #================================================================================================
 # prosess all the classes and there effects.
 
@@ -63,7 +77,6 @@ execute as @a[scores={class=7},team=runners] run function ctnv:classes/runners/m
 execute as @a[scores={class=8},team=runners] run function ctnv:classes/runners/merchant
 execute as @a[scores={class=9},team=runners] run function ctnv:classes/runners/farmer
 execute as @a[scores={class=10},team=runners] run function ctnv:classes/runners/trickster
-execute as @a[scores={class=10},team=runners] run function ctnv:classes/runners/trickster
 execute as @a[scores={class=11},team=runners] run function ctnv:classes/runners/spaceman
 execute as @a[scores={class=12},team=runners] run function ctnv:classes/runners/pirate
 
@@ -76,6 +89,8 @@ execute as @a[scores={evil_class=5},team=corrupted] if score @s corruption_stun 
 execute as @a[scores={evil_class=6},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/dark_star
 execute as @a[scores={evil_class=7},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/manhunter
 execute as @a[scores={evil_class=8},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/authority
+execute as @a[scores={evil_class=9},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/marksman
+execute as @a[scores={evil_class=10},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/alchemist
 
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
@@ -358,7 +373,7 @@ execute as @a[team=!dead] run scoreboard players add gamers players_online 1
 # 2. check if the player is already at max health
 # 3. check if nautral regen is even on
 # 4. check if the tick is 10
-execute as @a[team=runners] if score tick time matches 10 if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run scoreboard players add @s health 1
+execute as @a[team=runners] if score tick time matches 10 if score seconds time matches 30 unless score @s health = setting ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run scoreboard players add @s health 1
 # particles to indicate healing
 execute as @a[team=runners] at @s if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run particle minecraft:happy_villager ~ ~1 ~ 0.2 1 0.2 1 5 force @a
 # if the pleyers helth is greater then the max health. set it to the max health
@@ -378,19 +393,6 @@ execute if score Online players_online < gamers players_online run scoreboard pl
 
 
 
-#===========================================================================================================================================
-#everyone will have an overlay. it shall contain the name of the corrupted player, and there corruption percentage.
-execute as @a if score @s corruption matches 0..9 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ██████████","color":"white"}]
-execute as @a if score @s corruption matches 9..19 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" █","color":"dark_purple"},{"text":"█████████","color":"white"}]
-execute as @a if score @s corruption matches 20..29 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ██","color":"dark_purple"},{"text":"████████","color":"white"}]
-execute as @a if score @s corruption matches 30..39 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ███","color":"dark_purple"},{"text":"███████","color":"white"}]
-execute as @a if score @s corruption matches 40..49 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ████","color":"dark_purple"},{"text":"██████","color":"white"}]
-execute as @a if score @s corruption matches 50..59 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" █████","color":"dark_purple"},{"text":"█████","color":"white"}]
-execute as @a if score @s corruption matches 60..69 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓█████","color":"dark_purple"},{"text":"████","color":"white"}]
-execute as @a if score @s corruption matches 70..79 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓▓█████","color":"dark_purple"},{"text":"███","color":"white"}]
-execute as @a if score @s corruption matches 80..89 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓▓▓█████","color":"dark_purple"},{"text":"██","color":"white"}]
-execute as @a if score @s corruption matches 90..99 run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▓▓▓▓█████","color":"dark_purple"},{"text":"█","color":"white"}]
-execute as @a if score @s corruption matches 100.. run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":"                            ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▒▓▓▓▓█████","color":"dark_purple"}]
 
 #===========================================================================================================================================
 # if everyone alive is above 70%. the engame starts

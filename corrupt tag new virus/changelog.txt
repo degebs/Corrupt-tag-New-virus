@@ -230,3 +230,8 @@
       -added new class "the spaceman"
       -added new class "the pirate"
       these are all runner classes that will complete the runner roster
+1.4.6
+      -optomised the trap management function
+      -added new corrupted class the "marksman"
+      -fixed the Trickster having 2x cooldowns
+      -added new corrupted class the "Alcemist"

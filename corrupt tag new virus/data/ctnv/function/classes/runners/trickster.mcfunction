@@ -81,3 +81,6 @@ execute if score @s decoy_cooldown matches 60 run item replace entity @s hotbar.
 execute if score @s decoy_cooldown matches 40 run item replace entity @s hotbar.4 with minecraft:gray_dye[custom_name=[{"text":"Decoy cooldown","italic":false}]] 2
 execute if score @s decoy_cooldown matches 20 run item replace entity @s hotbar.4 with minecraft:gray_dye[custom_name=[{"text":"Decoy cooldown","italic":false}]] 1
 execute if score @s decoy_cooldown matches 0 run clear @s minecraft:gray_dye[custom_name=[{"text":"Decoy cooldown","italic":false}]]
+
+
+execute as @a[tag=trickster] run scoreboard players get @s decoy_cooldown

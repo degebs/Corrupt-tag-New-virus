@@ -131,7 +131,7 @@ execute as @a[scores={evil_class=0},limit=1] run scoreboard players operation @s
 scoreboard players add rng class 1
 execute if score rng class matches 13.. run scoreboard players set rng class 1
 execute if score rng class matches 3.. run scoreboard players add rng evil_class 1
-execute if score rng evil_class matches 9.. run scoreboard players set rng evil_class 1
+execute if score rng evil_class matches 11.. run scoreboard players set rng evil_class 1
 # the rng cant go beond 7 because there are only 6 classes
 
 #================================================================================================

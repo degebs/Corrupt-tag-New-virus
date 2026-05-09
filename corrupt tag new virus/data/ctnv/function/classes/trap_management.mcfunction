@@ -97,7 +97,7 @@ scoreboard players operation rewind_shard_count trap_stats /= divider trap_stats
 
 # stunman trap killer
 #1. summor the trap killer
-execute if score stunman_trap_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score stunman_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 #2. teleport the trap killer to a random trap
 execute if score stunman_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=stunman_trap,limit=1,sort=random] 
 #3. make sure that the one to kill is not the one imidiatly placed
@@ -110,7 +110,7 @@ execute if score stunman_trap_count trap_stats > limit trap_stats as @e[tag=trap
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # hunter t1 trap killer
 #1. summon the trap killer
-execute if score corrupted_t1_trap_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score corrupted_t1_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 #2. teleport the trap killer to a random trap
 execute if score corrupted_t1_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=corrupted_t1_trap,limit=1,sort=random]
 #3. ensure it's not the one just placed
@@ -122,7 +122,7 @@ execute if score corrupted_t1_trap_count trap_stats > limit trap_stats as @e[tag
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # hunter t2 trap killer
-execute if score corrupted_t2_trap_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score corrupted_t2_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=corrupted_t2_trap,limit=1,sort=random]
 execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
 execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=corrupted_t2_trap,distance=..0.1]
@@ -130,7 +130,7 @@ execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # hunter t3 trap killer
-execute if score corrupted_t3_trap_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score corrupted_t3_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=corrupted_t3_trap,limit=1,sort=random]
 execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
 execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=corrupted_t3_trap,distance=..0.1]
@@ -138,7 +138,7 @@ execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # fisherman trap killer
-execute if score fishing_net_trap_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score fishing_net_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=fishing_net_trap,limit=1,sort=random]
 execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
 execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=fishing_net_trap,distance=..0.1]
@@ -146,7 +146,7 @@ execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # authority Reveal Players Modulator
-execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=Reveal_Players_Modulator,limit=1,sort=random]
 execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
 execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=Reveal_Players_Modulator,distance=..0.1]
@@ -154,7 +154,7 @@ execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # authoritys security
-execute if score security_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score security_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=security,limit=1,sort=random]
 execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
 execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=security,distance=..0.1]
@@ -162,7 +162,7 @@ execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_kil
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # farmers farm
-execute if score farmers_farm_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score farmers_farm_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] run tp @s @e[tag=farm,limit=1,sort=random]
 execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s if entity @a[distance=..3] run kill @s
 execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s run kill @e[tag=farm,distance=..0.1]
@@ -170,7 +170,7 @@ execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # trickster decoy
-execute if score Decoy_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score Decoy_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] run tp @s @e[tag=decoy,limit=1,sort=random]
 execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] at @s if entity @a[distance=..3] run kill @s
 execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] at @s run kill @e[tag=decoy,distance=..0.1]
@@ -178,7 +178,7 @@ execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] run 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # spaceman rewind shard
-execute if score rewind_shard_count trap_stats > limit trap_stats run execute at @r run summon armor_stand ~ ~ ~ {Pose:{Head:[0f,0f,181f]},NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["trap_killer"]}
+execute if score rewind_shard_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
 execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] run tp @s @e[tag=rewind_shard,limit=1,sort=random]
 execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] at @s if entity @a[distance=..3] run kill @s
 execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] at @s run kill @e[tag=rewind_shard,distance=..0.1]
@@ -369,3 +369,9 @@ execute as @e[type=block_display,tag=rewind_shard_trail] at @s unless block ~ ~ 
 
 # kill the marker when it reaches the shard (saves on lag)
 execute as @e[type=block_display,tag=rewind_shard_trail] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..0.5] run kill @s
+
+
+#============================================================================================================
+# i make 1 exseption
+# the marksmans evil arrows
+execute if entity @a[scores={evil_class=9}] run function ctnv:one_time_function/evil_arrows

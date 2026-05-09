@@ -42,6 +42,9 @@ execute unless entity @a[scores={evil_class=5},limit=1] run execute run execute 
 execute unless entity @a[scores={evil_class=6},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_apparition
 execute unless entity @a[scores={evil_class=7},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_knight
 execute unless entity @a[scores={evil_class=8},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_authority
+execute unless entity @a[scores={evil_class=9},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_marksman
+execute unless entity @a[scores={evil_class=10},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_alchemist
+
 # clear them!
 execute as @a at @s if score @s selected_corrupted_class matches 1 run clear @a
 execute as @a at @s if score @s selected_corrupted_class matches 1 run scoreboard players add @s selected_corrupted_class 1

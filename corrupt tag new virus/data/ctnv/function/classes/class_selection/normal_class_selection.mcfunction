@@ -29,4 +29,6 @@ execute as @a at @s run function ctnv:classes/class_selection/classes/select_dar
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_apparition
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_knight
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_authority
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_marksman
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_alchemist
 

@@ -3,7 +3,7 @@ clear @s barrier
 scoreboard players add @s player_swap_cooldown 0
 
 # do the detection for the swap
-execute if score @s player_swap_detect matches 1 run scoreboard players set @s player_swap_cooldown 1980
+execute if score @s player_swap_detect matches 1 run scoreboard players set @s player_swap_cooldown 1981
 execute if score @s player_swap_detect matches 1 run clear @s music_disc_lava_chicken
 execute if score @s player_swap_detect matches 1 run kill @e[type=item,nbt={Item:{id:"minecraft:music_disc_lava_chicken"}}]
 
@@ -56,6 +56,9 @@ execute if score @s player_swap_detect matches 1 as @s run playsound minecraft:e
 # execute if score @s player_swap_detect matches 1 as @a[tag=swap_self] at @s run tp @s ~ ~ ~ facing entity @a[tag=swap_target,limit=1]
 # execute if score @s player_swap_detect matches 1 as @a[tag=swap_target] at @s run tp @s ~ ~ ~ facing entity @a[tag=swap_self,limit=1]
 
+# for your greed you shall be set to 1 heart
+execute if score @s player_swap_detect matches 1 run scoreboard players set @a[tag=swap_self] health 1
+
 # Clean up tags and marker
 execute if score @s player_swap_detect matches 1 run tag @e[tag=swap_self] remove swap_self
 execute if score @s player_swap_detect matches 1 run tag @e[tag=swap_target] remove swap_target
@@ -78,7 +81,7 @@ execute as @s at @s if score @s player_swap_cooldown matches 0 if entity @a[team
 # the actuall cooldown for 99 seconds
 
 # cooldown timer with gray dye
-execute if score @s player_swap_cooldown matches 1980.. run item replace entity @s hotbar.2 with minecraft:gray_dye[custom_name=[{"text":"cooldown","italic":false}],max_stack_size=99] 99
+execute if score @s player_swap_cooldown matches 1980 run item replace entity @s hotbar.2 with minecraft:gray_dye[custom_name=[{"text":"cooldown","italic":false}],max_stack_size=99] 99
 execute if score @s player_swap_cooldown matches 1960 run item replace entity @s hotbar.2 with minecraft:gray_dye[custom_name=[{"text":"cooldown","italic":false}],max_stack_size=99] 98
 execute if score @s player_swap_cooldown matches 1940 run item replace entity @s hotbar.2 with minecraft:gray_dye[custom_name=[{"text":"cooldown","italic":false}],max_stack_size=99] 97
 execute if score @s player_swap_cooldown matches 1920 run item replace entity @s hotbar.2 with minecraft:gray_dye[custom_name=[{"text":"cooldown","italic":false}],max_stack_size=99] 96

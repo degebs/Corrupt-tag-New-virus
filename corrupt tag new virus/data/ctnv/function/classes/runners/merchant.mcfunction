@@ -64,9 +64,8 @@ execute at @s if entity @a[distance=..2,team=corrupted] if score tick time match
 
 execute if score @s cross_bow_shot matches 1 run scoreboard players reset @s cross_bow_shot
 
-# kill stationary arrows
-kill @e[type=arrow,nbt={inGround:1b}]
-
+# kill stationary arrows (but not evil ones)
+execute as @e[type=arrow,nbt={inGround:1b}] unless entity @s[tag=EVIL] run kill @s
 
 # slowly regenerate arrows (unless at max arrows)
 execute if score seconds time matches 20 if score tick time matches 3 unless score @s merchant_arrow_count matches 3 run clear @s arrow

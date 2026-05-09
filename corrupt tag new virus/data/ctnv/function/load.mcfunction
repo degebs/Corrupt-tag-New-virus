@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.5","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.6","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -33,7 +33,6 @@ gamerule minecraft:advance_weather false
 gamerule minecraft:respawn_radius 0
 gamerule minecraft:immediate_respawn true
 weather clear
-gamerule minecraft:show_death_messages false
 gamerule minecraft:freeze_damage false
 gamerule minecraft:send_command_feedback false
 difficulty easy
@@ -42,6 +41,8 @@ gamerule minecraft:locator_bar false
 gamerule allow_entering_nether_using_portals false
 gamerule fire_spread_radius_around_player 0
 gamerule mob_drops false
+gamerule keep_inventory true
+gamerule raids false
 
 effect clear @a
 
@@ -227,6 +228,21 @@ scoreboard objectives add Reveal_Players_Modulator_components dummy
 scoreboard objectives add security_spawn minecraft.dropped:respawn_anchor
 scoreboard objectives add security_spawn_cooldown dummy
 scoreboard objectives add security_count dummy
+#marksman arrows
+scoreboard objectives add marksman_arrow_count dummy
+scoreboard objectives add EVIL_arrow_time dummy
+scoreboard objectives add scent_lifetime dummy
+# Alchemist Brewinator
+scoreboard objectives add brewinator_drop_detect minecraft.dropped:brewing_stand
+scoreboard objectives add brewinator_cooldown dummy
+scoreboard objectives add brewinator_lifetime dummy
+scoreboard objectives add brewinator_rng dummy
+# alchemist T3 abilitys
+scoreboard objectives add alchemist_apparition_Extract dummy
+scoreboard objectives add alchemist_apparition_Extract_detect minecraft.dropped:heart_of_the_sea
+scoreboard objectives add alchemist_corruption_blocker dummy
+scoreboard objectives add alchemist_corruption_blocker_detect minecraft.dropped:magma_cream
+scoreboard objectives add chem_x_time dummy
 
 #execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"the life detector is missing. fixing!","color":"yellow"}]
 #execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"if you see this message, uhh. you shouldnt","color":"yellow"}]

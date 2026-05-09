@@ -45,9 +45,8 @@ execute if score @s bow_shot matches 1 run clear @s arrow
 execute if score @s bow_shot matches 1 run scoreboard players remove @s acher_arrow_count 1
 execute if score @s bow_shot matches 1 run scoreboard players reset @s bow_shot
 
-# kill stationary arrows
-kill @e[type=arrow,nbt={inGround:1b}]
-
+# kill stationary arrows (but not evil ones)
+execute as @e[type=arrow,nbt={inGround:1b}] unless entity @s[tag=EVIL] run kill @s
 
 # slowly regenerate arrows (unless at max arrows)
 execute if score seconds time matches 20 if score tick time matches 3 unless score @s acher_arrow_count matches 5 run clear @s arrow

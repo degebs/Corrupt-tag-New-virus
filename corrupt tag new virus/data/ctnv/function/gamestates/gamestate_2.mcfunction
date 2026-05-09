@@ -185,6 +185,11 @@ execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_hor
 execute as @a[scores={evil_class=8}] run scoreboard players set @s gravity_pull_timer 0
 execute as @a[scores={evil_class=8}] run scoreboard players add @s Reveal_Players_Modulator_timer 0
 
+execute as @a[scores={evil_class=9}] run scoreboard players set @s marksman_arrow_count 3
+
+execute as @a[scores={evil_class=10}] run scoreboard players set @s brewinator_drop_detect 0
+
+
 #=================================================================================================
 # particles and fanfare when the game starts and a corrupted has yet to be chosen
 # not working
@@ -276,6 +281,10 @@ kill @e[type=skeleton]
 kill @e[tag=rewind_shard]
 kill @e[tag=rewind_shard_trail]
 kill @e[tag=resupply_totem]
+kill @e[tag=EVIL]
+kill @e[tag=trail]
+kill @e[tag=brewinator]
+kill @e[tag=brewinator_rocket]
 #=================================================================================================
 # display the maps name to all
 execute as @e[type=turtle,limit=1,scores={map_selection=1}] at @p run title @a title [{"color":"gold","selector":"@s"}]

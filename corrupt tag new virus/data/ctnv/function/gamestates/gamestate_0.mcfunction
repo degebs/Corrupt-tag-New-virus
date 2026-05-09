@@ -214,7 +214,7 @@ attribute @r knockback_resistance base set 0
 scoreboard players add rng class 1
 execute if score rng class matches 9.. run scoreboard players set rng class 1
 execute if score rng class matches 3.. run scoreboard players add rng evil_class 1
-execute if score rng evil_class matches 9.. run scoreboard players set rng evil_class 1
+execute if score rng evil_class matches 11.. run scoreboard players set rng evil_class 1
 # the rng cant go beond 7 because there are only 6 classes
 
 
