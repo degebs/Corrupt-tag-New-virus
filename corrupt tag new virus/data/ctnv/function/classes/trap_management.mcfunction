@@ -1,188 +1,8 @@
 # here all the traps are managed
 
 
-#============================================================================================================
-#count all traps
 
-
-
-# the traps are represented with multiple display entity. this will need to be accouned for befroe we can limit the number of traps
-# for the stunman trap, there are 2 display components. so in order to do it correctly we need to divide by 2
-
-# it is CRITICAL TO note that if the display entitys for the traps are edited. the divisor in each test code chunk will need to be changed
-# in order to accuratly count the traps
-# every trap shall be checked separatly
-
-# when making new traps, always count the number of display entitys used
-
-#stunman traps
-scoreboard players set stunman_trap_components trap_stats 0
-execute as @e[tag=stunman_trap] run scoreboard players add stunman_trap_components trap_stats 1
-scoreboard players set divider trap_stats 2
-scoreboard players operation stunman_trap_count trap_stats = stunman_trap_components trap_stats
-scoreboard players operation stunman_trap_count trap_stats /= divider trap_stats
-
-# hunter t1 traps
-scoreboard players set corrupted_t1_trap_components trap_stats 0
-execute as @e[tag=corrupted_t1_trap] run scoreboard players add corrupted_t1_trap_components trap_stats 1
-scoreboard players set divider trap_stats 2
-scoreboard players operation corrupted_t1_trap_count trap_stats = corrupted_t1_trap_components trap_stats
-scoreboard players operation corrupted_t1_trap_count trap_stats /= divider trap_stats
-
-# hunter t2 traps
-scoreboard players set corrupted_t2_trap_components trap_stats 0
-execute as @e[tag=corrupted_t2_trap] run scoreboard players add corrupted_t2_trap_components trap_stats 1
-scoreboard players set divider trap_stats 2
-scoreboard players operation corrupted_t2_trap_count trap_stats = corrupted_t2_trap_components trap_stats
-scoreboard players operation corrupted_t2_trap_count trap_stats /= divider trap_stats
-
-# hunter t3 traps
-# this is soon to change with a new model that is 6 parts
-# 2 more if you include the 2 mobs controling it
-scoreboard players set corrupted_t3_trap_components trap_stats 0
-execute as @e[tag=corrupted_t3_trap] run scoreboard players add corrupted_t3_trap_components trap_stats 1
-scoreboard players set divider trap_stats 8
-scoreboard players operation corrupted_t3_trap_count trap_stats = corrupted_t3_trap_components trap_stats
-scoreboard players operation corrupted_t3_trap_count trap_stats /= divider trap_stats
-
-# fisherman trap
-scoreboard players set fishing_net_trap_components trap_stats 0
-execute as @e[tag=fishing_net_trap] run scoreboard players add fishing_net_trap_components trap_stats 1
-scoreboard players set divider trap_stats 8
-scoreboard players operation fishing_net_trap_count trap_stats = fishing_net_trap_components trap_stats
-scoreboard players operation fishing_net_trap_count trap_stats /= divider trap_stats
-
-
-# autority Reveal Players Modulator
-scoreboard players set Reveal_Players_Modulator_components trap_stats 0
-execute as @e[tag=Reveal_Players_Modulator] run scoreboard players add Reveal_Players_Modulator_components trap_stats 1
-scoreboard players set divider trap_stats 3
-scoreboard players operation Reveal_Players_Modulator_count trap_stats = Reveal_Players_Modulator_components trap_stats
-scoreboard players operation Reveal_Players_Modulator_count trap_stats /= divider trap_stats
-
-# autority security
-scoreboard players set security_count trap_stats 0
-execute as @e[tag=security] run scoreboard players add security_count trap_stats 1
-# just 1 mob. but we need more of there. so 1 shall count as 1/4 th of a trap
-scoreboard players set divider trap_stats 4
-scoreboard players operation security_count trap_stats = security_count trap_stats
-scoreboard players operation security_count trap_stats /= divider trap_stats
-
-# farmers farm
-scoreboard players set farm_components trap_stats 0
-execute as @e[tag=farm] run scoreboard players add farm_components trap_stats 1
-scoreboard players set divider trap_stats 6
-scoreboard players operation farmers_farm_count trap_stats = farm_components trap_stats
-scoreboard players operation farmers_farm_count trap_stats /= divider trap_stats
-
-# trickseter decoy
-scoreboard players set Decoy_components trap_stats 0
-execute as @e[tag=decoy] run scoreboard players add Decoy_components trap_stats 1
-# the decoy is just 1 part but that breaks the system so 2 it is
-scoreboard players set divider trap_stats 2
-scoreboard players operation Decoy_count trap_stats = Decoy_components trap_stats
-scoreboard players operation Decoy_count trap_stats /= divider trap_stats
-
-# spaceman rewind shard
-scoreboard players set rewind_shard_components trap_stats 0
-execute as @e[tag=rewind_shard] run scoreboard players add rewind_shard_components trap_stats 1
-scoreboard players set divider trap_stats 4
-scoreboard players operation rewind_shard_count trap_stats = rewind_shard_components trap_stats
-scoreboard players operation rewind_shard_count trap_stats /= divider trap_stats
-
-
-
-# check if eack trap type is above the limit
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# stunman trap killer
-#1. summor the trap killer
-execute if score stunman_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-#2. teleport the trap killer to a random trap
-execute if score stunman_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=stunman_trap,limit=1,sort=random] 
-#3. make sure that the one to kill is not the one imidiatly placed
-execute if score stunman_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-#4. kill any offending trap
-execute if score stunman_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=stunman_trap,distance=..0.1]
-#5. remove the trap killer
-execute if score stunman_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# hunter t1 trap killer
-#1. summon the trap killer
-execute if score corrupted_t1_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-#2. teleport the trap killer to a random trap
-execute if score corrupted_t1_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=corrupted_t1_trap,limit=1,sort=random]
-#3. ensure it's not the one just placed
-execute if score corrupted_t1_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-#4. kill offending trap
-execute if score corrupted_t1_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=corrupted_t1_trap,distance=..0.1]
-#5. remove trap killer
-execute if score corrupted_t1_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# hunter t2 trap killer
-execute if score corrupted_t2_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=corrupted_t2_trap,limit=1,sort=random]
-execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=corrupted_t2_trap,distance=..0.1]
-execute if score corrupted_t2_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# hunter t3 trap killer
-execute if score corrupted_t3_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=corrupted_t3_trap,limit=1,sort=random]
-execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=corrupted_t3_trap,distance=..0.1]
-execute if score corrupted_t3_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# fisherman trap killer
-execute if score fishing_net_trap_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=fishing_net_trap,limit=1,sort=random]
-execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=fishing_net_trap,distance=..0.1]
-execute if score fishing_net_trap_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# authority Reveal Players Modulator
-execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=Reveal_Players_Modulator,limit=1,sort=random]
-execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=Reveal_Players_Modulator,distance=..0.1]
-execute if score Reveal_Players_Modulator_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# authoritys security
-execute if score security_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] run tp @s @e[tag=security,limit=1,sort=random]
-execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s if entity @a[distance=..3] run kill @s
-execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] at @s run kill @e[tag=security,distance=..0.1]
-execute if score security_count trap_stats > limit trap_stats as @e[tag=trap_killer] run kill @s
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# farmers farm
-execute if score farmers_farm_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] run tp @s @e[tag=farm,limit=1,sort=random]
-execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s if entity @a[distance=..3] run kill @s
-execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] at @s run kill @e[tag=farm,distance=..0.1]
-execute if score farmers_farm_count trap_stats > limit trap_stats as @e[tag=farm] run kill @s
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# trickster decoy
-execute if score Decoy_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] run tp @s @e[tag=decoy,limit=1,sort=random]
-execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] at @s if entity @a[distance=..3] run kill @s
-execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] at @s run kill @e[tag=decoy,distance=..0.1]
-execute if score Decoy_count trap_stats > limit trap_stats as @e[tag=decoy] run kill @s
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# spaceman rewind shard
-execute if score rewind_shard_count trap_stats > limit trap_stats run execute at @r run summon marker ~ ~ ~ {Tags:["trap_killer"]}
-execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] run tp @s @e[tag=rewind_shard,limit=1,sort=random]
-execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] at @s if entity @a[distance=..3] run kill @s
-execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] at @s run kill @e[tag=rewind_shard,distance=..0.1]
-execute if score rewind_shard_count trap_stats > limit trap_stats as @e[tag=rewind_shard] run kill @s
+execute if score tick time matches 1 run function ctnv:classes/trap_limiter
 
 
 
@@ -288,6 +108,8 @@ execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p
 execute as @e[type=item_display,tag=Reveal_Players_Modulator] run effect give @a[team=runners] glowing 1 1
 execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s run particle minecraft:firework ~ ~ ~ 0 0 0 0.05 1 normal @a
 execute as @e[type=item_display,tag=Reveal_Players_Modulator,limit=1] at @a[team=runners] run particle minecraft:firework ~ ~ ~ 0 0.9 0 0.05 1 force @a
+# if a new corrupted player gets selected delete the modulator
+execute if score @p[team=corrupted] corruption_stun matches 1.. run kill @e[tag=reveal_players_modulator]
 
 #============================================================================================================
 # authority's secuirty
@@ -375,3 +197,110 @@ execute as @e[type=block_display,tag=rewind_shard_trail] at @s if entity @e[type
 # i make 1 exseption
 # the marksmans evil arrows
 execute if entity @a[scores={evil_class=9}] run function ctnv:one_time_function/evil_arrows
+
+
+#============================================================================================================
+# fracturizer time bomb
+# it will spin in place
+execute as @e[type=block_display,tag=time_bomb] at @s run tp @s ~ ~ ~ ~5 ~
+# the thinker will determine if the time bomb explodes. it will keep track of how long the bomb has been alive, and when it reaches 10 seconds, it will explode
+execute as @e[type=block_display,tag=time_bomb_thinker] run scoreboard players add @s fracturizer_time_bomb 1
+# it will emit particles that hoan in on runners until it explodes, giving a visual indication of where the bomb is and what its target is
+execute as @e[type=block_display,tag=time_bomb_thinker] at @s if score tick time matches 5 run summon item_display ~ ~ ~ {Tags:["time_bomb_particle"]}
+execute as @e[type=block_display,tag=time_bomb_thinker] at @s if score tick time matches 15 run summon item_display ~ ~ ~ {Tags:["time_bomb_particle"]}
+# the particles will home in on the random runner, giving a visual indication of where the bomb is targeting
+execute as @e[type=item_display,tag=time_bomb_particle] at @s run tp @s ~ ~ ~ facing entity @r[team=runners]
+execute as @e[type=item_display,tag=time_bomb_particle] at @s run tp @s ^ ^0.1 ^0.5
+# to prevent lag kill particles in walls
+execute as @e[type=item_display,tag=time_bomb_particle] at @s unless block ~ ~ ~ air run kill @s
+# the actual particle effect
+execute as @e[type=item_display,tag=time_bomb_particle] at @s run particle minecraft:dragon_breath ~ ~ ~ 0.1 0.1 0.1 0.001 1 force @a
+# just like the revival shard, the bomb will explode when it gets within 0.5 blocks of a runner, this is to prevent the bomb from being completely useless if it gets stuck on a wall or something
+# start with particles of defusing
+execute as @e[type=item_display,tag=time_bomb] at @s if entity @p[distance=..2.5,limit=1,team=runners] run particle minecraft:poof ~ ~ ~ 0.5 0.5 0.5 0.01 100 normal @a
+execute as @e[type=item_display,tag=time_bomb] at @s if entity @p[distance=..2.5,limit=1,team=runners] run playsound minecraft:block.fungus.break block @a ~ ~ ~ 1 0.5 0.5
+execute as @e[type=item_display,tag=time_bomb] at @s if entity @p[distance=..2.5,limit=1,team=runners] run effect give @a[distance=..4,team=runners] blindness 1 10
+execute as @e[type=item_display,tag=time_bomb] at @s if entity @p[distance=..2.5,limit=1,team=runners] run kill @e[tag=time_bomb_particle]
+execute as @e[tag=time_bomb] at @s if entity @p[distance=..2.5,limit=1,team=runners] run kill @s
+
+# the thinker will use the subtitle to count down from 10 to 0, giving the runners a visual indication of how much time they have left to defuse the bomb
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 20 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 20 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 10 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 20 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 40 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 40 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 9 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 40 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 60 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 60 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 8 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 60 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 80 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 80 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 7 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 80 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 100 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 100 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 6 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 100 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 120 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 120 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 5 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 120 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 140 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 140 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 4 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 140 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 160 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 160 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 3 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 160 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 180 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 180 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 2 SECONDS ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 180 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 200 run title @a title " "
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 200 run title @a subtitle [{"text":"TIME BOMB DETONATION IN 1 SECOND ","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] at @a if score @s fracturizer_time_bomb matches 200 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1 1.5
+
+# final explosion
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 run title @a title [{"text":"KABOOM","color":"dark_red"}]
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 run title @a subtitle [{"text":" ","color":"dark_red"}]
+
+# multiple explosion sounds for all runners
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a run playsound minecraft:entity.generic.explode master @a ~ ~ ~ 1 1
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a run playsound minecraft:entity.tnt.primed master @a ~ ~ ~ 1 0.8
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a run playsound minecraft:entity.wither.spawn master @a ~ ~ ~ 1 0.5
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a run playsound minecraft:entity.firework_rocket.blast master @a ~ ~ ~ 1 1.2
+
+# massive particles at each runner's location
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a[team=runners] run particle minecraft:explosion_emitter ~ ~ ~ 1 1 1 0 200 force
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a[team=runners] run particle minecraft:explosion ~ ~ ~ 5 5 5 0.01 50 force
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a[team=runners] run particle minecraft:firework ~ ~ ~ 0.5 0.5 0.5 0 20 force
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a[team=runners] run particle minecraft:large_smoke ~ ~ ~ 2 2 2 0.1 100 force
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 at @a[team=runners] run particle minecraft:campfire_cosy_smoke ~ ~ ~ 1.5 1.5 1.5 0.05 80 force
+
+# apply slowness blindness and glowing to all runners for failing to defuse the bomb
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 run effect give @a[team=runners] slowness 10 5
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 run effect give @a[team=runners] blindness 10 5
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 run effect give @a[team=runners] glowing 10 5
+
+
+# kill the time bomb after detonation
+execute as @e[tag=time_bomb_thinker] if score @s fracturizer_time_bomb matches 220 run kill @e[tag=time_bomb]
+# if a new corrupted player gets selected delete the bomb
+execute if score @p[team=corrupted] corruption_stun matches 1.. run kill @e[tag=time_bomb]
+
+#============================================================================================================
+#fracturizer wall
+# to prevent players from using the wall to escape the map, they will all become invincible
+effect give @e[type=shulker,tag=wall] resistance infinite 255 true
+# make one invisable randomly for a cool efect
+execute as @e[type=shulker,tag=wall,limit=2,sort=random] run effect give @s invisibility 1 1 true
+execute as @e[type=shulker,tag=wall,limit=4,sort=random] run effect give @s glowing 1 1 true
+# this one will progressivly make the glowing more purple
+execute as @e[type=shulker,tag=wall,limit=5,sort=random] run team join corrupted
+
+# do a bunch of evil particles
+execute as @e[type=shulker,tag=wall,limit=1,sort=random] at @s run particle minecraft:sculk_charge_pop ~ ~ ~ 0.5 0.5 0.5 0.01 50 normal @a

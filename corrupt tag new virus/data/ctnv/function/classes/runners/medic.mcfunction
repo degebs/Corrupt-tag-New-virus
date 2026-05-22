@@ -36,7 +36,7 @@ execute if score @s medic_heal matches 1.. run scoreboard players remove @s medi
 # spawn a healing totem that will spin, do fancy particles and heal all within its radius
 execute if score @s[scores={medic_heal=299}] medic_heal matches 299 at @s run summon armor_stand ~ ~ ~ {Pose:{Body:[0f,0f,181f]},Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:1966080,Tags:["heal_totem"]}
 # in the endgame do a jump boost
-execute if score @s[scores={medic_heal=299}] medic_heal matches 299 at @s if score endgame state matches 1 run effect give @s jump_boost 5 2 true
+execute if score @s[scores={medic_heal=299}] medic_heal matches 299 at @s if score endgame state matches 1 run effect give @s jump_boost 5 1 true
 # sound effect
 execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run playsound entity.dolphin.ambient player @s ~ ~ ~ 1 1 0.5
 execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run playsound entity.warden.heartbeat player @s ~ ~ ~ 1 1 0.5
@@ -115,12 +115,12 @@ execute as @e[tag=heal_totem] if score endgame state matches 1 at @s run particl
 
 
 # 1. get the nearest runner and print there current health
-execute if score gamers players_online matches 3.. at @s run scoreboard players operation @s medic_health_detector = @p[team=runners,distance=1..] health
-execute if score gamers players_online matches ..2 run clear @s heart_of_the_sea
-execute if score gamers players_online matches ..2 run clear @s painting
+#execute if score gamers players_online matches 3.. at @s run scoreboard players operation @s medic_health_detector = @p[team=runners,distance=1..] health
+#execute if score gamers players_online matches ..2 run clear @s heart_of_the_sea
+#execute if score gamers players_online matches ..2 run clear @s painting
 # 2. take the result and have it be an item in the medics inventory
 execute if score gamers players_online matches 3.. as @s run function ctnv:one_time_function/medic_health_check
-
+# this function will be overhauled to use the actionbar
 
 
 #==============================================================================================================================================================

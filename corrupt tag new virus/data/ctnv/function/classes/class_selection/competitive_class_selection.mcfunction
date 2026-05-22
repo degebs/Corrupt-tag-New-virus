@@ -44,6 +44,8 @@ execute unless entity @a[scores={evil_class=7},limit=1] run execute run execute 
 execute unless entity @a[scores={evil_class=8},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_authority
 execute unless entity @a[scores={evil_class=9},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_marksman
 execute unless entity @a[scores={evil_class=10},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_alchemist
+execute unless entity @a[scores={evil_class=11},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_fracturizer
+execute unless entity @a[scores={evil_class=12},limit=1] run execute run execute as @a at @s unless score @s selected_corrupted_class matches 1.. run function ctnv:classes/class_selection/classes/select_singularity
 
 # clear them!
 execute as @a at @s if score @s selected_corrupted_class matches 1 run clear @a

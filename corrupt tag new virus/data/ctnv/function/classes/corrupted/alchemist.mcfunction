@@ -62,11 +62,11 @@ execute if score @s corruption matches 50.. run effect clear @s poison
 
 #==========================================================================================================================================================
 # if a player has the bad omen effect, give them corruption
-execute as @a if predicate ctnv:has_bad_omen run title @s actionbar [{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡","bold":true,"italic":true,"strikethrough":true,"underlined":true,"color":"#fb00ff","shadow_color":-5373697,"obfuscated":true}]
-execute as @a if predicate ctnv:has_bad_omen run title @s title [{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡","bold":true,"italic":true,"strikethrough":true,"underlined":true,"color":"#fb00ff","shadow_color":-5373697,"obfuscated":true}]
-execute as @a if predicate ctnv:has_bad_omen run title @s subtitle [{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡","bold":true,"italic":true,"strikethrough":true,"underlined":true,"color":"#fb00ff","shadow_color":-5373697,"obfuscated":true}]
-execute as @a if predicate ctnv:has_bad_omen if score 360 time matches 100 if score @s corruption matches ..49 run scoreboard players add @s corruption 1 
-execute as @a if predicate ctnv:has_bad_omen if score 360 time matches 100 if score @s corruption matches ..49 at @s run playsound ambient.cave block @s ~ ~ ~ 1 1 1
+execute as @a if predicate ctnv:has_raid_omen run title @s actionbar [{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡","bold":true,"italic":true,"strikethrough":true,"underlined":true,"color":"#fb00ff","shadow_color":-5373697,"obfuscated":true}]
+execute as @a if predicate ctnv:has_raid_omen run title @s title [{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡","bold":true,"italic":true,"strikethrough":true,"underlined":true,"color":"#fb00ff","shadow_color":-5373697,"obfuscated":true}]
+execute as @a if predicate ctnv:has_raid_omen run title @s subtitle [{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡","bold":true,"italic":true,"strikethrough":true,"underlined":true,"color":"#fb00ff","shadow_color":-5373697,"obfuscated":true}]
+execute as @a if predicate ctnv:has_raid_omen if score 360 time matches 100 if score @s corruption matches ..49 run scoreboard players add @s corruption 1 
+execute as @a if predicate ctnv:has_raid_omen if score 360 time matches 100 if score @s corruption matches ..49 at @s run playsound ambient.cave block @s ~ ~ ~ 1 1 1
 
 #==========================================================================================================================================================
 #                           90% corruption!

@@ -36,14 +36,44 @@ execute if score gamers players_online matches 3.. as @s run function ctnv:one_t
 scoreboard players add @s decoy_detect 0
 scoreboard players add @s decoy_cooldown 0
 
+# the rng
+scoreboard players add @s decoy_rng 1
+execute if score @s decoy_rng matches 13.. run scoreboard players set @s decoy_rng 1
+
 # the item
 execute as @s at @s if score @s decoy_detect matches 0 if score @s decoy_cooldown matches 0 run item replace entity @s hotbar.4 with music_disc_cat[item_name=[{"text":"Decoy","color":"green","italic":false}]]
 execute as @s at @s if score @s decoy_detect matches 1 run clear @s music_disc_cat
 execute as @s at @s if score @s decoy_detect matches 1 run kill @e[type=item,nbt={Item:{id:"minecraft:music_disc_cat"}}]
-execute as @s at @s if score @s decoy_detect matches 1 run summon skeleton ~ ~ ~ {CustomName:[Medic],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:diamond_shovel},offhand:{id:poppy},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+# the decoy rng number will dictate what skin the decoy uses
+# medic
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 1 run summon skeleton ~ ~ ~ {CustomName:[Medic],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:diamond_shovel},offhand:{id:poppy},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+# archer
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 2 run summon skeleton ~ ~ ~ {CustomName:[Archer],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:bow},offhand:{id:cyan_candle},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+# bulk
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 3 run summon skeleton ~ ~ ~ {CustomName:[Bulk],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:iron_sword},offhand:{id:shield},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+# assassin
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 4 run summon skeleton ~ ~ ~ {CustomName:[Assassin],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:stone_sword},offhand:{id:ink_sac},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#stunman
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 5 run summon skeleton ~ ~ ~ {CustomName:[Stunman],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:trident},offhand:{id:tripwire_hook},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#fisherman
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 6 run summon skeleton ~ ~ ~ {CustomName:[Fisherman],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:trident},offhand:{id:fishing_rod},head:{id:cobweb},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#miner
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 7 run summon skeleton ~ ~ ~ {CustomName:[Miner],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:copper_pickaxe},offhand:{id:copper_lantern},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#merchant
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 8 run summon skeleton ~ ~ ~ {CustomName:[Merchant],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:crossbow},offhand:{id:sunflower},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#farmer
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 9 run summon skeleton ~ ~ ~ {CustomName:[Farmer],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:iron_hoe},offhand:{id:hay_block},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#trickster
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 10 run summon skeleton ~ ~ ~ {CustomName:[Trickster],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:copper_shovel},offhand:{id:music_disc_lava_chicken},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#spaceman
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 11 run summon skeleton ~ ~ ~ {CustomName:[Spaceman],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:golden_spear},offhand:{id:music_disc_5},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
+#pirate
+execute as @s at @s if score @s decoy_detect matches 1 if score @s decoy_rng matches 12.. run summon skeleton ~ ~ ~ {CustomName:[Pirate],Tags:[decoy],CustomNameVisible:1b,Health:6,Silent:1b,home_radius:301,Team:runners,equipment:{mainhand:{id:iron_sword},offhand:{id:potion},head:{id:player_head},chest:{id:leather_chestplate},legs:{id:leather_leggings},feet:{id:leather_boots}},drop_chances:{mainhand:0f,offhand:0f,head:0f,chest:0f,legs:0f,feet:0f},attributes:[{id:movement_speed,base:0.3f},{id:follow_range,base:2048f},{id:max_health,base:4f}]}
 
 # the decoy will be completly still for some time and then it will be alowed to roam and atack
 execute as @s at @s if score @s decoy_detect matches 1 run effect give @e[type=skeleton,distance=..3] slowness 30 255 true
+
+
 # 30 second cooldown
 execute as @s at @s if score @s decoy_detect matches 1 run scoreboard players set @s decoy_cooldown 600
 execute as @s at @s if score @s decoy_detect matches 1 run scoreboard players set @s decoy_detect 0

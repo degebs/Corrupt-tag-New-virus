@@ -235,3 +235,15 @@
       -added new corrupted class the "marksman"
       -fixed the Trickster having 2x cooldowns
       -added new corrupted class the "Alcemist"
+1.4.7
+      -added new corrupted class the "Fracturizer"
+      -changed how the medic's ability to see the health of the nearest runner. it can now actually give usefull info
+      -nerfed medics endgame jump boost
+      -optomised the trap management function again
+      -added new corrupted class the "singularity"
+      the full game roster is now complete we can are done going the way of overwach
+      - fixed a bug with the Tricksters decoys dying instantly
+      - fixed a huge bug where the trap managment would kill all the traps if they went over the limit
+      -changed the autority's reveal player modulator. it now dies when a new player is corrupted
+      - completly reworked the apparition
+      -added diffent skins for the triskers decoy

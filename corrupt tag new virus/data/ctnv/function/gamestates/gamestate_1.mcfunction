@@ -120,7 +120,8 @@ scoreboard players enable @a evil_class
 # 6 = the Dark Star
 
 #----------------check if no class was chosen--------------------------
-
+scoreboard players add @a class 0
+scoreboard players add @a evil_class 0
 
 execute as @a[scores={class=0},limit=1] run scoreboard players operation @s class = rng class
 execute as @a[scores={evil_class=0},limit=1] run scoreboard players operation @s evil_class = rng evil_class
@@ -131,7 +132,7 @@ execute as @a[scores={evil_class=0},limit=1] run scoreboard players operation @s
 scoreboard players add rng class 1
 execute if score rng class matches 13.. run scoreboard players set rng class 1
 execute if score rng class matches 3.. run scoreboard players add rng evil_class 1
-execute if score rng evil_class matches 11.. run scoreboard players set rng evil_class 1
+execute if score rng evil_class matches 13.. run scoreboard players set rng evil_class 1
 # the rng cant go beond 7 because there are only 6 classes
 
 #================================================================================================

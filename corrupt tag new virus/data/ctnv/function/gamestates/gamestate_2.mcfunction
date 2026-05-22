@@ -285,6 +285,9 @@ kill @e[tag=EVIL]
 kill @e[tag=trail]
 kill @e[tag=brewinator]
 kill @e[tag=brewinator_rocket]
+kill @e[tag=time_bomb]
+kill @e[tag=time_bomb_particle]
+
 #=================================================================================================
 # display the maps name to all
 execute as @e[type=turtle,limit=1,scores={map_selection=1}] at @p run title @a title [{"color":"gold","selector":"@s"}]

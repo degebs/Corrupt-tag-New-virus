@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.6","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.7","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -121,7 +121,12 @@ scoreboard objectives add bulk_totem dummy
 # the medic healing rose
 scoreboard objectives add medic_heal dummy
 scoreboard players set medic_totem_rotation medic_heal 0
-scoreboard objectives add medic_health_detector dummy
+# the medic runner vitals tracking ability
+scoreboard objectives add medic_nearest_runner_health dummy
+scoreboard objectives add medic_nearest_runner_distance dummy
+#scoreboard objectives add medic_nearest_runner_name dummy
+
+
 # and also the miners golden nugget
 scoreboard players set miner_totem_rotation medic_heal 0
 #the archer arrow count
@@ -156,6 +161,7 @@ scoreboard objectives add player_swap_cooldown dummy
 scoreboard objectives add decoy_cooldown dummy
 scoreboard objectives add decoy_detect minecraft.dropped:music_disc_cat
 scoreboard objectives add decoy_health dummy
+scoreboard objectives add decoy_rng dummy
 # the spaceman
 scoreboard objectives add spaceman_teleport_detect minecraft.dropped:music_disc_5
 scoreboard objectives add spaceman_teleport_cooldown dummy
@@ -183,6 +189,8 @@ scoreboard objectives add predator_corrupted_t2_cooldown dummy
 scoreboard objectives add predator_corrupted_t3_cooldown dummy
 # apparition corrupted cooldowns
 scoreboard objectives add apparition_corrupted_t3_cooldown dummy
+scoreboard objectives add apparition_speed_boost_cooldown dummy
+scoreboard objectives add apparition_speed_boost_dectect minecraft.dropped:sugar
 
 #scoreboard objectives add light_level blocklight
 scoreboard objectives add apparition_light_level dummy
@@ -243,6 +251,29 @@ scoreboard objectives add alchemist_apparition_Extract_detect minecraft.dropped:
 scoreboard objectives add alchemist_corruption_blocker dummy
 scoreboard objectives add alchemist_corruption_blocker_detect minecraft.dropped:magma_cream
 scoreboard objectives add chem_x_time dummy
+# fracturizer armor swap
+scoreboard objectives add fracturizer_armor dummy
+scoreboard objectives add fracturizer_armor_rng minecraft.custom:minecraft.jump
+# fracturizrt swap
+scoreboard objectives add evil_player_swap_detect minecraft.dropped:music_disc_relic
+scoreboard objectives add evil_player_swap_condition dummy
+# fracturizer time bomb
+scoreboard objectives add fracturizer_time_bomb dummy
+scoreboard objectives add fracturizer_time_bomb_detect minecraft.dropped:tnt
+#fracturizers super wall
+scoreboard objectives add fracturizer_wall_cooldown dummy
+scoreboard objectives add fracturizer_wall_detect minecraft.dropped:crying_obsidian
+# singularity t1
+scoreboard objectives add singularity_t1_cooldown dummy
+scoreboard objectives add singularity_t1_dectect minecraft.dropped:eye_armor_trim_smithing_template
+# singularity t2
+scoreboard objectives add singularity_t2_cooldown dummy
+scoreboard objectives add singularity_t2_dectect minecraft.dropped:ward_armor_trim_smithing_template
+#singularity t3
+scoreboard objectives add singularity_t3_cooldown dummy
+scoreboard objectives add singularity_t3_dectect minecraft.dropped:silence_armor_trim_smithing_template
+
+
 
 #execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"the life detector is missing. fixing!","color":"yellow"}]
 #execute unless entity @e[tag=life_detector] run tellraw @a ["",{"text":"if you see this message, uhh. you shouldnt","color":"yellow"}]
@@ -255,7 +286,7 @@ execute unless entity @e[tag=life_detector] at @r run summon armor_stand ~ ~5 ~ 
 # for some reason people are experiencing a glitch where all becons DIE and the game breaks
 # i cannot replicate this so i am throwing shit at the wall and praying that it goes away
 #effect give @e[tag=life_detector] glowing infinite 1
-
+# the life detector is obsolete 
 
 scoreboard objectives add life_detector_count dummy
 

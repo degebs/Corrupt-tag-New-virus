@@ -91,6 +91,8 @@ execute as @a[scores={evil_class=7},team=corrupted] if score @s corruption_stun 
 execute as @a[scores={evil_class=8},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/authority
 execute as @a[scores={evil_class=9},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/marksman
 execute as @a[scores={evil_class=10},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/alchemist
+execute as @a[scores={evil_class=11},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/fracturizer
+execute as @a[scores={evil_class=12},team=corrupted] if score @s corruption_stun matches ..0 run function ctnv:classes/corrupted/singularity
 
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1

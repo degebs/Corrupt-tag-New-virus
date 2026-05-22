@@ -31,4 +31,5 @@ execute as @a at @s run function ctnv:classes/class_selection/classes/select_kni
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_authority
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_marksman
 execute as @a at @s run function ctnv:classes/class_selection/classes/select_alchemist
-
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_fracturizer
+execute as @a at @s run function ctnv:classes/class_selection/classes/select_singularity

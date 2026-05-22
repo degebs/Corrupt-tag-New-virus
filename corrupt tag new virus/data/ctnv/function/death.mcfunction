@@ -79,6 +79,8 @@ execute if entity @a[scores={evil_class=7},team=corrupted] run advancement grant
 execute if entity @a[scores={evil_class=8},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/autority_die
 execute if entity @a[scores={evil_class=9},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/marksman_die
 execute if entity @a[scores={evil_class=10},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/alcemist_die
+execute if entity @a[scores={evil_class=11},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/fracturizer_die
+execute if entity @a[scores={evil_class=12},team=corrupted] run advancement grant @s only ctnv:corrupt_tag/singularity_die
 
 #====================================================================================================================
 # prevent a glitch

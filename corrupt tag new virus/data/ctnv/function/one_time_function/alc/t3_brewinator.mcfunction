@@ -53,11 +53,11 @@ execute as @e[type=block_display,tag=brewinator_thinker] if score @s brewinator_
 #------------------------------------------------------------------------------
 
 # move forward if air ahead, otherwise explode
-execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 110.. at @s unless block ^ ^ ^0.5 air run particle explosion_emitter ~ ~ ~ 0 0 0 0.5 1 force @a
-execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 110.. at @s unless block ^ ^ ^0.5 air run playsound entity.generic.explode block @a ~ ~ ~ 1 1 1
-execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 110.. at @s unless block ^ ^ ^0.5 air run playsound entity.ghast.hurt block @a ~ ~ ~ 1 1 1
-execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 110.. at @s unless block ^ ^ ^0.5 air run scoreboard players set @p[team=runners,distance=..5] health 1
-execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 110.. at @s unless block ^ ^ ^0.5 air run kill @s
+execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 60.. at @s unless block ^ ^ ^0.5 air run particle explosion_emitter ~ ~ ~ 0 0 0 0.5 1 force @a
+execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 60.. at @s unless block ^ ^ ^0.5 air run playsound entity.generic.explode block @a ~ ~ ~ 1 1 1
+execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 60.. at @s unless block ^ ^ ^0.5 air run playsound entity.ghast.hurt block @a ~ ~ ~ 1 1 1
+execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 60.. at @s unless block ^ ^ ^0.5 air run scoreboard players set @p[team=runners,distance=..5] health 1
+execute as @e[type=block_display,tag=brewinator_rocket] if score @s brewinator_lifetime matches 60.. at @s unless block ^ ^ ^0.5 air run kill @s
 
 
 #particle
@@ -100,7 +100,7 @@ execute as @e[type=block_display,tag=brewinator_rocket] at @s run particle campf
 
 # damage and nausea to runners within 3 blocks of explosion point
 execute as @e[type=block_display,tag=brewinator_rocket] unless block ~ ~ ~ air at @s run scoreboard players remove @p[distance=..3,team=runners] health 1
-execute as @e[type=block_display,tag=brewinator_rocket] unless block ~ ~ ~ air at @s run effect give @p[distance=..3,team=runners] minecraft:nausea 100 1 true
+execute as @e[type=block_display,tag=brewinator_rocket] unless block ~ ~ ~ air at @s run effect give @p[distance=..3,team=runners] minecraft:nausea 10 1 true
 
 # explode if too close to a runner (within 1 block)
 execute as @e[type=block_display,tag=brewinator_rocket] at @s run execute if entity @p[distance=..2.5,team=runners] run particle explosion_emitter ~ ~ ~ 0 0 0 0.1 1 force @a

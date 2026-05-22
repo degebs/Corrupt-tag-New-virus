@@ -29,6 +29,9 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b
 # full stun immunity
 execute if score @s corruption matches 15.. run effect clear @s slowness
 execute if score @s corruption matches 15.. run effect clear @s blindness
+execute if score @s corruption matches 15.. run effect clear @s darkness
+
+
 # full knockback imunity
 execute if score @s corruption matches 15.. run attribute @s knockback_resistance base set 2000
 # if the knight gets hit do a bunch of particles

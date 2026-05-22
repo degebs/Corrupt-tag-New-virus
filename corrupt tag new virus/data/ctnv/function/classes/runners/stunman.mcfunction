@@ -96,7 +96,7 @@ execute if score @s stunman_trap matches 0 if score tick time matches 1 run clea
 execute if score @s stunman_trap matches 0 unless entity @s[nbt={Inventory:[{id:"minecraft:tripwire_hook",Slot:3b}]}] run item replace entity @s hotbar.3 with tripwire_hook[custom_name=[{"text":"Pipsqueak","italic":false,"color":"blue"}],lore=[[{"text":"drop to place a trap","italic":false}]] ]
 #================================================================================================================================================
 # permanent jump boost in endgame
-execute if score endgame state matches 1 run effect give @s jump_boost 1 1 true
+execute if score endgame state matches 1 run effect give @s jump_boost 1 0 true
 
 
 # some more cool particles

@@ -6,7 +6,17 @@
 #| $$    $$| $$  | $$| $$      | $$            | $$  | $$| $$            | $$    $$| $$  | $$| $$  \ $$| $$  \ $$| $$  | $$| $$         | $$   | $$      | $$  | $$
 #|  $$$$$$/| $$  | $$| $$$$$$$$| $$$$$$$$      |  $$$$$$/| $$            |  $$$$$$/|  $$$$$$/| $$  | $$| $$  | $$|  $$$$$$/| $$         | $$   | $$$$$$$$| $$$$$$$/
 # \______/ |__/  |__/|________/|________/       \______/ |__/             \______/  \______/ |__/  |__/|__/  |__/ \______/ |__/         |__/   |________/|_______/ 
-                                                                                                                                                                  
+
+
+
+
+
+# this entire game mode must be rewirtten!!
+
+
+
+
+
 #================================================================================================
 # create the bossbar that shows the ingame time
 bossbar add game_time game_time
@@ -50,6 +60,17 @@ kill @e[tag=corruption_part]
 
 title @a[team=runners] actionbar [{"text":"wave:","color":"red"},{"text":" ","color":"gold"},{"score":{"objective":"call_of_corrupted","name":"wave"}},{"text":"                                                     ","color":"gold"},{"text":" $ ","color":"blue"},{"score":{"objective":"points","name":"*"}}]
 #==========================================================================================================================================================================================
+
+
+
+
+
+# everything below this point has got to GO
+
+
+
+
+
 # the 2 states the corrupted can be in.
 execute if score atherial_corrupted call_of_corrupted matches 1 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/atherial_corrupted
 execute if score atherial_corrupted call_of_corrupted matches 0 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/physical_corrupted
