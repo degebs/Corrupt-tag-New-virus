@@ -85,3 +85,8 @@ execute if entity @a[scores={evil_class=12},team=corrupted] run advancement gran
 #====================================================================================================================
 # prevent a glitch
 kill @e[type=arrow]
+
+
+#====================================================================================================================
+# destry the fractuizers wall if death occurs
+kill @e[tag=wall,limit=10]
