@@ -15,11 +15,12 @@ execute if score @s select_corruptor matches 1 run clear @s chorus_fruit
 execute if score @s select_corruptor matches 1 run kill @e[type=item,nbt={Item:{id:"minecraft:chorus_fruit"}}]
 # selection
 execute if score @s select_corruptor matches 1 run scoreboard players set @s evil_class 1
-execute if score @s select_corruptor matches 1 run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Corruptor","color":"dark_purple"}," ",{"text":"Corrupted class","color":"white"}]
+execute unless score game state matches 0 if score @s select_corruptor matches 1 run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Corruptor","color":"dark_purple"}," ",{"text":"Corrupted class","color":"white"}]
 execute if score @s select_corruptor matches 1 run playsound minecraft:block.sculk_shrieker.place block @a ~ ~ ~ 1 1 1
 
 # take a datapoint
 execute if score @s select_corruptor matches 1 run scoreboard players add @s selected_corrupted_class 1
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # reset when done
-scoreboard players set @s select_corruptor 0
+# we must make it so that it does not reset during pregame
+execute unless score game state matches 0 run scoreboard players set @s select_corruptor 0

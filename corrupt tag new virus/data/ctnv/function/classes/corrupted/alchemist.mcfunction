@@ -57,6 +57,7 @@ execute if score @s corruption matches 50.. run effect clear @s darkness
 execute if score @s corruption matches 50.. run effect clear @s glowing
 execute if score @s corruption matches 50.. run effect clear @s nausea
 execute if score @s corruption matches 50.. run effect clear @s bad_omen
+execute if score @s corruption matches 50.. run effect clear @s raid_omen
 execute if score @s corruption matches 50.. run effect clear @s trial_omen
 execute if score @s corruption matches 50.. run effect clear @s poison
 

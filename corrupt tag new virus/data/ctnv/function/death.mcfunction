@@ -89,4 +89,4 @@ kill @e[type=arrow]
 
 #====================================================================================================================
 # destry the fractuizers wall if death occurs
-kill @e[tag=wall,limit=10]
+kill @e[type=shulker,limit=20,sort=random]

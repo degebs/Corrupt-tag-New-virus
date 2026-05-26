@@ -15,11 +15,12 @@ execute if score @s select_archer matches 1 run clear @s bow
 execute if score @s select_archer matches 1 run kill @e[type=item,nbt={Item:{id:"minecraft:bow"}}]
 # selection
 execute if score @s select_archer matches 1 run scoreboard players set @s class 2
-execute if score @s select_archer matches 1 run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Archer","color":"dark_aqua"}," ",{"text":"class","color":"white"}]
+execute unless score game state matches 0 if score @s select_archer matches 1 run tellraw @a [{"color":"gold","selector":"@s"}," ",{"text":"picked the","color":"white"}," ",{"text":"Archer","color":"dark_aqua"}," ",{"text":"class","color":"white"}]
 execute if score @s select_archer matches 1 run playsound block.note_block.guitar block @a ~ ~ ~ 1 0.9 1
 
 # take a datapoint
 execute if score @s select_archer matches 1 run scoreboard players add @s selected_runner_class 1
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # reset when done
-scoreboard players set @s select_archer 0
+# we must make it so that it does not reset during pregame
+execute unless score game state matches 0 run scoreboard players set @s select_archer 0

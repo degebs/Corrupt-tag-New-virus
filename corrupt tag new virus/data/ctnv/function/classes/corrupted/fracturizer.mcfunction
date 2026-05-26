@@ -219,3 +219,7 @@ kill @e[type=item,nbt={Item:{id:"minecraft:coal_block"}}]
 
 # make sure he cannot ecape death by dropping his t3 witch sets his corruption to 90%
 execute if score @s corruption matches 100.. run clear @s
+
+
+#fix
+execute if score @s corruption matches 90.. if score tick time matches 1 run kill @e[type=shulker,tag=wall,limit=1,sort=random] 

@@ -217,10 +217,12 @@ execute if score @s corruption matches 90 if score corruption_tick corruption ma
 
 # the better permanent jump boost
 execute if score @s corruption matches 90.. run effect give @s jump_boost 2 2 true
-execute if score @s corruption matches 90.. run effect give @s slow_falling 2 2 true
+#execute if score @s corruption matches 90.. run effect give @s slow_falling 2 2 true
 
 # permanent revieal of all players for the apparition
 execute if score @s corruption matches 90.. run effect give @a[team=runners] glowing 1 1 true
 
-#blind players that are too close
-execute if score @s corruption matches 90.. at @s run effect give @a[team=runners,distance=..5] darkness 10 2 true
+#blind players all of them
+execute if score @s corruption matches 90.. at @s run effect give @a[team=runners] darkness 5 2 true
+execute if score @s corruption matches 90.. at @s run effect give @a[team=runners,distance=..8] blindness 5 2 true
+

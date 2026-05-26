@@ -5,7 +5,11 @@ forceload remove all
 scoreboard objectives remove ordered_map_list
 scoreboard objectives remove map_list
 scoreboard objectives remove map_selection
+
 function ctnv:one_time_function/remove_all_scoreboards
 
 tellraw @a ["",{"text":"all beacons have been destroyed you will have to summon new ones","color":"red"}]
 
+# remeber to reload the enter debug mode
+reload
+function ctnv:debug

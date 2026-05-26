@@ -38,10 +38,10 @@ execute if score rng brewinator_rng matches 41..50 run give @p[team=corrupted] l
 execute if score rng brewinator_rng matches 51..60 run give @p[team=corrupted] lingering_potion[potion_contents={custom_color:16743423,custom_effects:[{id:slowness,duration:100,amplifier:2},{id:poison,duration:30,amplifier:1}]},custom_name=[{"text":"disintegration concentration","italic":false}]]
 
 # 7 (glowing 500→1200, blindness 60→1200)
-execute if score rng brewinator_rng matches 61..81 run give @p[team=corrupted] splash_potion[potion_contents={custom_color:16747463,custom_effects:[{id:glowing,duration:1200,amplifier:1},{id:blindness,duration:200,amplifier:1}]},custom_name=[{"text":"Antimony mixed with Agony ","italic":false}]]
+execute if score rng brewinator_rng matches 61..81 run give @p[team=corrupted] splash_potion[potion_contents={custom_color:16747463,custom_effects:[{id:glowing,duration:600,amplifier:1},{id:blindness,duration:200,amplifier:1}]},custom_name=[{"text":"Antimony mixed with Agony ","italic":false}]]
 
 # 8 (blindness 600→1200)
-execute if score rng brewinator_rng matches 82..90 run give @p[team=corrupted] splash_potion[potion_contents={custom_color:65535,custom_effects:[{id:blindness,duration:1200,amplifier:1},{id:instant_damage,duration:1,amplifier:0}]},custom_name=[{"text":"Arsenic Mercury mix ","italic":false}]]
+execute if score rng brewinator_rng matches 82..90 run give @p[team=corrupted] splash_potion[potion_contents={custom_color:65535,custom_effects:[{id:blindness,duration:600,amplifier:1},{id:instant_damage,duration:1,amplifier:0}]},custom_name=[{"text":"Arsenic Mercury mix ","italic":false}]]
 
 # 9 (blindness 600→1200, glowing 200→1200, poison reduced to 50 ticks)
 execute if score rng brewinator_rng matches 91..100 run give @p[team=corrupted] lingering_potion[potion_contents={custom_color:14548951,custom_effects:[{id:blindness,duration:250,amplifier:1},{id:poison,duration:30,amplifier:2},{id:glowing,duration:1200,amplifier:1}]},custom_name=[{"text":"Ketchup and Mustard gas","italic":false}]]

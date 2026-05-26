@@ -193,8 +193,8 @@ execute as @a[scores={evil_class=10}] run scoreboard players set @s brewinator_d
 #=================================================================================================
 # particles and fanfare when the game starts and a corrupted has yet to be chosen
 # not working
-execute if score countdown time matches 3.. as @e[type=turtle] at @s if score tick time matches 1 run summon bat ~ ~ ~ {Silent:1b,Passengers:[{id:endermite,NoAI:1b,Silent:1b}]}
-execute if score countdown time matches 3.. as @e[type=turtle] at @s if score tick time matches 1 run playsound item.firecharge.use block @a ~ ~ ~ 1 1
+execute if score countdown time matches 3.. as @e[type=turtle,scores={map_selection=1}] at @s if score tick time matches 1 run summon bat ~ ~ ~ {Silent:1b,Passengers:[{id:endermite,NoAI:1b,Silent:1b}]}
+execute if score countdown time matches 3.. as @e[type=turtle,scores={map_selection=1}] at @s if score tick time matches 1 run playsound item.firecharge.use block @a ~ ~ ~ 1 1
 
 effect give @e[type=bat] invisibility 1 9 true
 execute if score countdown time matches ..3 run kill @e[type=bat]

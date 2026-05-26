@@ -211,7 +211,7 @@ attribute @r knockback_resistance base set 0
 # rng for class selection
 
 # do a little rng
-scoreboard players add rng class 1
+execute unless score all_runners_disabled class_enable_click_check matches 1.. run scoreboard players add rng class 1
 execute if score rng class matches 13.. run scoreboard players set rng class 1
 execute if score rng class matches 3.. run scoreboard players add rng evil_class 1
 execute if score rng evil_class matches 13.. run scoreboard players set rng evil_class 1
@@ -563,3 +563,10 @@ execute if score setting ST____game_mode matches 2 run function ctnv:one_time_fu
 execute if score setting ST____game_mode matches 3 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode3
 execute if score setting ST____game_mode matches 4 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode4
 execute if score setting ST____game_mode matches 5 run function ctnv:one_time_function/pregame_gamemode_display_settings/display_gamemode5
+
+
+#======================================================================================================================
+# if the class selection more is defualt then run this function
+execute if score setting ST____class_selection matches 0 run function ctnv:classes/class_selection/class_enable
+
+

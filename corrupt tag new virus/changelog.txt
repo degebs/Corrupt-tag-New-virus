@@ -247,3 +247,13 @@
       -changed the autority's reveal player modulator. it now dies when a new player is corrupted
       - completly reworked the apparition
       -added diffent skins for the triskers decoy
+1.4.8
+      -fixed the singularity's selection function
+      -fixed the Fracturizer t3 not decaying
+      -added the ability for the party leader to enable or disable classes before the game starts
+      -buffed the artificers T3. its blindness now is global range
+      -the pirate's rum nausia no longer lingers when corrupted
+      -fixed the Alcemist not being immune to his own  potions (distiled corrupton)
+      -fixed the only_one_corrupted function not working
+      -nerfed the Alcemist's t1 blindness potions
+      -fixed the map beacons selecting the wrong map sometimes

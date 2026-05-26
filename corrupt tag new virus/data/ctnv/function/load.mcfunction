@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.7","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.4.8","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -81,6 +81,10 @@ scoreboard objectives add debug dummy
 scoreboard players set toggle debug 1
 # there is another variable for counting map beacons its in the map beacon create function
 
+# this prevents a glitch where the map beacon index and the map selection index is off by 1
+scoreboard players add total_reload_count debug 1
+execute if score total_reload_count debug matches 1 run tellraw @a ["Welcome. if this is your first time setting up corrupt tag \ni recommend you enter the ",{"text":"debug","color":"#fbff00","click_event":{"action":"run_command","command":"/function ctnv:debug"}}," mode here. \n You must set up the map beacons and lobby beacons to play"]
+execute if score total_reload_count debug matches 1 run scoreboard players add avalable_map_index debug 1
 
 # --------------------------------------------------------------------------------------------
 # create all teams
@@ -617,3 +621,64 @@ scoreboard objectives add orbital_strike_logic dummy
 scoreboard players set time orbital_strike_logic 0
 
 
+# by default all classes are enabled
+function ctnv:one_time_function/class_initialize
+#his function prevents a glitch
+#=========================================================================================================
+# RUNNERS
+#=========================================================================================================
+scoreboard players set enable select_medic 1
+scoreboard players set enable select_archer 1
+scoreboard players set enable select_bulk 1
+scoreboard players set enable select_stunman 1
+scoreboard players set enable select_fisherman 1
+scoreboard players set enable select_merchant 1
+scoreboard players set enable select_farmer 1
+scoreboard players set enable select_assassin 1
+scoreboard players set enable select_miner 1
+scoreboard players set enable select_trickster 1
+scoreboard players set enable select_spaceman 1
+scoreboard players set enable select_pirate 1
+
+
+scoreboard players set @a select_medic 0
+scoreboard players set @a select_archer 0
+scoreboard players set @a select_bulk 0
+scoreboard players set @a select_stunman 0
+scoreboard players set @a select_fisherman 0
+scoreboard players set @a select_merchant 0
+scoreboard players set @a select_farmer 0
+scoreboard players set @a select_assassin 0
+scoreboard players set @a select_miner 0
+scoreboard players set @a select_trickster 0
+scoreboard players set @a select_spaceman 0
+scoreboard players set @a select_pirate 0
+
+#=========================================================================================================
+# CORRUPTED
+#=========================================================================================================
+scoreboard players set enable select_corruptor 1
+scoreboard players set enable select_manhunter 1
+scoreboard players set enable select_artificer 1
+scoreboard players set enable select_predator 1
+scoreboard players set enable select_dark_star 1
+scoreboard players set enable select_apparition 1
+scoreboard players set enable select_knight 1
+scoreboard players set enable select_authority 1
+scoreboard players set enable select_marksman 1
+scoreboard players set enable select_alchemist 1
+scoreboard players set enable select_Fracturizer 1
+scoreboard players set enable select_singularity 1
+
+scoreboard players set @a select_corruptor 0
+scoreboard players set @a select_manhunter 0
+scoreboard players set @a select_artificer 0
+scoreboard players set @a select_predator 0
+scoreboard players set @a select_dark_star 0
+scoreboard players set @a select_apparition 0
+scoreboard players set @a select_knight 0
+scoreboard players set @a select_authority 0
+scoreboard players set @a select_marksman 0
+scoreboard players set @a select_alchemist 0
+scoreboard players set @a select_Fracturizer 0
+scoreboard players set @a select_singularity 0

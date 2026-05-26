@@ -21,7 +21,7 @@ execute if score map_beacon_count debug matches 0 run reload
 
 # if no map is chosen then we can use the command that selects a random map
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run scoreboard players reset @e[type=turtle] map_selection
-execute if score @a[team=party_lead,limit=1] map_selection matches 0 run scoreboard players set @e[type=minecraft:turtle,sort=random,limit=1] map_selection 1
+execute if score @a[team=party_lead,limit=1] map_selection matches 0 run scoreboard players set @e[type=minecraft:turtle,sort=random,limit=1,tag=map] map_selection 1
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run tellraw @a ["",{"text":"no map selected. choosing at random","color":"dark_purple"}]
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run title @a title {text:"No map selected.",color:"dark_purple"}
 execute if score @a[team=party_lead,limit=1] map_selection matches 0 run title @a subtitle {text:"Choosing at random",color:"dark_purple"}
@@ -55,25 +55,25 @@ execute if score countdown time matches 0 if score tick time matches 5 run score
 #use title commands to display the countdown
 
 execute if score countdown time matches 10 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"10 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 10 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 1
+execute at @a run execute if score countdown time matches 10 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 1
 execute if score countdown time matches 9 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"9 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 9 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.95
+execute at @a run execute if score countdown time matches 9 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.95
 execute if score countdown time matches 8 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"8 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 8 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.9
+execute at @a run execute if score countdown time matches 8 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.9
 execute if score countdown time matches 7 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"7 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 7 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.85
+execute at @a run execute if score countdown time matches 7 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.85
 execute if score countdown time matches 6 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"6 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 6 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.8
+execute at @a run execute if score countdown time matches 6 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.8
 execute if score countdown time matches 5 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"5 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 5 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.75
+execute at @a run execute if score countdown time matches 5 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.75
 execute if score countdown time matches 4 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"4 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 4 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.7
+execute at @a run execute if score countdown time matches 4 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.7
 execute if score countdown time matches 3 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"3 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 3 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.65
+execute at @a run execute if score countdown time matches 3 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.65
 execute if score countdown time matches 2 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"2 seconds","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 2 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.6
+execute at @a run execute if score countdown time matches 2 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.6
 execute if score countdown time matches 1 run title @a actionbar [{"text":"game starts in ","color":"white"},{"text":"1 second","color":"dark_purple"}]
-execute at @a run execute if score countdown time matches 1 if score tick time matches 5 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.55
+execute at @a run execute if score countdown time matches 1 if score tick time matches 19 run playsound minecraft:block.note_block.bell block @a ~ ~ ~ 1 0.55
 execute if score countdown time matches 0 run title @a actionbar [{"text":"game starts ","color":"white"},{"text":"right NOW","color":"dark_purple"}]
 execute if score countdown time matches 0 run clear @a
 
@@ -123,8 +123,21 @@ scoreboard players enable @a evil_class
 scoreboard players add @a class 0
 scoreboard players add @a evil_class 0
 
-execute as @a[scores={class=0},limit=1] run scoreboard players operation @s class = rng class
-execute as @a[scores={evil_class=0},limit=1] run scoreboard players operation @s evil_class = rng evil_class
+execute as @a[scores={class=0},limit=1] unless score all_runners_disabled class_enable_click_check matches 1.. run scoreboard players operation @s class = rng class
+execute as @a[scores={evil_class=0},limit=1] unless score all_corrupted_disabled class_enable_click_check matches 1.. run scoreboard players operation @s evil_class = rng evil_class
+
+# this code will run even if all classes were disabled
+execute if score all_runners_disabled class_enable_click_check matches 1 run tellraw @a "there will be no runner classes"
+execute if score all_runners_disabled class_enable_click_check matches 1 run scoreboard players set @a class 100
+execute if score all_runners_disabled class_enable_click_check matches 1.. run scoreboard players set all_runners_disabled class_enable_click_check 2
+execute if score all_corrupted_disabled class_enable_click_check matches 1 run tellraw @a "there will be no corrupted classes"
+execute if score all_corrupted_disabled class_enable_click_check matches 1 run scoreboard players set @a evil_class 100
+execute if score all_corrupted_disabled class_enable_click_check matches 1.. run scoreboard players set all_corrupted_disabled class_enable_click_check 2
+# set it to 100 because there is no way there will ever be 100 classes.
+# an ivalid numer will mean no class
+execute if score all_runners_disabled class_enable_click_check matches 0 run function ctnv:one_time_function/rng_for_partial_class_selection
+execute if score all_corrupted_disabled class_enable_click_check matches 0 run function ctnv:one_time_function/rng_for_partial_evil_class_selection
+
 #===========================================================================================================================================
 # rng for class selection
 
@@ -163,7 +176,17 @@ team modify corrupted nametagVisibility never
 # at diffrent points in armorstands rotation.
 # this might be the source of the lag
 
-execute if score tick time matches 3 run execute as @e[type=armor_stand,scores={spawning_circle=1}] at @s rotated ~5 ~ run summon armor_stand ^ ^ ^4 {Rotation:[0.0f,0.0f],Tags:["spawn_point"],Invisible:1b}
+#this line of code is to fix a glitch where the spawning sircle would not correspond to the correct map
+execute as @e[type=turtle,tag=map,scores={map_selection=1}] at @s run scoreboard players set @e[type=armor_stand,distance=..1] spawning_circle 2
+# for some reason multiple armor stands think they have the right to become the spawning circle. this is wrong. only the one connected to the selected turtle 
+# can do it. no one else!
+# while this does work, its a bandaid fix. i have no idea what causes multiple spawning circles in the first place
+# what is strange is that this never happened before, like when i first developed this this was never an issue
+#but now it is and i have to patch it. its really ugly
+# this glitch would cause the selected map to not match up with the name
+
+
+execute if score tick time matches 3 run execute as @e[type=armor_stand,scores={spawning_circle=2}] at @s rotated ~5 ~ run summon armor_stand ^ ^ ^4 {Rotation:[0.0f,0.0f],Tags:["spawn_point"],Invisible:1b}
 execute if score tick time matches 3 run scoreboard players add @e[tag=spawn_point] spawn_circle_count 1
 
 # reuse the 360 rotation code.
@@ -234,6 +257,7 @@ scoreboard players display name locked_in unified_tag_settings {"text":"Settings
 
 
 
+scoreboard players set delay map_selection 0
 
 
 
@@ -243,16 +267,7 @@ scoreboard players display name locked_in unified_tag_settings {"text":"Settings
 
 
 
-
-
-
-# the secret super-corrupted classes are
-# 7 = 4 dimentional being form another universe
-# 8 = false god
-# 9 = that mf in creative mode
-# 10 = the one always right behind you
-# 11 = shapeshifter
-
+# pray to the sigilum that this works
 #                                              ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                             
 #                                      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓                                      
 #                                  ▓▓▓▓▓▓▓▓▓▓▓▒▓▓▒▓▒▓▓▓▓▓▓▓▓▓▓▓▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓                                  
@@ -317,8 +332,3 @@ scoreboard players display name locked_in unified_tag_settings {"text":"Settings
 #                                       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓                                       
 #                                              ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                              
 
-# 12 = there is order here.
-# 13 = degebs
-
-
-# i will he honest. these extra classes were a joke never to be added
