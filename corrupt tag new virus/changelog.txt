@@ -257,3 +257,5 @@
       -fixed the only_one_corrupted function not working
       -nerfed the Alcemist's t1 blindness potions
       -fixed the map beacons selecting the wrong map sometimes
+1.4.9
+      -fixed the partial class selection not letting you select a class

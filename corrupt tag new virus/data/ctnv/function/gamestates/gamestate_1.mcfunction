@@ -135,8 +135,12 @@ execute if score all_corrupted_disabled class_enable_click_check matches 1 run s
 execute if score all_corrupted_disabled class_enable_click_check matches 1.. run scoreboard players set all_corrupted_disabled class_enable_click_check 2
 # set it to 100 because there is no way there will ever be 100 classes.
 # an ivalid numer will mean no class
-execute if score all_runners_disabled class_enable_click_check matches 0 run function ctnv:one_time_function/rng_for_partial_class_selection
-execute if score all_corrupted_disabled class_enable_click_check matches 0 run function ctnv:one_time_function/rng_for_partial_evil_class_selection
+
+# for some reason there is a glitch where the class you select is NOT the class you get
+# this is because the partical class selector selects a class for you. and sometimes it fucks up.
+# this is a bandaid fix, it only happens once at the beginning of the countdown now
+execute if score countdown time matches 30 run execute if score all_runners_disabled class_enable_click_check matches 0 run function ctnv:one_time_function/rng_for_partial_class_selection
+execute if score countdown time matches 30 run execute if score all_corrupted_disabled class_enable_click_check matches 0 run function ctnv:one_time_function/rng_for_partial_evil_class_selection
 
 #===========================================================================================================================================
 # rng for class selection
