@@ -56,55 +56,45 @@ kill @e[tag=corruption_part]
 # in call of corrupted. there is no such thing as "runner classes"... while players will get there according items, anyone can use any item regardless on what "class" he should be
 
 #==========================================================================================================================================================================================
+
+# for call of corrupted rework
+# for call of corrupted we will disable all corrupted classes (exept for the one choesen)
+# this is so that they may be unlocked
+execute if score seconds time matches 0 if score minutes time matches 0 if score hours time matches 0 run function ctnv:alternate_gamemode_functions/call_of_corrupted/initial_corrupted_class_lock
+
+#==========================================================================================================================================================================================
 # the runner hud
 
 title @a[team=runners] actionbar [{"text":"wave:","color":"red"},{"text":" ","color":"gold"},{"score":{"objective":"call_of_corrupted","name":"wave"}},{"text":"                                                     ","color":"gold"},{"text":" $ ","color":"blue"},{"score":{"objective":"points","name":"*"}}]
 #==========================================================================================================================================================================================
 
 
-
-
-
-# everything below this point has got to GO
-
-
-
-
-
 # the 2 states the corrupted can be in.
-execute if score atherial_corrupted call_of_corrupted matches 1 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/atherial_corrupted
-execute if score atherial_corrupted call_of_corrupted matches 0 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/physical_corrupted
-execute if score atherial_corrupted call_of_corrupted matches 2 run execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/intermission
-# atherial and physical
-# when atherial he cannot do anything exept summon waves
-# when physical hes just corrutped
+execute if score atherial_corrupted call_of_corrupted matches 0 as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/intermission
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/physical_corrupted
+execute if score atherial_corrupted call_of_corrupted matches 2 as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/last_few_zombies
+# intermision
+# and physical corrupted
+# post corruption kill before wave end
 
 # give the corrupted the poison effect. to signify that he is infact, corrupted
 effect give @a[team=corrupted] poison 1 0 true
+#======================================================================================================================================================
+# the fuction that spawns the bats to passivly spawn the mobs was likely deleted so i must recrete it here
+execute at @p if score intermission call_of_corrupted matches 500 run summon bat ~ ~ ~ {Invulnerable:1b,Silent:1b,home_radius:200,Team:corrupted}
+execute at @p if score intermission call_of_corrupted matches 500 run summon bat ~ ~ ~ {Invulnerable:1b,Silent:1b,home_radius:200,Team:corrupted}
 
+# if dificulty is medium or hard spawn another one
+execute at @p if score setting ST____COC_difuculty matches 1.. if score intermission call_of_corrupted matches 500 run summon bat ~ ~ ~ {Invulnerable:1b,Silent:1b,home_radius:15,Team:corrupted}
+execute at @p if score setting ST____COC_difuculty matches 2.. if score intermission call_of_corrupted matches 500 run summon bat ~ ~ ~ {Invulnerable:1b,Silent:1b,home_radius:15,Team:corrupted}
+
+effect give @e[type=bat,team=corrupted] minecraft:invisibility infinite 1 true
 
 #==========================================================================================================================================================================================
 # runners and physical corrupted must have there max health
 
 # runners
 function ctnv:one_time_function/max_health_assignment
-
-# the corupreds max health is completly different
-# its based on the current wave and the dificulty setting
-# corrupted manifestation
-
-# count down
-execute if score atherial_corrupted call_of_corrupted matches 1 if score corrupt_manifestation call_of_corrupted matches 1.. run scoreboard players remove corrupt_manifestation call_of_corrupted 1
-
-# the corrupted CAN use points
-#==========================================================================================================================================================================================
-# therial and physical corruption sawping
-
-# when it reaches 0 the atherial corrupted becomes physical (and they are given there corrupted class)
-execute if score corrupt_manifestation call_of_corrupted matches 0 run scoreboard players set atherial_corrupted call_of_corrupted 0
-# clear the corruptes inventory BEFORE giving them there corrupted class
-execute if score corrupt_manifestation call_of_corrupted matches 1 run clear @a[team=corrupted]
-execute if score corrupt_manifestation call_of_corrupted matches 1 run scoreboard players set corrupt_manifestation call_of_corrupted 0
 
 #==========================================================================================================================================================================================
 #damage
@@ -119,92 +109,64 @@ execute if score @a[team=corrupted,limit=1] corruption matches 100.. run functio
 #========================================================================================================================================================================================
 # passivly spawned zombies
 
-# calulate max spawners
-# how to calulate 
-# 1. have 3 as a base
-# 2. add the difuculty variable.
-# the final result shall be max spawners
-scoreboard players set max_spawners call_of_corrupted 3
-scoreboard players operation max_spawners call_of_corrupted += setting ST____COC_difuculty
-# check if current spawners are = max spawners
-execute if score spawners call_of_corrupted < max_spawners call_of_corrupted at @a[team=corrupted] run summon bat ~ ~10 ~ {PersistenceRequired:1b,Silent:1b,Team:corrupted}
-effect give @e[type=bat] invisibility infinite 1 true
-# the bats can still be seen. so i will make them tiny
-#execute as @e[type=bat] run attribute @s scale base set 0.1
+# Ensure multiplyer is always set
+scoreboard players add multiplyer call_of_corrupted 0
+execute if score multiplyer call_of_corrupted matches 0 run scoreboard players set multiplyer call_of_corrupted 3
 
-# every bat will update the count
-scoreboard players set spawners call_of_corrupted 0
-execute as @e[type=bat,team=corrupted] run scoreboard players add spawners call_of_corrupted 1
-
-
-# to do this we need a system of flying bats that are invisable.
-# these bats will do the folowing while flying around
-
-# start by setting up the spawing timer
-# more mobs will be spawned in more frequently as the dificulty increases, as well as the wave
-# there need to be a separate cooldown timer to make sure that the operations can orrurt
-# to caltulate the spawning timer we will need to do a few steps
-# 1. set the timer to 850
-# 2. subtract by the dificulty number (0, 1 ,2) multiple times
-# 3. subtract by the wave number
-# 4. divide by 2
-# 5. if the sore at the end is below 40 set it to 40
-
-execute if score time spawn matches 0 run scoreboard players set enable spawn 0
-
-#1.
-execute if score enable spawn matches 0 run scoreboard players set time spawn 850
-#2.
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= setting ST____COC_difuculty
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= setting ST____COC_difuculty
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= setting ST____COC_difuculty
-
-#3.
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
-
-#4.
-execute if score enable spawn matches 0 run scoreboard players operation time spawn /= multiplyer call_of_corrupted
-#5.
-execute if score enable spawn matches 0 if score time spawn matches ..40 run scoreboard players set time spawn 40
-
-#re enable time
-execute if score enable spawn matches 0 run scoreboard players set enable spawn 1
-#start counting down
-execute if score enable spawn matches 1 run scoreboard players remove time spawn 1
-
-# actually summon mobs
-
-# 1. summon an armorstand (so that it can drop)
-# 2. the armorstand spawns in a mob
-# 3. the stand dies
-
-# if the spawn time is less than 40 start summoing the armorstand
-# exept if it is intermission time
-execute if score time spawn matches 39 at @e[type=bat] unless score atherial_corrupted call_of_corrupted matches 2 run summon armor_stand ~ ~1 ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
-# wait for the armorstand to drop
-execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute if score time spawn matches ..20 at @e[tag=mob_spawn] run particle end_rod ~ ~1 ~ 0 0 0 1 1 force @a
-
-# spawn the mob
-# this will require its own function
-execute if score time spawn matches 3 as @e[tag=mob_spawn] at @s run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn
-# rng for the mob spawning
-execute unless score time spawn matches ..10 run scoreboard players add rng spawn 2
-execute if score rng spawn matches 100.. run scoreboard players set rng spawn 0
-execute if score rng spawn matches ..0 run scoreboard players set rng spawn 1
-
-
-# kill the amrorstand
-# teleport a random bat to the corrupted just in case
-execute if score time spawn matches 2 run tp @e[type=bat,limit=1] @a[team=corrupted,limit=1]
-
-execute if score time spawn matches ..1 as @e[tag=mob_spawn] run kill @s
-# in the event that the scoreboard varibles are not there during testing (this code did not run during playtesting)
+# Initialize variables if missing
 scoreboard players add time spawn 0
 scoreboard players add rng spawn 0
 scoreboard players add enable spawn 0
+
+# Reset the timer when it expires (this was the core missing piece)
+execute if score time spawn matches ..0 if score enable spawn matches 1 run scoreboard players set enable spawn 0
+
+# Calculate new spawn timer when enable = 0
+execute if score enable spawn matches 0 run scoreboard players set time spawn 550
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= setting ST____COC_difuculty
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= setting ST____COC_difuculty
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= setting ST____COC_difuculty
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+execute if score enable spawn matches 0 run scoreboard players operation time spawn /= multiplyer call_of_corrupted
+execute if score enable spawn matches 0 if score time spawn matches ..40 run scoreboard players set time spawn 40
+execute if score enable spawn matches 0 run scoreboard players set enable spawn 1
+
+# Count down
+execute if score enable spawn matches 1 run scoreboard players remove time spawn 1
+
+# Summon armor stand as spawn anchor
+execute if score time spawn matches 39 if entity @e[type=bat,team=corrupted] at @e[type=bat,team=corrupted] run summon armor_stand ~ ~1 ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
+execute if score time spawn matches 39 unless score atherial_corrupted call_of_corrupted matches 1 unless entity @e[type=bat,team=corrupted] at @a[team=corrupted,limit=1] run summon armor_stand ~ ~1 ~ {Invisible:1b,Small:1b,DisabledSlots:1966080,Invulnerable:1b,Silent:1b,Tags:["mob_spawn"]}
+
+# Particles while waiting
+execute if score time spawn matches 4..20 at @e[tag=mob_spawn] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
+execute if score time spawn matches 4..20 at @e[tag=mob_spawn] run particle end_rod ~ ~1 ~ 0 0 0 1 1 force @a
+
+# Spawn the mob
+execute if score time spawn matches 3 as @e[tag=mob_spawn] at @s run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn
+execute if score time spawn matches 3 at @e[tag=mob_spawn] unless entity @e[type=zombie,team=corrupted,distance=..5] run summon zombie ~ ~ ~ {Team:corrupted,equipment:{head:{id:netherite_helmet,components:{"minecraft:trim":{material:"minecraft:lapis",pattern:"minecraft:tide"}}}},attributes:[{id:max_health,base:4f},{id:spawn_reinforcements,base:1f},{id:block_interaction_range,base:64f}]}
+
+
+# Relocate a bat to corrupted player in case none are nearby
+execute if score time spawn matches 2 if entity @e[type=bat,team=corrupted,limit=2,sort=furthest] run tp @e[type=bat,team=corrupted,limit=1] @a[team=corrupted,limit=1]
+
+# Kill the armor stand
+execute if score time spawn matches 1 as @e[tag=mob_spawn] run kill @s
 # this code will make sure that all the varibles for this entire section actually run
+
+# rng for spawing
+scoreboard players add rng spawn 1
+execute if score rng spawn matches 100.. if score wave call_of_corrupted matches ..2 run scoreboard players set rng spawn 1
+execute if score rng spawn matches 150.. if score wave call_of_corrupted matches ..4 run scoreboard players set rng spawn 1
+execute if score rng spawn matches 200.. if score wave call_of_corrupted matches 6.. run scoreboard players set rng spawn 1
+# we unlock more of the rng table as we go on
+# the harder mobs will only start spawning in later waves
 #==============================================================================================================================================
 
 
@@ -239,9 +201,9 @@ execute if score reset runners_alive matches -200 run reload
 # 2. check if the player is already at max health
 # 3. check if nautral regen is even on
 # 4. check if the tick is 10
-execute as @a[team=runners] if score tick time matches 10 if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 unless score @s health matches ..0 run scoreboard players add @s health 1
+execute as @a[team=runners] if score tick time matches 10 if score seconds time matches 30 unless score @s health >= @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 unless score @s health matches ..0 run scoreboard players add @s health 1
 # particles to indicate healing
-execute as @a[team=runners] at @s if score seconds time matches 30 unless score @s health = @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run particle minecraft:happy_villager ~ ~1 ~ 0.2 1 0.2 1 5 force @a
+execute as @a[team=runners] at @s if score seconds time matches 30 unless score @s health >= @a[limit=1] ST____max_health if score @a[limit=1] ST____nautral_regen matches 0 run particle minecraft:happy_villager ~ ~1 ~ 0.2 1 0.2 1 5 force @a
 
 # health can be upgraded in this game mode so this code is useless
 # if the pleyers helth is greater then the max health. set it to the max health
@@ -332,27 +294,24 @@ execute if score limit trap_stats matches 0 run kill @e[tag=fishing_net_trap]
 
 
 
-#=======================================================================================================================================
-# runner ablilitys
-execute if score count runners_alive matches 1.. as @a[team=runners] if score @s downed matches 0 run function ctnv:alternate_gamemode_functions/call_of_corrupted/runner_class_ablilitys
 
 # totem of undting
 # make sure he cant drop it
-execute as @a[team=runners] run execute if score @s ITEM____totem_of_undying matches 1 run kill @e[type=item,nbt={Item:{id:"minecraft:totem_of_undying"}}]
-execute as @a[team=runners] run execute if score @s ITEM____totem_of_undying matches 1 run give @s totem_of_undying
-execute as @a[team=runners] run execute if score @s ITEM____totem_of_undying matches 1 run scoreboard players reset @s ITEM____totem_of_undying
+execute as @a[team=runners] if score @s ITEM____totem_of_undying matches 1 run kill @e[type=item,nbt={Item:{id:"minecraft:totem_of_undying"}}]
+execute as @a[team=runners] if score @s ITEM____totem_of_undying matches 1 run give @s totem_of_undying
+execute as @a[team=runners] if score @s ITEM____totem_of_undying matches 1 run scoreboard players reset @s ITEM____totem_of_undying
 
 #check if he is holding it and if the health is 0
-execute as @a[team=runners] run execute if score @s health matches ..0 if entity @s[nbt={SelectedItem:{id:"minecraft:totem_of_undying"}}] run scoreboard players set @s ITEM____totem_of_undying 3
+execute as @a[team=runners] if score @s health matches ..0 if entity @s[nbt={SelectedItem:{id:"minecraft:totem_of_undying"}}] run scoreboard players set @s ITEM____totem_of_undying 3
 # do the revive
-execute as @a[team=runners] run execute if score @s ITEM____totem_of_undying matches 3 run clear @s totem_of_undying
-execute as @a[team=runners] run execute if score @s ITEM____totem_of_undying matches 3 run scoreboard players operation @s health = setting ST____max_health
-execute as @a[team=runners] at @s run execute if score @s ITEM____totem_of_undying matches 3 run particle totem_of_undying ~ ~1 ~ 0.5 1 0.5 1 200 force @a
-execute as @a[team=runners] at @s run execute if score @s ITEM____totem_of_undying matches 3 run playsound item.totem.use player @a ~ ~ ~ 1 1
-execute as @a[team=runners] at @s run execute if score @s ITEM____totem_of_undying matches 3 run scoreboard players set @s downed 0
+execute as @a[team=runners] if score @s ITEM____totem_of_undying matches 3 run clear @s totem_of_undying
+execute as @a[team=runners] if score @s ITEM____totem_of_undying matches 3 run scoreboard players operation @s health = setting ST____max_health
+execute as @a[team=runners] at @s if score @s ITEM____totem_of_undying matches 3 run particle totem_of_undying ~ ~1 ~ 0.5 1 0.5 1 200 force @a
+execute as @a[team=runners] at @s if score @s ITEM____totem_of_undying matches 3 run playsound item.totem.use player @a ~ ~ ~ 1 1
+execute as @a[team=runners] at @s if score @s ITEM____totem_of_undying matches 3 run scoreboard players set @s downed 0
 
 # reset
-execute as @a[team=runners] run execute if score @s ITEM____totem_of_undying matches 3 run scoreboard players reset @s ITEM____totem_of_undying
+execute as @a[team=runners] if score @s ITEM____totem_of_undying matches 3 run scoreboard players reset @s ITEM____totem_of_undying
 
 
 #========================================================================================================================================================================================
@@ -414,18 +373,18 @@ execute as @a[team=runners] at @s if score @s crouch_time matches 1.. unless ent
 
 # this is a temporary solution
 # will have to fix it later
-execute as @a[scores={class=1},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/medic
-execute as @a[scores={class=2},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/archer
-execute as @a[scores={class=3},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/bulk
-execute as @a[scores={class=4},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/assassin
-execute as @a[scores={class=5},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/stunman
-execute as @a[scores={class=6},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/fisherman
-execute as @a[scores={class=7},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/miner
-execute as @a[scores={class=8},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/merchant
-execute as @a[scores={class=9},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/farmer
-execute as @a[scores={class=10},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/trickster
-execute as @a[scores={class=11},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/spaceman
-execute as @a[scores={class=12},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/pirate
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=1},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/medic_copy
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=2},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/archer
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=3},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/bulk
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=4},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/assassin
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=5},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/stunman
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=6},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/fisherman
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=7},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/miner
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=8},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/merchant
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=9},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/farmer
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=10},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/trickster
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=11},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/spaceman
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=12},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/pirate
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5

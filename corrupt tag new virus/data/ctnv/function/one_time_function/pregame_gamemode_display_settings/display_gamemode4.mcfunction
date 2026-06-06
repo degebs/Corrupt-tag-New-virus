@@ -4,15 +4,15 @@
 
 # these are the ones where we can just have numbers that represent the settings
 scoreboard players operation corruption_rate unified_tag_settings = setting ST____corruption_rate
-scoreboard players operation corruption_stun unified_tag_settings = setting ST____initial_corruption_stun
+#scoreboard players operation corruption_stun unified_tag_settings = setting ST____initial_corruption_stun
 scoreboard players operation max_health unified_tag_settings = setting ST____max_health
 scoreboard players operation max_traps unified_tag_settings = setting ST____max_traps
 scoreboard players display name corruption_rate unified_tag_settings {"text":"Corruption Rate","color":"dark_purple","bold":true}
-scoreboard players display name corruption_stun unified_tag_settings {"text":"Manifestation probability","color":"light_purple","bold":true}
+#scoreboard players display name corruption_stun unified_tag_settings {"text":"Manifestation probability","color":"light_purple","bold":true}
 scoreboard players display name max_health unified_tag_settings {"text":"Max Health","color":"red","bold":true}
 scoreboard players display name max_traps unified_tag_settings {"text":"Max Traps","color":"blue","bold":true}
 scoreboard players display numberformat corruption_rate unified_tag_settings styled {"color":"dark_purple","bold":true}
-scoreboard players display numberformat corruption_stun unified_tag_settings styled {"color":"light_purple","bold":true}
+#scoreboard players display numberformat corruption_stun unified_tag_settings styled {"color":"light_purple","bold":true}
 scoreboard players display numberformat max_health unified_tag_settings styled {"color":"red","bold":true}
 scoreboard players display numberformat max_traps unified_tag_settings styled {"color":"blue","bold":true}
 

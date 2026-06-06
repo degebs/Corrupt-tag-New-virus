@@ -17,7 +17,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:golden_spear"}}]
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}] run item replace entity @s hotbar.0 with golden_spear[custom_name=[{"text":"LAIKA","italic":false}],rarity=uncommon,attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
-
+kill @e[type=item,nbt={Item:{id:"minecraft:barrier"}}]
 
 #==============================================================================================================================================================
 #low gravity

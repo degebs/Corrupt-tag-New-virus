@@ -22,14 +22,14 @@ scoreboard players add @s potion_drink_detect 0
 scoreboard players add @s RUM_count 0
 
 # the RUM
-execute if score @s potion_drink_detect matches 0 if score @s RUM_cooldown matches 0 run item replace entity @s hotbar.1 with potion[potion_contents={custom_color:8606770,custom_effects:[{id:speed,duration:100,amplifier:2},{id:jump_boost,duration:60,amplifier:1},{id:nausea,duration:20,amplifier:50}]},custom_name=[{"text":"THE BIG BOTTLE OF RUM","italic":false}],item_name=[{"text":"THE BIG BOTTLE OF RUM","italic":false}],rarity=uncommon,tooltip_display={hide_tooltip:true}]
+execute if score @s potion_drink_detect matches 0 if score @s RUM_cooldown matches 0 run item replace entity @s hotbar.1 with potion[potion_contents={custom_color:8606770,custom_effects:[{id:speed,duration:200,amplifier:2},{id:jump_boost,duration:60,amplifier:1},{id:nausea,duration:20,amplifier:50}]},custom_name=[{"text":"THE BIG BOTTLE OF RUM","italic":false}],item_name=[{"text":"THE BIG BOTTLE OF RUM","italic":false}],rarity=uncommon,tooltip_display={hide_tooltip:true}]
 execute if score @s potion_drink_detect matches 0 if score @s RUM_cooldown matches 0 run kill @e[type=item,nbt={Item:{id:"minecraft:potion"}}]
 
 # if he drinks it do a few things
 execute if score @s potion_drink_detect matches 1 run scoreboard players add @s RUM_count 1
 execute if score @s potion_drink_detect matches 1 run clear @s potion
 # give 1 heart
-execute if score @s potion_drink_detect matches 1 run scoreboard players add @s health 1
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches ..15 unless score setting ST____max_health matches 1 run execute if score @s potion_drink_detect matches 1 run scoreboard players add @s health 1
 
 
 # 30 second cooldown
@@ -40,16 +40,16 @@ execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 
 execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 2 run effect give @s minecraft:nausea 6 6 true
 execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 3 run effect give @s minecraft:nausea 13 6 true
 execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 4 run effect give @s minecraft:nausea 16 6 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 5 run effect give @s minecraft:nausea 19 6 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 6 run effect give @s minecraft:nausea 22 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 7 run effect give @s minecraft:nausea 27 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 8 run effect give @s minecraft:nausea 29 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 9 run effect give @s minecraft:nausea 32 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 10 run effect give @s minecraft:nausea 38 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 11.. run effect give @s minecraft:nausea 45 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 11.. run effect give @s minecraft:blindness 25 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 21.. run effect give @s minecraft:blindness 130 16 true
-execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 21.. run effect give @s minecraft:darkness 130 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 5 run effect give @s minecraft:nausea 17 6 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 6 run effect give @s minecraft:nausea 18 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 7 run effect give @s minecraft:nausea 19 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 8 run effect give @s minecraft:nausea 20 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 9 run effect give @s minecraft:nausea 21 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 10 run effect give @s minecraft:nausea 22 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 11.. run effect give @s minecraft:nausea 23 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 11.. run effect give @s minecraft:blindness 10 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 21.. run effect give @s minecraft:blindness 30 16 true
+execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 21.. run effect give @s minecraft:darkness 30 16 true
 execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 23.. run effect give @s minecraft:slowness 30 3 true
 execute if score @s potion_drink_detect matches 1 if score @s RUM_count matches 30.. run scoreboard players remove @s health 1
 # if you are drinking 30 bottles of rum then your liver will fail. just like in real life.

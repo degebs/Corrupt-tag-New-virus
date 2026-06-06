@@ -26,8 +26,11 @@ execute if score seconds time matches 50 run bossbar set minecraft:game_time col
 
 # im thinking of a way to use the subtitle tile command to increase player stress
 #title @a subtitle {"text":"test"}
-
-
+#==============================================================================================================
+# all corrupted get a passive speed and jump boost no matter the class
+effect give @a[team=corrupted] minecraft:speed 3 0 true
+effect give @a[team=corrupted] minecraft:jump_boost 3 0 true
+effect give @a[team=corrupted] minecraft:night_vision 3 0 true
 
 #==============================================================================================================
 # calling card

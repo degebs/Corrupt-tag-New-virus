@@ -28,6 +28,11 @@ execute as @a[scores={evil_class=4},team=corrupted] run function ctnv:classes/co
 execute as @a[scores={evil_class=5},team=corrupted] run function ctnv:classes/corrupted/knight
 execute as @a[scores={evil_class=6},team=corrupted] run function ctnv:classes/corrupted/dark_star
 execute as @a[scores={evil_class=7},team=corrupted] run function ctnv:classes/corrupted/manhunter
+execute as @a[scores={evil_class=8},team=corrupted] run function ctnv:classes/corrupted/authority
+execute as @a[scores={evil_class=9},team=corrupted] run function ctnv:classes/corrupted/marksman
+execute as @a[scores={evil_class=10},team=corrupted] run function ctnv:classes/corrupted/alchemist
+execute as @a[scores={evil_class=11},team=corrupted] run function ctnv:classes/corrupted/fracturizer
+execute as @a[scores={evil_class=12},team=corrupted] run function ctnv:classes/corrupted/singularity
 
 
 
@@ -41,18 +46,18 @@ execute if score gamers players_online matches 2.. if score corruption_tick corr
 
 #===================================================================================================================================================
 #reset the corruption manefestation timer so that when the corrupted one becomes atherail again the loop will be completed
-execute if score setting ST____initial_corruption_stun matches 90 run scoreboard players set corrupt_manifestation call_of_corrupted 4000
-execute if score setting ST____initial_corruption_stun matches 80 run scoreboard players set corrupt_manifestation call_of_corrupted 5000
-execute if score setting ST____initial_corruption_stun matches 70 run scoreboard players set corrupt_manifestation call_of_corrupted 6000
-execute if score setting ST____initial_corruption_stun matches 60 run scoreboard players set corrupt_manifestation call_of_corrupted 7000
-execute if score setting ST____initial_corruption_stun matches 50 run scoreboard players set corrupt_manifestation call_of_corrupted 8000
-execute if score setting ST____initial_corruption_stun matches 40 run scoreboard players set corrupt_manifestation call_of_corrupted 9000
-execute if score setting ST____initial_corruption_stun matches 30 run scoreboard players set corrupt_manifestation call_of_corrupted 10000
-execute if score setting ST____initial_corruption_stun matches 20 run scoreboard players set corrupt_manifestation call_of_corrupted 11000
-execute if score setting ST____initial_corruption_stun matches 10 run scoreboard players set corrupt_manifestation call_of_corrupted 12000
+#execute if score setting ST____initial_corruption_stun matches 90 run scoreboard players set corrupt_manifestation call_of_corrupted 4000
+#execute if score setting ST____initial_corruption_stun matches 80 run scoreboard players set corrupt_manifestation call_of_corrupted 5000
+#execute if score setting ST____initial_corruption_stun matches 70 run scoreboard players set corrupt_manifestation call_of_corrupted 6000
+#execute if score setting ST____initial_corruption_stun matches 60 run scoreboard players set corrupt_manifestation call_of_corrupted 7000
+#execute if score setting ST____initial_corruption_stun matches 50 run scoreboard players set corrupt_manifestation call_of_corrupted 8000
+#execute if score setting ST____initial_corruption_stun matches 40 run scoreboard players set corrupt_manifestation call_of_corrupted 9000
+#execute if score setting ST____initial_corruption_stun matches 30 run scoreboard players set corrupt_manifestation call_of_corrupted 10000
+#execute if score setting ST____initial_corruption_stun matches 20 run scoreboard players set corrupt_manifestation call_of_corrupted 11000
+#execute if score setting ST____initial_corruption_stun matches 10 run scoreboard players set corrupt_manifestation call_of_corrupted 12000
 # if that does not work use a backup
-execute if score corrupt_manifestation call_of_corrupted matches 0 run scoreboard players set corrupt_manifestation call_of_corrupted 13000
-
+#execute if score corrupt_manifestation call_of_corrupted matches 0 run scoreboard players set corrupt_manifestation call_of_corrupted 13000
+# code no longer nessasary
 #===================================================================================================================================================
 
 # if the corrupted gets to 0 health he becomes atherial again. this is done by immidialty setting his corruption to 100%
@@ -62,5 +67,3 @@ execute if score @s health matches ..0 unless score death_stun corruption_stun m
 execute if score reset runners_alive matches ..-3 run scoreboard players set @s health 10
 
 #===================================================================================================================================================
-# bring the bats to the corrupted player so that new mobs spawn around him
-execute as @a[team=corrupted] at @s if score tick time matches 8 run tp @e[type=bat,sort=nearest,limit=2] @s

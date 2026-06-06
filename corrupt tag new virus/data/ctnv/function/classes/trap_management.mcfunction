@@ -95,7 +95,14 @@ execute as @e[type=item_display,tag=stunman_trap] at @s if entity @e[distance=..
 
 # this one simply slows all who cross it
 execute as @e[tag=fishing_net_trap,type=item_display] at @s if entity @p[distance=..2.5,limit=1] run effect give @e[distance=..2.7,team=corrupted] slowness 1 2 true
+# livetime
+execute as @e[tag=fishing_net_trap,type=item_display] run scoreboard players add @s fishing_net_lifetime 1
+# if 45 seconds the trap will die (just like farmers farm)
+execute as @e[tag=fishing_net_trap,type=item_display] at @s if score @s fishing_net_lifetime matches 900 run particle poof ~ ~ ~ 0.4 0.1 0.4 0.2 15 force @a
 
+execute as @e[tag=fishing_net_trap,type=item_display] at @s if score @s fishing_net_lifetime matches 900 run playsound minecraft:entity.item.break block @a ~ ~ ~ 1 1 0.5
+
+execute as @e[tag=fishing_net_trap,type=item_display] at @s if score @s fishing_net_lifetime matches 900 run kill @s
 #============================================================================================================
 # authority Reveal Players Modulator
 execute as @e[type=item_display,tag=Reveal_Players_Modulator] at @s if entity @p[distance=..2.5,limit=1,team=runners] run particle explosion ~ ~ ~ 0.1 0.1 0.1 0.2 5 force @a
@@ -191,7 +198,15 @@ execute as @e[type=block_display,tag=rewind_shard_trail] at @s unless block ~ ~ 
 
 # kill the marker when it reaches the shard (saves on lag)
 execute as @e[type=block_display,tag=rewind_shard_trail] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..0.5] run kill @s
+# obscructon
+# basically team mates can stand on the shard to block it
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+# if a corrupted player touches the shard it will force it to activate
+execute as @a[team=corrupted] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run playsound block.respawn_anchor.deplete block @a ~ ~ ~ 1 1 0.5
+execute as @a[team=corrupted] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run playsound entity.ghast.hurt block @a ~ ~ ~ 1 1 0.5
 
+execute as @a[team=corrupted] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run scoreboard players set @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1}] spaceman_teleport_detect 1
 
 #============================================================================================================
 # i make 1 exseption

@@ -1,6 +1,5 @@
-
 #==========================================================================================================================
-#reset corrupted health
+# reset corrupted health
 
 # the max health of the corrupted shall be calculated as such
 # 1. take the max health of the runners
@@ -9,251 +8,330 @@
 # 4. add the current wave count number to the max health
 # 5. add the extra health of the corrupted that can be bought in the intermission shop
 
-# make sure it does not blow up into infinity
-#scoreboard players set @a[team=corrupted] health 0
-
 # step 1
 scoreboard players operation @a[team=corrupted] health = setting ST____max_health
 # step 2
 scoreboard players operation @a[team=corrupted] health += setting ST____COC_difuculty
-
 # step 3
 scoreboard players set multiplyer call_of_corrupted 2
 scoreboard players operation @a[team=corrupted] health *= multiplyer call_of_corrupted
-
-#step 4
+# step 4
 scoreboard players operation @a[team=corrupted] health += wave call_of_corrupted
-
 # step 5
 scoreboard players operation @a[team=corrupted] health += extra_corrupted_health call_of_corrupted
 
-
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
-
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
-
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor ominous_bottle if score @s points matches ..99 run tellraw @s [{"text":"Not enough points!","color":"red"}]
-# if enoguh points give them the item and take the points
+# HEALTH UPGRADE - inventory.1
+execute as @a[team=corrupted] if items entity @s player.cursor ominous_bottle if score @s points matches ..99 run tellraw @s [{"text":"Not enough points! you need $100","color":"red"}]
 execute as @a[team=corrupted] if items entity @s player.cursor ominous_bottle if score @s points matches 100.. run scoreboard players add extra_corrupted_health call_of_corrupted 1
 execute as @a[team=corrupted] at @s if items entity @s player.cursor ominous_bottle if score @s points matches 100.. run playsound block.bell.resonate master @s
 execute as @a[team=corrupted] at @s if items entity @s player.cursor ominous_bottle if score @s points matches 100.. run playsound block.bell.use master @s
 execute as @a[team=corrupted] if items entity @s player.cursor ominous_bottle if score @s points matches 100.. run tellraw @s [{"text":"Health Upgraded!","color":"green"}]
 execute as @a[team=corrupted] if items entity @s player.cursor ominous_bottle if score @s points matches 100.. run scoreboard players remove @s points 100
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
 clear @a[team=corrupted] ominous_bottle
-
-
-#3 place the item in the invetory
-item replace entity @a[team=corrupted] inventory.1 with ominous_bottle[custom_name="buy more health for $100"]
+item replace entity @a[team=corrupted] inventory.1 with ominous_bottle[custom_name=[{"text":"Health Upgrade","italic":false,"color":"dark_purple"}],lore=[[{"text":"Increases your max health for the next physical phase","italic":false,"color":"white"}],[{"text":"Stacks with each purchase","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $100","italic":false,"color":"gold"}]]]
 #=================================================================================================
 
-
-
-
-# these next few clickable items are for unlocking the corrupted classes
-
-
-
-
-
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
-
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
-
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor chorus_fruit if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor chorus_fruit if score @s points matches 500.. run scoreboard players set corruptor unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor chorus_fruit if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor chorus_fruit if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor chorus_fruit if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor chorus_fruit if score @s points matches 500.. run scoreboard players remove @s points 500
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
-clear @a[team=corrupted] chorus_fruit
-
-# CORRUPTOR CLASS UNLOCK
-#3 place the item in the invetory
-execute if score corruptor unlocked_corrupted_classes matches 0 run item replace entity @a[team=corrupted] inventory.19 with chorus_fruit[custom_name=[{"text":"Corruptor","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain an item to see the location of all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a speed boost item","italic":false,"color":"white"}],[{"text":"=== 75% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a fruit to teleport you to a random player","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\" Blessed be the ones who don't get away from me and dies... DIES! .\"","italic":false,"color":"red"}],[{"text":" ","italic":false}]]]
+# EXTRA SPAWN PORTAL - inventory.2
+execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches ..49 run tellraw @s [{"text":"Not enough points! you need $50","color":"red"}]
+execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run summon bat ~ ~1 ~ {PersistenceRequired:1b,Silent:1b,Team:corrupted}
+execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run tellraw @s [{"text":"Spawn Portal Purchased!","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run scoreboard players remove @s points 50
+clear @a[team=corrupted] endermite_spawn_egg
+item replace entity @a[team=corrupted] inventory.2 with endermite_spawn_egg[custom_name=[{"text":"Extra Spawn Portal","italic":false,"color":"dark_purple"}],lore=[[{"text":"Summons an additional passive spawn portal","italic":false,"color":"white"}],[{"text":"More portals = more frequent mob spawns","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $50","italic":false,"color":"gold"}]]]
 #=================================================================================================
 
-
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
-
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
-
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_sword if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_sword if score @s points matches 500.. run scoreboard players set predator unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor netherite_sword if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor netherite_sword if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_sword if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_sword if score @s points matches 500.. run scoreboard players remove @s points 500
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
-clear @a[team=corrupted] netherite_sword
-
-# PREDATOR CLASS UNLOCK
-#3 place the item in the invetory
-execute if score predator unlocked_corrupted_classes matches 0 run item replace entity @a[team=corrupted] inventory.20 with netherite_sword[custom_name=[{"text":"Predator","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- smell the fear of the runners, the smell fules your speed boost (passive)","italic":false,"color":"white"}],[{"text":"- slowness when far away from runners","italic":false,"color":"red"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a invisability item","italic":false,"color":"white"}],[{"text":"- permanent jump boost","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- gain an item to remotly stun all runners ","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\" IM HERE TO MEET A 12 YEAR OLD CHILD!! IM HERE TO MEET A 12 YEAR OLD CHILD!! \"","italic":false,"color":"red"}],[{"text":" ","italic":false}]]]
+# SPEED BOOST - inventory.9 (5 minutes of Speed I)
+execute as @a[team=corrupted] if items entity @s player.cursor sugar if score @s points matches ..199 run tellraw @s [{"text":"Not enough points! you need $200","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor sugar if score @s points matches 200.. run effect give @s speed 6000 0 true
+execute as @a[team=corrupted] at @s if items entity @s player.cursor sugar if score @s points matches 200.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor sugar if score @s points matches 200.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor sugar if score @s points matches 200.. run tellraw @s [{"text":"Speed Boost Purchased! 5 minutes of Speed I","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor sugar if score @s points matches 200.. run scoreboard players remove @s points 200
+clear @a[team=corrupted] sugar
+item replace entity @a[team=corrupted] inventory.9 with sugar[custom_name=[{"text":"Speed Boost","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you Speed I for 5 minutes","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $200","italic":false,"color":"gold"}]]]
 #=================================================================================================
 
-
-
-
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
-
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
-
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor vex_spawn_egg if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor vex_spawn_egg if score @s points matches 500.. run scoreboard players set apparition unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor vex_spawn_egg if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor vex_spawn_egg if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor vex_spawn_egg if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor vex_spawn_egg if score @s points matches 500.. run scoreboard players remove @s points 500
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
-clear @a[team=corrupted] vex_spawn_egg
-
-# APPARATION CLASS UNLOCK
-#3 place the item in the invetory
-execute if score apparition unlocked_corrupted_classes matches 0 run item replace entity @a[team=corrupted] inventory.21 with vex_spawn_egg[custom_name=[{"text":"Apparition","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent invisability","italic":false,"color":"white"}],[{"text":"- slowness when close from runners","italic":false,"color":"red"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- speed boost in darkness","italic":false,"color":"white"}],[{"text":"- item to reveal all runners","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- recharging enderperal","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\" AND I will never see anything of light ","italic":false,"color":"red"}],[{"text":"But whom, But whom","italic":false,"color":"red"}],[{"text":"are willing for disair and gloom \"","italic":false,"color":"red"}]]]
-
+# JUMP BOOST - inventory.10 (5 minutes of Jump Boost I)
+execute as @a[team=corrupted] if items entity @s player.cursor rabbit_foot if score @s points matches ..199 run tellraw @s [{"text":"Not enough points! you need $200","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor rabbit_foot if score @s points matches 200.. run effect give @s jump_boost 6000 0 true
+execute as @a[team=corrupted] at @s if items entity @s player.cursor rabbit_foot if score @s points matches 200.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor rabbit_foot if score @s points matches 200.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor rabbit_foot if score @s points matches 200.. run tellraw @s [{"text":"Jump Boost Purchased! 5 minutes of Jump Boost I","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor rabbit_foot if score @s points matches 200.. run scoreboard players remove @s points 200
+clear @a[team=corrupted] rabbit_foot
+item replace entity @a[team=corrupted] inventory.10 with rabbit_foot[custom_name=[{"text":"Jump Boost","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you Jump Boost I for 5 minutes","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $200","italic":false,"color":"gold"}]]]
+#=================================================================================================
+#=================================================================================================
+# POWERFUL SPEED BOOST - inventory.18 (10 minutes of Speed II)
+execute as @a[team=corrupted] if items entity @s player.cursor nether_wart if score @s points matches ..699 run tellraw @s [{"text":"Not enough points! you need $700","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor nether_wart if score @s points matches 700.. run effect give @s speed 12000 1 true
+execute as @a[team=corrupted] at @s if items entity @s player.cursor nether_wart if score @s points matches 700.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor nether_wart if score @s points matches 700.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor nether_wart if score @s points matches 700.. run tellraw @s [{"text":"Powerful Speed Boost Purchased! 10 minutes of Speed II","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor nether_wart if score @s points matches 700.. run scoreboard players remove @s points 700
+clear @a[team=corrupted] nether_wart
+item replace entity @a[team=corrupted] inventory.18 with nether_wart[custom_name=[{"text":"Powerful Speed Boost","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you Speed II for 10 minutes","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $700","italic":false,"color":"gold"}]]]
 #=================================================================================================
 
-
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
-
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
-
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor tnt if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor tnt if score @s points matches 500.. run scoreboard players set artificer unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor tnt if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor tnt if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor tnt if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor tnt if score @s points matches 500.. run scoreboard players remove @s points 500
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
-clear @a[team=corrupted] tnt
-
-# Artificer CLASS UNLOCK
-#3 place the item in the invetory
-execute if score artificer unlocked_corrupted_classes matches 0 run item replace entity @a[team=corrupted] inventory.22 with tnt[custom_name=[{"text":"Artificer","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain the ability to place traps","italic":false,"color":"white"}],[{"text":"- gain an item to reveal all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain superior traps","italic":false,"color":"white"}],[{"text":"- jump boost","italic":false,"color":"white"}],[{"text":"=== 80% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- gain a sentry trap","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"I have become Death destroyer of worlds.\"","italic":false,"color":"red"}]]]
-
+# POWERFUL JUMP BOOST - inventory.19 (10 minutes of Jump Boost II)
+execute as @a[team=corrupted] if items entity @s player.cursor ghast_tear if score @s points matches ..699 run tellraw @s [{"text":"Not enough points! you need $700","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor ghast_tear if score @s points matches 700.. run effect give @s jump_boost 12000 1 true
+execute as @a[team=corrupted] at @s if items entity @s player.cursor ghast_tear if score @s points matches 700.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor ghast_tear if score @s points matches 700.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor ghast_tear if score @s points matches 700.. run tellraw @s [{"text":"Powerful Jump Boost Purchased! 10 minutes of Jump Boost II","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor ghast_tear if score @s points matches 700.. run scoreboard players remove @s points 700
+clear @a[team=corrupted] ghast_tear
+item replace entity @a[team=corrupted] inventory.19 with ghast_tear[custom_name=[{"text":"Powerful Jump Boost","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you Jump Boost II for 10 minutes","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $700","italic":false,"color":"gold"}]]]
 #=================================================================================================
-
-
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
-
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
-
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_helmet if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_helmet if score @s points matches 500.. run scoreboard players set knight unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor netherite_helmet if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor netherite_helmet if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_helmet if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_helmet if score @s points matches 500.. run scoreboard players remove @s points 500
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
-clear @a[team=corrupted] netherite_helmet
-
-# KNIGHT CLASS UNLOCK
-#3 place the item in the invetory
-execute if score knight unlocked_corrupted_classes matches 0 run item replace entity @s inventory.23 with netherite_helmet[custom_name=[{"text":"Knight","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent damage boost","italic":false,"color":"white"}],[{"text":"- full stun and knockback immunity","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"gain a speed bost item","italic":false,"color":"white"}],[{"text":"- item to reveal all runners","italic":false}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a temorary cure to halt the corruption","italic":false,"color":"white"}],[{"text":"-permanent jump boost","italic":false,"color":"white"}],[{"text":"-permanent speed boost","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"The will of the empire demands you pay taxes PESANT! \"","italic":false,"color":"red"}]]]
-
+# INVISIBILITY - inventory.0 (3 minutes of Invisibility)
+execute as @a[team=corrupted] if items entity @s player.cursor fermented_spider_eye if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor fermented_spider_eye if score @s points matches 500.. run effect give @s invisibility 3600 0 true
+execute as @a[team=corrupted] at @s if items entity @s player.cursor fermented_spider_eye if score @s points matches 500.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor fermented_spider_eye if score @s points matches 500.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor fermented_spider_eye if score @s points matches 500.. run tellraw @s [{"text":"Invisibility Purchased! 3 minutes of Invisibility","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor fermented_spider_eye if score @s points matches 500.. run scoreboard players remove @s points 500
+clear @a[team=corrupted] fermented_spider_eye
+item replace entity @a[team=corrupted] inventory.0 with fermented_spider_eye[custom_name=[{"text":"Invisibility","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you Invisibility for 3 minutes","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $500","italic":false,"color":"gold"}]]]
 #=================================================================================================
+# range increase - inventory.12 one time purchase that permanently increases the range of your attack
+# PERMANENT RANGE INCREASE - inventory.2 (one-time purchase, +1 block attack range)
+# First, create the scoreboard objective if it doesn't exist (run once, e.g., in load function)
+# scoreboard objectives add purchased_range dummy
 
+execute as @a[team=corrupted] if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches ..1999 run tellraw @s [{"text":"Not enough points! you need $2000","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches 2000.. run scoreboard players set @s purchased_range 1
+execute as @a[team=corrupted] if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches 2000.. run attribute @s entity_interaction_range base set 4
+execute as @a[team=corrupted] at @s if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches 2000.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches 2000.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches 2000.. run tellraw @s [{"text":"Range Increased! +1 block attack range (permanent)","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor prismarine_shard if score @s purchased_range matches 0 if score @s points matches 2000.. run scoreboard players remove @s points 2000
+clear @a[team=corrupted] prismarine_shard
 
+# After purchase, replace the slot with a red glass pane (disabled)
+execute as @a[team=corrupted] if score @s purchased_range matches 1 run item replace entity @s inventory.11 with green_stained_glass_pane[custom_name=[{"text":"Range Upgrade","italic":false,"color":"red"}],lore=[[{"text":"Already purchased","italic":false,"color":"gray"}]]]
+
+# If not purchased, keep the upgrade item in the slot
+execute as @a[team=corrupted] if score @s purchased_range matches 0 run item replace entity @s inventory.11 with prismarine_shard[custom_name=[{"text":"Range Upgrade","italic":false,"color":"dark_purple"}],lore=[[{"text":"Permanently increases your attack range by 1 block","italic":false,"color":"white"}],[{"text":"Can only be purchased once","italic":false,"color":"yellow"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $2000","italic":false,"color":"gold"}]]]
+kill @e[type=item,nbt={Item:{id:"minecraft:green_stained_glass_pane"}}]
 #=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
+#=================================================================================================
+# PERMANENT KNOCKBACK RESISTANCE - inventory.20 (one-time purchase, +1 knockback resistance level)
+# First, create the scoreboard objective if it doesn't exist (run once, e.g., in load function)
+# scoreboard objectives add purchased_knockback_resistance dummy
 
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
+execute as @a[team=corrupted] if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches ..1999 run tellraw @s [{"text":"Not enough points! you need $2000","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches 2000.. run scoreboard players set @s purchased_knockback_resistance 1
+execute as @a[team=corrupted] if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches 2000.. run attribute @s knockback_resistance base set 0.4
+execute as @a[team=corrupted] at @s if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches 2000.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches 2000.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches 2000.. run tellraw @s [{"text":"Knockback Resistance Increased! (permanent)","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor turtle_helmet if score @s purchased_knockback_resistance matches 0 if score @s points matches 2000.. run scoreboard players remove @s points 2000
+clear @a[team=corrupted] turtle_helmet
 
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor nether_star if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor nether_star if score @s points matches 500.. run scoreboard players set dark_star unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor nether_star if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor nether_star if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor nether_star if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor nether_star if score @s points matches 500.. run scoreboard players remove @s points 500
+# After purchase, replace the slot with a red glass pane (disabled)
+execute as @a[team=corrupted] if score @s purchased_knockback_resistance matches 1 run item replace entity @s inventory.20 with green_stained_glass_pane[custom_name=[{"text":"Knockback Resistance Upgrade","italic":false,"color":"red"}],lore=[[{"text":"Already purchased","italic":false,"color":"gray"}]]]
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# 2. clear the click tag
-clear @a[team=corrupted] nether_star
-
-# DARK STAR CLASS UNLOCK
-#3 place the item in the invetory
-execute if score dark_star unlocked_corrupted_classes matches 0 run item replace entity @s inventory.24 with nether_star[custom_name=[{"text":"Dark Star","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent jump boost","italic":false,"color":"white"}],[{"text":"- gain an item to blind all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"gain a speed bost item","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- supreme supernova! bathe the entire world in fire","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"Im not corrupted, i just know the truth of the universe \"","italic":false,"color":"red"}]]]
-
+# If not purchased, keep the upgrade item in the slot
+execute as @a[team=corrupted] if score @s purchased_knockback_resistance matches 0 run item replace entity @s inventory.20 with turtle_helmet[custom_name=[{"text":"Knockback Resistance Upgrade","italic":false,"color":"dark_purple"}],lore=[[{"text":"Permanently increases knockback resistance by 50%","italic":false,"color":"white"}],[{"text":"Can only be purchased once","italic":false,"color":"yellow"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $2000","italic":false,"color":"gold"}]]]
 #=================================================================================================
 
+#+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
-#=================================================================================================
-# item selection (this method is soo much beter that the one in the original intermission shop) no need to set up delay timers
+# these next few clickable items are for unlocking the corrupted classes (cost 500 points each)
 
-# 1. check if clicked and run the fuction within
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# execute as @a if items entity @s player.cursor ominous_bottle run say Click!
+#+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 
-# if not enough points just give them a message
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_spear if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
-# if enoguh points give them the item and take the points
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_spear if score @s points matches 500.. run scoreboard players set manhunter unlocked_corrupted_classes 1
-execute as @a[team=corrupted] at @s if items entity @s player.cursor netherite_spear if score @s points matches 500.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor netherite_spear if score @s points matches 500.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_spear if score @s points matches 500.. run tellraw @s [{"text":"Class Unlocked!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor netherite_spear if score @s points matches 500.. run scoreboard players remove @s points 500
+#==========================================================================================================
+# Class unlocking logic (with points cost – deduction done at the bottom of each block)
+#===========================================================================================================
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+kill @e[type=item,nbt={Item:{id:"minecraft:red_stained_glass_pane"}}]
 
-# 2. clear the click tag
-clear @a[team=corrupted] netherite_spear
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# corruptor (inventory slot 5)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Corruptor","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain an item to see the location of all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a speed boost item","italic":false,"color":"white"}],[{"text":"=== 75% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a fruit to teleport you to a random player","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"We shall become one, you can never escape what we have taken.\"","italic":false,"color":"red"}],[{"text":" ","italic":false}]]] run scoreboard players set @s class_enable_click_check 5
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 unless items entity @s inventory.5 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 unless items entity @s inventory.5 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_corruptor 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 unless items entity @s inventory.5 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Corruptor","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 unless items entity @s inventory.5 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 unless items entity @s inventory.5 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 if score enable select_corruptor matches 1 unless items entity @s inventory.5 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 5 if score enable select_corruptor matches 1 unless items entity @s inventory.5 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
 
-# Manhunter CLASS UNLOCK
-#3 place the item in the invetory
-execute if score manhunter unlocked_corrupted_classes matches 0 run item replace entity @s inventory.25 with netherite_spear[custom_name=[{"text":"Manhunter","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Lunge 1 spear","italic":false,"color":"white"}],[{"text":"- gain an item to reveal the nearest runner, and stun them","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":" Lunge 2 spear","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Lunge 3 spear","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"Mercury has entered its retrograde, my genocide will be countless.\"","italic":false,"color":"red"}]]]
-#=================================================================================================
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# predator (inventory slot 6)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Predator","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- smell the fear of the runners, the smell fules your speed boost (passive)","italic":false,"color":"white"}],[{"text":"- slowness when far away from runners","italic":false,"color":"red"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a invisability item","italic":false,"color":"white"}],[{"text":"- permanent jump boost","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- gain an item to remotly stun all runners ","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"Just hit a millie! Wheres my Playbutton?\"","italic":false,"color":"red"}],[{"text":" ","italic":false}]]] run scoreboard players set @s class_enable_click_check 6
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 unless items entity @s inventory.6 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 unless items entity @s inventory.6 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_predator 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 unless items entity @s inventory.6 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Predator","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 unless items entity @s inventory.6 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 unless items entity @s inventory.6 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 if score enable select_predator matches 1 unless items entity @s inventory.6 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 6 if score enable select_predator matches 1 unless items entity @s inventory.6 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# apparition (inventory slot 7)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Apparition","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent invisibility","italic":false,"color":"white"}],[{"text":"- slowness when close to runners","italic":false,"color":"red"}],[{"text":"- item to reveal all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- speed boost in darkness","italic":false,"color":"white"}],[{"text":"- speed boost item","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- p","italic":false,"color":"white"},{"text":"er","italic":false,"color":"white"},{"text":"ma","italic":false,"color":"white"},{"text":"n","italic":false,"color":"white"},{"text":"e","italic":false,"color":"white"},{"text":"nt","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"r","italic":false,"color":"white"},{"text":"e","italic":false,"color":"white"},{"text":"v","italic":false,"color":"white"},{"text":"ea","italic":false,"color":"white"},{"text":"l ","italic":false,"color":"white"},{"text":"a","italic":false,"color":"white"},{"text":"l","italic":false,"color":"white"},{"text":"l ","italic":false,"color":"white"},{"text":"p","italic":false,"color":"white"},{"text":"la","italic":false,"color":"white"},{"text":"y","italic":false,"color":"white"},{"text":"e","italic":false,"color":"white"},{"text":"r","italic":false,"color":"white"},{"text":"s","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"If you don't know the art of disappearance,","italic":false,"color":"red"}],[{"text":"learn it because you will need it","italic":false,"color":"red"}],[{"text":"every time you get bored of the society you are living in!\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 7
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 unless items entity @s inventory.7 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 unless items entity @s inventory.7 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_apparition 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 unless items entity @s inventory.7 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Apparition","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 unless items entity @s inventory.7 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 unless items entity @s inventory.7 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 if score enable select_apparition matches 1 unless items entity @s inventory.7 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 7 if score enable select_apparition matches 1 unless items entity @s inventory.7 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# artificer (inventory slot 8)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Artificer","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain the ability to place traps","italic":false,"color":"white"}],[{"text":"- gain an item to reveal all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain superior traps","italic":false,"color":"white"}],[{"text":"- jump boost","italic":false,"color":"white"}],[{"text":"=== 80% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- gain a sentry trap","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"Don't test my mettle boy! I'd cut ya without a glimpse from my eye.\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 8
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 unless items entity @s inventory.8 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 unless items entity @s inventory.8 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_artificer 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 unless items entity @s inventory.8 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Artificer","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 unless items entity @s inventory.8 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 unless items entity @s inventory.8 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 if score enable select_artificer matches 1 unless items entity @s inventory.8 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 8 if score enable select_artificer matches 1 unless items entity @s inventory.8 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# knight (inventory slot 14)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Knight","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent damage boost","italic":false,"color":"white"}],[{"text":"- full stun and knockback immunity","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"gain a speed boost item","italic":false,"color":"white"}],[{"text":"- item to reveal all runners","italic":false}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a temorary cure to halt the corruption","italic":false,"color":"white"}],[{"text":"-permanent jump boost","italic":false,"color":"white"}],[{"text":"-permanent speed boost","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"En avant! Vive La l'empire!\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 13
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 unless items entity @s inventory.14 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 unless items entity @s inventory.14 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_knight 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 unless items entity @s inventory.14 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Knight","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 unless items entity @s inventory.14 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 unless items entity @s inventory.14 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 if score enable select_knight matches 1 unless items entity @s inventory.14 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 13 if score enable select_knight matches 1 unless items entity @s inventory.14 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# dark_star (inventory slot 15)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Dark Star","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent jump boost","italic":false,"color":"white"}],[{"text":"- gain an item to blind all runners","italic":false,"color":"white"}],[{"text":"=== 20% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a wind charge","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"gain a speed bost item","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- supreme supernova! bathe the entire world in fire","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"I'll bathe the universe divide with the blood that you cherish so...\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 14
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 unless items entity @s inventory.15 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 unless items entity @s inventory.15 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_dark_star 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 unless items entity @s inventory.15 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Dark Star","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 unless items entity @s inventory.15 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 unless items entity @s inventory.15 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 if score enable select_dark_star matches 1 unless items entity @s inventory.15 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 14 if score enable select_dark_star matches 1 unless items entity @s inventory.15 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# manhunter (inventory slot 16)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Manhunter","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Lunge 1 spear","italic":false,"color":"white"}],[{"text":"- gain an item to reveal the nearest runner, and stun them","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":" Lunge 2 spear","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Lunge 3 spear","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"You DARE to disable ME!!\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 15
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 unless items entity @s inventory.16 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 unless items entity @s inventory.16 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_manhunter 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 unless items entity @s inventory.16 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Manhunter","color":"light_purple","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 unless items entity @s inventory.16 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 unless items entity @s inventory.16 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 if score enable select_manhunter matches 1 unless items entity @s inventory.16 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 15 if score enable select_manhunter matches 1 unless items entity @s inventory.16 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# authority (inventory slot 17)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[tooltip_display={hidden_components:["minecraft:banner_patterns"]},banner_patterns=[{pattern:gradient_up,color:magenta},{pattern:gradient_up,color:black},{pattern:skull,color:black},{pattern:triangles_top,color:black},{pattern:triangle_bottom,color:black}],base_color=purple,custom_name=[{"text":"Authority","italic":false,"color":"#c800ff"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"-GRAVITY PULL","italic":false,"color":"white"}],[{"text":"- Pulls Down ALL runners for 5 seconds","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a \"reveal player modulator\"","italic":false,"color":"white"}],[{"text":"- it makes all runners glow until destroyed ","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- SECURITY","italic":false,"color":"white"}],[{"text":"- spawns an small army of guards after the runners","italic":false,"color":"yellow"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"I've heard enough, deadly force authorized!\"","italic":false,"color":"red"},{"text":" ","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 16
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 unless items entity @s inventory.17 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 unless items entity @s inventory.17 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_authority 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 unless items entity @s inventory.17 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Authority","color":"#c800ff","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 unless items entity @s inventory.17 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 unless items entity @s inventory.17 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 if score enable select_authority matches 1 unless items entity @s inventory.17 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 16 if score enable select_authority matches 1 unless items entity @s inventory.17 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# marksman (inventory slot 23)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Marksman","italic":false,"color":"#c800ff"}],lore=[[{"text":"=== 0% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Get 2 arrows back every 20 seconds","italic":false,"color":"white"}],[{"text":"- Start with a bow","italic":false,"color":"white"}],[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"The Scent","italic":false,"color":"yellow"}],[{"text":"- All runners get a permanent smoke trail for you to follow","italic":false,"color":"white"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Gain a crossbow that replaces your bow","italic":false,"color":"white"}],[{"text":"- The crossbow has Quick-Charge 3","italic":false,"color":"white"}],[{"text":"- Arrows in the ground do damage after a short delay","italic":false,"color":"white"}],[{"text":"- Arrow regen speed increase","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Quick-Charge 5","italic":false,"color":"white"}],[{"text":"- Infinite ammo","italic":false,"color":"yellow"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"You better run, child; I can inflict more pain than you could ever possibly imagine!\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 21
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 unless items entity @s inventory.23 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 unless items entity @s inventory.23 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_marksman 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 unless items entity @s inventory.23 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Marksman","color":"#c800ff","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 unless items entity @s inventory.23 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 unless items entity @s inventory.23 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 if score enable select_marksman matches 1 unless items entity @s inventory.23 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 21 if score enable select_marksman matches 1 unless items entity @s inventory.23 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# alchemist (inventory slot 24)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Alchemist","italic":false,"color":"white"}],lore=[[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Brewinator","italic":false,"color":"yellow"}],[{"text":"An evil device that quickly brews random potions when deployed","italic":false,"color":"white"}],[{"text":"-50 second coldown","italic":false,"color":"white"}],[{"text":"-5 potions per use","italic":false,"color":"white"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Brewinator MK2","italic":false,"color":"yellow"}],[{"text":"An upgraded machine that can supply buffs for yourself","italic":false,"color":"white"}],[{"text":"-30 second coldown","italic":false,"color":"white"}],[{"text":"-6 potions per use","italic":false,"color":"white"}],[{"text":"-Immunity to your own potions","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Brewinator MK3","italic":false,"color":"yellow"}],[{"text":"A super evil upgrade that can","italic":false,"color":"white"}],[{"text":"supply more unethical potions","italic":false,"color":"white"}],[{"text":"-10 second coldown","italic":false,"color":"white"}],[{"text":"-7 potions per use","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"","italic":false,"color":"red"},{"text":"Do you smell that? Its death, lingering, forever and ever.","italic":false,"color":"red"},{"text":"!\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 22
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 unless items entity @s inventory.24 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 unless items entity @s inventory.24 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_alchemist 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 unless items entity @s inventory.24 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Alchemist","color":"white","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 unless items entity @s inventory.24 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 unless items entity @s inventory.24 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 if score enable select_alchemist matches 1 unless items entity @s inventory.24 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 22 if score enable select_alchemist matches 1 unless items entity @s inventory.24 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# fracturizer (inventory slot 25)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"Fracturizer","italic":false,"color":"white"}],lore=[[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"-Runner swap","italic":false,"color":"yellow"}],[{"text":"-swap between you and the nearest runner","italic":false,"color":"white"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Time Bomb","italic":false,"color":"yellow"}],[{"text":"-A bomb that when it explodes","italic":false,"color":"white"}],[{"text":"will blind, reveal, and slow all runners","italic":false,"color":"white"}],[{"text":"unless disarmed","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Wall","italic":false,"color":"yellow"}],[{"text":"Forces all runners into a small Dome of Doom","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"","italic":false,"color":"red"},{"text":"etjaetyrgjaetyjaetyja4ety6ja6tj","italic":false,"color":"red","obfuscated":true},{"text":"\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 23
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 unless items entity @s inventory.25 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 unless items entity @s inventory.25 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_Fracturizer 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 unless items entity @s inventory.25 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Fracturizer","color":"white","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 unless items entity @s inventory.25 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 unless items entity @s inventory.25 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 if score enable select_Fracturizer matches 1 unless items entity @s inventory.25 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 23 if score enable select_Fracturizer matches 1 unless items entity @s inventory.25 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# singularity (inventory slot 26)
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane[custom_name=[{"text":"S","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"n","italic":false,"color":"white"},{"text":"g","italic":false,"color":"white"},{"text":"u","italic":false,"color":"white"},{"text":"la","italic":false,"color":"white"},{"text":"r","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"t","italic":false,"color":"white"},{"text":"y","italic":false,"color":"white"}],lore=[[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"-","italic":false,"color":"yellow"},{"text":"An item that can Reveal Players","bold":false,"italic":false,"color":"yellow"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Peacemaker","italic":false,"color":"yellow"}],[{"text":"-sabotages all runner by forcing them to use there","italic":false,"color":"white"}],[{"text":"ability's or outright deletes them","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Devils hand","italic":false,"color":"yellow"}],[{"text":"I","italic":false,"color":"white"},{"text":"n","italic":false,"color":"white"},{"text":"s","italic":false,"color":"white"},{"text":"ta","italic":false,"color":"white"},{"text":"nt","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"1","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"h","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"t","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"k","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"l","italic":false,"color":"white"},{"text":"l","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"I will be all that remains. as protons decay, Forever!\"","italic":false,"color":"red"}]]] run scoreboard players set @s class_enable_click_check 24
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 unless items entity @s inventory.26 red_stained_glass_pane if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 unless items entity @s inventory.26 red_stained_glass_pane if score @s points matches 500.. run scoreboard players set enable select_singularity 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 unless items entity @s inventory.26 red_stained_glass_pane if score @s points matches 500.. run tellraw @a[team=corrupted] [{"text":"[✔] ","color":"green","bold":true},{"text":"Singularity","color":"white","bold":true},{"text":" Unlocked!","color":"gray"}]
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 unless items entity @s inventory.26 red_stained_glass_pane if score @s points matches 500.. run playsound block.respawn_anchor.charge block @a ~ ~ ~ 1 1 1
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 unless items entity @s inventory.26 red_stained_glass_pane if score @s points matches 500.. run scoreboard players remove @s points 500
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 if score enable select_singularity matches 1 unless items entity @s inventory.26 red_stained_glass_pane run item replace entity @s player.cursor with air
+execute as @a[team=corrupted] if score @s class_enable_click_check matches 24 if score enable select_singularity matches 1 unless items entity @s inventory.26 red_stained_glass_pane run scoreboard players set @s class_enable_click_check 0
+
+#==========================================================================================================
+# the red stained glass pane that shows a class is disabled (only if not unlocked)
+#===========================================================================================================
+# if the class is not enabled (enable select_* matches 0), place a red stained glass pane in the slot
+
+execute as @a[team=corrupted] if score enable select_corruptor matches 0 run item replace entity @s inventory.5 with red_stained_glass_pane[custom_name=[{"text":"Corruptor","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain an item to see the location of all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a speed boost item","italic":false,"color":"white"}],[{"text":"=== 75% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a fruit to teleport you to a random player","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"We shall become one, you can never escape what we have taken.\"","italic":false,"color":"red"}],[{"text":" ","italic":false}]]]
+
+execute as @a[team=corrupted] if score enable select_predator matches 0 run item replace entity @s inventory.6 with red_stained_glass_pane[custom_name=[{"text":"Predator","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- smell the fear of the runners, the smell fules your speed boost (passive)","italic":false,"color":"white"}],[{"text":"- slowness when far away from runners","italic":false,"color":"red"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a invisability item","italic":false,"color":"white"}],[{"text":"- permanent jump boost","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- gain an item to remotly stun all runners ","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"Just hit a millie! Wheres my Playbutton?\"","italic":false,"color":"red"}],[{"text":" ","italic":false}]]]
+
+execute as @a[team=corrupted] if score enable select_apparition matches 0 run item replace entity @s inventory.7 with red_stained_glass_pane[custom_name=[{"text":"Apparition","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent invisibility","italic":false,"color":"white"}],[{"text":"- slowness when close to runners","italic":false,"color":"red"}],[{"text":"- item to reveal all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- speed boost in darkness","italic":false,"color":"white"}],[{"text":"- speed boost item","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- p","italic":false,"color":"white"},{"text":"er","italic":false,"color":"white"},{"text":"ma","italic":false,"color":"white"},{"text":"n","italic":false,"color":"white"},{"text":"e","italic":false,"color":"white"},{"text":"nt","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"r","italic":false,"color":"white"},{"text":"e","italic":false,"color":"white"},{"text":"v","italic":false,"color":"white"},{"text":"ea","italic":false,"color":"white"},{"text":"l ","italic":false,"color":"white"},{"text":"a","italic":false,"color":"white"},{"text":"l","italic":false,"color":"white"},{"text":"l ","italic":false,"color":"white"},{"text":"p","italic":false,"color":"white"},{"text":"la","italic":false,"color":"white"},{"text":"y","italic":false,"color":"white"},{"text":"e","italic":false,"color":"white"},{"text":"r","italic":false,"color":"white"},{"text":"s","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"If you don't know the art of disappearance,","italic":false,"color":"red"}],[{"text":"learn it because you will need it","italic":false,"color":"red"}],[{"text":"every time you get bored of the society you are living in!\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_artificer matches 0 run item replace entity @s inventory.8 with red_stained_glass_pane[custom_name=[{"text":"Artificer","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain the ability to place traps","italic":false,"color":"white"}],[{"text":"- gain an item to reveal all runners","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain superior traps","italic":false,"color":"white"}],[{"text":"- jump boost","italic":false,"color":"white"}],[{"text":"=== 80% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent speed boost","italic":false,"color":"white"}],[{"text":"- gain a sentry trap","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false}],[{"text":"\"Don't test my mettle boy! I'd cut ya without a glimpse from my eye.\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_knight matches 0 run item replace entity @s inventory.14 with red_stained_glass_pane[custom_name=[{"text":"Knight","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent damage boost","italic":false,"color":"white"}],[{"text":"- full stun and knockback immunity","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"gain a speed boost item","italic":false,"color":"white"}],[{"text":"- item to reveal all runners","italic":false}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a temorary cure to halt the corruption","italic":false,"color":"white"}],[{"text":"-permanent jump boost","italic":false,"color":"white"}],[{"text":"-permanent speed boost","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"En avant! Vive La l'empire!\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_dark_star matches 0 run item replace entity @s inventory.15 with red_stained_glass_pane[custom_name=[{"text":"Dark Star","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- permanent jump boost","italic":false,"color":"white"}],[{"text":"- gain an item to blind all runners","italic":false,"color":"white"}],[{"text":"=== 20% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a wind charge","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"gain a speed bost item","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- supreme supernova! bathe the entire world in fire","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"I'll bathe the universe divide with the blood that you cherish so...\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_manhunter matches 0 run item replace entity @s inventory.16 with red_stained_glass_pane[custom_name=[{"text":"Manhunter","italic":false,"color":"light_purple"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Lunge 1 spear","italic":false,"color":"white"}],[{"text":"- gain an item to reveal the nearest runner, and stun them","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":" Lunge 2 spear","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Lunge 3 spear","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"You DARE to disable ME!!\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_authority matches 0 run item replace entity @s inventory.17 with red_stained_glass_pane[tooltip_display={hidden_components:["minecraft:banner_patterns"]},banner_patterns=[{pattern:gradient_up,color:magenta},{pattern:gradient_up,color:black},{pattern:skull,color:black},{pattern:triangles_top,color:black},{pattern:triangle_bottom,color:black}],base_color=purple,custom_name=[{"text":"Authority","italic":false,"color":"#c800ff"}],lore=[[{"text":"=== 15% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"-GRAVITY PULL","italic":false,"color":"white"}],[{"text":"- Pulls Down ALL runners for 5 seconds","italic":false,"color":"white"}],[{"text":"=== 50% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- gain a \"reveal player modulator\"","italic":false,"color":"white"}],[{"text":"- it makes all runners glow until destroyed ","italic":false,"color":"white"}],[{"text":"=== 90% corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- SECURITY","italic":false,"color":"white"}],[{"text":"- spawns an small army of guards after the runners","italic":false,"color":"yellow"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"I've heard enough, deadly force authorized!\"","italic":false,"color":"red"},{"text":" ","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_marksman matches 0 run item replace entity @s inventory.23 with red_stained_glass_pane[custom_name=[{"text":"Marksman","italic":false,"color":"#c800ff"}],lore=[[{"text":"=== 0% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Get 2 arrows back every 20 seconds","italic":false,"color":"white"}],[{"text":"- Start with a bow","italic":false,"color":"white"}],[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- ","italic":false,"color":"white"},{"text":"The Scent","italic":false,"color":"yellow"}],[{"text":"- All runners get a permanent smoke trail for you to follow","italic":false,"color":"white"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Gain a crossbow that replaces your bow","italic":false,"color":"white"}],[{"text":"- The crossbow has Quick-Charge 3","italic":false,"color":"white"}],[{"text":"- Arrows in the ground do damage after a short delay","italic":false,"color":"white"}],[{"text":"- Arrow regen speed increase","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Quick-Charge 5","italic":false,"color":"white"}],[{"text":"- Infinite ammo","italic":false,"color":"yellow"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"You better run, child; I can inflict more pain than you could ever possibly imagine!\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_alchemist matches 0 run item replace entity @s inventory.24 with red_stained_glass_pane[custom_name=[{"text":"Alchemist","italic":false,"color":"white"}],lore=[[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Brewinator","italic":false,"color":"yellow"}],[{"text":"An evil device that quickly brews random potions when deployed","italic":false,"color":"white"}],[{"text":"-50 second coldown","italic":false,"color":"white"}],[{"text":"-5 potions per use","italic":false,"color":"white"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Brewinator MK2","italic":false,"color":"yellow"}],[{"text":"An upgraded machine that can supply buffs for yourself","italic":false,"color":"white"}],[{"text":"-30 second coldown","italic":false,"color":"white"}],[{"text":"-6 potions per use","italic":false,"color":"white"}],[{"text":"-Immunity to your own potions","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Brewinator MK3","italic":false,"color":"yellow"}],[{"text":"A super evil upgrade that can","italic":false,"color":"white"}],[{"text":"supply more unethical potions","italic":false,"color":"white"}],[{"text":"-10 second coldown","italic":false,"color":"white"}],[{"text":"-7 potions per use","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"","italic":false,"color":"red"},{"text":"Do you smell that? Its death, lingering, forever and ever.","italic":false,"color":"red"},{"text":"!\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_Fracturizer matches 0 run item replace entity @s inventory.25 with red_stained_glass_pane[custom_name=[{"text":"Fracturizer","italic":false,"color":"white"}],lore=[[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"-Runner swap","italic":false,"color":"yellow"}],[{"text":"-swap between you and the nearest runner","italic":false,"color":"white"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Time Bomb","italic":false,"color":"yellow"}],[{"text":"-A bomb that when it explodes","italic":false,"color":"white"}],[{"text":"will blind, reveal, and slow all runners","italic":false,"color":"white"}],[{"text":"unless disarmed","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- The Wall","italic":false,"color":"yellow"}],[{"text":"Forces all runners into a small Dome of Doom","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"","italic":false,"color":"red"},{"text":"etjaetyrgjaetyjaetyja4ety6ja6tj","italic":false,"color":"red","obfuscated":true},{"text":"\"","italic":false,"color":"red"}]]]
+
+execute as @a[team=corrupted] if score enable select_singularity matches 0 run item replace entity @s inventory.26 with red_stained_glass_pane[custom_name=[{"text":"S","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"n","italic":false,"color":"white"},{"text":"g","italic":false,"color":"white"},{"text":"u","italic":false,"color":"white"},{"text":"la","italic":false,"color":"white"},{"text":"r","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"t","italic":false,"color":"white"},{"text":"y","italic":false,"color":"white"}],lore=[[{"text":"=== 15% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"-","italic":false,"color":"yellow"},{"text":"An item that can Reveal Players","bold":false,"italic":false,"color":"yellow"}],[{"text":"=== 50% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Peacemaker","italic":false,"color":"yellow"}],[{"text":"-sabotages all runner by forcing them to use there","italic":false,"color":"white"}],[{"text":"ability's or outright deletes them","italic":false,"color":"white"}],[{"text":"=== 90% Corruption ===","italic":false,"color":"dark_purple"}],[{"text":"- Devils hand","italic":false,"color":"yellow"}],[{"text":"I","italic":false,"color":"white"},{"text":"n","italic":false,"color":"white"},{"text":"s","italic":false,"color":"white"},{"text":"ta","italic":false,"color":"white"},{"text":"nt","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"1","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"h","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"t","italic":false,"color":"white"},{"text":" ","italic":false,"color":"white"},{"text":"k","italic":false,"color":"white"},{"text":"i","italic":false,"color":"white"},{"text":"l","italic":false,"color":"white"},{"text":"l","italic":false,"color":"white"}],[{"text":"-----------------------","italic":false,"color":"dark_purple"}],[{"text":"\"I will be all that remains. as protons decay, Forever!\"","italic":false,"color":"red"}]]]
+
+#=========================================================================================================
+# CORRUPTED CLASS APPLICATION (run the corresponding function if enabled)
+#=========================================================================================================
+execute as @a[team=corrupted] at @s if score enable select_corruptor matches 1.. run function ctnv:classes/class_selection/classes/select_corruptor
+execute as @a[team=corrupted] at @s if score enable select_manhunter matches 1.. run function ctnv:classes/class_selection/classes/select_manhunter
+execute as @a[team=corrupted] at @s if score enable select_artificer matches 1.. run function ctnv:classes/class_selection/classes/select_artificer
+execute as @a[team=corrupted] at @s if score enable select_predator matches 1.. run function ctnv:classes/class_selection/classes/select_predator
+execute as @a[team=corrupted] at @s if score enable select_dark_star matches 1.. run function ctnv:classes/class_selection/classes/select_dark_star
+execute as @a[team=corrupted] at @s if score enable select_apparition matches 1.. run function ctnv:classes/class_selection/classes/select_apparition
+execute as @a[team=corrupted] at @s if score enable select_knight matches 1.. run function ctnv:classes/class_selection/classes/select_knight
+execute as @a[team=corrupted] at @s if score enable select_authority matches 1.. run function ctnv:classes/class_selection/classes/select_authority
+execute as @a[team=corrupted] at @s if score enable select_marksman matches 1.. run function ctnv:classes/class_selection/classes/select_marksman
+execute as @a[team=corrupted] at @s if score enable select_alchemist matches 1.. run function ctnv:classes/class_selection/classes/select_alchemist
+execute as @a[team=corrupted] at @s if score enable select_Fracturizer matches 1.. run function ctnv:classes/class_selection/classes/select_fracturizer
+execute as @a[team=corrupted] at @s if score enable select_singularity matches 1.. run function ctnv:classes/class_selection/classes/select_singularity
+
+#=========================================================================================================
+# manually remove the red stained glass panes from the cursor at the very end
+execute as @a[team=corrupted] if items entity @s player.cursor red_stained_glass_pane run item replace entity @s player.cursor with air

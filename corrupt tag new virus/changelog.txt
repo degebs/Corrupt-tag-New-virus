@@ -259,3 +259,10 @@
       -fixed the map beacons selecting the wrong map sometimes
 1.4.9
       -fixed the partial class selection not letting you select a class
+1.5.0
+      -nerfed the spaceman (his shard can now be tampered with)
+            this add a new dimention of complexity to the spacemnan he now must keep track of where his shard is
+      -buffed the pireate rum, it is now less devistating and more helpfull
+      -nerfed the fistherman (his net only last 45  seconds)
+      -buffed all corrupted classes during endgame (tiny speed and jump boost, also night vision)
+      -did a complete rework on call of corrupted again

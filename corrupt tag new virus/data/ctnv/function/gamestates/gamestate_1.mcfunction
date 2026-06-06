@@ -229,6 +229,7 @@ bossbar set minecraft:game_time color yellow
 # before we used a book because i had no idea how to check of people clicked items in inventory slots, but after making all the classes...
 # now i do. and its a far superior way of doing this
 
+
 # tick the cooldown by 1
 execute as @a[scores={class_selection_cooldown=1..}] run scoreboard players remove @s class_selection_cooldown 1
 
@@ -244,6 +245,7 @@ execute if score setting ST____class_selection matches 0 run function ctnv:class
 execute if score setting ST____class_selection matches 1 run function ctnv:classes/class_selection/competitive_class_selection
 execute if score setting ST____class_selection matches 2.. run function ctnv:classes/class_selection/random_class_selection
 # this solves the lag!!! EXCELENT!
+
 
 
 #======================================================================================================================

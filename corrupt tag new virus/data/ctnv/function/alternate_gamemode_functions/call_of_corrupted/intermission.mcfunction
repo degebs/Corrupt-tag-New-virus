@@ -81,12 +81,91 @@ execute if score @p[team=corrupted] evil_class matches 7 run scoreboard players 
 
 #===========================================================================================================================
 
-# after 30 seconds switch to etherial mode
-# explain what be etherial means
-execute if score intermission call_of_corrupted matches 600.. run tellraw @a[team=corrupted] [{"text":"you are now atherial... you cannot ineract with anything.\n you must summon waves of corrupted to kill the runners. \n Dont get close to the runners until you aquire a physical form!","color":"light_purple"}]
+# after 30 seconds switch to physical mode
 
 
 execute if score intermission call_of_corrupted matches 600.. run title @a title [{"text":"WAVE: ","color":"red"},{"score":{"objective":"call_of_corrupted","name":"wave"}}]
 
 execute if score intermission call_of_corrupted matches 600.. run title @a subtitle [{"text":"Intermission over!","color":"dark_red"}]
 execute if score intermission call_of_corrupted matches 600.. run scoreboard players set atherial_corrupted call_of_corrupted 1
+
+
+
+# prevent new spawning of mobs
+scoreboard players set time spawn 500
+
+
+#=================================================================================================
+#class specific stuff
+
+# reset the bulks totem variable
+scoreboard players set @a[scores={bulk_totem=1..}] bulk_totem 0
+
+
+# when it comes to cooldowns make sure that they dont immidialtly go off
+
+# uncorrupted cooldowns
+execute as @a[scores={class=2}] run scoreboard players set @s bulk 10
+
+execute as @a[scores={class=1}] run scoreboard players set @s medic_heal 10
+execute as @a[scores={class=7}] run scoreboard players set @s medic_heal 10
+execute as @a[scores={class=7}] run scoreboard players set @s miner_lantern 10
+
+scoreboard players set @a[scores={class=2}] acher_arrow_count 5
+scoreboard players set @a[scores={class=8}] merchant_arrow_count 3
+scoreboard players set @a[scores={class=8}] merchant_luck 4
+
+
+scoreboard players set @a[scores={class=5}] trident_throw 0
+scoreboard players set @a[scores={class=5}] stunman_trap 10
+
+scoreboard players set @a[scores={class=6}] fishing_net_trap 3
+
+scoreboard players set @a[scores={class=4}] assassin_charge 10
+execute if score @s assassin_hide matches 1.. run scoreboard players reset @s assassin_hide
+
+scoreboard players set @a[scores={class=9}] farm_cooldown 60
+scoreboard players set @a[scores={class=9}] animal_farm_attack_cooldown 60
+
+# corrupted cooldowns
+execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t1_cooldown 10
+execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t2_cooldown 10
+execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t3_cooldown 10
+
+execute as @a[scores={evil_class=2}] run scoreboard players set @s predator_t1_speed_range 0
+execute as @a[scores={evil_class=2}] run scoreboard players set @s predator_corrupted_t2_cooldown 10
+execute as @a[scores={evil_class=2}] run scoreboard players set @s predator_corrupted_t2_cooldown 10
+
+execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_light_level 0
+execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t2_cooldown 10
+execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 10
+
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_wind_charge_cooldown 0
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_wind_charge_use 0
+
+
+#execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 0
+
+execute as @a[scores={evil_class=4}] run scoreboard players set @s hunter_corrupted_t1_cooldown 10
+execute as @a[scores={evil_class=4}] run scoreboard players set @s hunter_corrupted_t1_trap 20
+execute as @a[scores={evil_class=4}] run scoreboard players set @s hunter_corrupted_t2_trap 20
+execute as @a[scores={evil_class=4}] run scoreboard players set @s hunter_corrupted_t3_trap 20
+
+execute as @a[scores={evil_class=5}] run scoreboard players set @s knight_corruption_blocker 5
+execute as @a[scores={evil_class=5}] run scoreboard players set @s knight_reveal_players 5
+execute as @a[scores={evil_class=5}] run scoreboard players set @s knight_speed_boost 5
+
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_darkness 5
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_speed_boost 5
+execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_supernova 5
+
+execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_cooldown 0
+execute as @a[scores={evil_class=7}] run scoreboard players set @s manhunter_horn_blow_detect 0
+
+execute as @a[scores={evil_class=8}] run scoreboard players set @s gravity_pull_timer 0
+execute as @a[scores={evil_class=8}] run scoreboard players add @s Reveal_Players_Modulator_timer 0
+
+execute as @a[scores={evil_class=9}] run scoreboard players set @s marksman_arrow_count 3
+
+execute as @a[scores={evil_class=10}] run scoreboard players set @s brewinator_drop_detect 0
+

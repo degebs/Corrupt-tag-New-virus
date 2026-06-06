@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.4.9","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.5.0","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -143,6 +143,7 @@ scoreboard objectives add assassin_hide minecraft.custom:sneak_time
 scoreboard objectives add trident_throw minecraft.used:trident
 scoreboard objectives add stunman_trap dummy
 #fisherman trap
+scoreboard objectives add fishing_net_lifetime dummy
 scoreboard objectives add fishing_net_trap dummy
 # miner lantern
 scoreboard objectives add miner_lantern dummy
@@ -532,6 +533,10 @@ scoreboard objectives add lootbox dummy
 # scoreboard objectives add WAVE_trigger dummy
 # on secont thought this part may not be nessasary
 
+# the purchaseing of extra range
+scoreboard objectives add purchased_range dummy
+scoreboard objectives add purchased_knockback_resistance dummy
+scoreboard objectives add purchased_damage dummy
 #-------------------------------join game------------------------------
 # for the players who joined the game tp them to the loby beacon
 # hard reset it every time

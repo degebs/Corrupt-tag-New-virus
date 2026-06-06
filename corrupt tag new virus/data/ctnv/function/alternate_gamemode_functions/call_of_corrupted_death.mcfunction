@@ -8,8 +8,8 @@ attribute @a[scores={corruption=100..},limit=1] movement_speed base set 0
 attribute @a[scores={corruption=100..},limit=1] minecraft:entity_interaction_range base set 0
 attribute @a[scores={corruption=100..},limit=1] jump_strength base set 0
 #stun all mobs
-execute as @e[team=corrupted,type=!player] run attribute @s follow_range base set 0
-execute as @e[team=corrupted,type=!player] run effect give @s slowness 1 25 true
+execute as @a[team=corrupted] run attribute @s follow_range base set 0
+execute as @a[team=corrupted] run effect give @s slowness 1 25 true
 
 # initialise the corruption stun
 execute as @a[scores={corruption=100},limit=1] if score atherial_corrupted call_of_corrupted matches 0 run scoreboard players set death_stun corruption_stun 5
@@ -47,17 +47,17 @@ execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_st
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run summon minecraft:experience_orb ~ ~2 ~
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run summon minecraft:experience_bottle ~ ~2 ~
 
-#kill all the corrupted mobs
-execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run kill @e[type=!player,team=corrupted]
-
+#DONT kill all the corrupted mobs
+# only the corrupted player dies. and the bats that spawn the mobs
+# the wave only ends when all mobs are killed then and only then does intermission start
+kill @e[type=bat]
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run clear @a[team=corrupted]
 execute as @e[team=corrupted,type=!player] at @s if score death_stun corruption_stun matches ..4 run particle flame ~ ~ ~ 0 1 0 0.1 25 normal @a
-
+execute as @e[team=corrupted,type=!player] at @s if score death_stun corruption_stun matches ..4 run effect give @s slowness 2 25 true
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run particle explosion_emitter ~ ~ ~ 0 0 0 0 15 force @a
 execute as @a[scores={corruption=101..}] if score death_stun corruption_stun matches 0 run playsound entity.generic.explode block @a ~ ~ ~ 1 1 1
 
-execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run scoreboard players set atherial_corrupted call_of_corrupted 1
-execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run function ctnv:alternate_gamemode_functions/call_of_corrupted/game_start
+execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run scoreboard players set atherial_corrupted call_of_corrupted 2
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run scoreboard players set @a[team=corrupted] corruption 0
 
 # there is a glitch where the death cannot complete because the corruption is always set to 100%

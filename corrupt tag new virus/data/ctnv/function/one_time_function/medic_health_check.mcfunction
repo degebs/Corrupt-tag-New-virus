@@ -21,6 +21,9 @@ execute at @s if score @s corruption matches 90..99 run title @s actionbar ["",{
 
 execute at @s if score @s corruption matches 100.. run title @s actionbar ["",{"text":"Corrupted: ","color":"red"},{"selector":"@a[team=corrupted,limit=1]"},{"text":" ","color":"gray"},{"text":"+/Runner:","color":"dark_green"},{"selector":"@p[distance=0.1..,team=runners]","color":"yellow"},{"text":" Health:","color":"dark_green"},{"score":{"name":"@s","objective":"medic_nearest_runner_health"},"color":"yellow"},{"text":" Distance:","color":"dark_green"},{"score":{"name":"@s","objective":"medic_nearest_runner_distance"},"color":"yellow"},{"text":"\\+","color":"dark_green"},{"text":"  ","color":"gray"},{"score":{"name":"@s","objective":"corruption"}},{"text":"% corrupt","color":"dark_purple"},{"text":" ▒▓▓▓▓█████","color":"dark_purple"}]
 
+# this one is for call of corrupted
+execute if score game state matches 7 run title @s actionbar [{"text":"wave: ","color":"red"},{"score":{"objective":"call_of_corrupted","name":"wave"}},{"text":" ","color":"blue"},{"text":" ","color":"gray"},{"text":"+/Runner:","color":"dark_green"},{"selector":"@p[distance=0.1..,team=runners]","color":"yellow"},{"text":" Health:","color":"dark_green"},{"score":{"name":"@s","objective":"medic_nearest_runner_health"},"color":"yellow"},{"text":" Distance:","color":"dark_green"},{"score":{"name":"@s","objective":"medic_nearest_runner_distance"},"color":"yellow"},{"text":"  ","color":"gray"},{"text":"+  $","color":"dark_green"},{"score":{"name":"@s","objective":"points"}}]
+
 #==============================================================================================================================================================
 # find the health of the nearest runner
 # then save it to the scoreboard @s medic_nearest_runner_health
