@@ -110,8 +110,8 @@ execute if score @s spaceman_teleport_detect matches 1 run scoreboard players se
 #==============================================================================================================================================================
 # the cooldown
 #==============================================================================================================================================================
-# 60 second cooldown
-execute if score @s spaceman_rewind_shard_state matches 2 run scoreboard players set @s spaceman_teleport_cooldown 1200
+# 40 second cooldown
+execute if score @s spaceman_rewind_shard_state matches 2 run scoreboard players set @s spaceman_teleport_cooldown 800
 execute if score @s spaceman_rewind_shard_state matches 2 run scoreboard players set @s spaceman_rewind_shard_state 0
 
 execute if score @s spaceman_teleport_cooldown matches 1.. run scoreboard players remove @s spaceman_teleport_cooldown 1

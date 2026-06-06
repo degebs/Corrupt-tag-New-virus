@@ -266,3 +266,6 @@
       -nerfed the fistherman (his net only last 45  seconds)
       -buffed all corrupted classes during endgame (tiny speed and jump boost, also night vision)
       -did a complete rework on call of corrupted again
+1.5.1
+      -removed an anoying sound effect
+      -buffed the spaceman. his teleport cooldown is now 40 seconds

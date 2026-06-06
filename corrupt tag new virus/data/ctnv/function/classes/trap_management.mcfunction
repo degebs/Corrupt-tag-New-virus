@@ -100,8 +100,6 @@ execute as @e[tag=fishing_net_trap,type=item_display] run scoreboard players add
 # if 45 seconds the trap will die (just like farmers farm)
 execute as @e[tag=fishing_net_trap,type=item_display] at @s if score @s fishing_net_lifetime matches 900 run particle poof ~ ~ ~ 0.4 0.1 0.4 0.2 15 force @a
 
-execute as @e[tag=fishing_net_trap,type=item_display] at @s if score @s fishing_net_lifetime matches 900 run playsound minecraft:entity.item.break block @a ~ ~ ~ 1 1 0.5
-
 execute as @e[tag=fishing_net_trap,type=item_display] at @s if score @s fishing_net_lifetime matches 900 run kill @s
 #============================================================================================================
 # authority Reveal Players Modulator
