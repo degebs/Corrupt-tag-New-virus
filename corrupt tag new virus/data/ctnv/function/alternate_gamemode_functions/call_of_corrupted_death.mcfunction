@@ -67,4 +67,10 @@ scoreboard players set enable spawn_eggs_purchesed 0
 
 #give the corrupted some points 
 execute if score @p[team=corrupted] points matches ..800 run scoreboard players add @s points 1
-kill @e[type=shulker]
+kill @e[type=shulker,tag=wall]
+kill @e[type=shulker,tag=COC_wall]
+
+# give the runners points
+scoreboard players add @r[team=runners] points 1
+# the nearest player to the corrupted when he first gets the final hit on the corrupted get a ton of points
+execute as @a[scores={corruption=101}] at @s run scoreboard players add @p[team=runners] points 15

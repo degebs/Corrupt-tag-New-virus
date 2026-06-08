@@ -18,6 +18,8 @@
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
 tellraw @a [{"text":"1.5.2","color":"dark_purple","bold":true}]
 
+
+
 #set up all gamerules
 gamerule minecraft:block_drops false
 gamerule minecraft:spawn_mobs false

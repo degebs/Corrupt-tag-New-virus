@@ -285,6 +285,7 @@ execute as @a[team=runners] if score @s purchased_knockback_resistance matches 0
 execute as @a[team=runners] if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches ..2499 run tellraw @s [{"text":"Not enough points! you need $2500","color":"red"}]
 execute as @a[team=runners] if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches 2500.. run scoreboard players set @s purchased_damage 1
 execute as @a[team=runners] if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches 2500.. run attribute @s attack_damage base set 2
+execute as @a[team=runners] if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches 2500.. run effect give @s strength infinite 3 true
 execute as @a[team=runners] at @s if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches 2500.. run playsound block.bell.resonate master @s
 execute as @a[team=runners] at @s if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches 2500.. run playsound block.bell.use master @s
 execute as @a[team=runners] if items entity @s player.cursor diamond_sword if score @s purchased_damage matches 0 if score @s points matches 2500.. run tellraw @s [{"text":"Damage Increased! +1 permanent attack damage","color":"green"}]

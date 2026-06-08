@@ -276,6 +276,10 @@
       -nerfed the spaceman (his echo shard can no longer be placed midair)
       -made it so that if a new player joins a round of call of corrupted midgame he will be given a random class
       -added the ablility for the corrupted to buy spawn portals in call of corrupted
-      -added the ablility for the runners to buy tnt sticks in call of corrupted
+      -added the ablility for the runners to buy tnt sticks in call of corrupted (they care there to clear mobs)
       -added more Upgrades to COC
       -fixed a few gliches involving call of corrupted
+1.5.3
+      -fixed downed players getting up when the corrupted dies despite still being dead
+      -made to call of corrupted economy better
+            the pleyer who gets the final hit on the corrupted gets extra points
