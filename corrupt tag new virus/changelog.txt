@@ -269,3 +269,13 @@
 1.5.1
       -removed an anoying sound effect
       -buffed the spaceman. his teleport cooldown is now 40 seconds
+1.5.2
+      -changed some prices for call of corrupted
+      -fixed competitive class selection mode
+      -fixed a rare interatction between the bulk and the singularity's peacemaker
+      -nerfed the spaceman (his echo shard can no longer be placed midair)
+      -made it so that if a new player joins a round of call of corrupted midgame he will be given a random class
+      -added the ablility for the corrupted to buy spawn portals in call of corrupted
+      -added the ablility for the runners to buy tnt sticks in call of corrupted
+      -added more Upgrades to COC
+      -fixed a few gliches involving call of corrupted

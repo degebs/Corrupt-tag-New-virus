@@ -265,6 +265,8 @@ scoreboard players display name locked_in unified_tag_settings {"text":"Settings
 
 scoreboard players set delay map_selection 0
 
+# this is important for egg spawning call of corrupted!
+scoreboard players set enable spawn_eggs_purchesed 0
 
 
 

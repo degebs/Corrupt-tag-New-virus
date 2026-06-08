@@ -20,7 +20,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:0b}
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:copper_pickaxe"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:0b}]}] run item replace entity @s hotbar.0 with copper_pickaxe[custom_name=[{"text":"'Amie' the pickaxe","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_pickaxe",Slot:0b}]}] run item replace entity @s hotbar.0 with copper_pickaxe[custom_name=[{"text":"'Amie' the pickaxe","italic":false}],rarity=uncommon,enchantments={knockback:1,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 

@@ -17,7 +17,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] ru
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:crossbow"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Boston the crossbow","italic":false}],enchantments={punch:2}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Boston the crossbow","italic":false}],enchantments={punch:2,unbreaking:255}]
 
 #==============================================================================================================================================================
 # the hard part of this class will be keeping track of how many arrows the archer has

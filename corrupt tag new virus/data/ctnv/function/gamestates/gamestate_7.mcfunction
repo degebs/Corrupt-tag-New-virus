@@ -130,9 +130,7 @@ execute if score enable spawn matches 0 run scoreboard players operation time sp
 execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
 execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
 execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
-execute if score enable spawn matches 0 run scoreboard players operation time spawn -= wave call_of_corrupted
+
 execute if score enable spawn matches 0 run scoreboard players operation time spawn /= multiplyer call_of_corrupted
 execute if score enable spawn matches 0 if score time spawn matches ..40 run scoreboard players set time spawn 40
 execute if score enable spawn matches 0 run scoreboard players set enable spawn 1
@@ -373,18 +371,18 @@ execute as @a[team=runners] at @s if score @s crouch_time matches 1.. unless ent
 
 # this is a temporary solution
 # will have to fix it later
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=1},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/medic_copy
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=2},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/archer
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=3},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/bulk
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=4},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/assassin
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=5},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/stunman
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=6},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/fisherman
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=7},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/miner
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=8},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/merchant
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=9},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/farmer
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=10},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/trickster
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=11},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/spaceman
-execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=12},team=runners] unless score atherial_corrupted call_of_corrupted matches 2 run function ctnv:classes/runners/pirate
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=1},team=runners] run function ctnv:classes/runners/medic_copy
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=2},team=runners] run function ctnv:classes/runners/archer
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=3},team=runners] run function ctnv:classes/runners/bulk
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=4},team=runners] run function ctnv:classes/runners/assassin
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=5},team=runners] run function ctnv:classes/runners/stunman
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=6},team=runners] run function ctnv:classes/runners/fisherman
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=7},team=runners] run function ctnv:classes/runners/miner
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=8},team=runners] run function ctnv:classes/runners/merchant
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=9},team=runners] run function ctnv:classes/runners/farmer
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=10},team=runners] run function ctnv:classes/runners/trickster
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=11},team=runners] run function ctnv:classes/runners/spaceman
+execute if score atherial_corrupted call_of_corrupted matches 1 as @a[scores={class=12},team=runners] run function ctnv:classes/runners/pirate
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5
@@ -421,3 +419,6 @@ execute as @e[type=minecraft:magma_cube] if entity @s[nbt={HurtTime:1s}] run fun
 #=================================================================================================
 # secret corrupted supercharge "domain expansion"
 execute if score enable corrupted_domain_enable matches 1 run function ctnv:corrupted_supercharge_ability/corrupted_domain_expantion
+
+#=================================================================================================
+execute as @a[team=runners] if score atherial_corrupted call_of_corrupted matches 1.. run function ctnv:alternate_gamemode_functions/call_of_corrupted/runner_tnt

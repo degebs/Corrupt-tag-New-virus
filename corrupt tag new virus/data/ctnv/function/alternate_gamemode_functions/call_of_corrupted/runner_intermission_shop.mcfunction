@@ -175,6 +175,18 @@ item replace entity @a[team=runners] inventory.9 with sugar[custom_name=[{"text"
 #=================================================================================================
 
 #=================================================================================================
+# EXPLOSIVES - inventory.13
+execute as @a[team=runners] if items entity @s player.cursor red_candle if score @s points matches ..799 run tellraw @s [{"text":"Not enough points! you need $800","color":"red"}]
+execute as @a[team=runners] if items entity @s player.cursor red_candle if score @s points matches 800.. run scoreboard players add @s runner_TNT_purchased 1
+execute as @a[team=runners] at @s if items entity @s player.cursor red_candle if score @s points matches 800.. run playsound block.bell.resonate master @s
+execute as @a[team=runners] at @s if items entity @s player.cursor red_candle if score @s points matches 800.. run playsound block.bell.use master @s
+execute as @a[team=runners] if items entity @s player.cursor red_candle if score @s points matches 800.. run tellraw @s [{"text":"Explosives Purchased!","color":"green"}]
+execute as @a[team=runners] if items entity @s player.cursor red_candle if score @s points matches 800.. run scoreboard players remove @s points 800
+clear @a[team=runners] red_candle
+item replace entity @a[team=runners] inventory.13 with red_candle[custom_name=[{"text":"Explosives","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you a TNT stick after the intermission","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $800","italic":false,"color":"gold"}]]]
+#=================================================================================================
+
+#=================================================================================================
 # JUMP BOOST - inventory.10 (5 minutes of Jump Boost I)
 execute as @a[team=runners] if items entity @s player.cursor rabbit_foot if score @s points matches ..199 run tellraw @s [{"text":"Not enough points! you need $200","color":"red"}]
 execute as @a[team=runners] if items entity @s player.cursor rabbit_foot if score @s points matches 200.. run effect give @s jump_boost 6000 0 true

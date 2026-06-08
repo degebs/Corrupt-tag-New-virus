@@ -1,7 +1,7 @@
 
 # set all runners variables to -1
 scoreboard players set @a[team=runners] bulk -1
-scoreboard players set @a[team=runners] bulk_totem 0
+scoreboard players set @a[team=runners] bulk_totem 3
 scoreboard players set @a[team=runners] medic_heal -1
 scoreboard players set @a[team=runners] medic_nearest_runner_health -1
 scoreboard players set @a[team=runners] medic_nearest_runner_distance -1
@@ -28,7 +28,8 @@ scoreboard players set @a[team=runners] spaceman_teleport_cooldown -1
 kill @e[tag=rewind_shard]
 scoreboard players set @a[team=runners] RUM_cooldown -1
 scoreboard players set @a[team=runners] northless_compass_cooldown -1
-
+clear @a totem_of_undying
+clear @a[team=runners] shield
 # fill there hotbar with purple, majenta, or pink stained glass_pane to show they are affected by the peacemaker
 # do it in a random chaortic order for fun
 execute if score tick time matches 1 run item replace entity @a[team=runners] hotbar.0 with pink_stained_glass_pane[custom_name=[{"text":"‡‡‡‡‡‡‡‡‡‡‡‡‡‡","italic":false,"color":"#e100ff","obfuscated":true}]]

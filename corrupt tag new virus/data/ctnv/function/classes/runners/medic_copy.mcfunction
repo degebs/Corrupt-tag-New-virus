@@ -30,9 +30,9 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:diamond_shovel"}}]
 
 # in one heart senarios he gets a knockback 2 shovel, otherwise he gets a knockback 1 shovel
-execute if score setting ST____max_health matches 2.. unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute if score setting ST____max_health matches 2.. unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:1,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
-execute if score setting ST____max_health matches 1 run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"ÜBER Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:3},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute if score setting ST____max_health matches 1 run item replace entity @s hotbar.0 with diamond_shovel[custom_name=[{"text":"ÜBER Gnadentötung","italic":false}],rarity=uncommon,enchantments={knockback:3,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 #==============================================================================================================================================================

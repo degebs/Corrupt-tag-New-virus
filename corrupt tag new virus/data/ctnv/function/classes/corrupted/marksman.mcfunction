@@ -21,7 +21,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] if scor
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] if score @s corruption matches ..49 run kill @e[type=item,nbt={Item:{id:"minecraft:bow"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] if score @s corruption matches ..49 run item replace entity @s hotbar.0 with bow[custom_name=[{"text":"Corrupted bow","italic":false,"color":"dark_purple"}],attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] if score @s corruption matches ..49 run item replace entity @s hotbar.0 with bow[custom_name=[{"text":"Corrupted bow","italic":false,"color":"dark_purple"}],enchantments={unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
 # for the 1st 50 percent he shall have a bow
 
 
@@ -143,7 +143,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] if
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] if score @s corruption matches 50.. run kill @e[type=item,nbt={Item:{id:"minecraft:crossbow"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] if score @s corruption matches 50..89 run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Corrupted Crossbow","italic":false,"color":"dark_purple"}],enchantments={quick_charge:3},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] if score @s corruption matches 50..89 run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Corrupted Crossbow","italic":false,"color":"dark_purple"}],enchantments={quick_charge:3,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
 # for 50% and byond give him a crossbow
 
 # regenerates the arrows twice as fast as before
@@ -168,7 +168,7 @@ execute if score @s corruption matches 90 if score corruption_tick corruption ma
 
 execute if score @s corruption matches 90 if score corruption_tick corruption matches 1 if score tick time matches 5 run playsound entity.wither.hurt player @s ~ ~ ~ 1 1 1
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] if score @s corruption matches 90..99 run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Corrupted Crossbow","italic":false,"color":"dark_purple"}],enchantments={quick_charge:5},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:crossbow",Slot:0b}]}] if score @s corruption matches 90..99 run item replace entity @s hotbar.0 with crossbow[custom_name=[{"text":"Corrupted Crossbow","italic":false,"color":"dark_purple"}],enchantments={quick_charge:5,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
 # for 50% and byond give him a crossbow
 
 execute if score @s corruption matches 90.. run scoreboard players set @s marksman_arrow_count 20

@@ -34,14 +34,14 @@ item replace entity @a[team=corrupted] inventory.1 with ominous_bottle[custom_na
 
 #=================================================================================================
 # EXTRA SPAWN PORTAL - inventory.2
-execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches ..49 run tellraw @s [{"text":"Not enough points! you need $50","color":"red"}]
-execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run summon bat ~ ~1 ~ {PersistenceRequired:1b,Silent:1b,Team:corrupted}
-execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run playsound block.bell.resonate master @s
-execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run playsound block.bell.use master @s
-execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run tellraw @s [{"text":"Spawn Portal Purchased!","color":"green"}]
-execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches 50.. run scoreboard players remove @s points 50
+execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches ..499 run tellraw @s [{"text":"Not enough points! you need $500","color":"red"}]
+execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 500.. run summon bat ~ ~1 ~ {PersistenceRequired:1b,Silent:1b,Team:corrupted}
+execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 500.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor endermite_spawn_egg if score @s points matches 500.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches 500.. run tellraw @s [{"text":"Spawn Portal Purchased!","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor endermite_spawn_egg if score @s points matches 500.. run scoreboard players remove @s points 500
 clear @a[team=corrupted] endermite_spawn_egg
-item replace entity @a[team=corrupted] inventory.2 with endermite_spawn_egg[custom_name=[{"text":"Extra Spawn Portal","italic":false,"color":"dark_purple"}],lore=[[{"text":"Summons an additional passive spawn portal","italic":false,"color":"white"}],[{"text":"More portals = more frequent mob spawns","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $50","italic":false,"color":"gold"}]]]
+item replace entity @a[team=corrupted] inventory.2 with endermite_spawn_egg[custom_name=[{"text":"Extra Spawn Portal","italic":false,"color":"dark_purple"}],lore=[[{"text":"Summons an additional passive spawn portal","italic":false,"color":"white"}],[{"text":"More portals = more frequent mob spawns","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $500","italic":false,"color":"gold"}]]]
 #=================================================================================================
 
 #=================================================================================================
@@ -101,6 +101,19 @@ execute as @a[team=corrupted] if items entity @s player.cursor fermented_spider_
 clear @a[team=corrupted] fermented_spider_eye
 item replace entity @a[team=corrupted] inventory.0 with fermented_spider_eye[custom_name=[{"text":"Invisibility","italic":false,"color":"dark_purple"}],lore=[[{"text":"Gives you Invisibility for 3 minutes","italic":false,"color":"white"}],[{"text":"Can be repurchased","italic":false,"color":"gray"}],[{"text":"-----------------------","italic":false}],[{"text":"Cost: $500","italic":false,"color":"gold"}]]]
 #=================================================================================================
+# SPAWN EGG PURCHASE - inventory.13
+execute as @a[team=corrupted] if items entity @s player.cursor enderman_spawn_egg if score @s points matches ..599 run tellraw @s [{"text":"Not enough points! you need $600","color":"red"}]
+execute as @a[team=corrupted] if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run scoreboard players add @s spawn_eggs_purchesed 1
+execute as @a[team=corrupted] at @s if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run playsound block.bell.resonate master @s
+execute as @a[team=corrupted] at @s if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run playsound block.bell.use master @s
+execute as @a[team=corrupted] if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run tellraw @s [{"text":"Purchased!","color":"green"}]
+execute as @a[team=corrupted] if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run tellraw @s [{"text":"Total purchased: ","color":"green"},{"score":{"name":"@s","objective":"spawn_eggs_purchesed"}}]
+# this line is important for later
+execute as @a[team=corrupted] if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run scoreboard players set enable spawn_eggs_purchesed 1
+execute as @a[team=corrupted] if items entity @s player.cursor enderman_spawn_egg if score @s points matches 600.. run scoreboard players remove @s points 300
+clear @a[team=corrupted] enderman_spawn_egg
+item replace entity @a[team=corrupted] inventory.13 with enderman_spawn_egg[custom_name=[{"text":"Mob spawn blind bag","italic":false,"color":"dark_purple"}],lore=[[{"text":"give you the ablility to spawn mobs yourself","italic":false,"color":"gray"}],[{"text":"when you buy this you will get a radom spawn egg after intermiision","italic":false}],[{"text":"Cost: $600","italic":false,"color":"gold"}]]]
+#=================================================================================================#=================================================================================================
 # range increase - inventory.12 one time purchase that permanently increases the range of your attack
 # PERMANENT RANGE INCREASE - inventory.2 (one-time purchase, +1 block attack range)
 # First, create the scoreboard objective if it doesn't exist (run once, e.g., in load function)

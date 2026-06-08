@@ -41,5 +41,6 @@ execute if entity @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] if score On
 execute if entity @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}] run kill @e[type=item,nbt={Item:{id:"minecraft:blue_dye"}}]
 kill @e[type=item,nbt={Item:{id:"minecraft:lime_dye"}}]
 
-
-
+# to prevent a glitch during competitive class selection
+scoreboard players set @a selected_corrupted_class 0
+scoreboard players set @a selected_runner_class 0

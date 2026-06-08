@@ -26,7 +26,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:netherite_sword"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with netherite_sword[custom_name=[{"text":"Corrupted blade","italic":false,"color":"dark_purple"}],attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with netherite_sword[custom_name=[{"text":"Corrupted blade","italic":false,"color":"dark_purple"}],enchantments={unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
 
 # make sure that everyone who is a predator corrupted gets in the cooldown scoreboard
 scoreboard players add @s predator_t1_speed_range 0

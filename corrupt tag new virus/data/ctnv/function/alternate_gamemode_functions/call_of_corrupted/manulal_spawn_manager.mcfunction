@@ -1,127 +1,67 @@
-#===========================================================================================================================
+# 1 check if the corrupted as a "spawn_eggs_purchesed" score of 1 or higher. if they do then we give a random egg then subtract 
+# until it is 0
+# cant forget about the rng
+# the rng has 16 entres 
 
-# THIS FUNCTION IS OBSOLETE 
-#============================================================================================================================
+# slightly ungredictable rng
+scoreboard players add rng spawn_eggs_purchesed 1
+execute if score tick time matches 3 run scoreboard players add rng spawn_eggs_purchesed 1
+execute if score 360 time matches 3 run scoreboard players add rng spawn_eggs_purchesed 1
+execute if score seconds time matches 10 run scoreboard players add rng spawn_eggs_purchesed 1
+# make it so that rare OP eggs cannot be obtained early on
+execute if score wave call_of_corrupted matches ..2 if score rng spawn_eggs_purchesed matches 5.. run scoreboard players set rng spawn_eggs_purchesed 2
+execute if score wave call_of_corrupted matches ..3 if score rng spawn_eggs_purchesed matches 6.. run scoreboard players set rng spawn_eggs_purchesed 1
+execute if score wave call_of_corrupted matches ..4 if score rng spawn_eggs_purchesed matches 8.. run scoreboard players set rng spawn_eggs_purchesed 1
+execute if score wave call_of_corrupted matches ..5 if score rng spawn_eggs_purchesed matches 10.. run scoreboard players set rng spawn_eggs_purchesed 1
+execute if score wave call_of_corrupted matches ..6 if score rng spawn_eggs_purchesed matches 11.. run scoreboard players set rng spawn_eggs_purchesed 1
+execute if score wave call_of_corrupted matches ..7 if score rng spawn_eggs_purchesed matches 12.. run scoreboard players set rng spawn_eggs_purchesed 1
 
+# dont go over
+execute if score rng spawn_eggs_purchesed matches 17.. run scoreboard players set rng spawn_eggs_purchesed 1
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# give the spawn eggs based on rng
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 1 run give @a[team=corrupted] wandering_trader_spawn_egg[custom_name=[{"text":"Summon Wall","italic":false,"color":"gold"}],lore=[[{"text":"Drop to summon a mysterious wall.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 2 run give @a[team=corrupted] zombie_spawn_egg[custom_name=[{"text":"Zombie Horde","italic":false,"color":"dark_green"}],lore=[[{"text":"Drop to summon a horde of zombies.","italic":false}]]]
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 3 run give @a[team=corrupted] skeleton_spawn_egg[custom_name=[{"text":"Skeleton Horde","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a horde of skeletons.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 4 run give @a[team=corrupted] stray_spawn_egg[custom_name=[{"text":"Stray Horde","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a horde of strays.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 5 run give @a[team=corrupted] silverfish_spawn_egg[custom_name=[{"text":"Rat Plague","italic":false,"color":"red"}],lore=[[{"text":"Drop to summon a rat plague.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 6 run give @a[team=corrupted] creeper_spawn_egg[custom_name=[{"text":"Creeper Horde","italic":false,"color":"dark_green"}],lore=[[{"text":"Drop to summon a bunch of creepers.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 7 run give @a[team=corrupted] bogged_spawn_egg[custom_name=[{"text":"Mini Creepers","italic":false,"color":"dark_green"}],lore=[[{"text":"Drop to summon a bunch of mini creepers.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 8 run give @a[team=corrupted] husk_spawn_egg[custom_name=[{"text":"Zombie Elites","italic":false,"color":"dark_green"}],lore=[[{"text":"Drop to summon a bunch of powerful zombies.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 9 run give @a[team=corrupted] wither_skeleton_spawn_egg[custom_name=[{"text":"Skeleton Elites","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a bunch of powerful skeletons.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 10 run give @a[team=corrupted] ghast_spawn_egg[custom_name=[{"text":"Stray Elites","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a bunch of powerful strays.","italic":false}]]]
 
-# make the atherial corrupted tiny and invisable
-attribute @s scale base set 0.2
-attribute @s entity_interaction_range base set 0
-effect give @s invisibility 1 1 true
-effect give @s jump_boost 1 1 true
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 11 run give @a[team=corrupted] phantom_spawn_egg[custom_name=[{"text":"Phantom Menace","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a phantom.","italic":false}]]]
 
-attribute @s movement_speed base reset
-attribute @s jump_strength base reset
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 12 run give @a[team=corrupted] allay_spawn_egg[custom_name=[{"text":"Phantom Elite","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a phantom elite.","italic":false}]]]
 
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 13 run give @a[team=corrupted] guardian_spawn_egg[custom_name=[{"text":"Phantom Laser","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a phantom laser.","italic":false}]]]
 
-#===========================================================================================================================
-# atherial corruption hud
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 14 run give @a[team=corrupted] pillager_spawn_egg[custom_name=[{"text":"Pillager Wave","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a bunch of pillagers.","italic":false}]]]
 
-title @a[team=corrupted] actionbar [{"text":"wave: ","color":"dark_purple"},{"score":{"objective":"call_of_corrupted","name":"wave"}},{"text":" ","color":"blue"},"                                                               corrupted: ",{"score":{"objective":"call_of_corrupted","name":"mobs"}}]
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 15 run give @a[team=corrupted] vindicator_spawn_egg[custom_name=[{"text":"Vindicator Wave","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a bunch of vindicators.","italic":false}]]]
 
-scoreboard players reset mobs call_of_corrupted 
-execute as @e[team=corrupted,type=!bat] run scoreboard players add mobs call_of_corrupted 1
-
-
-#==========================================================================================================================================================================
-# the atherial corrupted is allowed th change his corrupted class
-execute as @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/atherial_class_selection
-# to prevent bugs the dealy will be force enables a few ticks before the switch
-execute if score corrupt_manifestation call_of_corrupted matches ..20 run scoreboard players set class_selection_delay call_of_corrupted 25
-#==========================================================================================================================================================================
-# an attempt to make the atherial corrupteds waling not produse any noise or particles
-# for some damn reason /date modify does NOT work on players. and the worst part is that this was done intentionally!!! WTF
-# on 1.21.5 they broke it for "security reasons"
-effect give @s slow_falling 2 25 true
-
-# there is not really a way to do this correctly
-#==========================================================================================================================================================================
-# to make sure that the atherial corrupted CANNOT spawn a wave of mobs inside the runners. copy the apparitions debuff but make it extreme
-# make the corrupted one slow when closer to runners
-# this code is anoying and is disabled for now
-# its back. i need it now because the teleport away from runners code was never good
-execute at @s if entity @a[distance=..2,team=runners] run effect give @s slowness 2 4 true
-execute at @s if entity @a[distance=2..4,team=runners] run effect give @s slowness 2 3 true
-execute at @s if entity @a[distance=4..8,team=runners] run effect give @s slowness 2 1 true
-execute at @s unless entity @a[distance=..8,team=runners] run effect clear @s slowness
-
-execute at @s if entity @a[distance=..6,team=runners] run effect clear @s jump_boost
-# it the atherial corrupted is too close to the runners they will be teleported to a bat
-#execute if score corrupt_manifestation call_of_corrupted matches 600.. at @s if entity @a[distance=..4,team=runners,scores={health=1..}] run tp @e[type=bat] ~ ~ ~
-#execute if score corrupt_manifestation call_of_corrupted matches 600.. at @s if entity @a[distance=..4,team=runners,scores={health=1..}] run tellraw @s [{"text":"you cannot get close yet","color":"dark_red"}]
-#execute if score corrupt_manifestation call_of_corrupted matches 600.. at @s if entity @a[distance=..4,team=runners,scores={health=1..}] run tp @s @e[type=bat,limit=1]
-# turns out this sucks
-# a better idea is to make it so that the aterial cannot drop mob eggs when close to the runners
-
-#=====================================================================================================================================================
-# set up the corruption stun
-# normaly i would just steal the stun from another game mode but that did not work.
-# thankfully we have the exact time that the corrupted will physically manifest
+execute if score @s spawn_eggs_purchesed matches 1.. if score rng spawn_eggs_purchesed matches 16 run give @a[team=corrupted] ravager_spawn_egg[custom_name=[{"text":"Pillager Raid","italic":false,"color":"white"}],lore=[[{"text":"Drop to summon a full pillager raid.","italic":false}]]]
 
 
 
-#==========================================================================================================================
-#reset corrupted health
+#subtract at the end
+execute if score @s spawn_eggs_purchesed matches 1.. run scoreboard players remove @s spawn_eggs_purchesed 1
 
-# the max health of the corrupted shall be calculated as such
-# 1. take the max health of the runners
-# 2. add the dificulty variable to it (0, 1 ,or 2)
-# 3. multiply by 2
-# 4. add the current wave count number to the max health
-# 5. add the extra health of the corrupted that can be bought in the intermission shop
+#====================================================================================================================================================
 
-# make sure it does not blow up into infinity
-#scoreboard players set @a[team=corrupted] health 0
 
-# step 1
-scoreboard players operation @a[team=corrupted] health = setting ST____max_health
-# step 2
-scoreboard players operation @a[team=corrupted] health += setting ST____COC_difuculty
 
-# step 3
-scoreboard players set multiplyer call_of_corrupted 2
-scoreboard players operation @a[team=corrupted] health *= multiplyer call_of_corrupted
 
-#step 4
-scoreboard players operation @a[team=corrupted] health += wave call_of_corrupted
-
-# step 5
-scoreboard players operation @a[team=corrupted] health += extra_corrupted_health call_of_corrupted
-
-# extra step.
-# afer the corrupted one dies. the death stun needs to be reset
-scoreboard players set death_stun corruption_stun 6
-#==========================================================================================================================
-# every time the corrupted dropts a mob egg it gives him points. this will have to be added for each spawning logic block
-# the soreboard that will be added to is just called "points" 
-execute as @a[team=corrupted] if score @s WAVE_rat matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_zombie matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_skeleton matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_zombie_elite matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_skeleton_elite matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_phantom matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_phantom_elite matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_phantom_laser matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_stray matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_stray_elite matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_creeper matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_mini_creeper matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_pillager matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_vindicator matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_pilager_raid matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 1.. run scoreboard players add @s points 1
-execute as @a[team=corrupted] if score @s WAVE_summon_wall matches 1.. run scoreboard players add @s points 1
-#==========================================================================================================================
-# the atherial corrupteds wave spawning abilitys
 
 # do the function of spawning the mobs
 
@@ -324,9 +264,9 @@ execute at @e[tag=TOTEM_pilager_raid] if score @a[team=corrupted,limit=1] WAVE_p
 execute as @e[tag=TOTEM_pilager_raid] if score @a[team=corrupted,limit=1] WAVE_pilager_raid matches 4 run kill @s
 
 #imidiate_manefestation++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 99 run effect give @s slowness 5 5 true
-execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 99 run tellraw @a ["the ",{"text":"corrupted","color":"dark_purple"}," will manifest sooner than expected"]
-execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 5.. run scoreboard players set corrupt_manifestation call_of_corrupted 205
+#execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 99 run effect give @s slowness 5 5 true
+#execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 99 run tellraw @a ["the ",{"text":"corrupted","color":"dark_purple"}," will manifest sooner than expected"]
+#execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 5.. run scoreboard players set corrupt_manifestation call_of_corrupted 205
 
 #summon_wall++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 execute as @a[team=corrupted] at @s unless entity @a[distance=..4,team=runners,scores={health=1..}] if score @s WAVE_summon_wall matches 6 run summon armor_stand ~ ~ ~ {Pose:{LeftLeg:[175f,0f,0f],RightLeg:[165f,0f,0f]},ShowArms:1b,Invisible:1b,NoBasePlate:1b,Small:1b,DisabledSlots:917504,Tags:["TOTEM_summon_wall"]}
@@ -339,7 +279,6 @@ execute as @a[team=corrupted] at @s if score @s WAVE_summon_wall matches 5 run f
 
 # kill totem
 execute as @e[tag=TOTEM_summon_wall] if score @a[team=corrupted,limit=1] WAVE_summon_wall matches 4 run kill @s
-
 
 
 
@@ -426,79 +365,3 @@ execute as @a[team=corrupted] if score @s WAVE_vindicator matches 1.. run kill @
 execute as @a[team=corrupted] if score @s WAVE_pilager_raid matches 1.. run kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:ravager_spawn_egg"}}]
 execute as @a[team=corrupted] if score @s WAVE_imidiate_manefestation matches 1.. run kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:warden_spawn_egg"}}]
 execute as @a[team=corrupted] if score @s WAVE_summon_wall matches 1.. run kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:wandering_trader_spawn_egg"}}]
-
-#==========================================================================================================================
-# give the atherial corrupted the spawn eggs.
-# when to do it?
-# simple
-
-# 1. 10 second timer
-# 2. subtract dificulty variable (0,1,2)
-# 3. subrtract wave count
-# 4. divide by 2
-# 5. if the same rng value used to summon mobs natrually rolls just right the atherial corrupted will get a specific wave spawn egg
-# - note that there is a high change that the corrupted will get nothing if the rng is bad. this is intentional
-
-# 1
-execute if score wave_egg call_of_corrupted matches 0 run scoreboard players set wave_egg_trigger call_of_corrupted 1
-execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players set wave_egg call_of_corrupted 200
-# 2
-execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players operation wave_egg call_of_corrupted -= wave call_of_corrupted
-# 3
-execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players operation wave_egg call_of_corrupted -= setting ST____COC_difuculty
-# 4 
-execute if score wave_egg_trigger call_of_corrupted matches 1 run scoreboard players operation wave_egg call_of_corrupted /= multiplyer call_of_corrupted
-
-# 5
-execute if score wave_egg call_of_corrupted matches 3 run function ctnv:one_time_function/atherial_egg_giver
-
-# 6
-# start counting down
-scoreboard players set wave_egg_trigger call_of_corrupted 0
-scoreboard players add wave_egg call_of_corrupted 0
-execute if score wave_egg_trigger call_of_corrupted matches 0 if score wave_egg call_of_corrupted matches 1.. run scoreboard players remove wave_egg call_of_corrupted 1 
-
-
-#==========================================================================================================================
-# wanrings and particles for the atherial corrupted's physical manefestation
-
-#60 second warning
-execute if score corrupt_manifestation call_of_corrupted matches 600 run tellraw @a [{"text":"The corrupted champion will manifest in 60 seconds","color":"light_purple"}]
-
-# 30 second warning
-execute if score corrupt_manifestation call_of_corrupted matches 300 run tellraw @a [{"text":"The corrupted champion will manifest in 30 seconds","color":"light_purple"}]
-
-# 10 second particle burst
-execute if score corrupt_manifestation call_of_corrupted matches 200 run tellraw @a [{"text":"The corrupted champion will manifest in 10 seconds","color":"light_purple"}]
-execute if score corrupt_manifestation call_of_corrupted matches ..200 run effect give @a[team=corrupted] slowness 1 255 true
-execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle dust{color:[0.88,0.0,1.0],scale:4} ~ ~ ~ 0.3 1 0.3 100 50 force @a
-execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle explosion ~ ~1 ~ 0 0 0 1 1 force @a
-execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle portal ~ ~1 ~ 5 5 5 1 10 force @a
-execute if score corrupt_manifestation call_of_corrupted matches ..200 at @a[team=corrupted] run particle dust{color:[1,0,0.1],scale:2} ~ ~ ~ 0 5 0 100 50 force @a
-
-execute if score corrupt_manifestation call_of_corrupted matches 200 at @a[team=corrupted] run title @s title [{"text":": 10 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 200 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.5
-execute if score corrupt_manifestation call_of_corrupted matches 180 at @a[team=corrupted] run title @s title [{"text":": 9 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 180 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.45
-execute if score corrupt_manifestation call_of_corrupted matches 160 at @a[team=corrupted] run title @s title [{"text":": 8 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 160 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.4
-execute if score corrupt_manifestation call_of_corrupted matches 140 at @a[team=corrupted] run title @s title [{"text":": 7 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 140 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.35
-execute if score corrupt_manifestation call_of_corrupted matches 120 at @a[team=corrupted] run title @s title [{"text":": 6 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 120 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.3
-execute if score corrupt_manifestation call_of_corrupted matches 100 at @a[team=corrupted] run title @s title [{"text":": 5 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 100 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.25
-execute if score corrupt_manifestation call_of_corrupted matches 80 at @a[team=corrupted] run title @s title [{"text":": 4 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 80 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.2
-execute if score corrupt_manifestation call_of_corrupted matches 60 at @a[team=corrupted] run title @s title [{"text":": 3 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 60 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.15
-execute if score corrupt_manifestation call_of_corrupted matches 40 at @a[team=corrupted] run title @s title [{"text":": 2 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 40 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.1
-execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run title @s title [{"text":": 1 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1.05
-execute if score corrupt_manifestation call_of_corrupted matches 0 at @a[team=corrupted] run title @s title [{"text":": 0 :","color":"aqua"}]
-execute if score corrupt_manifestation call_of_corrupted matches 0 at @a[team=corrupted] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1
-# do an extra mob spawn so that the runners cannot jump the corrupted
-execute if score corrupt_manifestation call_of_corrupted matches 20 at @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn
-execute if score corrupt_manifestation call_of_corrupted matches 19 at @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn
-execute if score corrupt_manifestation call_of_corrupted matches 18 at @a[team=corrupted] run function ctnv:alternate_gamemode_functions/call_of_corrupted/mob_spawn

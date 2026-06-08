@@ -42,3 +42,5 @@ kill @e[type=shulker,tag=!wall]
 execute if score wave call_of_corrupted matches 4 run advancement grant @a[team=runners] only ctnv:corrupt_tag/dolls
 
 
+# if a player with class of 0 exists give them a random class
+execute as @a if score @s class matches 0 run scoreboard players operation @s class = rng class

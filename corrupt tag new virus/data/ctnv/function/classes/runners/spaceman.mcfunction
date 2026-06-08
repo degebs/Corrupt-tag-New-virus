@@ -16,7 +16,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:golden_spear"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}] run item replace entity @s hotbar.0 with golden_spear[custom_name=[{"text":"LAIKA","italic":false}],rarity=uncommon,attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_spear",Slot:0b}]}] run item replace entity @s hotbar.0 with golden_spear[custom_name=[{"text":"LAIKA","italic":false}],rarity=uncommon,enchantments={unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 kill @e[type=item,nbt={Item:{id:"minecraft:barrier"}}]
 
 #==============================================================================================================================================================
@@ -57,8 +57,8 @@ execute if score @s spaceman_rewind_shard_detect matches 1 at @s run scoreboard 
 # this will sumon the rewind shard then set the rewind state to 1 before resetting
 
 # the item
-execute if score @s spaceman_rewind_shard_detect matches 0 if score @s spaceman_rewind_shard_state matches 0 if score @s spaceman_teleport_cooldown matches 0 run item replace entity @s hotbar.2 with echo_shard[custom_name=[{"text":"Rewind Shard","italic":false}],rarity=rare]
-
+execute at @s if score @s spaceman_rewind_shard_detect matches 0 if score @s spaceman_rewind_shard_state matches 0 if score @s spaceman_teleport_cooldown matches 0 unless block ~ ~-1 ~ air run item replace entity @s hotbar.2 with echo_shard[custom_name=[{"text":"Rewind Shard","italic":false}],rarity=rare]
+execute at @s if block ~ ~-1 ~ air run clear @s echo_shard
 #==============================================================================================================================================================
 # rewind shard
 # part 2

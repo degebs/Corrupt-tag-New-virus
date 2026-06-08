@@ -36,8 +36,8 @@ execute if score tick time matches 19 run playsound block.stone.break block @a ~
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run title @s title {"text":"you died","color":"dark_purple"}
 # Display the time survived in seconds, minutes, and hours using title subtitles
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run title @s subtitle {"text":"you lasted: ","color":"white","extra":[{"score":{"name":"hours","objective":"time"}},{"text":" hours, ","color":"aqua"},{"score":{"name":"minutes","objective":"time"}},{"text":" minutes, ","color":"gold"},{"score":{"name":"seconds","objective":"time"}},{"text":" seconds","color":"yellow"}]}
-# display a chat message to the whole server
-execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run tellraw @a {"text":"", "color":"white", "extra":[{"selector":"@s"},{"text":" has returned to the 4th dimention after: "},{"score":{"name":"hours","objective":"time"}},{"text":" hours, ","color":"aqua"},{"score":{"name":"minutes","objective":"time"}},{"text":" minutes, ","color":"gold"},{"score":{"name":"seconds","objective":"time"}},{"text":" seconds","color":"yellow"}]}
+# display a chat message to the whole servers
+execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run tellraw @a {"text":"", "color":"white", "extra":[{"selector":"@s"},{"text":" has returned to the 4th dimension after: "},{"score":{"name":"hours","objective":"time"}},{"text":" hours, ","color":"aqua"},{"score":{"name":"minutes","objective":"time"}},{"text":" minutes, ","color":"gold"},{"score":{"name":"seconds","objective":"time"}},{"text":" seconds","color":"yellow"}]}
 
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run particle dragon_breath ~ ~ ~ 0.5 0 0.5 1 650 force @a
 
@@ -61,3 +61,10 @@ execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_st
 execute as @a[scores={corruption=101..}] at @s if score death_stun corruption_stun matches 0 run scoreboard players set @a[team=corrupted] corruption 0
 
 # there is a glitch where the death cannot complete because the corruption is always set to 100%
+
+# this is important for egg spawning
+scoreboard players set enable spawn_eggs_purchesed 0
+
+#give the corrupted some points 
+execute if score @p[team=corrupted] points matches ..800 run scoreboard players add @s points 1
+kill @e[type=shulker]

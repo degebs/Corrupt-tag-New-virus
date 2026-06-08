@@ -21,6 +21,10 @@ execute if score @s select_predator matches 1 run playsound minecraft:block.scul
 # take a datapoint
 execute if score @s select_predator matches 1 run scoreboard players add @s selected_corrupted_class 1
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# if the class selection mode is compentitive then we disable the class
+execute if score setting ST____class_selection matches 1 if score @s select_predator matches 1 run scoreboard players set enable select_predator 0
+execute if score setting ST____class_selection matches 1 if score @s select_predator matches 1 run tellraw @a [{"text":"[x] ","color":"red","bold":true},{"text":"Predator","color":"dark_purple","bold":true},{"text":" will be disabled!","color":"gray"}]
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # reset when done
 # we must make it so that it does not reset during pregame
 execute unless score game state matches 0 run scoreboard players set @s select_predator 0

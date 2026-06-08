@@ -265,6 +265,7 @@ kill @e[tag=TOTEM_zombie_elite]
 kill @e[tag=TOTEM_zombie]
 kill @e[tag=heal_totem]
 kill @e[tag=wall]
+kill @e[tag=COC_wall]
 kill @e[tag=fish_attack]
 kill @e[tag=splash]
 kill @e[tag=eye_of_pain]
@@ -282,6 +283,7 @@ kill @e[tag=brewinator]
 kill @e[tag=brewinator_rocket]
 kill @e[tag=time_bomb]
 kill @e[tag=time_bomb_particle]
+kill @e[tag=runner_tnt]
 
 #=================================================================================================
 # display the maps name to all

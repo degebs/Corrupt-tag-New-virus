@@ -67,3 +67,5 @@ execute if score @s health matches ..0 unless score death_stun corruption_stun m
 execute if score reset runners_alive matches ..-3 run scoreboard players set @s health 10
 
 #===================================================================================================================================================
+# if the corrupted has spawn eggs purchased we give him the eggs to use ingame
+execute as @a[team=corrupted] if score enable spawn_eggs_purchesed matches 1.. run function ctnv:alternate_gamemode_functions/call_of_corrupted/manulal_spawn_manager

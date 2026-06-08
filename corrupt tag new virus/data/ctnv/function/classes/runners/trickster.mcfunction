@@ -14,7 +14,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_shovel",Slot:0b}]
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_shovel",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:copper_shovel"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with copper_shovel[custom_name=[{"text":"Stańczyk's whacking paddle","italic":false}],rarity=uncommon,attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:copper_shovel",Slot:0b}]}] run item replace entity @s hotbar.0 with copper_shovel[custom_name=[{"text":"Stańczyk's whacking paddle","italic":false}],rarity=uncommon,enchantments={unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 #==============================================================================================================================================================

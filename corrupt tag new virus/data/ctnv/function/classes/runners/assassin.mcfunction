@@ -17,7 +17,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}]
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:stone_sword"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with stone_sword[custom_name=[{"text":"sKaiken","italic":false}],enchantments={knockback:1}]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with stone_sword[custom_name=[{"text":"sKaiken","italic":false}],enchantments={knockback:1,unbreaking:255}]
 
 #==============================================================================================================================================================
 # permanent speed boost in endgame

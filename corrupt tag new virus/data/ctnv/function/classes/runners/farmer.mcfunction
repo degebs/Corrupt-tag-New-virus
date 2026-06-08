@@ -13,7 +13,7 @@
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run clear @s iron_hoe
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:iron_hoe"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run item replace entity @s hotbar.0 with minecraft:iron_hoe[custom_name=[{"text":"O'Reilly","italic":false}],rarity=uncommon,enchantments={knockback:1},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run item replace entity @s hotbar.0 with minecraft:iron_hoe[custom_name=[{"text":"O'Reilly","italic":false}],rarity=uncommon,enchantments={knockback:1,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 #==============================================================================================================================================================
 # give the farmer his farm

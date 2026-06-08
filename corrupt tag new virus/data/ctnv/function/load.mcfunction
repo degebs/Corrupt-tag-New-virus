@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.5.1","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.5.2","color":"dark_purple","bold":true}]
 
 #set up all gamerules
 gamerule minecraft:block_drops false
@@ -489,6 +489,9 @@ scoreboard objectives add crouch_time minecraft.custom:sneak_time
 scoreboard objectives add downed dummy
 scoreboard objectives add unlocked_corrupted_classes dummy
 scoreboard players set extra_corrupted_health call_of_corrupted 0
+scoreboard objectives add spawn_eggs_purchesed dummy
+scoreboard objectives add runner_TNT_purchased dummy
+scoreboard objectives add runner_dynamite_detect minecraft.dropped:red_candle
 # this "downed" scoreboard is here ONLY to fix a bug that i cannot seem to find
 
 # the items in call of corrupted are unique. as in they are one time use without recharge.

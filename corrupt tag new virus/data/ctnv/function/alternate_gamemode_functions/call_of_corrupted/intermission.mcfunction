@@ -56,7 +56,7 @@ effect give @s blindness 2 1 true
 #===========================================================================================================================
 # intermission corruption hud
 
-title @a[team=corrupted] actionbar [{"text":"wave:","color":"red"},{"text":" ","color":"gold"},{"score":{"objective":"call_of_corrupted","name":"wave"}},{"text":"     Open your inentory to upgrade your items     ","color":"gold"},{"text":" $ ","color":"blue"},{"score":{"objective":"points","name":"*"}}]
+title @a[team=corrupted] actionbar [{"text":"wave:","color":"red"},{"text":" ","color":"gold"},{"score":{"objective":"call_of_corrupted","name":"wave"}},{"text":"     Open your inventory to upgrade your items     ","color":"gold"},{"text":" $ ","color":"blue"},{"score":{"objective":"points","name":"*"}}]
 
 scoreboard players reset mobs call_of_corrupted 
 execute as @e[team=corrupted,type=!bat] run scoreboard players add mobs call_of_corrupted 1
