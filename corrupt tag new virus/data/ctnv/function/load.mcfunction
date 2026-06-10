@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.5.2","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.5.3","color":"dark_purple","bold":true}]
 
 
 

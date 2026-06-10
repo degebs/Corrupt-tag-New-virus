@@ -73,4 +73,7 @@ kill @e[type=shulker,tag=COC_wall]
 # give the runners points
 scoreboard players add @r[team=runners] points 1
 # the nearest player to the corrupted when he first gets the final hit on the corrupted get a ton of points
-execute as @a[scores={corruption=101}] at @s run scoreboard players add @p[team=runners] points 15
+execute as @a[scores={corruption=101..105}] at @s run scoreboard players add @p[team=runners] points 15
+
+#prevent a glitch
+clear @a[team=corrupted]
