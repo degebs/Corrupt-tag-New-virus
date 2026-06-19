@@ -20,7 +20,7 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] 
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:iron_sword"}}]
 
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with iron_sword[custom_name=[{"text":"The Sultan of Swing","italic":false}],rarity=uncommon,enchantments={knockback:2,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run item replace entity @s hotbar.0 with iron_sword[custom_name=[{"text":"The Sultan of Swing","italic":false}],rarity=uncommon,enchantments={knockback:1,unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,slot:mainhand,operation:add_multiplied_total,id:"1747783863410"}]]
 
 
 #==============================================================================================================================================================

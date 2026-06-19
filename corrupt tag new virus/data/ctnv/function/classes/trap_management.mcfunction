@@ -182,24 +182,148 @@ execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if scor
 execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 5 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
 execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 10 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
 execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score tick time matches 15 run summon block_display ~ ~1 ~ {Tags:["rewind_shard_trail"]}
-
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 1 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_1_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 2 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_2_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 3 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_3_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 4 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_4_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 5 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_5_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 6 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_6_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 7 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_7_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 8 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_8_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 9 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_9_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 10 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_10_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 11 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_11_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 12 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_12_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 13 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_13_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 14 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_14_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 15 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_15_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 16 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_16_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 17 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_17_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 18 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_18_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 19 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_19_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 20 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_20_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 21 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_21_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 22 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_22_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 23 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_23_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 24 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_24_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 25 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_25_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 26 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_26_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 27 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_27_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 28 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_28_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 29 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_29_rewind_shard
+execute as @a[team=runners,scores={spaceman_rewind_shard_state=1}] at @s if score @s player_ID matches 30 run tag @e[type=block_display,tag=rewind_shard_trail,distance=..2] add ID_30_rewind_shard
 
 # step 1: rotate the marker to face the shard
-execute as @e[type=block_display,tag=rewind_shard_trail] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_1_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_1_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_2_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_2_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_3_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_3_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_4_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_4_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_5_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_5_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_6_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_6_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_7_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_7_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_8_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_8_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_9_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_9_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_10_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_10_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_11_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_11_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_12_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_12_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_13_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_13_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_14_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_14_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_15_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_15_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_16_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_16_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_17_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_17_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_18_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_18_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_19_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_19_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_20_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_20_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_21_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_21_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_22_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_22_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_23_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_23_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_24_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_24_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_25_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_25_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_26_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_26_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_27_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_27_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_28_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_28_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_29_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_29_rewind_shard,limit=1]
+execute as @e[type=block_display,tag=rewind_shard_trail,tag=ID_30_rewind_shard] at @s run tp @s ~ ~ ~ facing entity @e[tag=rewind_shard,tag=ID_30_rewind_shard,limit=1]
+
+
+
 # step 2: move it forward now that it's facing the right direction
 execute as @e[type=block_display,tag=rewind_shard_trail] at @s run tp @s ^ ^ ^0.5
 # particle
 execute as @e[type=block_display,tag=rewind_shard_trail] at @s run particle minecraft:electric_spark ~ ~ ~ 0 0 0 1 1 force @a
 execute as @e[type=block_display,tag=rewind_shard_trail] at @s run particle minecraft:sculk_charge_pop ~ ~ ~ 0 0 0 0.01 1 normal @a
 # basic collison check so that the particles dont go through walls
-execute as @e[type=block_display,tag=rewind_shard_trail] at @s unless block ~ ~ ~ air run tp @s ^0.5 ^1 ^-0.4
+execute as @e[type=block_display,tag=rewind_shard_trail] at @s unless block ~ ~ ~ air run tp @s ^0.5 ^0.8 ^-0.4
 
 # kill the marker when it reaches the shard (saves on lag)
 execute as @e[type=block_display,tag=rewind_shard_trail] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..0.5] run kill @s
 # obscructon
 # basically team mates can stand on the shard to block it
-execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1}] music_disc_5
-execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_1_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=1}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_2_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=2}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_3_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=3}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_4_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=4}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_5_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=5}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_6_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=6}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_7_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=7}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_8_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=8}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_9_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=9}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_10_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=10}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_11_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=11}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_12_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=12}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_13_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=13}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_14_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=14}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_15_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=15}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_16_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=16}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_17_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=17}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_18_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=18}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_19_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=19}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_20_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=20}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_21_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=21}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_22_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=22}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_23_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=23}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_24_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=24}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_25_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=25}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_26_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=26}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_27_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=27}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_28_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=28}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_29_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=29}] music_disc_5
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_30_rewind_shard] run clear @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=30}] music_disc_5
+
+
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_1_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=1}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_2_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=2}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_3_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=3}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_4_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=4}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_5_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=5}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_6_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=6}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_7_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=7}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_8_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=8}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_9_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=9}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_10_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=10}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_11_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=11}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_12_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=12}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_13_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=13}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_14_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=14}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_15_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=15}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_16_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=16}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_17_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=17}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_18_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=18}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_19_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=19}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_20_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=20}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_21_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=21}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_22_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=22}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_23_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=23}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_24_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=24}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_25_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=25}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_26_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=26}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_27_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=27}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_28_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=28}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_29_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=29}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+execute as @a[team=runners] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1,tag=ID_30_rewind_shard] run item replace entity @p[team=runners,scores={class=11,spaceman_rewind_shard_state=1,player_ID=30}] hotbar.2 with barrier[custom_name='SHARD OBSTRUCTED']
+
+
+
 # if a corrupted player touches the shard it will force it to activate
 execute as @a[team=corrupted] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run playsound block.respawn_anchor.deplete block @a ~ ~ ~ 1 1 0.5
 execute as @a[team=corrupted] at @s if entity @e[type=item_display,tag=rewind_shard,distance=..1] run playsound entity.ghast.hurt block @a ~ ~ ~ 1 1 0.5

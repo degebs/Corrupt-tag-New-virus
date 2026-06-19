@@ -1,7 +1,9 @@
 # my sanity is dwindiling
 
 
-
+# to fix a glitch where medic could slef revive just set his cooldown up a little all the time
+execute as @a if score @s downed matches 2.. run scoreboard players set @s medic_heal 80
+execute as @a if score @s downed matches 2.. run clear @s poppy
 
 # reset the hit variable so that the players health is not drained
 execute as @a if score @s hit matches 1.. if score @s health matches 1.. run scoreboard players reset @s hit

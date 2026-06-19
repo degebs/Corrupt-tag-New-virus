@@ -283,3 +283,12 @@
       -fixed downed players getting up when the corrupted dies despite still being dead
       -made to call of corrupted economy better
             the pleyer who gets the final hit on the corrupted gets extra points
+1.5.4
+      -fixed the marksman having extra arrows when he should not have them
+      -buffed marksman by giving him knight's 50% speed boost item (sligtly slower version)
+      -made marksmans arrow particles much less terrible 
+      -buffed the marksman by making him invisable when crouching (exactly like assassin)
+      -fixed the medic being able to self heal with his rose when downed in call of corrupted and hide and reap
+      - changed how the spaceman rewind shard works (each shard is now loyal to the player who placed it)
+      - nerfed bulk (now has knockback 1 insead of knockback 2)
+      - fixed class swappers not initializing abilitys

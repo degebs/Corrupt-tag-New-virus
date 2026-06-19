@@ -328,7 +328,7 @@ execute as @a[team=runners] if score @s health matches ..0 run effect give @s sl
 # it is clear that this method will only work, if each shulker, has a unique id assigned to each player with an id
 
 execute as @a[team=runners] if score @s health matches ..1 at @s run function ctnv:one_time_function/downed_player_enforcement
-effect give @e[type=shulker,tag=!wall] invisibility infinite 1 true
+effect give @e[type=shulker,tag=downed_player] invisibility infinite 1 true
 # the mobs will coaless on top of the shulker, this is bad and needs to be fixed
 execute as @e[type=!shulker,tag=!wall,team=corrupted] at @s positioned ~ ~-1 ~ if entity @e[type=shulker,tag=!wall,distance=..0.6] run tp @s ~ ~-1 ~
 

@@ -7,7 +7,8 @@ execute if score @s crouch_time matches 60 run kill @e[type=shulker,distance=..1
 execute if score @s crouch_time matches 60 run scoreboard players operation @a[distance=..1.5,team=runners,scores={health=..0}] health = setting ST____max_health
 
 
-
+#points
+execute if score @s crouch_time matches 1..55 run scoreboard players add @s points 1
 
 #sounds
 # Play chime sound with increasing pitch based on crouch_time

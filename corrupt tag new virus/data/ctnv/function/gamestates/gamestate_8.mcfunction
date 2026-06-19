@@ -159,7 +159,7 @@ execute as @a[team=runners] if score @s knight_speed_boost matches ..10 run scor
 execute as @a[team=runners] if score @s dark_star_darkness matches ..10 run scoreboard players set @s dark_star_darkness 10
 execute as @a[team=runners] if score @s dark_star_speed_boost matches ..10 run scoreboard players set @s dark_star_speed_boost 10
 execute as @a[team=runners] if score @s dark_star_supernova matches ..10 run scoreboard players set @s dark_star_supernova 10
-execute as @a[scores={evil_class=6},team=runners] if score @s dark_star_supernova matches 1171.. run scoreboard players set @s dark_star_supernova 1170
+execute as @a[team=runners] if score @s dark_star_supernova matches 1171.. run scoreboard players set @s dark_star_supernova 1170
 
 # extra corrupted classes will be added later
 
@@ -170,6 +170,79 @@ execute as @a[team=corrupted] if score @s corruption_stun matches 1.. run effect
 attribute @r[team=runners] knockback_resistance base reset
 # a note about classes. im calling them AS the person who is playing the class. that means that i can just use @S to 
 # select the induvidual player of a specific class
+#================================================================================================
+# in the game of class swappers many classes do not get there class or corrupted class abilitys initialized correctly
+# in this chunk we fix that
+
+# uncorrupted cooldowns
+execute as @a[scores={class=2}] run scoreboard players add @s bulk 0
+
+execute as @a[scores={class=1}] run scoreboard players add @s medic_heal 0
+execute as @a[scores={class=7}] run scoreboard players add @s medic_heal 0
+execute as @a[scores={class=7}] run scoreboard players add @s miner_lantern 0
+
+scoreboard players add @a[scores={class=2}] acher_arrow_count 0
+scoreboard players add @a[scores={class=8}] merchant_arrow_count 0
+scoreboard players add @a[scores={class=8}] merchant_luck 0
+
+
+scoreboard players add @a[scores={class=5}] trident_throw 0
+scoreboard players add @a[scores={class=5}] stunman_trap 0
+
+scoreboard players add @a[scores={class=6}] fishing_net_trap 0
+
+scoreboard players add @a[scores={class=4}] assassin_charge 0
+execute if score @s assassin_hide matches 1.. run scoreboard players reset @s assassin_hide
+
+scoreboard players add @a[scores={class=9}] farm_cooldown 0
+scoreboard players add @a[scores={class=9}] animal_farm_attack_cooldown 0
+
+# corrupted cooldowns
+execute as @a[scores={evil_class=1}] run scoreboard players add @s classic_corrupted_t1_cooldown 0
+execute as @a[scores={evil_class=1}] run scoreboard players add @s classic_corrupted_t2_cooldown 0
+execute as @a[scores={evil_class=1}] run scoreboard players add @s classic_corrupted_t3_cooldown 0
+
+execute as @a[scores={evil_class=2}] run scoreboard players add @s predator_t1_speed_range 0
+execute as @a[scores={evil_class=2}] run scoreboard players add @s predator_corrupted_t2_cooldown 0
+execute as @a[scores={evil_class=2}] run scoreboard players add @s predator_corrupted_t2_cooldown 0
+
+execute as @a[scores={evil_class=3}] run scoreboard players add @s apparition_light_level 0
+execute as @a[scores={evil_class=3}] run scoreboard players add @s apparition_corrupted_t2_cooldown 0
+execute as @a[scores={evil_class=3}] run scoreboard players add @s apparition_corrupted_t3_cooldown 0
+
+execute as @a[scores={evil_class=6}] run scoreboard players add @s dark_star_wind_charge_cooldown 0
+execute as @a[scores={evil_class=6}] run scoreboard players add @s dark_star_wind_charge_use 0
+
+
+#execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 0
+
+execute as @a[scores={evil_class=4}] run scoreboard players add @s hunter_corrupted_t1_cooldown 0
+execute as @a[scores={evil_class=4}] run scoreboard players add @s hunter_corrupted_t1_trap 0
+execute as @a[scores={evil_class=4}] run scoreboard players add @s hunter_corrupted_t2_trap 0
+execute as @a[scores={evil_class=4}] run scoreboard players add @s hunter_corrupted_t3_trap 0
+
+execute as @a[scores={evil_class=5}] run scoreboard players add @s knight_corruption_blocker 0
+execute as @a[scores={evil_class=5}] run scoreboard players add @s knight_reveal_players 0
+execute as @a[scores={evil_class=5}] run scoreboard players add @s knight_speed_boost 0
+
+execute as @a[scores={evil_class=6}] run scoreboard players add @s dark_star_darkness 0
+execute as @a[scores={evil_class=6}] run scoreboard players add @s dark_star_speed_boost 0
+execute as @a[scores={evil_class=6}] run scoreboard players add @s dark_star_supernova 0
+
+execute as @a[scores={evil_class=7}] run scoreboard players add @s manhunter_cooldown 0
+execute as @a[scores={evil_class=7}] run scoreboard players add @s manhunter_horn_blow_detect 0
+
+execute as @a[scores={evil_class=8}] run scoreboard players add @s gravity_pull_timer 0
+execute as @a[scores={evil_class=8}] run scoreboard players add @s Reveal_Players_Modulator_timer 0
+
+execute as @a[scores={evil_class=9}] run scoreboard players add @s marksman_arrow_count 0
+
+execute as @a[scores={evil_class=10}] run scoreboard players add @s brewinator_drop_detect 0
+
+
+
+
+
 #================================================================================================
 # fix a bug with the miner class where his attributes dont reset properly
 execute as @a[team=corrupted] run attribute @s gravity base reset

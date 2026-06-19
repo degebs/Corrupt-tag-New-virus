@@ -1,5 +1,5 @@
 
-execute as @e[type=arrow,tag=EVIL] at @s run particle minecraft:flame ~ ~ ~ 0 0 0 0.1 3 force @a
+execute as @e[type=arrow,tag=EVIL] at @s run particle minecraft:flame ~ ~ ~ 0 0 0 0.03 1 force @a
 
 execute if score @p corruption matches 15.. run execute as @e[type=arrow,tag=EVIL] at @s run particle minecraft:reverse_portal ~ ~ ~ 0.5 0.5 0.5 0.1 3 normal @a
 

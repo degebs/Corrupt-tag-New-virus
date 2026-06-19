@@ -10,10 +10,10 @@
  # the first dedicated RANGED corrupt tag class. very scary                                                                                           
                                                                                             
 # give him his armor
-item replace entity @s armor.chest with copper_chestplate[rarity=uncommon,enchantments={binding_curse:1,},trim={pattern:"eye",material:amethyst}]
-item replace entity @s armor.head with leather_helmet[rarity=uncommon,enchantments={binding_curse:1,knockback:2},trim={pattern:rib,material:amethyst}]
-item replace entity @s armor.legs with netherite_leggings[rarity=uncommon,enchantments={binding_curse:1,knockback:2},trim={pattern:coast,material:amethyst}]
-item replace entity @s armor.feet with leather_boots[rarity=uncommon,enchantments={binding_curse:1,knockback:2},trim={pattern:snout,material:amethyst}]
+ execute unless score @s assassin_hide matches 1.. run item replace entity @s armor.chest with copper_chestplate[rarity=uncommon,enchantments={binding_curse:1,},trim={pattern:"eye",material:amethyst}]
+execute unless score @s assassin_hide matches 1.. run item replace entity @s armor.head with leather_helmet[rarity=uncommon,enchantments={binding_curse:1,knockback:2},trim={pattern:rib,material:amethyst}]
+execute unless score @s assassin_hide matches 1.. run item replace entity @s armor.legs with netherite_leggings[rarity=uncommon,enchantments={binding_curse:1,knockback:2},trim={pattern:coast,material:amethyst}]
+execute unless score @s assassin_hide matches 1.. run item replace entity @s armor.feet with leather_boots[rarity=uncommon,enchantments={binding_curse:1,knockback:2},trim={pattern:snout,material:amethyst}]
 
 # give him his bow
 # make sure it cannot be moved
@@ -23,6 +23,22 @@ execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] if scor
 
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] if score @s corruption matches ..49 run item replace entity @s hotbar.0 with bow[custom_name=[{"text":"Corrupted bow","italic":false,"color":"dark_purple"}],enchantments={unbreaking:255},attribute_modifiers=[{type:attack_damage,amount:0,operation:add_multiplied_base,id:"1747801002186"}]]
 # for the 1st 50 percent he shall have a bow
+
+
+#==============================================================================================================================================================
+# invisability when crouched
+
+
+
+execute if score @s assassin_hide matches 1.. run effect give @s invisibility 1 1 false
+execute if score @s assassin_hide matches 1.. run effect give @s slowness 3 3 false
+execute if score @s assassin_hide matches 1.. run clear @s copper_chestplate
+execute if score @s assassin_hide matches 1.. run clear @s leather_helmet
+execute if score @s assassin_hide matches 1.. run clear @s netherite_leggings
+execute if score @s assassin_hide matches 1.. run clear @s leather_boots
+
+
+execute if score @s assassin_hide matches 1.. run scoreboard players reset @s assassin_hide
 
 
 
@@ -94,7 +110,8 @@ execute if score @s bow_shot matches 1 run scoreboard players reset @s bow_shot
 execute if score @s cross_bow_shot matches 1 run clear @s arrow
 execute if score @s cross_bow_shot matches 1 run scoreboard players remove @s marksman_arrow_count 1
 execute if score @s cross_bow_shot matches 1 run scoreboard players reset @s cross_bow_shot
-
+# fix a bug where the marksman can have arows even if he has 0
+execute if score @s marksman_arrow_count matches ..0 run clear @s tipped_arrow
 
 # if the marksman arrow count is negative set it to 0
 execute if score @s marksman_arrow_count matches ..-1 run scoreboard players set @s marksman_arrow_count 0
@@ -159,6 +176,62 @@ execute if score @s corruption matches 50.. if score seconds time matches 55 if 
 # +5 arrows per minute during endgame
 execute if score endgame state matches 1 if score @s corruption matches 50.. if score seconds time matches 55 if score tick time matches 3 unless score @s marksman_arrow_count matches 20 run clear @s arrow
 execute if score endgame state matches 1 if score @s corruption matches 50.. if score seconds time matches 55 if score tick time matches 3 unless score @s marksman_arrow_count matches 20 run scoreboard players add @s marksman_arrow_count 5
+
+
+#genuenly just stole this code from the knight
+execute if score @s corruption matches 49 run scoreboard players set @s knight_speed_boost 20
+# quick bugfix here
+scoreboard players add @s knight_speed_boost 0
+# the suggar item
+execute if score @s corruption matches 50.. unless entity @s[nbt={Inventory:[{id:"minecraft:sugar",Slot:4b}]}] if score @s knight_speed_boost matches 0 run scoreboard players set @s knight_speed_boost 600
+
+execute if score @s corruption matches 50.. if score @s knight_speed_boost matches 1.. run scoreboard players remove @s knight_speed_boost 1
+# give the corrupted speed
+execute if score @s corruption matches 50.. if score @s[scores={knight_speed_boost=599}] knight_speed_boost matches 599 run effect give @s speed 3 5
+
+# sound effect
+execute if score @s[scores={knight_speed_boost=599}] knight_speed_boost matches 599 run playsound entity.generic.eat player @s ~ ~ ~ 1 0.3 0.5
+
+# check to see if the sugar has been dropped.
+# give the corrupted the sugar dust. make sure he cant manipulate it
+execute if score @s corruption matches 50.. unless entity @s[nbt={Inventory:[{id:"minecraft:sugar",Slot:4b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:sugar"}}]
+execute if score @s corruption matches 50.. unless entity @s[nbt={Inventory:[{id:"minecraft:sugar",Slot:4b}]}] if score @s knight_speed_boost matches 0 run item replace entity @s hotbar.4 with sugar[custom_name=[{"text":"speed boost","italic":false}],lore=[[{"text":"drop for a speed boost","italic":false}]]]
+
+
+execute if score @s[scores={knight_speed_boost=599}] knight_speed_boost matches 599 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 30
+execute if score @s[scores={knight_speed_boost=580}] knight_speed_boost matches 580 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 29
+execute if score @s[scores={knight_speed_boost=560}] knight_speed_boost matches 560 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 28
+execute if score @s[scores={knight_speed_boost=540}] knight_speed_boost matches 540 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 27
+execute if score @s[scores={knight_speed_boost=520}] knight_speed_boost matches 520 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 26
+execute if score @s[scores={knight_speed_boost=500}] knight_speed_boost matches 500 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 25
+execute if score @s[scores={knight_speed_boost=480}] knight_speed_boost matches 480 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 24
+execute if score @s[scores={knight_speed_boost=460}] knight_speed_boost matches 460 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 23
+execute if score @s[scores={knight_speed_boost=440}] knight_speed_boost matches 440 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 22
+execute if score @s[scores={knight_speed_boost=420}] knight_speed_boost matches 420 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 21
+execute if score @s[scores={knight_speed_boost=400}] knight_speed_boost matches 400 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 20
+execute if score @s[scores={knight_speed_boost=380}] knight_speed_boost matches 380 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 19
+execute if score @s[scores={knight_speed_boost=360}] knight_speed_boost matches 360 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 18
+execute if score @s[scores={knight_speed_boost=340}] knight_speed_boost matches 340 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 17
+execute if score @s[scores={knight_speed_boost=320}] knight_speed_boost matches 320 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 16
+execute if score @s[scores={knight_speed_boost=300}] knight_speed_boost matches 300 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 50
+execute if score @s[scores={knight_speed_boost=280}] knight_speed_boost matches 280 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 14
+execute if score @s[scores={knight_speed_boost=260}] knight_speed_boost matches 260 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 13
+execute if score @s[scores={knight_speed_boost=240}] knight_speed_boost matches 240 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 12
+execute if score @s[scores={knight_speed_boost=220}] knight_speed_boost matches 220 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 11
+execute if score @s[scores={knight_speed_boost=200}] knight_speed_boost matches 200 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 10
+execute if score @s[scores={knight_speed_boost=180}] knight_speed_boost matches 180 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 9
+execute if score @s[scores={knight_speed_boost=160}] knight_speed_boost matches 160 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 8
+execute if score @s[scores={knight_speed_boost=140}] knight_speed_boost matches 140 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 7
+execute if score @s[scores={knight_speed_boost=120}] knight_speed_boost matches 120 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 6
+execute if score @s[scores={knight_speed_boost=100}] knight_speed_boost matches 100 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 5
+execute if score @s[scores={knight_speed_boost=80}] knight_speed_boost matches 80 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 4
+execute if score @s[scores={knight_speed_boost=60}] knight_speed_boost matches 60 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 3
+execute if score @s[scores={knight_speed_boost=40}] knight_speed_boost matches 40 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 2
+execute if score @s[scores={knight_speed_boost=20}] knight_speed_boost matches 20 run item replace entity @s hotbar.4 with gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]] 1
+# get rid of the gray dye when the cooldown is done
+execute if score @s knight_speed_boost matches 0 if score tick time matches 1 run clear @s gray_dye[custom_name=[{"text":"speed cooldown","italic":false}]]
+#genuenly just stole this code from the knight
+
 #==========================================================================================================================================================
 #                           90% corruption!
 #==========================================================================================================================================================
