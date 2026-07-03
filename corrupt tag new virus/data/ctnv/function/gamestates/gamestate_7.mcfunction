@@ -386,7 +386,7 @@ execute if score atherial_corrupted call_of_corrupted matches 1.. as @a[scores={
 
 # if the bulk gets corrupted, reduse the bulk_totem by 1
 # Reduce bulk_totem by 1 if the player is stunned (corruption_stun = 1) and tick time is 5
-execute as @a[scores={bulk_totem=1..,corruption_stun=1}] if score tick time matches 0 run scoreboard players remove @s bulk_totem 1
+#execute as @a[scores={bulk_totem=1..,corruption_stun=1}] if score tick time matches 0 run scoreboard players remove @s bulk_totem 1
 #specific command for the bulk to make sure that he does not have his jump candle imidialty wasted
 execute as @a[scores={class=3},team=corrupted] run scoreboard players set @s bulk 25 
 # when it comes to items. they must all be clear from your inventory during a corruption stun

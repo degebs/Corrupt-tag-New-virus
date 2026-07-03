@@ -48,18 +48,18 @@ execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entit
 execute if score @s corruption matches 15.. as @a[team=corrupted] at @s unless entity @a[team=runners,distance=..18] run scoreboard players set @s predator_t1_speed_range 0
 execute if score @s predator_t1_speed_range matches 1 run effect give @s speed 1 2 true
 execute if score @s predator_t1_speed_range matches 0 run effect give @s slowness 4 0 true
-# heres a fun one. the predator can smell the fear of his victums. functioning as a sort of radar.
+# heres a fun one. the predator can smell the Fear of his victums. functioning as a sort of radar.
 # display the subtitle only by displaying a blank title
 execute if score corruption_tick corruption matches 1 if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=..30] run title @s title [{"text": " "}]
 # use the subtitle command to show the distance to the nearest runner
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=25..30] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▁▁▁▁▁▁▁"]
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=20..25] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▁▁▁▃▁▁▁"]
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=15..20] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▁▁▃▅▃▁▁"]
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=10..15] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▁▃▅▆▅▃▁"]
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=5..10] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▃▅▇▇▇▅▃"]
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=3..5] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▅▇▇▇▇▇▅"]
-execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=..3] run title @s subtitle [{"text":"fear:","color":"dark_purple"}," ▇▇▇▇▇▇▇"]
-# apply a little bit of extra fear by giving the runner most close the elder guardian jumpscare
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=25..30] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▁▁▁▁▁▁▁"]
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=20..25] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▁▁▁▃▁▁▁"]
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=15..20] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▁▁▃▅▃▁▁"]
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=10..15] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▁▃▅▆▅▃▁"]
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=5..10] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▃▅▇▇▇▅▃"]
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=3..5] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▅▇▇▇▇▇▅"]
+execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=..3] run title @s subtitle [{"text":"Fear:","color":"dark_purple"}," ▇▇▇▇▇▇▇"]
+# apply a little bit of extra Fear by giving the runner most close the elder guardian jumpscare
 execute if score @s corruption matches 15.. as @a[team=corrupted] at @s if entity @a[team=runners,distance=..3] if score tick time matches 2 run particle minecraft:elder_guardian ~ ~ ~ ~ ~ ~ 1 1 force @a[distance=..3,team=runners]
 
 

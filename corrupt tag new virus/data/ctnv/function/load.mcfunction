@@ -16,7 +16,7 @@
 # anyway its time for the code to start running.
 
 tellraw @a ["",{"text":"welcome to","color":"blue"},{"text":" ","color":"light_purple"},{"text":"Corrupt tag:new virus","color":"dark_purple","bold":true}]
-tellraw @a [{"text":"1.5.4","color":"dark_purple","bold":true}]
+tellraw @a [{"text":"1.5.5","color":"dark_purple","bold":true}]
 
 
 
@@ -124,6 +124,9 @@ scoreboard objectives add evil_class trigger
 scoreboard objectives add bulk dummy
 # the bulk totem counter
 scoreboard objectives add bulk_totem dummy
+scoreboard objectives add bulk_rage minecraft.custom:damage_dealt
+scoreboard objectives add bulk_rage_corrupted_storage dummy
+scoreboard objectives add bulk_rage_advandment dummy
 # the medic healing rose
 scoreboard objectives add medic_heal dummy
 scoreboard players set medic_totem_rotation medic_heal 0

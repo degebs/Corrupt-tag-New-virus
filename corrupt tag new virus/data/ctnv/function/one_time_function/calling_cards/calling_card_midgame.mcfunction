@@ -45,3 +45,7 @@ execute as @a[team=corrupted] run scoreboard players reset @s escape_artist
 execute as @a[scores={escape_artist=600..}] at @s if entity @e[team=corrupted,distance=11..] run advancement grant @s only ctnv:corrupt_tag/ecape
 
 
+#================================================================================================================
+# bulk rage calling card
+# fill up the rage bar 5 times
+execute as @a[scores={bulk_rage_advandment=5..}] run advancement grant @s only ctnv:corrupt_tag/bulk_rage

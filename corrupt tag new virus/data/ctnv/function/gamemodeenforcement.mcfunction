@@ -24,3 +24,9 @@ effect give @a resistance infinite 3 true
 execute if entity @a[scores={evil_class=8}] run function ctnv:one_time_function/authority_global_gravity
 
 effect clear @a[team=corrupted] nausea
+
+#----------------------------------------------------------------------------------------------------------------------------------
+# bulk rework
+# to prevent the corrupted form getting more rage. all of it shall be stored when corrupted
+execute as @a[team=corrupted] run scoreboard players operation @s bulk_rage = @s bulk_rage_corrupted_storage
+execute as @a[team=runners] run scoreboard players operation @s bulk_rage_corrupted_storage = @s bulk_rage

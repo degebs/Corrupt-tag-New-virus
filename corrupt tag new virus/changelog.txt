@@ -292,3 +292,10 @@
       - changed how the spaceman rewind shard works (each shard is now loyal to the player who placed it)
       - nerfed bulk (now has knockback 1 insead of knockback 2)
       - fixed class swappers not initializing abilitys
+      -updated to minecraft 26.2
+1.5.5
+      -fixed class swappers settings book
+      -fixed call of corrupted wall not deleteing properly
+      -made it so that the medic rose becomes a golden dandilion. this is a cosmedic change during endgame to signal when he gets a jump boost
+      -full rework on the bulk. he now must accumulate enough rage by hitting the corrupted to unlock the totem of undying
+      -added new acheivement for the bulk

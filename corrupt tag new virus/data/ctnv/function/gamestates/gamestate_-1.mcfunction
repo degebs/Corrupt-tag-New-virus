@@ -69,3 +69,6 @@ execute unless score live_map_beacon_count debug = count debug run scoreboard pl
 scoreboard players set 0_index_count debug 0
 execute as @e[type=turtle,tag=map] run scoreboard players add 0_index_count debug 1
 scoreboard players remove 0_index_count debug 1
+#======================================================================================================================
+# fix a rare bug
+team remove dead

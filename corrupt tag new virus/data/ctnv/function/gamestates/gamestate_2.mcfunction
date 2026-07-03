@@ -119,7 +119,7 @@ kill @e[type=experience_orb]
 #class specific stuff
 
 # reset the bulks totem variable
-scoreboard players set @a[scores={bulk_totem=1..}] bulk_totem 0
+scoreboard players set @a bulk_totem 1
 
 
 # when it comes to cooldowns make sure that they dont immidialtly go off
@@ -147,6 +147,7 @@ execute if score @s assassin_hide matches 1.. run scoreboard players reset @s as
 scoreboard players set @a[scores={class=9}] farm_cooldown 60
 scoreboard players set @a[scores={class=9}] animal_farm_attack_cooldown 60
 
+scoreboard players reset @a bulk_rage
 # corrupted cooldowns
 execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t1_cooldown 10
 execute as @a[scores={evil_class=1}] run scoreboard players set @s classic_corrupted_t2_cooldown 10
@@ -162,6 +163,7 @@ execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_co
 
 execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_wind_charge_cooldown 0
 execute as @a[scores={evil_class=6}] run scoreboard players set @s dark_star_wind_charge_use 0
+
 
 
 #execute as @a[scores={evil_class=3}] run scoreboard players set @s apparition_corrupted_t3_cooldown 0

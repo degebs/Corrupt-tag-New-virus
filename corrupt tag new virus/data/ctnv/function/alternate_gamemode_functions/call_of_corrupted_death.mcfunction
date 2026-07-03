@@ -69,6 +69,7 @@ scoreboard players set enable spawn_eggs_purchesed 0
 execute if score @p[team=corrupted] points matches ..800 run scoreboard players add @s points 1
 kill @e[type=shulker,tag=wall]
 kill @e[type=shulker,tag=COC_wall]
+kill @e[type=magma_cube]
 
 # give the runners points
 scoreboard players add @r[team=runners] points 1

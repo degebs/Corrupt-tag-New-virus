@@ -30,7 +30,11 @@ execute if score setting ST____max_health matches 1 run item replace entity @s h
 #==============================================================================================================================================================
 
 # if the player drops the poppy item, start a 300 tick timer. then decrese by 1 until it can be used again (15 seconds)
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] if score @s medic_heal matches 0 run scoreboard players set @s medic_heal 300
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] if score @s medic_heal matches 0 if score endgame state matches 0 run scoreboard players set @s medic_heal 300
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_dandelion",Slot:1b}]}] if score @s medic_heal matches 0 if score endgame state matches 1 run scoreboard players set @s medic_heal 300
+
+
+
 execute if score @s medic_heal matches 1.. run scoreboard players remove @s medic_heal 1
 
 # spawn a healing totem that will spin, do fancy particles and heal all within its radius
@@ -47,8 +51,10 @@ execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run playsoun
 # give the medic_heal the Jump poppy. make sure he cant manipulate it
 #execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] run clear @a poppy
 execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] run kill @e[type=item,nbt={Item:{id:"minecraft:poppy"}}]
-execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] if score @s medic_heal matches 0 run item replace entity @s hotbar.1 with poppy[custom_name=[{"text":"Überleben","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to heal","italic":false}]],rarity=uncommon]
-
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:poppy",Slot:1b}]}] if score @s medic_heal matches 0 if score endgame state matches 0 run item replace entity @s hotbar.1 with poppy[custom_name=[{"text":"Überleben","italic":false,"color":"dark_green"}],lore=[[{"text":"drop to heal","italic":false}]],rarity=uncommon]
+execute unless entity @s[nbt={Inventory:[{id:"minecraft:golden_dandelion",Slot:1b}]}] if score @s medic_heal matches 0 if score endgame state matches 1 run item replace entity @s hotbar.1 with golden_dandelion[custom_name=[{"text":"Überleben","italic":false,"color":"gold"}],lore=[[{"text":"drop to heal","italic":false}]],rarity=uncommon]
+kill @e[type=item,nbt={Item:{id:"minecraft:golden_dandelion"}}]
+# for some reason my IDE does not recognise the golden dandelion as a valid item. but it is. so i will ignore this error
 # do a cooldown timer with drey dye
 execute if score @s[scores={medic_heal=299}] medic_heal matches 299 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 15
 execute if score @s[scores={medic_heal=280}] medic_heal matches 280 run item replace entity @s hotbar.1 with gray_dye[custom_name=[{"text":"cooldown","italic":false}]] 14
